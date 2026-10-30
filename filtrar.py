@@ -58,20 +58,14 @@ def clean_phone(raw: str) -> str:
     digits = re.sub(r"\D", "", raw)
     if not digits:
         return ""
-    # Quitar 00 internacional
     if digits.startswith("00"):
         digits = digits[2:]
-    # +54 / 54
     if digits.startswith("54") and len(digits) > 10:
         digits = digits[2:]
-    # 0 trunk (ej. 011...)
     if digits.startswith("0"):
         digits = digits[1:]
-    # 15 móvil histórico después de área (ej. 11 15 XXXXXXXX -> 11XXXXXXXX)
-    # Si queda 11 + 15 + 8 dígitos = 12 dígitos
     if len(digits) == 12 and digits.startswith("11") and digits[2:4] == "15":
         digits = digits[:2] + digits[4:]
-    # Si queda 15 + 8 sin área, no inventamos área
     return digits
 
 
@@ -90,6 +84,21 @@ def website_empty(row: dict) -> bool:
     if low in ("n/a", "na", "none", "-", "null", "undefined"):
         return True
     return False
+
+
+def dedupe_key(row: dict) -> str:
+    """Clave estable: place_id, si no link, si no nombre+dirección."""
+    pid = _get(row, "place_id", "placeId", "Place ID")
+    if pid:
+        return f"pid:{pid}"
+    link = _get(row, "link", "url", "maps_url", "Link")
+    if link:
+        # Normalizar query params variables
+        base = link.split("?")[0].rstrip("/")
+        return f"link:{base}"
+    nombre = _get(row, "title", "name", "nombre", "Title").lower()
+    dire = _get(row, "address", "complete_address", "direccion", "Address").lower()
+    return f"nd:{nombre}|{dire}"
 
 
 def main() -> int:
@@ -120,9 +129,20 @@ def main() -> int:
         rows = list(reader)
         cols = list(reader.fieldnames)
 
+    # Dedupe crudo por place_id/link (antes del filtro)
+    seen: set[str] = set()
+    deduped: list[dict] = []
+    for row in rows:
+        key = dedupe_key(row)
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(row)
+    n_dupes = len(rows) - len(deduped)
+
     total = len(rows)
     sin_web = []
-    for row in rows:
+    for row in deduped:
         if not website_empty(row):
             continue
         rating = parse_float(_get(row, "review_rating", "rating", "Review Rating"))
@@ -137,7 +157,6 @@ def main() -> int:
                 continue
         sin_web.append((row, rating, reviews))
 
-    # Orden: rating desc, reseñas desc
     def sort_key(item):
         row, rating, reviews = item
         return (
@@ -168,7 +187,9 @@ def main() -> int:
 
     print(f"Columnas CSV origen: {cols}")
     print(f"Filas crudas: {total}")
-    print(f"Sin website: {sum(1 for r in rows if website_empty(r))}")
+    print(f"Duplicados removidos: {n_dupes}")
+    print(f"Únicas: {len(deduped)}")
+    print(f"Sin website: {sum(1 for r in deduped if website_empty(r))}")
     print(
         f"Tras filtro (sin web + rating>={args.min_rating} {args.modo} reseñas>={args.min_reviews}): {len(sin_web)}"
     )
