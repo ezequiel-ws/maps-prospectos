@@ -4,22 +4,59 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Fábrica de Prospectos</title>
-  <meta name="description" content="Prospectos de Google Maps sin web, listos para WhatsApp." />
+  <meta name="description" content="Negocios sin web, listos para WhatsApp." />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0f1115;
-      --card: #1a1d24;
-      --card-hover: #22262f;
-      --text: #f2f4f8;
-      --muted: #9aa3b2;
-      --accent: #3dd68c;
-      --accent-dim: #2a9d64;
-      --maps: #4da3ff;
-      --wa: #25d366;
-      --border: #2a2f3a;
-      --danger: #ff6b6b;
-      --radius: 14px;
-      --shadow: 0 8px 24px rgba(0,0,0,.35);
+      --bg: #f4f5f7;
+      --surface: #ffffff;
+      --surface-2: #f0f2f5;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #0d9488;
+      --accent-soft: #ccfbf1;
+      --accent-text: #0f766e;
+      --maps: #2563eb;
+      --maps-soft: #dbeafe;
+      --wa: #16a34a;
+      --wa-soft: #dcfce7;
+      --warn: #d97706;
+      --warn-soft: #fef3c7;
+      --danger: #dc2626;
+      --danger-soft: #fee2e2;
+      --ok: #059669;
+      --shadow: 0 1px 2px rgba(16,24,40,.04), 0 8px 24px rgba(16,24,40,.06);
+      --radius: 16px;
+      --radius-sm: 12px;
+      --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0d10;
+        --surface: #14181f;
+        --surface-2: #1b212b;
+        --text: #f3f4f6;
+        --muted: #9ca3af;
+        --border: #2a313c;
+        --accent: #2dd4bf;
+        --accent-soft: #134e4a;
+        --accent-text: #5eead4;
+        --maps: #60a5fa;
+        --maps-soft: #1e3a5f;
+        --wa: #4ade80;
+        --wa-soft: #14532d;
+        --warn: #fbbf24;
+        --warn-soft: #422006;
+        --danger: #f87171;
+        --danger-soft: #450a0a;
+        --ok: #34d399;
+        --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.35);
+      }
     }
     * { box-sizing: border-box; }
     html, body {
@@ -27,40 +64,41 @@
       padding: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
-      line-height: 1.45;
+      font-family: var(--font);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
       -webkit-tap-highlight-color: transparent;
     }
     a { color: var(--maps); }
     .wrap {
-      max-width: 720px;
+      max-width: 680px;
       margin: 0 auto;
-      padding: 16px 16px 96px;
+      padding: 20px 18px calc(48px + var(--safe-bottom));
     }
-    header {
+    header.appbar {
       position: sticky;
       top: 0;
-      z-index: 20;
-      background: rgba(15,17,21,.92);
-      backdrop-filter: blur(10px);
+      z-index: 30;
+      background: color-mix(in srgb, var(--bg) 86%, transparent);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 12px 16px;
+      padding: 14px 18px;
     }
     header .inner {
-      max-width: 720px;
+      max-width: 680px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
     }
-    header h1 {
-      margin: 0;
+    .brand {
       font-size: 1.05rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
+      margin: 0;
     }
-    header h1 span { color: var(--accent); }
+    .brand span { color: var(--accent-text); }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -69,182 +107,415 @@
       border: none;
       border-radius: 999px;
       padding: 12px 18px;
-      font-size: 1rem;
-      font-weight: 650;
+      font: inherit;
+      font-size: .95rem;
+      font-weight: 600;
       text-decoration: none;
       cursor: pointer;
-      color: #0b0d10;
-      transition: transform .08s ease, opacity .15s ease;
-      min-height: 48px;
+      transition: transform .08s ease, opacity .15s, background .15s;
+      min-height: 44px;
+      color: var(--text);
+      background: var(--surface-2);
     }
     .btn:active { transform: scale(.98); }
-    .btn-accent { background: var(--accent); color: #062314; }
-    .btn-maps { background: var(--maps); color: #041526; flex: 1; }
-    .btn-wa { background: var(--wa); color: #062814; flex: 1; }
+    .btn:disabled { opacity: .55; cursor: not-allowed; }
+    .btn-primary {
+      background: var(--accent);
+      color: #042f2e;
+    }
+    @media (prefers-color-scheme: light) {
+      .btn-primary { color: #fff; background: #0f766e; }
+    }
+    .btn-maps { background: var(--maps); color: #fff; flex: 1; }
+    .btn-wa { background: var(--wa); color: #052e16; flex: 1; }
+    @media (prefers-color-scheme: light) {
+      .btn-wa { color: #fff; background: #16a34a; }
+    }
     .btn-ghost {
       background: transparent;
-      color: var(--text);
       border: 1px solid var(--border);
+      color: var(--text);
     }
-    .btn-sm { padding: 8px 14px; font-size: .9rem; min-height: 40px; }
-    .muted { color: var(--muted); }
-    .panel {
-      background: var(--card);
+    .btn-sm { padding: 8px 12px; font-size: .85rem; min-height: 36px; }
+    .btn-block { width: 100%; min-height: 52px; font-size: 1.05rem; border-radius: 14px; }
+    .card, .panel {
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 14px;
-      margin: 14px 0;
       box-shadow: var(--shadow);
     }
-    .search-item {
-      display: block;
-      width: 100%;
-      text-align: left;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px;
-      margin: 10px 0;
-      color: var(--text);
-      cursor: pointer;
-      transition: background .15s;
+    .panel { padding: 20px; margin: 0 0 20px; }
+    .eyebrow {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 8px;
     }
-    .search-item:hover, .search-item.active { background: var(--card-hover); border-color: var(--accent-dim); }
-    .search-item .q { font-size: 1.1rem; font-weight: 700; margin: 0 0 6px; }
-    .search-item .meta { font-size: .9rem; color: var(--muted); }
+    h2.hero {
+      margin: 0 0 6px;
+      font-size: 1.45rem;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+    }
+    .lead { margin: 0 0 18px; color: var(--muted); font-size: .95rem; }
+    .field {
+      width: 100%;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      color: var(--text);
+      padding: 16px 16px;
+      font: inherit;
+      font-size: 1.05rem;
+      outline: none;
+      min-height: 54px;
+    }
+    .field:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 16px; }
+    .chip {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font: inherit;
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 38px;
+    }
+    .chip.active, .chip:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent-text);
+    }
+    .hint {
+      margin: 12px 0 0;
+      font-size: .82rem;
+      color: var(--muted);
+    }
+    .progress-wrap {
+      margin: 16px 0 0;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      background: var(--warn-soft);
+      border: 1px solid color-mix(in srgb, var(--warn) 35%, transparent);
+    }
+    .progress-wrap.hidden { display: none; }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .progress-label span { color: var(--muted); font-weight: 500; }
+    .bar {
+      height: 8px;
+      background: color-mix(in srgb, var(--warn) 20%, var(--surface));
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .bar > i {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: var(--warn);
+      border-radius: 999px;
+      transition: width .4s ease;
+    }
+    .tabs {
+      display: flex;
+      gap: 6px;
+      padding: 4px;
+      background: var(--surface-2);
+      border-radius: 12px;
+      margin: 12px 0;
+    }
+    .tab {
+      flex: 1;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: .88rem;
+      font-weight: 600;
+      padding: 10px 8px;
+      border-radius: 10px;
+      cursor: pointer;
+      min-height: 40px;
+    }
+    .tab.active {
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
     .toolbar {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin: 12px 0;
       align-items: center;
+      margin: 8px 0 4px;
     }
-    input[type="search"], select {
+    .toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .85rem;
+      color: var(--muted);
+      user-select: none;
+    }
+    .toggle input { width: 16px; height: 16px; accent-color: var(--accent); }
+    .search-item {
+      display: block;
       width: 100%;
-      background: #12151b;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      color: var(--text);
-      padding: 12px 14px;
-      font-size: 1rem;
-      outline: none;
-    }
-    input[type="search"]:focus, select:focus { border-color: var(--accent); }
-    .card {
-      background: var(--card);
+      text-align: left;
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 16px;
+      padding: 16px 18px;
+      margin: 10px 0;
+      color: var(--text);
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      font: inherit;
+    }
+    .search-item:hover { border-color: var(--accent); }
+    .search-item .q { font-size: 1.05rem; font-weight: 700; margin: 0 0 4px; letter-spacing: -0.02em; }
+    .search-item .meta { font-size: .85rem; color: var(--muted); }
+    .pill {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent-text);
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: .78rem;
+      font-weight: 650;
+    }
+    .prospect {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
       margin: 12px 0;
       box-shadow: var(--shadow);
     }
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 1.2rem;
-      line-height: 1.25;
+    .prospect h3 {
+      margin: 0 0 6px;
+      font-size: 1.12rem;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
     }
-    .card .stars {
-      font-size: 1rem;
-      color: #ffd666;
-      margin-bottom: 6px;
-    }
-    .card .addr { color: var(--muted); font-size: .95rem; margin-bottom: 12px; }
-    .card .actions {
+    .stars { color: #ca8a04; font-size: .92rem; margin-bottom: 6px; font-weight: 500; }
+    .addr { color: var(--muted); font-size: .9rem; margin-bottom: 14px; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+    .status-row {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
+      padding-top: 4px;
+      border-top: 1px solid var(--border);
+      margin-top: 4px;
+      padding-top: 12px;
+    }
+    .status-btn {
+      flex: 1;
+      min-width: 100px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--muted);
+      border-radius: 10px;
+      padding: 10px 8px;
+      font: inherit;
+      font-size: .8rem;
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 40px;
+    }
+    .status-btn.active-contactado {
+      background: var(--wa-soft);
+      border-color: var(--wa);
+      color: var(--wa);
+    }
+    .status-btn.active-no_interesa {
+      background: var(--danger-soft);
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+    .status-btn.active-pendiente {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent-text);
     }
     .empty {
       text-align: center;
-      padding: 40px 16px;
+      padding: 36px 16px;
       color: var(--muted);
     }
-    .empty strong { color: var(--text); display: block; margin-bottom: 8px; font-size: 1.15rem; }
+    .empty strong { color: var(--text); display: block; margin-bottom: 6px; font-size: 1.05rem; }
     .back {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       color: var(--muted);
       text-decoration: none;
-      margin: 8px 0 4px;
-      font-size: .95rem;
+      margin: 4px 0 12px;
+      font-size: .9rem;
+      font-weight: 500;
     }
     .back:hover { color: var(--text); }
-    .count-pill {
-      display: inline-block;
-      background: #243028;
-      color: var(--accent);
-      border-radius: 999px;
-      padding: 2px 10px;
+    .section-title {
+      margin: 8px 0 4px;
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .settings {
+      margin-top: 8px;
+    }
+    .settings summary {
+      cursor: pointer;
+      color: var(--muted);
       font-size: .85rem;
-      font-weight: 650;
+      font-weight: 600;
+      padding: 8px 0;
+    }
+    .settings textarea {
+      width: 100%;
+      min-height: 90px;
+      margin-top: 8px;
+      resize: vertical;
     }
     .hidden { display: none !important; }
     footer {
       text-align: center;
       color: var(--muted);
-      font-size: .8rem;
-      padding: 24px 8px;
+      font-size: .75rem;
+      padding: 28px 8px 8px;
     }
+    .count-line { color: var(--muted); font-size: .85rem; margin: 4px 0 8px; }
   </style>
 </head>
 <body>
-  <header>
+  <header class="appbar">
     <div class="inner">
-      <h1>Fábrica de <span>Prospectos</span></h1>
-      <a class="btn btn-accent btn-sm" id="btnNueva"
-         href="https://github.com/paginadeprueba-collab/maps-prospectos/actions/workflows/buscar.yml"
-         target="_blank" rel="noopener">Nueva búsqueda</a>
+      <h1 class="brand">Fábrica de <span>Prospectos</span></h1>
+      <button type="button" class="btn btn-ghost btn-sm" id="btnTopBuscar">Buscar</button>
     </div>
   </header>
 
   <main class="wrap">
-    <!-- LISTA DE BÚSQUEDAS -->
     <section id="viewList">
-      <p class="muted" style="margin-top:8px">Negocios sin web, con buenas reseñas. Tocá una búsqueda para ver los contactos.</p>
+      <div class="panel" id="buscar">
+        <p class="eyebrow">Nueva búsqueda</p>
+        <h2 class="hero">¿A quién querés encontrar?</h2>
+        <p class="lead">Negocios sin web, con buenas reseñas. Un toque y listo para WhatsApp.</p>
+
+        <label class="hidden" for="queryBox">Búsqueda</label>
+        <input type="text" id="queryBox" class="field" placeholder="Ej: peluquerías en CABA" autocomplete="off" />
+
+        <div class="chips" id="chips">
+          <button type="button" class="chip" data-zona="CABA">CABA</button>
+          <button type="button" class="chip" data-zona="Zona Norte">Zona Norte</button>
+          <button type="button" class="chip" data-zona="Zona Oeste">Zona Oeste</button>
+          <button type="button" class="chip" data-zona="Zona Sur">Zona Sur</button>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block" id="btnBuscar">Buscar</button>
+
+        <div id="progressWrap" class="progress-wrap hidden">
+          <div class="progress-label">
+            <strong id="progressTitle">Buscando…</strong>
+            <span id="progressMeta">0%</span>
+          </div>
+          <div class="bar" aria-hidden="true"><i id="progressBar"></i></div>
+          <p class="hint" id="progressHint" style="margin-top:10px">La página se actualiza sola cuando termina.</p>
+        </div>
+
+        <p class="hint" id="modeHint">Si el Worker no está configurado, se abre un issue en GitHub (mismo resultado).</p>
+
+        <details class="settings">
+          <summary>Mensaje de WhatsApp (editable)</summary>
+          <textarea id="waTemplate" class="field" spellcheck="true"></textarea>
+          <p class="hint">Usá {nombre} para el nombre del negocio. Se guarda en este celular.</p>
+        </details>
+      </div>
+
+      <p class="section-title">Anteriores</p>
       <div id="listEmpty" class="empty hidden">
         <strong>Todavía no hay búsquedas</strong>
-        Tocá <em>Nueva búsqueda</em> arriba para correr el scraper en GitHub Actions.
+        Arrancá con el cuadro de arriba.
       </div>
       <div id="searchList"></div>
     </section>
 
-    <!-- DETALLE -->
     <section id="viewDetail" class="hidden">
-      <a href="#/" class="back" id="btnBack">← Volver a búsquedas</a>
-      <h2 id="detailTitle" style="margin:8px 0 4px;font-size:1.35rem"></h2>
-      <p class="muted" id="detailMeta" style="margin:0 0 8px"></p>
+      <a href="#/" class="back" id="btnBack">← Volver</a>
+      <h2 id="detailTitle" style="margin:0 0 4px;font-size:1.35rem;letter-spacing:-0.03em"></h2>
+      <p class="count-line" id="detailMeta"></p>
+
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab active" data-filter="nuevos" role="tab">Nuevos</button>
+        <button type="button" class="tab" data-filter="contactados" role="tab">Contactados</button>
+        <button type="button" class="tab" data-filter="todos" role="tab">Todos</button>
+      </div>
 
       <div class="toolbar">
-        <input type="search" id="filterBox" placeholder="Filtrar por nombre, barrio o categoría…" autocomplete="off" />
+        <input type="search" id="filterBox" class="field" style="min-height:44px;padding:10px 14px;font-size:.95rem" placeholder="Filtrar por nombre o barrio…" autocomplete="off" />
       </div>
       <div class="toolbar">
-        <select id="sortBox" aria-label="Ordenar">
-          <option value="rating">Ordenar: mejor rating</option>
-          <option value="reviews">Ordenar: más reseñas</option>
-          <option value="nombre">Ordenar: nombre A–Z</option>
+        <select id="sortBox" class="field" style="min-height:44px;padding:10px 14px;font-size:.9rem;flex:1" aria-label="Ordenar">
+          <option value="rating">Mejor rating</option>
+          <option value="reviews">Más reseñas</option>
+          <option value="nombre">Nombre A–Z</option>
         </select>
-        <button type="button" class="btn btn-ghost btn-sm" id="btnCsv">Descargar CSV</button>
+        <label class="toggle" title="Oculta negocios que ya salieron en otras búsquedas">
+          <input type="checkbox" id="hideSeen" checked />
+          Ocultar ya vistos
+        </label>
+        <button type="button" class="btn btn-ghost btn-sm" id="btnCsv">CSV</button>
       </div>
-      <p class="muted" id="detailCount" style="margin:4px 0 8px"></p>
+      <p class="count-line" id="detailCount"></p>
       <div id="cards"></div>
       <div id="detailEmpty" class="empty hidden">
         <strong>Nada por acá</strong>
-        Probá otro filtro o bajá el mínimo de reseñas en la próxima corrida.
+        Probá otra pestaña o desactivá «Ocultar ya vistos».
       </div>
     </section>
   </main>
 
-  <footer>Datos públicos de Google Maps · sin APIs pagas · solo open-source</footer>
+  <footer>Google Maps · sin APIs pagas · open-source</footer>
 
   <script>
+    /* ========== CONFIG ========== */
+    // Pegá acá la URL del Worker cuando lo deploys (sin barra final).
+    // Ej: "https://maps-prospectos.tu-usuario.workers.dev"
+    // Vacío = fallback a crear issue en GitHub.
+    const WORKER_URL = "";
+
     const DATA_BASE = "./data/";
-    const NEW_URL = "https://github.com/paginadeprueba-collab/maps-prospectos/actions/workflows/buscar.yml";
+    const REPO_NEW_ISSUE = "https://github.com/paginadeprueba-collab/maps-prospectos/issues/new";
+    const ISSUE_BODY = "Tocá Submit/Crear para arrancar. No hace falta escribir nada más acá.";
+    const LS_WA = "fp_wa_template";
+    const LS_STATUS = "fp_prospect_status";
+    const DEFAULT_WA =
+      "Hola {nombre}! Vi su negocio en Google Maps y me pareció muy bueno. " +
+      "Les ofrezco armarles una página web simple y profesional para que les escriban más clientes por WhatsApp. " +
+      "¿Les interesa que les muestre un ejemplo sin compromiso?";
 
     const el = (id) => document.getElementById(id);
     let indexData = { searches: [] };
-    let current = null; // full search payload
+    let current = null;
     let currentId = null;
+    let statusFilter = "nuevos";
+    let seenLinks = new Set(); // links de OTRAS búsquedas
+    let pollTimer = null;
+    let activeRunId = null;
+    let localStatuses = loadLocalStatuses();
 
     function esc(s) {
       return String(s ?? "")
@@ -254,7 +525,183 @@
         .replace(/"/g, "&quot;");
     }
 
-    async function loadIndex() {
+    function loadLocalStatuses() {
+      try {
+        return JSON.parse(localStorage.getItem(LS_STATUS) || "{}") || {};
+      } catch {
+        return {};
+      }
+    }
+    function saveLocalStatuses() {
+      localStorage.setItem(LS_STATUS, JSON.stringify(localStatuses));
+    }
+
+    function prospectKey(r) {
+      const link = (r.link_maps || "").split("?")[0].replace(/\/$/, "");
+      if (link) return "link:" + link;
+      return "nd:" + String(r.nombre || "").toLowerCase() + "|" + String(r.direccion || "").toLowerCase();
+    }
+
+    function getStatus(r) {
+      const k = prospectKey(r);
+      return localStatuses[k] || "pendiente";
+    }
+
+    async function setStatus(r, status) {
+      const k = prospectKey(r);
+      localStatuses[k] = status;
+      saveLocalStatuses();
+      if (WORKER_URL) {
+        try {
+          await fetch(WORKER_URL.replace(/\/$/, "") + "/estado-prospecto", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ key: k, status }),
+          });
+        } catch (e) {
+          console.warn("KV sync fail, local ok", e);
+        }
+      }
+      renderCards();
+    }
+
+    function waMessage(nombre) {
+      const tpl = el("waTemplate").value || DEFAULT_WA;
+      return tpl.replace(/\{nombre\}/g, nombre || "hola");
+    }
+
+    function waHref(r) {
+      const base = (r.whatsapp || "").trim();
+      if (!base) return "";
+      const msg = waMessage(r.nombre || "");
+      const sep = base.includes("?") ? "&" : "?";
+      return base + sep + "text=" + encodeURIComponent(msg);
+    }
+
+    function buildIssueUrl(query) {
+      const u = new URL(REPO_NEW_ISSUE);
+      u.searchParams.set("title", "Buscar: " + query);
+      u.searchParams.set("labels", "busqueda");
+      u.searchParams.set("body", ISSUE_BODY);
+      return u.toString();
+    }
+
+    function applyZona(zona) {
+      const box = el("queryBox");
+      let q = (box.value || "").trim();
+      const m = q.match(/^(.*?)\s+en\s+.+$/i);
+      if (m && m[1].trim()) q = m[1].trim() + " en " + zona;
+      else if (q) q = q + " en " + zona;
+      else q = "peluquerías en " + zona;
+      box.value = q;
+      box.focus();
+      document.querySelectorAll(".chip").forEach((c) => {
+        c.classList.toggle("active", c.getAttribute("data-zona") === zona);
+      });
+    }
+
+    function setProgress(show, pct, title, meta, hint) {
+      const wrap = el("progressWrap");
+      if (!show) {
+        wrap.classList.add("hidden");
+        return;
+      }
+      wrap.classList.remove("hidden");
+      el("progressBar").style.width = Math.max(0, Math.min(100, pct || 0)) + "%";
+      el("progressTitle").textContent = title || "Buscando…";
+      el("progressMeta").textContent = meta || "";
+      if (hint) el("progressHint").textContent = hint;
+    }
+
+    function stopPoll() {
+      if (pollTimer) {
+        clearInterval(pollTimer);
+        pollTimer = null;
+      }
+    }
+
+    async function pollEstado() {
+      if (!WORKER_URL || !activeRunId) return;
+      try {
+        const res = await fetch(
+          WORKER_URL.replace(/\/$/, "") + "/estado?run_id=" + encodeURIComponent(activeRunId) + "&t=" + Date.now()
+        );
+        if (!res.ok) throw new Error("estado " + res.status);
+        const data = await res.json();
+        const pct = data.progress ?? (data.in_progress ? 50 : 100);
+        const label =
+          data.status === "queued"
+            ? "En cola…"
+            : data.status === "in_progress"
+              ? "Scrapeando en la nube…"
+              : data.conclusion === "success"
+                ? "Listo"
+                : data.conclusion || data.status;
+        setProgress(true, pct, label, Math.round(pct) + "%");
+        if (!data.in_progress) {
+          stopPoll();
+          activeRunId = null;
+          setProgress(true, 100, "Listo — recargando resultados…", "100%");
+          await loadIndex(false);
+          await rebuildSeenLinks();
+          setTimeout(() => setProgress(false), 2500);
+        }
+      } catch (e) {
+        console.warn(e);
+      }
+    }
+
+    async function launchSearch() {
+      const q = (el("queryBox").value || "").trim();
+      if (!q) {
+        el("queryBox").focus();
+        return;
+      }
+      if (WORKER_URL) {
+        el("btnBuscar").disabled = true;
+        setProgress(true, 8, "Lanzando búsqueda…", "8%", "Puede tardar unos minutos si expandió a muchos barrios.");
+        try {
+          const res = await fetch(WORKER_URL.replace(/\/$/, "") + "/buscar", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ query: q }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.message || data.error || "Error " + res.status);
+          activeRunId = data.run_id || null;
+          setProgress(true, 15, "En cola en GitHub Actions…", "15%");
+          stopPoll();
+          pollTimer = setInterval(pollEstado, 8000);
+          // también mirar estado.json de Pages
+          setTimeout(checkPagesEstado, 15000);
+        } catch (e) {
+          console.warn(e);
+          setProgress(false);
+          alert("No pude hablar con el Worker (" + e.message + "). Abro el fallback por GitHub.");
+          window.open(buildIssueUrl(q), "_blank", "noopener");
+        } finally {
+          el("btnBuscar").disabled = false;
+        }
+      } else {
+        window.open(buildIssueUrl(q), "_blank", "noopener");
+        setProgress(true, 20, "Issue abierto — esperá a que corra…", "—", "Cuando termine, recargá esta página. Tip: configurá WORKER_URL para progreso en vivo.");
+      }
+    }
+
+    async function checkPagesEstado() {
+      try {
+        const res = await fetch(DATA_BASE + "estado.json?t=" + Date.now());
+        if (!res.ok) return;
+        const est = await res.json();
+        if (est.status === "in_progress") {
+          setProgress(true, 60, "Buscando «" + (est.query || "") + "»…", "60%");
+        } else if (activeRunId == null) {
+          // idle and no worker poll — hide eventually
+        }
+      } catch (_) {}
+    }
+
+    async function loadIndex(doRoute) {
       try {
         const res = await fetch(DATA_BASE + "index.json?t=" + Date.now());
         if (!res.ok) throw new Error("index " + res.status);
@@ -265,6 +712,37 @@
         indexData = { searches: [] };
       }
       renderList();
+      if (doRoute) route();
+    }
+
+    async function rebuildSeenLinks() {
+      // Cargar todos los JSON de búsquedas para dedupe cross-search
+      const all = new Map(); // link -> first search id
+      const searches = indexData.searches || [];
+      await Promise.all(
+        searches.map(async (s) => {
+          try {
+            const res = await fetch(DATA_BASE + s.file + "?t=" + Date.now());
+            if (!res.ok) return;
+            const data = await res.json();
+            (data.prospects || []).forEach((p) => {
+              const link = (p.link_maps || "").split("?")[0].replace(/\/$/, "");
+              if (!link) return;
+              if (!all.has(link)) all.set(link, s.id);
+            });
+          } catch (_) {}
+        })
+      );
+      // seenLinks = links that appear in a search OTHER than current
+      window.__linkOwner = all;
+    }
+
+    function isSeenElsewhere(r) {
+      if (!currentId || !window.__linkOwner) return false;
+      const link = (r.link_maps || "").split("?")[0].replace(/\/$/, "");
+      if (!link) return false;
+      const owner = window.__linkOwner.get(link);
+      return owner && owner !== currentId;
     }
 
     function renderList() {
@@ -280,12 +758,11 @@
       items.forEach((s) => {
         const btn = document.createElement("button");
         btn.type = "button";
-        btn.className = "search-item" + (s.id === currentId ? " active" : "");
+        btn.className = "search-item";
         btn.innerHTML =
           `<div class="q">${esc(s.query || "Sin título")}</div>` +
           `<div class="meta">${esc(s.date_label || s.date || "")} · ` +
-          `<span class="count-pill">${esc(String(s.n_limpio ?? 0))} limpios</span>` +
-          ` · ${esc(String(s.n_raw ?? 0))} crudos</div>`;
+          `<span class="pill">${esc(String(s.n_limpio ?? 0))} limpios</span></div>`;
         btn.addEventListener("click", () => {
           location.hash = "#/s/" + encodeURIComponent(s.id);
         });
@@ -302,7 +779,6 @@
         if (!res.ok) throw new Error("search " + res.status);
         current = await res.json();
       } catch (e) {
-        console.warn(e);
         current = {
           id,
           query: meta?.query || id,
@@ -312,11 +788,12 @@
           prospects: [],
         };
       }
+      if (!window.__linkOwner) await rebuildSeenLinks();
       el("viewList").classList.add("hidden");
       el("viewDetail").classList.remove("hidden");
       el("detailTitle").textContent = current.query || "Búsqueda";
       el("detailMeta").textContent =
-        (current.date_label || current.date || "") +
+        (current.date_label || "") +
         " · " +
         (current.n_raw ?? 0) +
         " crudos · " +
@@ -338,29 +815,25 @@
     function filteredSorted() {
       if (!current) return [];
       const q = (el("filterBox").value || "").trim().toLowerCase();
+      const hideSeen = el("hideSeen").checked;
       let rows = (current.prospects || []).slice();
-      if (q) {
-        rows = rows.filter((r) => {
-          const blob = [
-            r.nombre,
-            r.direccion,
-            r.categoria,
-            r.telefono,
-          ]
-            .join(" ")
-            .toLowerCase();
-          return blob.includes(q);
-        });
-      }
+
+      rows = rows.filter((r) => {
+        const st = getStatus(r);
+        if (statusFilter === "nuevos" && st !== "pendiente") return false;
+        if (statusFilter === "contactados" && st !== "contactado") return false;
+        if (hideSeen && isSeenElsewhere(r)) return false;
+        if (q) {
+          const blob = [r.nombre, r.direccion, r.categoria, r.telefono].join(" ").toLowerCase();
+          if (!blob.includes(q)) return false;
+        }
+        return true;
+      });
+
       const sort = el("sortBox").value;
       rows.sort((a, b) => {
-        if (sort === "nombre") {
-          return String(a.nombre || "").localeCompare(String(b.nombre || ""), "es");
-        }
-        if (sort === "reviews") {
-          return (parseFloat(b.reseñas) || 0) - (parseFloat(a.reseñas) || 0);
-        }
-        // rating then reviews
+        if (sort === "nombre") return String(a.nombre || "").localeCompare(String(b.nombre || ""), "es");
+        if (sort === "reviews") return (parseFloat(b.reseñas) || 0) - (parseFloat(a.reseñas) || 0);
         const dr = (parseFloat(b.rating) || 0) - (parseFloat(a.rating) || 0);
         if (dr !== 0) return dr;
         return (parseFloat(b.reseñas) || 0) - (parseFloat(a.reseñas) || 0);
@@ -373,83 +846,93 @@
       const cards = el("cards");
       const empty = el("detailEmpty");
       cards.innerHTML = "";
-      el("detailCount").textContent =
-        rows.length +
-        " prospecto" +
-        (rows.length === 1 ? "" : "s") +
-        " visibles";
+      const total = (current && current.prospects) ? current.prospects.length : 0;
+      el("detailCount").textContent = rows.length + " visibles" + (total ? " de " + total : "");
       if (!rows.length) {
         empty.classList.remove("hidden");
         return;
       }
       empty.classList.add("hidden");
       rows.forEach((r, i) => {
+        const st = getStatus(r);
         const div = document.createElement("article");
-        div.className = "card";
+        div.className = "prospect";
         const rating = r.rating || "—";
         const rev = r.reseñas || "0";
         const cat = r.categoria ? " · " + esc(r.categoria) : "";
+        const seen = isSeenElsewhere(r) ? ' <span class="pill" style="background:var(--surface-2);color:var(--muted)">ya visto</span>' : "";
         let actions = "";
         if (r.link_maps) {
-          actions +=
-            `<a class="btn btn-maps" href="${esc(r.link_maps)}" target="_blank" rel="noopener">📍 Ver en Maps</a>`;
+          actions += `<a class="btn btn-maps" href="${esc(r.link_maps)}" target="_blank" rel="noopener">Maps</a>`;
         }
-        if (r.whatsapp) {
-          actions +=
-            `<a class="btn btn-wa" href="${esc(r.whatsapp)}" target="_blank" rel="noopener">💬 WhatsApp</a>`;
+        const wa = waHref(r);
+        if (wa) {
+          actions += `<a class="btn btn-wa" href="${esc(wa)}" target="_blank" rel="noopener">WhatsApp</a>`;
         } else if (r.telefono) {
-          actions +=
-            `<span class="btn btn-ghost" style="flex:1;cursor:default">Tel: ${esc(r.telefono)}</span>`;
+          actions += `<span class="btn btn-ghost" style="flex:1;cursor:default">Tel ${esc(r.telefono)}</span>`;
         }
         div.innerHTML =
-          `<h3>${i + 1}. ${esc(r.nombre || "Sin nombre")}</h3>` +
-          `<div class="stars">⭐ ${esc(rating)} (${esc(rev)} reseñas)${cat}</div>` +
+          `<h3>${i + 1}. ${esc(r.nombre || "Sin nombre")}${seen}</h3>` +
+          `<div class="stars">★ ${esc(rating)} · ${esc(rev)} reseñas${cat}</div>` +
           (r.direccion ? `<div class="addr">${esc(r.direccion)}</div>` : "") +
-          `<div class="actions">${actions || '<span class="muted">Sin links</span>'}</div>`;
+          `<div class="actions">${actions || '<span style="color:var(--muted)">Sin links</span>'}</div>` +
+          `<div class="status-row">` +
+          `<button type="button" class="status-btn ${st === "pendiente" ? "active-pendiente" : ""}" data-st="pendiente">Pendiente</button>` +
+          `<button type="button" class="status-btn ${st === "contactado" ? "active-contactado" : ""}" data-st="contactado">Contactado</button>` +
+          `<button type="button" class="status-btn ${st === "no_interesa" ? "active-no_interesa" : ""}" data-st="no_interesa">No interesa</button>` +
+          `</div>`;
+        div.querySelectorAll(".status-btn").forEach((b) => {
+          b.addEventListener("click", () => setStatus(r, b.getAttribute("data-st")));
+        });
         cards.appendChild(div);
       });
     }
 
     function downloadCsv() {
       const rows = filteredSorted();
-      const cols = [
-        "nombre",
-        "reseñas",
-        "rating",
-        "telefono",
-        "whatsapp",
-        "link_maps",
-        "direccion",
-        "categoria",
-      ];
+      const cols = ["nombre", "reseñas", "rating", "telefono", "whatsapp", "link_maps", "direccion", "categoria", "estado"];
       const escCell = (v) => {
         const s = String(v ?? "");
         if (/[",\n]/.test(s)) return '"' + s.replace(/"/g, '""') + '"';
         return s;
       };
       const lines = [cols.join(",")];
-      rows.forEach((r) => lines.push(cols.map((c) => escCell(r[c])).join(",")));
+      rows.forEach((r) => {
+        const row = cols.map((c) => (c === "estado" ? getStatus(r) : r[c]));
+        lines.push(row.map(escCell).join(","));
+      });
       const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8" });
       const a = document.createElement("a");
-      const slug = (current?.query || "prospectos")
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-")
-        .slice(0, 40);
       a.href = URL.createObjectURL(blob);
-      a.download = slug + "_limpio.csv";
+      a.download = "prospectos.csv";
       a.click();
       URL.revokeObjectURL(a.href);
     }
 
     function route() {
       const h = location.hash || "#/";
-      const m = h.match(/^#\/s\/(.+)$/);
-      if (m) {
-        openSearch(decodeURIComponent(m[1]));
-      } else {
+      if (h === "#buscar") {
         showList();
+        el("buscar").scrollIntoView({ behavior: "smooth" });
+        return;
       }
+      const m = h.match(/^#\/s\/(.+)$/);
+      if (m) openSearch(decodeURIComponent(m[1]));
+      else showList();
     }
+
+    // init WA template
+    el("waTemplate").value = localStorage.getItem(LS_WA) || DEFAULT_WA;
+    el("waTemplate").addEventListener("change", () => {
+      localStorage.setItem(LS_WA, el("waTemplate").value);
+    });
+    el("waTemplate").addEventListener("blur", () => {
+      localStorage.setItem(LS_WA, el("waTemplate").value);
+    });
+
+    el("modeHint").textContent = WORKER_URL
+      ? "Buscar llama al Worker (gratis) y muestra progreso en vivo."
+      : "Worker aún no configurado → Buscar abre un issue en GitHub (mismo scraper).";
 
     el("btnBack").addEventListener("click", (e) => {
       e.preventDefault();
@@ -457,11 +940,33 @@
     });
     el("filterBox").addEventListener("input", renderCards);
     el("sortBox").addEventListener("change", renderCards);
+    el("hideSeen").addEventListener("change", renderCards);
     el("btnCsv").addEventListener("click", downloadCsv);
-    el("btnNueva").href = NEW_URL;
+    el("btnBuscar").addEventListener("click", launchSearch);
+    el("btnTopBuscar").addEventListener("click", () => {
+      location.hash = "#buscar";
+      el("queryBox").focus();
+    });
+    el("queryBox").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        launchSearch();
+      }
+    });
+    document.querySelectorAll(".chip").forEach((c) => {
+      c.addEventListener("click", () => applyZona(c.getAttribute("data-zona")));
+    });
+    document.querySelectorAll(".tab").forEach((t) => {
+      t.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach((x) => x.classList.remove("active"));
+        t.classList.add("active");
+        statusFilter = t.getAttribute("data-filter");
+        renderCards();
+      });
+    });
     window.addEventListener("hashchange", route);
 
-    loadIndex().then(route);
+    Promise.all([loadIndex(false), rebuildSeenLinks(), checkPagesEstado()]).then(route);
   </script>
 </body>
 </html>
