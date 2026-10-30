@@ -1,0 +1,70 @@
+{
+  "id": "20261030-193923_odontologos-en-moron",
+  "query": "odontólogos en Morón",
+  "date": "20261030-193923",
+  "date_label": "2026-10-30 19:39 (America/Buenos_Aires)",
+  "n_raw": 20,
+  "n_limpio": 6,
+  "prospects": [
+    {
+      "nombre": "Consultorio Odontológico Bravo - Bastos",
+      "reseñas": "118",
+      "rating": "5.0",
+      "telefono": "1169561865",
+      "whatsapp": "https://wa.me/5491169561865",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+Odontol%C3%B3gico+Bravo+-+Bastos/data=!4m7!3m6!1s0x95bcc70c1c2c5371:0x35eb9afa22df397b!8m2!3d-34.6518202!4d-58.6108627!16s%2Fg%2F11qh8cghh7!19sChIJcVMsHAzHvJUReznfIvqa6zU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Domingo French 322, B1708 Morón, Provincia de Buenos Aires",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Consultorio odontológico Echepare",
+      "reseñas": "12",
+      "rating": "5.0",
+      "telefono": "1144209173",
+      "whatsapp": "https://wa.me/5491144209173",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+odontol%C3%B3gico+Echepare/data=!4m7!3m6!1s0x95bcc712474ad881:0x12bb83fd7e1704cc!8m2!3d-34.6678343!4d-58.612787!16s%2Fg%2F1tdlwgbd!19sChIJgdhKRxLHvJURzAQXfv2DuxI?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Ing. Sagasta 1094, B1708CJL Morón, Provincia de Buenos Aires",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Centro Odomn",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1137223460",
+      "whatsapp": "https://wa.me/5491137223460",
+      "link_maps": "https://www.google.com/maps/place/Centro+Odomn/data=!4m7!3m6!1s0x95bcc700551d708d:0xd35bbcb583f776ab!8m2!3d-34.6485118!4d-58.6200426!16s%2Fg%2F11zd4dv3wk!19sChIJjXAdVQDHvJURq3b3g7W8W9M?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "25 de Mayo 23 Piso 5 dto a, B1708JAA Morón, Provincia de Buenos Aires",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Odontología Integral Dr. Sola",
+      "reseñas": "67",
+      "rating": "4.9",
+      "telefono": "1157385992",
+      "whatsapp": "https://wa.me/5491157385992",
+      "link_maps": "https://www.google.com/maps/place/Odontolog%C3%ADa+Integral+Dr.+Sola/data=!4m7!3m6!1s0x95bcc7f69d59eadb:0x8b6f58444e934473!8m2!3d-34.6865033!4d-58.6348727!16s%2Fg%2F11svk89pcq!19sChIJ2-pZnfbHvJURc0STTkRYb4s?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "AQA, Adolfo Sourdeaux 1295, B1708 Morón, Provincia de Buenos Aires",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Consultorio",
+      "reseñas": "80",
+      "rating": "3.7",
+      "telefono": "1152564344",
+      "whatsapp": "https://wa.me/5491152564344",
+      "link_maps": "https://www.google.com/maps/place/Consultorio/data=!4m7!3m6!1s0x95bcc7a4565f0aeb:0xc6fd0bd2f203fcf!8m2!3d-34.6465389!4d-58.6195273!16s%2Fg%2F11s1w7ldd_!19sChIJ6wpfVqTHvJURzz8gL73Qbww?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Gral. Machado 792 1 piso, B1708EOC Morón, Provincia de Buenos Aires",
+      "categoria": "Centro de salud y bienestar"
+    },
+    {
+      "nombre": "L' ALTRA Salud Morón",
+      "reseñas": "701",
+      "rating": "2.9",
+      "telefono": "44894600",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/L%27+ALTRA+Salud+Mor%C3%B3n/data=!4m7!3m6!1s0x95bcc76014462187:0x7ae433407ac0f3e1!8m2!3d-34.6470727!4d-58.6217605!16s%2Fg%2F1tf08vr1!19sChIJhyFGFGDHvJUR4fPAekAz5Ho?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Crisólogo Larralde 945, B1708EMI Gran Buenos Aires, Provincia de Buenos Aires",
+      "categoria": "Clínica dental"
+    }
+  ]
+}

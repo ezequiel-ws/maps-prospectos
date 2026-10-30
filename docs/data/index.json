@@ -1,0 +1,13 @@
+{
+  "searches": [
+    {
+      "id": "20261030-193923_odontologos-en-moron",
+      "query": "odontólogos en Morón",
+      "date": "20261030-193923",
+      "date_label": "2026-10-30 19:39 (America/Buenos_Aires)",
+      "n_raw": 20,
+      "n_limpio": 6,
+      "file": "20261030-193923_odontologos-en-moron.json"
+    }
+  ]
+}
