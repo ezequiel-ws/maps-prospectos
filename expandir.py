@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from pathlib import Path
@@ -101,8 +102,8 @@ PARTIDOS_GBA = sorted(
     set(PARTIDOS_ZONA_NORTE + PARTIDOS_ZONA_OESTE + PARTIDOS_ZONA_SUR)
 )
 
-# Zona normalizada (lower, sin acentos opcionales) -> lista de localidades + sufijo de formato
-# formato: "barrio" -> "{rubro} en {loc}, CABA" ; "partido" -> "{rubro} en {loc}"
+# Zona normalizada -> lista de localidades + sufijo de formato
+# formato: "caba" -> "{rubro} en {loc}, CABA" ; "partido" -> "{rubro} en {loc}"
 ZONAS: list[tuple[re.Pattern[str], list[str], str]] = [
     (
         re.compile(
@@ -142,7 +143,6 @@ ZONAS: list[tuple[re.Pattern[str], list[str], str]] = [
 def _split_rubro_zona(query: str) -> tuple[str, str] | None:
     """Si la query es '{rubro} en {zona}', devolver (rubro, zona). Si no, None."""
     q = query.strip()
-    # Última ocurrencia de " en " para no romper rubros raros
     m = re.search(r"\s+en\s+", q, flags=re.I)
     if not m:
         return None
@@ -191,11 +191,16 @@ def expand_lines(lines: list[str]) -> list[str]:
 def main() -> int:
     ap = argparse.ArgumentParser(description="Expandir queries de zonas amplias")
     ap.add_argument("input", help="Archivo de queries (una por línea)")
-    ap.add_argument("output", help="Archivo de salida expandido")
+    ap.add_argument("output", help="Archivo de salida expandido (texto, una por línea)")
     ap.add_argument(
         "--no-expand",
         action="store_true",
         help="Copiar tal cual (sin expandir zonas)",
+    )
+    ap.add_argument(
+        "--json-out",
+        default="",
+        help="También escribir JSON matrix [{i,q}, ...] para GitHub Actions",
     )
     args = ap.parse_args()
 
@@ -207,7 +212,7 @@ def main() -> int:
 
     raw = in_path.read_text(encoding="utf-8").splitlines()
     if args.no_expand:
-        queries = []
+        queries: list[str] = []
         seen: set[str] = set()
         for line in raw:
             line = line.strip()
@@ -221,6 +226,18 @@ def main() -> int:
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text("\n".join(queries) + ("\n" if queries else ""), encoding="utf-8")
+
+    matrix = [{"i": i, "q": q} for i, q in enumerate(queries)]
+    if args.json_out:
+        json_path = Path(args.json_out)
+        json_path.parent.mkdir(parents=True, exist_ok=True)
+        json_path.write_text(
+            json.dumps(matrix, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+        print(f"JSON matrix: {len(matrix)} items -> {json_path}")
+
+    # También imprimir la matrix compacta a stdout (última línea útil para debug)
     print(f"Entrada: {len([l for l in raw if l.strip() and not l.strip().startswith('#')])} query(s)")
     print(f"Salida: {len(queries)} query(s) -> {out_path}")
     return 0

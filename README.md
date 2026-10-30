@@ -1,53 +1,64 @@
-# Fábrica de Prospectos (GitHub Actions + Pages)
+# Fábrica de Prospectos (GitHub Actions + Pages + Worker opcional)
 
 Buscá negocios en Google Maps **sin gastar tokens ni APIs pagas**.  
-Corre en los servidores gratis de GitHub: vos escribís el rubro y la zona, y ves los contactos en una página mobile o bajás el CSV.
+El scraper corre en GitHub Actions (gratis). La página vive en GitHub Pages.  
+Opcional: un **Cloudflare Worker** (free tier) para disparar búsquedas y guardar “contactado / no interesa” sin tocar la UI de GitHub.
 
-Usa el scraper open-source [`gosom/google-maps-scraper`](https://github.com/gosom/google-maps-scraper) + filtro local: solo negocios **sin website**, con buenas reseñas, link de WhatsApp si el teléfono es del 11 (AMBA), y dedupe por `place_id`/link.
+Scraper: [`gosom/google-maps-scraper`](https://github.com/gosom/google-maps-scraper).  
+Filtro local: solo **sin website**, buenas reseñas, WhatsApp si el tel es área **11**, dedupe.
 
-## Sitio (mobile)
+## Sitio
 
-Después de cada corrida se actualiza **GitHub Pages** con cards grandes (Maps + WhatsApp), filtro, orden y descarga de CSV.
+https://paginadeprueba-collab.github.io/maps-prospectos/
 
-- Página: `https://paginadeprueba-collab.github.io/maps-prospectos/`
-- Activá Pages: Settings → Pages → Source = **Deploy from a branch** → branch `main` / folder `/docs`
+Pages: Settings → Pages → branch `main` / folder `/docs`.
 
-## Cómo buscar
+## Cómo buscar (fácil)
 
-1. [Run workflow](https://github.com/paginadeprueba-collab/maps-prospectos/actions/workflows/buscar.yml)
-2. Completá:
-   - **busqueda**: ej. `peluquerías en CABA` o `odontólogos en Morón; abogados en La Plata`
-   - **expandir** (default ON): si la zona es CABA / zona norte|oeste|sur / GBA, genera una query por barrio o partido
-   - **min_rating** (default `4.0`), **min_resenas** (default `10`)
-   - **profundidad** (default `5`, más scroll = más resultados)
-3. Esperá el job (puede llevar un rato si expandió a muchos barrios; timeout 120 min).
-4. En el run: **resumen mobile** con links clickeables + artifact **`prospectos`** (`final/limpio.csv`).
-5. En el sitio Pages: la búsqueda aparece arriba, con botones grandes.
+1. Abrí la página.
+2. Escribí `peluquerías en CABA` (o tocá un chip de zona) → **Buscar**.
+3. **Con Worker configurado:** se lanza solo y ves una barra de progreso.
+4. **Sin Worker:** se abre un issue de GitHub → tocá *Submit / Crear* (logueado).
+5. En minutos: tarjetas con **Maps** + **WhatsApp** (mensaje prearmado editable).
 
-## Expansión de zonas
+También: [Run workflow](https://github.com/paginadeprueba-collab/maps-prospectos/actions/workflows/buscar.yml).
 
-| Zona escrita | Se expande a |
-|---|---|
-| CABA / Capital Federal / Ciudad de Buenos Aires | 48 barrios (`peluquerías en Palermo, CABA`) |
-| zona norte / zona oeste / zona sur | partidos típicos de esa zona |
-| GBA / conurbano | todos esos partidos |
+## Setup una sola vez
 
-Zonas chicas (`odontólogos en Morón`) se dejan igual.
+1. Creá el label **`busqueda`** en el repo (Issues → Labels). Sirve para el fallback por issue.
+2. (Opcional pero recomendado) Deploy del Worker — pasos exactos en [`worker/README.md`](worker/README.md).
 
-## Columnas del CSV limpio
+## Workflow paralelo (rápido)
+
+1. **preparar** — `expandir.py` → matrix JSON; `estado.json` = in_progress; comenta el issue si aplica.
+2. **scrape** — hasta **20** jobs en paralelo, cada uno Docker `gosom/google-maps-scraper`  
+   `-depth 1 -c 2 -lang es -exit-on-inactivity 1m`, `DISABLE_TELEMETRY=1`, timeout 10 min.
+3. **unir** — junta `raw-*`, `filtrar.py` (dedupe), `resumen.py` → `docs/data/*.json`, limpia estado, artifact `prospectos`, cierra issue.
+
+Zonas: CABA → 48 barrios; Zona Norte/Oeste/Sur → partidos; GBA → todos. Zona chica no se parte.
+
+## Worker Cloudflare (opcional)
+
+Código listo en `worker/` (**no deployeado** desde este repo hasta que configures secretos).
+
+Resumen de pasos manuales:
+
+1. Cuenta Cloudflare gratis.
+2. Fine-grained PAT de GitHub con **Actions: write** + **Contents: read** solo en `maps-prospectos`.
+3. `cd worker && npm i && npx wrangler login`
+4. `npx wrangler kv namespace create ESTADOS` → pegar `id` en `wrangler.toml`
+5. `npx wrangler secret put GH_TOKEN`
+6. `npx wrangler deploy` → copiar URL `*.workers.dev`
+7. En `docs/index.html` setear `const WORKER_URL = "https://…workers.dev"`
+
+Detalle completo: **[worker/README.md](worker/README.md)**.
+
+## CSV limpio
 
 `nombre`, `reseñas`, `rating`, `telefono`, `whatsapp`, `link_maps`, `direccion`, `categoria`
 
-- WhatsApp solo si el teléfono limpio es área **11** (10 dígitos): `https://wa.me/549` + número.
-- No se inventan datos.
-
-## Notas
-
-- Telemetría apagada (`DISABLE_TELEMETRY=1`).
-- Concurrencia del scraper: `-c 4`. Depth default: `5`.
-- Timeout del workflow: 120 minutos.
-- El job hace commit de `docs/data/*.json` a `main` (permiso `contents: write`).
+WhatsApp: `https://wa.me/549` + 10 dígitos área 11. No se inventan datos.
 
 ## Privacidad
 
-No subas contraseñas ni datos personales al repo. Este flujo no necesita secretos.
+No subas contraseñas al repo. El Worker usa un secret de Wrangler, no del git.
