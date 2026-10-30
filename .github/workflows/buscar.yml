@@ -23,77 +23,288 @@ name: Buscar prospectos
         default: "10"
         type: string
       profundidad:
-        description: "Profundidad del scraper (-depth). Más alto = más resultados"
+        description: "Profundidad (-depth). Default 1 = rápido (~1 min por zona en paralelo)"
         required: false
-        default: "5"
+        default: "1"
         type: string
+  issues:
+    types: [opened]
 
 concurrency:
   group: buscar-prospectos-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  scrape:
-    name: Scrape y filtrar
+  preparar:
+    name: Preparar
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 10
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issues' &&
+        (startsWith(github.event.issue.title, 'Buscar:') ||
+         contains(join(github.event.issue.labels.*.name, ','), 'busqueda')))
+    outputs:
+      matrix: ${{ steps.expand.outputs.matrix }}
+      count: ${{ steps.expand.outputs.count }}
+      busqueda: ${{ steps.query.outputs.busqueda }}
+      depth: ${{ steps.query.outputs.depth }}
+      min_rating: ${{ steps.query.outputs.min_rating }}
+      min_resenas: ${{ steps.query.outputs.min_resenas }}
+      issue_number: ${{ steps.query.outputs.issue_number }}
     permissions:
       contents: write
-
+      issues: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Preparar carpetas y queries
+      - name: Resolver query
+        id: query
         env:
-          BUSQUEDA: ${{ inputs.busqueda }}
-          EXPANDIR: ${{ inputs.expandir }}
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_BUSQUEDA: ${{ inputs.busqueda }}
+          INPUT_EXPANDIR: ${{ inputs.expandir }}
+          INPUT_DEPTH: ${{ inputs.profundidad }}
+          INPUT_RATING: ${{ inputs.min_rating }}
+          INPUT_RESENAS: ${{ inputs.min_resenas }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
+          set -euo pipefail
+          if [ "$EVENT_NAME" = "issues" ]; then
+            TITLE="$ISSUE_TITLE"
+            # Quitar prefijo Buscar: (case insensitive)
+            Q=$(printf '%s' "$TITLE" | sed -E 's/^[Bb][Uu][Ss][Cc][Aa][Rr]:[[:space:]]*//')
+            Q=$(printf '%s' "$Q" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+            DEPTH="1"
+            RATING="4.0"
+            RESENAS="10"
+            EXPANDIR="true"
+            ISSUE_NUM="$ISSUE_NUMBER"
+          else
+            Q="$INPUT_BUSQUEDA"
+            DEPTH="${INPUT_DEPTH:-1}"
+            RATING="${INPUT_RATING:-4.0}"
+            RESENAS="${INPUT_RESENAS:-10}"
+            EXPANDIR="${INPUT_EXPANDIR:-true}"
+            ISSUE_NUM=""
+          fi
+          if [ -z "$Q" ]; then
+            echo "ERROR: query vacía" >&2
+            exit 1
+          fi
+          {
+            echo "busqueda<<EOF"
+            echo "$Q"
+            echo "EOF"
+            echo "depth=$DEPTH"
+            echo "min_rating=$RATING"
+            echo "min_resenas=$RESENAS"
+            echo "expandir=$EXPANDIR"
+            echo "issue_number=$ISSUE_NUM"
+          } >> "$GITHUB_OUTPUT"
+          echo "Query: $Q"
+          echo "Depth: $DEPTH | Expandir: $EXPANDIR | Issue: ${ISSUE_NUM:-ninguno}"
+
+      - name: Comentar en el issue (inicio)
+        if: steps.query.outputs.issue_number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ steps.query.outputs.issue_number }}
+        run: |
+          gh issue comment "$ISSUE" --repo "${{ github.repository }}" \
+            --body "🔎 Buscando… te aviso acá cuando termine"
+
+      - name: Expandir queries → matrix JSON
+        id: expand
+        env:
+          BUSQUEDA: ${{ steps.query.outputs.busqueda }}
+          EXPANDIR: ${{ steps.query.outputs.expandir }}
+        run: |
+          set -euo pipefail
           mkdir -p output final docs/data
           printf '%s\n' "$BUSQUEDA" | tr ';' '\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | sed '/^$/d' > queries_raw.txt
           echo "Queries originales:"
           cat -n queries_raw.txt
           if [ "$EXPANDIR" = "true" ]; then
-            python3 expandir.py queries_raw.txt queries.txt
+            python3 expandir.py queries_raw.txt queries.txt --json-out matrix.json
           else
-            python3 expandir.py queries_raw.txt queries.txt --no-expand
+            python3 expandir.py queries_raw.txt queries.txt --no-expand --json-out matrix.json
           fi
           echo "Queries finales:"
           cat -n queries.txt
-          wc -l queries.txt
+          COUNT=$(wc -l < queries.txt | tr -d ' ')
+          # Si no hay queries, matrix vacía (scrape se saltea)
+          if [ "$COUNT" = "0" ]; then
+            echo '[]' > matrix.json
+          fi
+          # Heredoc evita romper GITHUB_OUTPUT con comillas del JSON
+          {
+            echo "count=$COUNT"
+            echo "matrix<<EOFMATRIX"
+            python3 -c 'import json; print(json.dumps(json.load(open("matrix.json")), ensure_ascii=False))'
+            echo "EOFMATRIX"
+          } >> "$GITHUB_OUTPUT"
+          echo "Total queries en matrix: $COUNT"
 
-      - name: Correr google-maps-scraper (Docker)
+      - name: Marcar estado in-progress (Pages)
+        env:
+          BUSQUEDA: ${{ steps.query.outputs.busqueda }}
+        run: |
+          set -euo pipefail
+          python3 << 'PY'
+          import json, os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          TZ = ZoneInfo("America/Buenos_Aires")
+          now = datetime.now(TZ)
+          estado = {
+              "status": "in_progress",
+              "query": os.environ.get("BUSQUEDA", ""),
+              "started_at": now.isoformat(timespec="seconds"),
+              "started_at_label": now.strftime("%Y-%m-%d %H:%M (America/Buenos_Aires)"),
+              "started_at_epoch": int(now.timestamp()),
+          }
+          open("docs/data/estado.json", "w", encoding="utf-8").write(
+              json.dumps(estado, ensure_ascii=False, indent=2) + "\n"
+          )
+          print(estado)
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/estado.json
+          if git diff --staged --quiet; then
+            echo "estado.json sin cambios"
+          else
+            git commit -m "estado: buscando — ${BUSQUEDA}"
+            for attempt in 1 2 3; do
+              if git push; then
+                break
+              fi
+              echo "push falló (intento $attempt), rebase…"
+              git pull --rebase origin "${{ github.ref_name }}" || true
+              if [ "$attempt" = "3" ]; then
+                git push
+              fi
+            done
+          fi
+
+  scrape:
+    name: Scrape ${{ matrix.i }}
+    needs: preparar
+    if: needs.preparar.outputs.count != '0' && needs.preparar.outputs.count != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        include: ${{ fromJson(needs.preparar.outputs.matrix) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Correr scraper (depth 1, paralelo)
         env:
           DISABLE_TELEMETRY: "1"
-          DEPTH: ${{ inputs.profundidad }}
+          QUERY: ${{ matrix.q }}
+          DEPTH: ${{ needs.preparar.outputs.depth }}
+          IDX: ${{ matrix.i }}
         run: |
+          set -euo pipefail
+          mkdir -p output
+          printf '%s\n' "$QUERY" > query.txt
+          echo "Query [$IDX]: $QUERY (depth=${DEPTH:-1})"
           docker pull gosom/google-maps-scraper
           docker run --rm \
             -e DISABLE_TELEMETRY=1 \
             -v "$PWD:/work" \
             -w /work \
             gosom/google-maps-scraper \
-            -input /work/queries.txt \
+            -input /work/query.txt \
             -results /work/output/raw.csv \
-            -c 4 \
-            -depth "${DEPTH}" \
+            -c 2 \
+            -depth "${DEPTH:-1}" \
             -lang es \
-            -exit-on-inactivity 3m
+            -exit-on-inactivity 1m
           ls -la output/
           test -f output/raw.csv
+          # Guardar también la query usada
+          cp query.txt "output/query.txt"
 
-      - name: Filtrar prospectos (sin web + buenas reseñas + dedupe)
-        run: |
-          python3 filtrar.py output/raw.csv final/limpio.csv \
-            --min-rating "${{ inputs.min_rating }}" \
-            --min-reviews "${{ inputs.min_resenas }}" \
-            --modo or
-          ls -la final/
+      - name: Subir raw-${{ matrix.i }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-${{ matrix.i }}
+          path: |
+            output/raw.csv
+            output/query.txt
+          if-no-files-found: error
+          retention-days: 7
 
-      - name: Resumen mobile + JSON para Pages
+  unir:
+    name: Unir y publicar
+    needs: [preparar, scrape]
+    if: always() && needs.preparar.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Descargar raw-*
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: raw-*
+          path: raw_parts
+          merge-multiple: false
+
+      - name: Concatenar, filtrar, resumen
+        id: process
         env:
-          BUSQUEDA: ${{ inputs.busqueda }}
+          BUSQUEDA: ${{ needs.preparar.outputs.busqueda }}
+          MIN_RATING: ${{ needs.preparar.outputs.min_rating }}
+          MIN_RESENAS: ${{ needs.preparar.outputs.min_resenas }}
         run: |
+          set -euo pipefail
+          mkdir -p output final docs/data raw_parts
+          echo "Artefactos descargados:"
+          find raw_parts -type f | sort || true
+
+          # Concatenar CSVs (header del primero, resto sin header)
+          : > output/raw.csv
+          FIRST=1
+          while IFS= read -r f; do
+            if [ ! -s "$f" ]; then
+              continue
+            fi
+            if [ "$FIRST" = "1" ]; then
+              cat "$f" >> output/raw.csv
+              FIRST=0
+            else
+              # saltar header
+              tail -n +2 "$f" >> output/raw.csv
+            fi
+          done < <(find raw_parts -type f -name 'raw.csv' | sort)
+
+          if [ ! -s output/raw.csv ] || [ "$FIRST" = "1" ]; then
+            echo "title,phone,website,review_rating,review_count,link,address,category" > output/raw.csv
+            echo "Sin resultados crudos (scrape vacío o falló)."
+          fi
+
+          wc -l output/raw.csv
+          python3 filtrar.py output/raw.csv final/limpio.csv \
+            --min-rating "${MIN_RATING:-4.0}" \
+            --min-reviews "${MIN_RESENAS:-10}" \
+            --modo or
+
           python3 resumen.py \
             --limpio final/limpio.csv \
             --raw output/raw.csv \
@@ -101,25 +312,67 @@ jobs:
             --json-dir docs/data \
             --max-items 100
 
-      - name: Publicar en GitHub Pages (commit docs/data)
+          N_LIMPIO=$(python3 -c 'import csv; print(sum(1 for _ in csv.DictReader(open("final/limpio.csv",encoding="utf-8"))))')
+          echo "n_limpio=$N_LIMPIO" >> "$GITHUB_OUTPUT"
+          echo "Limpio: $N_LIMPIO"
+
+      - name: Limpiar estado + commit Pages
+        if: always()
+        env:
+          BUSQUEDA: ${{ needs.preparar.outputs.busqueda }}
         run: |
+          set -euo pipefail
+          python3 << 'PY'
+          import json
+          open("docs/data/estado.json", "w", encoding="utf-8").write(
+              json.dumps({"status": "idle"}, ensure_ascii=False, indent=2) + "\n"
+          )
+          PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Por si otro job empujó mientras scrapábamos
+          git pull --rebase origin "${{ github.ref_name }}" || true
           git add docs/data/
           if git diff --staged --quiet; then
             echo "Sin cambios en docs/data"
           else
-            git commit -m "prospectos: $(date -u +%Y-%m-%dT%H:%MZ) — ${{ inputs.busqueda }}"
-            git push
+            git commit -m "prospectos: $(date -u +%Y-%m-%dT%H:%MZ) — ${BUSQUEDA}"
+            for attempt in 1 2 3; do
+              if git push; then
+                echo "Push OK"
+                break
+              fi
+              echo "push falló (intento $attempt), pull --rebase…"
+              git pull --rebase origin "${{ github.ref_name }}" || true
+              if [ "$attempt" = "3" ]; then
+                git push
+              fi
+            done
           fi
 
+      - name: Comentar y cerrar issue
+        if: always() && needs.preparar.outputs.issue_number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE: ${{ needs.preparar.outputs.issue_number }}
+          N_LIMPIO: ${{ steps.process.outputs.n_limpio }}
+          BUSQUEDA: ${{ needs.preparar.outputs.busqueda }}
+          PAGES: https://paginadeprueba-collab.github.io/maps-prospectos/
+        run: |
+          set -euo pipefail
+          COUNT="${N_LIMPIO:-0}"
+          BODY=$(printf '✅ Listo: **%s** prospectos limpios para «%s».\n\n👉 Ver en la página: %s\n\n(Si no aparece todavía, esperá 1 minuto y recargá.)' \
+            "$COUNT" "$BUSQUEDA" "$PAGES")
+          gh issue comment "$ISSUE" --repo "${{ github.repository }}" --body "$BODY"
+          gh issue close "$ISSUE" --repo "${{ github.repository }}" --reason completed || true
+
       - name: Subir artifact prospectos
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: prospectos
           path: |
             output/raw.csv
             final/limpio.csv
-            queries.txt
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 14
