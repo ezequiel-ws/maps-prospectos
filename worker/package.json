@@ -1,0 +1,15 @@
+{
+  "name": "maps-prospectos-worker",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Proxy gratis: dispara GitHub Actions y guarda estado de prospectos en KV",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

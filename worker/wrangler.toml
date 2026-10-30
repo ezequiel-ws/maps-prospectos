@@ -1,0 +1,27 @@
+# Cloudflare Worker — Fábrica de Prospectos
+# Free tier. No deployear desde acá hasta configurar secretos (ver README).
+
+name = "maps-prospectos"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# KV para estados de prospectos (contactado / no_interesa / pendiente)
+# Creá el namespace con: wrangler kv namespace create ESTADOS
+# y pegá el id acá (también en preview_id si querés).
+[[kv_namespaces]]
+binding = "ESTADOS"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+# preview_id = "REPLACE_WITH_PREVIEW_KV_ID"
+
+[vars]
+# Repo dueño del workflow
+GITHUB_OWNER = "paginadeprueba-collab"
+GITHUB_REPO = "maps-prospectos"
+WORKFLOW_FILE = "buscar.yml"
+GITHUB_REF = "main"
+# Origen permitido (GitHub Pages). Podés sumar localhost para pruebas.
+PAGES_ORIGIN = "https://paginadeprueba-collab.github.io"
+
+# Secretos (NO van en este archivo):
+#   wrangler secret put GH_TOKEN
+# Fine-grained PAT: Contents=Read, Actions=Write, Metadata=Read, sobre este repo.
