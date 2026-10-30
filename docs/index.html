@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Fábrica de Prospectos</title>
+  <meta name="description" content="Prospectos de Google Maps sin web, listos para WhatsApp." />
+  <style>
+    :root {
+      --bg: #0f1115;
+      --card: #1a1d24;
+      --card-hover: #22262f;
+      --text: #f2f4f8;
+      --muted: #9aa3b2;
+      --accent: #3dd68c;
+      --accent-dim: #2a9d64;
+      --maps: #4da3ff;
+      --wa: #25d366;
+      --border: #2a2f3a;
+      --danger: #ff6b6b;
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(0,0,0,.35);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+      line-height: 1.45;
+      -webkit-tap-highlight-color: transparent;
+    }
+    a { color: var(--maps); }
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 16px 16px 96px;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(15,17,21,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px;
+    }
+    header .inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    header h1 span { color: var(--accent); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 1rem;
+      font-weight: 650;
+      text-decoration: none;
+      cursor: pointer;
+      color: #0b0d10;
+      transition: transform .08s ease, opacity .15s ease;
+      min-height: 48px;
+    }
+    .btn:active { transform: scale(.98); }
+    .btn-accent { background: var(--accent); color: #062314; }
+    .btn-maps { background: var(--maps); color: #041526; flex: 1; }
+    .btn-wa { background: var(--wa); color: #062814; flex: 1; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-sm { padding: 8px 14px; font-size: .9rem; min-height: 40px; }
+    .muted { color: var(--muted); }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin: 14px 0;
+      box-shadow: var(--shadow);
+    }
+    .search-item {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin: 10px 0;
+      color: var(--text);
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .search-item:hover, .search-item.active { background: var(--card-hover); border-color: var(--accent-dim); }
+    .search-item .q { font-size: 1.1rem; font-weight: 700; margin: 0 0 6px; }
+    .search-item .meta { font-size: .9rem; color: var(--muted); }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+      align-items: center;
+    }
+    input[type="search"], select {
+      width: 100%;
+      background: #12151b;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      padding: 12px 14px;
+      font-size: 1rem;
+      outline: none;
+    }
+    input[type="search"]:focus, select:focus { border-color: var(--accent); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin: 12px 0;
+      box-shadow: var(--shadow);
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+      line-height: 1.25;
+    }
+    .card .stars {
+      font-size: 1rem;
+      color: #ffd666;
+      margin-bottom: 6px;
+    }
+    .card .addr { color: var(--muted); font-size: .95rem; margin-bottom: 12px; }
+    .card .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .empty {
+      text-align: center;
+      padding: 40px 16px;
+      color: var(--muted);
+    }
+    .empty strong { color: var(--text); display: block; margin-bottom: 8px; font-size: 1.15rem; }
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      text-decoration: none;
+      margin: 8px 0 4px;
+      font-size: .95rem;
+    }
+    .back:hover { color: var(--text); }
+    .count-pill {
+      display: inline-block;
+      background: #243028;
+      color: var(--accent);
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: .85rem;
+      font-weight: 650;
+    }
+    .hidden { display: none !important; }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: .8rem;
+      padding: 24px 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="inner">
+      <h1>Fábrica de <span>Prospectos</span></h1>
+      <a class="btn btn-accent btn-sm" id="btnNueva"
+         href="https://github.com/paginadeprueba-collab/maps-prospectos/actions/workflows/buscar.yml"
+         target="_blank" rel="noopener">Nueva búsqueda</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- LISTA DE BÚSQUEDAS -->
+    <section id="viewList">
+      <p class="muted" style="margin-top:8px">Negocios sin web, con buenas reseñas. Tocá una búsqueda para ver los contactos.</p>
+      <div id="listEmpty" class="empty hidden">
+        <strong>Todavía no hay búsquedas</strong>
+        Tocá <em>Nueva búsqueda</em> arriba para correr el scraper en GitHub Actions.
+      </div>
+      <div id="searchList"></div>
+    </section>
+
+    <!-- DETALLE -->
+    <section id="viewDetail" class="hidden">
+      <a href="#/" class="back" id="btnBack">← Volver a búsquedas</a>
+      <h2 id="detailTitle" style="margin:8px 0 4px;font-size:1.35rem"></h2>
+      <p class="muted" id="detailMeta" style="margin:0 0 8px"></p>
+
+      <div class="toolbar">
+        <input type="search" id="filterBox" placeholder="Filtrar por nombre, barrio o categoría…" autocomplete="off" />
+      </div>
+      <div class="toolbar">
+        <select id="sortBox" aria-label="Ordenar">
+          <option value="rating">Ordenar: mejor rating</option>
+          <option value="reviews">Ordenar: más reseñas</option>
+          <option value="nombre">Ordenar: nombre A–Z</option>
+        </select>
+        <button type="button" class="btn btn-ghost btn-sm" id="btnCsv">Descargar CSV</button>
+      </div>
+      <p class="muted" id="detailCount" style="margin:4px 0 8px"></p>
+      <div id="cards"></div>
+      <div id="detailEmpty" class="empty hidden">
+        <strong>Nada por acá</strong>
+        Probá otro filtro o bajá el mínimo de reseñas en la próxima corrida.
+      </div>
+    </section>
+  </main>
+
+  <footer>Datos públicos de Google Maps · sin APIs pagas · solo open-source</footer>
+
+  <script>
+    const DATA_BASE = "./data/";
+    const NEW_URL = "https://github.com/paginadeprueba-collab/maps-prospectos/actions/workflows/buscar.yml";
+
+    const el = (id) => document.getElementById(id);
+    let indexData = { searches: [] };
+    let current = null; // full search payload
+    let currentId = null;
+
+    function esc(s) {
+      return String(s ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    async function loadIndex() {
+      try {
+        const res = await fetch(DATA_BASE + "index.json?t=" + Date.now());
+        if (!res.ok) throw new Error("index " + res.status);
+        indexData = await res.json();
+        if (!indexData.searches) indexData.searches = [];
+      } catch (e) {
+        console.warn(e);
+        indexData = { searches: [] };
+      }
+      renderList();
+    }
+
+    function renderList() {
+      const list = el("searchList");
+      const empty = el("listEmpty");
+      list.innerHTML = "";
+      const items = indexData.searches || [];
+      if (!items.length) {
+        empty.classList.remove("hidden");
+        return;
+      }
+      empty.classList.add("hidden");
+      items.forEach((s) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "search-item" + (s.id === currentId ? " active" : "");
+        btn.innerHTML =
+          `<div class="q">${esc(s.query || "Sin título")}</div>` +
+          `<div class="meta">${esc(s.date_label || s.date || "")} · ` +
+          `<span class="count-pill">${esc(String(s.n_limpio ?? 0))} limpios</span>` +
+          ` · ${esc(String(s.n_raw ?? 0))} crudos</div>`;
+        btn.addEventListener("click", () => {
+          location.hash = "#/s/" + encodeURIComponent(s.id);
+        });
+        list.appendChild(btn);
+      });
+    }
+
+    async function openSearch(id) {
+      currentId = id;
+      const meta = (indexData.searches || []).find((x) => x.id === id);
+      const file = meta ? meta.file : id + ".json";
+      try {
+        const res = await fetch(DATA_BASE + file + "?t=" + Date.now());
+        if (!res.ok) throw new Error("search " + res.status);
+        current = await res.json();
+      } catch (e) {
+        console.warn(e);
+        current = {
+          id,
+          query: meta?.query || id,
+          date_label: meta?.date_label || "",
+          n_raw: meta?.n_raw || 0,
+          n_limpio: 0,
+          prospects: [],
+        };
+      }
+      el("viewList").classList.add("hidden");
+      el("viewDetail").classList.remove("hidden");
+      el("detailTitle").textContent = current.query || "Búsqueda";
+      el("detailMeta").textContent =
+        (current.date_label || current.date || "") +
+        " · " +
+        (current.n_raw ?? 0) +
+        " crudos · " +
+        (current.n_limpio ?? (current.prospects || []).length) +
+        " limpios";
+      el("filterBox").value = "";
+      el("sortBox").value = "rating";
+      renderCards();
+    }
+
+    function showList() {
+      currentId = null;
+      current = null;
+      el("viewDetail").classList.add("hidden");
+      el("viewList").classList.remove("hidden");
+      renderList();
+    }
+
+    function filteredSorted() {
+      if (!current) return [];
+      const q = (el("filterBox").value || "").trim().toLowerCase();
+      let rows = (current.prospects || []).slice();
+      if (q) {
+        rows = rows.filter((r) => {
+          const blob = [
+            r.nombre,
+            r.direccion,
+            r.categoria,
+            r.telefono,
+          ]
+            .join(" ")
+            .toLowerCase();
+          return blob.includes(q);
+        });
+      }
+      const sort = el("sortBox").value;
+      rows.sort((a, b) => {
+        if (sort === "nombre") {
+          return String(a.nombre || "").localeCompare(String(b.nombre || ""), "es");
+        }
+        if (sort === "reviews") {
+          return (parseFloat(b.reseñas) || 0) - (parseFloat(a.reseñas) || 0);
+        }
+        // rating then reviews
+        const dr = (parseFloat(b.rating) || 0) - (parseFloat(a.rating) || 0);
+        if (dr !== 0) return dr;
+        return (parseFloat(b.reseñas) || 0) - (parseFloat(a.reseñas) || 0);
+      });
+      return rows;
+    }
+
+    function renderCards() {
+      const rows = filteredSorted();
+      const cards = el("cards");
+      const empty = el("detailEmpty");
+      cards.innerHTML = "";
+      el("detailCount").textContent =
+        rows.length +
+        " prospecto" +
+        (rows.length === 1 ? "" : "s") +
+        " visibles";
+      if (!rows.length) {
+        empty.classList.remove("hidden");
+        return;
+      }
+      empty.classList.add("hidden");
+      rows.forEach((r, i) => {
+        const div = document.createElement("article");
+        div.className = "card";
+        const rating = r.rating || "—";
+        const rev = r.reseñas || "0";
+        const cat = r.categoria ? " · " + esc(r.categoria) : "";
+        let actions = "";
+        if (r.link_maps) {
+          actions +=
+            `<a class="btn btn-maps" href="${esc(r.link_maps)}" target="_blank" rel="noopener">📍 Ver en Maps</a>`;
+        }
+        if (r.whatsapp) {
+          actions +=
+            `<a class="btn btn-wa" href="${esc(r.whatsapp)}" target="_blank" rel="noopener">💬 WhatsApp</a>`;
+        } else if (r.telefono) {
+          actions +=
+            `<span class="btn btn-ghost" style="flex:1;cursor:default">Tel: ${esc(r.telefono)}</span>`;
+        }
+        div.innerHTML =
+          `<h3>${i + 1}. ${esc(r.nombre || "Sin nombre")}</h3>` +
+          `<div class="stars">⭐ ${esc(rating)} (${esc(rev)} reseñas)${cat}</div>` +
+          (r.direccion ? `<div class="addr">${esc(r.direccion)}</div>` : "") +
+          `<div class="actions">${actions || '<span class="muted">Sin links</span>'}</div>`;
+        cards.appendChild(div);
+      });
+    }
+
+    function downloadCsv() {
+      const rows = filteredSorted();
+      const cols = [
+        "nombre",
+        "reseñas",
+        "rating",
+        "telefono",
+        "whatsapp",
+        "link_maps",
+        "direccion",
+        "categoria",
+      ];
+      const escCell = (v) => {
+        const s = String(v ?? "");
+        if (/[",\n]/.test(s)) return '"' + s.replace(/"/g, '""') + '"';
+        return s;
+      };
+      const lines = [cols.join(",")];
+      rows.forEach((r) => lines.push(cols.map((c) => escCell(r[c])).join(",")));
+      const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8" });
+      const a = document.createElement("a");
+      const slug = (current?.query || "prospectos")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .slice(0, 40);
+      a.href = URL.createObjectURL(blob);
+      a.download = slug + "_limpio.csv";
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    function route() {
+      const h = location.hash || "#/";
+      const m = h.match(/^#\/s\/(.+)$/);
+      if (m) {
+        openSearch(decodeURIComponent(m[1]));
+      } else {
+        showList();
+      }
+    }
+
+    el("btnBack").addEventListener("click", (e) => {
+      e.preventDefault();
+      location.hash = "#/";
+    });
+    el("filterBox").addEventListener("input", renderCards);
+    el("sortBox").addEventListener("change", renderCards);
+    el("btnCsv").addEventListener("click", downloadCsv);
+    el("btnNueva").href = NEW_URL;
+    window.addEventListener("hashchange", route);
+
+    loadIndex().then(route);
+  </script>
+</body>
+</html>
