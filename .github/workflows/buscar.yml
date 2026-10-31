@@ -273,7 +273,8 @@ jobs:
     needs: preparar
     if: needs.preparar.outputs.count != '0' && needs.preparar.outputs.count != ''
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
+    continue-on-error: true
     permissions:
       contents: read
     strategy:
@@ -297,7 +298,9 @@ jobs:
           printf '%s\n' "$QUERY" > query.txt
           echo "Query [$IDX]: $QUERY (depth=${DEPTH:-1})"
           docker pull gosom/google-maps-scraper
-          docker run --rm \
+          # --init evita zombies de Chromium; timeout corta si docker no sale tras scrapemate
+          set +e
+          timeout --signal=TERM --kill-after=20s 3m docker run --rm --init \
             -e DISABLE_TELEMETRY=1 \
             -v "$PWD:/work" \
             -w /work \
@@ -307,10 +310,15 @@ jobs:
             -c 2 \
             -depth "${DEPTH:-1}" \
             -lang es \
-            -exit-on-inactivity 1m
-          ls -la output/
-          test -f output/raw.csv
-          # Guardar también la query usada
+            -exit-on-inactivity 45s
+          rc=$?
+          set -e
+          echo "docker/timeout exit=$rc"
+          ls -la output/ || true
+          if [ ! -f output/raw.csv ]; then
+            echo "WARN: sin raw.csv (rc=$rc) — placeholder vacío"
+            echo "title,phone,website,review_rating,review_count,link,address,category" > output/raw.csv
+          fi
           cp query.txt "output/query.txt"
 
       - name: Subir raw-${{ matrix.i }}
@@ -400,16 +408,16 @@ jobs:
           BUSQUEDA: ${{ needs.preparar.outputs.busqueda }}
         run: |
           set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Traer estado in_progress / otros commits ANTES de marcar idle
+          git pull --rebase origin "${{ github.ref_name }}" || true
           python3 << 'PY'
           import json
           open("docs/data/estado.json", "w", encoding="utf-8").write(
               json.dumps({"status": "idle"}, ensure_ascii=False, indent=2) + "\n"
           )
           PY
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Por si otro job empujó mientras scrapábamos
-          git pull --rebase origin "${{ github.ref_name }}" || true
           git add docs/data/
           if git diff --staged --quiet; then
             echo "Sin cambios en docs/data"
