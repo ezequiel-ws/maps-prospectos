@@ -1,7 +1,3 @@
 {
-  "status": "in_progress",
-  "query": "psicólogos · 6 barrios CABA",
-  "started_at": "2026-10-31T17:33:10-03:00",
-  "started_at_label": "2026-10-31 17:33 (America/Buenos_Aires)",
-  "started_at_epoch": 1793478790
+  "status": "idle"
 }

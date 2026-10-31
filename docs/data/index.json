@@ -1,6 +1,15 @@
 {
   "searches": [
     {
+      "id": "20261031-173607_psicologos-6-barrios-caba",
+      "query": "psicólogos · 6 barrios CABA",
+      "date": "20261031-173607",
+      "date_label": "2026-10-31 17:36 (America/Buenos_Aires)",
+      "n_raw": 203,
+      "n_limpio": 54,
+      "file": "20261031-173607_psicologos-6-barrios-caba.json"
+    },
+    {
       "id": "20261031-163018_inmobiliarias-2-barrios-caba",
       "query": "inmobiliarias · 2 barrios CABA",
       "date": "20261031-163018",
