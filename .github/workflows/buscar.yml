@@ -99,7 +99,17 @@ jobs:
             ISSUE_NUM=""
             QUERIES_JSON="${INPUT_QUERIES:-}"
           fi
-          if [ -z "${QUERIES_JSON+x}" ]; then QUERIES_JSON=""; fi
+          # Normalizar expandir (boolean input / string "true"|"false"|True|0|no)
+          case "$(printf '%s' "$EXPANDIR" | tr '[:upper:]' '[:lower:]')" in
+            1|true|yes|y|si|sí) EXPANDIR="true" ;;
+            ""|0|false|no|n) EXPANDIR="false" ;;
+            *) EXPANDIR="true" ;;
+          esac
+          # Normalizar queries JSON (trim, tratar "null"/[] vacíos)
+          QUERIES_JSON=$(printf '%s' "${QUERIES_JSON:-}" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+          if [ "$QUERIES_JSON" = "null" ] || [ "$QUERIES_JSON" = "[]" ] || [ "$QUERIES_JSON" = '""' ]; then
+            QUERIES_JSON=""
+          fi
           if [ "$EVENT_NAME" = "issues" ]; then QUERIES_JSON=""; fi
           if [ -z "$Q" ] && [ -z "$QUERIES_JSON" ]; then
             echo "ERROR: query vacía" >&2
@@ -153,12 +163,23 @@ jobs:
             echo "Usando lista explícita de queries (sin expandir)"
             python3 << 'PY'
           import json, os, sys
-          raw = os.environ.get("QUERIES_JSON", "").strip()
-          try:
-              data = json.loads(raw) if raw else []
-          except Exception as e:
-              print("ERROR: queries JSON inválido:", e, file=sys.stderr)
-              sys.exit(1)
+          raw = os.environ.get("QUERIES_JSON", "") or ""
+          raw = raw.strip().lstrip("\ufeff")
+          data = []
+          if raw:
+              try:
+                  data = json.loads(raw)
+              except Exception as e1:
+                  # A veces llega doble-encodeado como '"[...]"'
+                  try:
+                      data = json.loads(json.loads(raw))
+                  except Exception:
+                      print("ERROR: queries JSON inválido:", e1, file=sys.stderr)
+                      print("raw[:200]=", repr(raw[:200]), file=sys.stderr)
+                      sys.exit(1)
+          if isinstance(data, str):
+              # Una sola query como string
+              data = [data]
           if not isinstance(data, list):
               print("ERROR: queries debe ser un array", file=sys.stderr)
               sys.exit(1)
@@ -174,12 +195,18 @@ jobs:
           matrix = [{"i": i, "q": q} for i, q in enumerate(queries)]
           open("matrix.json", "w", encoding="utf-8").write(json.dumps(matrix, ensure_ascii=False) + "\n")
           print(f"Explícitas: {len(queries)}")
+          for i, q in enumerate(queries):
+              print(f"  [{i}] {q}")
           PY
           else
             printf '%s\n' "$BUSQUEDA" | tr ';' '\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | sed '/^$/d' > queries_raw.txt
             echo "Queries originales:"
             cat -n queries_raw.txt
-            if [ "$EXPANDIR" = "true" ]; then
+            case "$(printf '%s' "${EXPANDIR:-}" | tr '[:upper:]' '[:lower:]')" in
+              1|true|yes|y|si|sí) DO_EXPAND=1 ;;
+              *) DO_EXPAND=0 ;;
+            esac
+            if [ "$DO_EXPAND" = "1" ]; then
               python3 expandir.py queries_raw.txt queries.txt --json-out matrix.json
             else
               python3 expandir.py queries_raw.txt queries.txt --no-expand --json-out matrix.json
@@ -206,9 +233,9 @@ jobs:
           set -euo pipefail
           python3 << 'PY'
           import json, os
-          from datetime import datetime
-          from zoneinfo import ZoneInfo
-          TZ = ZoneInfo("America/Buenos_Aires")
+          from datetime import datetime, timezone, timedelta
+          # Argentina sin DST desde 2009 → UTC-3 fijo (runners nuevos no traen tzdata)
+          TZ = timezone(timedelta(hours=-3))
           now = datetime.now(TZ)
           estado = {
               "status": "in_progress",

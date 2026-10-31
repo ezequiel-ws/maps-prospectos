@@ -7,12 +7,11 @@ import csv
 import json
 import re
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
-
-TZ = ZoneInfo("America/Buenos_Aires")
+# Argentina sin DST desde 2009 → UTC-3 fijo (evita depender de tzdata en runners)
+TZ = timezone(timedelta(hours=-3))
 
 
 def slugify(text: str, max_len: int = 40) -> str:
