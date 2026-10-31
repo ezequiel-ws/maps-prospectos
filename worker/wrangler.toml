@@ -5,6 +5,7 @@ name = "maps-prospectos"
 main = "src/index.js"
 compatibility_date = "2026-10-01"
 account_id = "fc4e53494811064497a1ed835611349e"
+workers_dev = true
 
 # KV para estados de prospectos (contactado / no_interesa / pendiente)
 # Creá el namespace con: wrangler kv namespace create ESTADOS
