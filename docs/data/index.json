@@ -1,6 +1,15 @@
 {
   "searches": [
     {
+      "id": "20261030-225219_abogados-2-barrios-caba",
+      "query": "abogados · 2 barrios CABA",
+      "date": "20261030-225219",
+      "date_label": "2026-10-30 22:52 (America/Buenos_Aires)",
+      "n_raw": 0,
+      "n_limpio": 0,
+      "file": "20261030-225219_abogados-2-barrios-caba.json"
+    },
+    {
       "id": "20261030-225005_abogados-2-barrios-caba",
       "query": "abogados · 2 barrios CABA",
       "date": "20261030-225005",
