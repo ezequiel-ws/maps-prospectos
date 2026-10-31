@@ -1,6 +1,15 @@
 {
   "searches": [
     {
+      "id": "20261031-202941_plomeros-4-barrios-caba",
+      "query": "plomeros · 4 barrios CABA",
+      "date": "20261031-202941",
+      "date_label": "2026-10-31 20:29 (America/Buenos_Aires)",
+      "n_raw": 134,
+      "n_limpio": 30,
+      "file": "20261031-202941_plomeros-4-barrios-caba.json"
+    },
+    {
       "id": "20261031-173607_psicologos-6-barrios-caba",
       "query": "psicólogos · 6 barrios CABA",
       "date": "20261031-173607",
