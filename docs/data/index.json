@@ -1,6 +1,15 @@
 {
   "searches": [
     {
+      "id": "20261030-232031_cirugia-estetica-1-barrio-caba",
+      "query": "cirugía estética · 1 barrio CABA",
+      "date": "20261030-232031",
+      "date_label": "2026-10-30 23:20 (America/Buenos_Aires)",
+      "n_raw": 55,
+      "n_limpio": 9,
+      "file": "20261030-232031_cirugia-estetica-1-barrio-caba.json"
+    },
+    {
       "id": "20261030-225539_abogados-2-barrios-caba",
       "query": "abogados · 2 barrios CABA",
       "date": "20261030-225539",
