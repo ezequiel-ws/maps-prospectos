@@ -1,6 +1,15 @@
 {
   "searches": [
     {
+      "id": "20261030-220946_peluquerias-2-barrios-caba",
+      "query": "peluquerías · 2 barrios CABA",
+      "date": "20261030-220946",
+      "date_label": "2026-10-30 22:09 (America/Buenos_Aires)",
+      "n_raw": 16,
+      "n_limpio": 3,
+      "file": "20261030-220946_peluquerias-2-barrios-caba.json"
+    },
+    {
       "id": "20261030-193923_odontologos-en-moron",
       "query": "odontólogos en Morón",
       "date": "20261030-193923",

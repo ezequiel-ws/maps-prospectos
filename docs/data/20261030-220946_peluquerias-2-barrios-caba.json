@@ -1,0 +1,40 @@
+{
+  "id": "20261030-220946_peluquerias-2-barrios-caba",
+  "query": "peluquerías · 2 barrios CABA",
+  "date": "20261030-220946",
+  "date_label": "2026-10-30 22:09 (America/Buenos_Aires)",
+  "n_raw": 16,
+  "n_limpio": 3,
+  "prospects": [
+    {
+      "nombre": "Salon de Belleza Andrea Vannucci (En Palermo Beauty Salon - Peluqueria)",
+      "reseñas": "121",
+      "rating": "4.9",
+      "telefono": "1163704170",
+      "whatsapp": "https://wa.me/5491163704170",
+      "link_maps": "https://www.google.com/maps/place/Salon+de+Belleza+Andrea+Vannucci+%28En+Palermo+Beauty+Salon+-+Peluqueria%29/data=!4m7!3m6!1s0x95bcca8071b88ab1:0x1cf6bb6867bd7400!8m2!3d-34.5891494!4d-58.4168526!16s%2Fg%2F11b6z3yxyv!19sChIJsYq4cYDKvJURAHS9Z2i79hw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Medrano 1920, C1425GDH Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Peluquería"
+    },
+    {
+      "nombre": "Amaya",
+      "reseñas": "97",
+      "rating": "4.8",
+      "telefono": "1125842670",
+      "whatsapp": "https://wa.me/5491125842670",
+      "link_maps": "https://www.google.com/maps/place/Amaya/data=!4m7!3m6!1s0x95bccb40a16c67f5:0x207dc35001ad5a0f!8m2!3d-34.5882113!4d-58.4142595!16s%2Fg%2F11g0nntw_1!19sChIJ9WdsoUDLvJURD1qtAVDDfSA?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Güemes 3699, C1425 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Peluquería"
+    },
+    {
+      "nombre": "LA PELU BUENOS AIRES",
+      "reseñas": "194",
+      "rating": "4.5",
+      "telefono": "1133032283",
+      "whatsapp": "https://wa.me/5491133032283",
+      "link_maps": "https://www.google.com/maps/place/LA+PELU+BUENOS+AIRES/data=!4m7!3m6!1s0x95bcb590dd9c17ad:0x20455b9d64ab48bc!8m2!3d-34.5780448!4d-58.4310034!16s%2Fg%2F11gzm15g4!19sChIJrRec3ZC1vJURvEirZJ1bRSA?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Bonpland 2391, C1425 FWE, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Peluquería"
+    }
+  ]
+}
