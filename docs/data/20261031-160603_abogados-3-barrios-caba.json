@@ -1,0 +1,310 @@
+{
+  "id": "20261031-160603_abogados-3-barrios-caba",
+  "query": "abogados · 3 barrios CABA",
+  "date": "20261031-160603",
+  "date_label": "2026-10-31 16:06 (America/Buenos_Aires)",
+  "n_raw": 157,
+  "n_limpio": 30,
+  "prospects": [
+    {
+      "nombre": "Rovella Spatafore, Pascual & Asociados",
+      "reseñas": "176",
+      "rating": "5.0",
+      "telefono": "1159297998",
+      "whatsapp": "https://wa.me/5491159297998",
+      "link_maps": "https://www.google.com/maps/place/Rovella+Spatafore,+Pascual+%26+Asociados/data=!4m7!3m6!1s0x69b607c7f617be0b:0x4c980234f1e3f0fc!8m2!3d-34.6356231!4d-58.4632244!16s%2Fg%2F11rvjntk1n!19sChIJC74X9scHtmkR_PDj8TQCmEw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Tandil 2616, C1406 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Asesor"
+    },
+    {
+      "nombre": "Estudio Jurídico Francolino",
+      "reseñas": "77",
+      "rating": "5.0",
+      "telefono": "1157461962",
+      "whatsapp": "https://wa.me/5491157461962",
+      "link_maps": "https://www.google.com/maps/place/Estudio+Jur%C3%ADdico+Francolino/data=!4m7!3m6!1s0x95bccbd3e85fe0a1:0xc84433abe299b4b1!8m2!3d-34.6395295!4d-58.4546928!16s%2Fg%2F11kl2798zg!19sChIJoeBf6NPLvJURsbSZ4qszRMg?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Eva Perón 2361, C1406 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado penalista"
+    },
+    {
+      "nombre": "Paula Faur Estudio Jurídico",
+      "reseñas": "56",
+      "rating": "5.0",
+      "telefono": "1128872582",
+      "whatsapp": "https://wa.me/5491128872582",
+      "link_maps": "https://www.google.com/maps/place/Paula+Faur+Estudio+Jur%C3%ADdico/data=!4m7!3m6!1s0x95bcc98fd44ef005:0xb4958b39bb827ce1!8m2!3d-34.6269633!4d-58.4740435!16s%2Fg%2F11h2bf2yw9!19sChIJBfBO1I_JvJUR4XyCuzmLlbQ?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Avellaneda 3071 Piso 2, C1406 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Bufete"
+    },
+    {
+      "nombre": "FONTAN & FONTAN ABOGADOS",
+      "reseñas": "27",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/FONTAN+%26+FONTAN+ABOGADOS/data=!4m7!3m6!1s0x95bcc93fc4aba85d:0xd7e29189ff9d414a!8m2!3d-34.6684436!4d-58.4876455!16s%2Fg%2F11xthh4ns3!19sChIJXairxD_JvJURSkGd_4mR4tc?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Echeandía 5830, C1439BKD Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado especializado en derecho laboral"
+    },
+    {
+      "nombre": "Estudio Jurídico PURITA",
+      "reseñas": "21",
+      "rating": "5.0",
+      "telefono": "1146425883",
+      "whatsapp": "https://wa.me/5491146425883",
+      "link_maps": "https://www.google.com/maps/place/Estudio+Jur%C3%ADdico+PURITA/data=!4m7!3m6!1s0x95bcc84dfd64fd53:0x356082c8261c1c9a!8m2!3d-34.6450025!4d-58.5143639!16s%2Fg%2F11b6jk7d3_!19sChIJU_1k_U3IvJURmhwcJsiCYDU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Oliden 599, C1408 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "Abogados - Estudio Jurídico Baranzelli & Chiatto",
+      "reseñas": "11",
+      "rating": "5.0",
+      "telefono": "1125812247",
+      "whatsapp": "https://wa.me/5491125812247",
+      "link_maps": "https://www.google.com/maps/place/Abogados+-+Estudio+Jur%C3%ADdico+Baranzelli+%26+Chiatto/data=!4m7!3m6!1s0x95bccb1a93e852c1:0xc55ae66cfba15f5e!8m2!3d-34.6292042!4d-58.4599891!16s%2Fg%2F11yhb9k9lq!19sChIJwVLokxrLvJURXl-h-2zmWsU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Cnel. Ramón L. Falcón 2247, C1406 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "Abogada Vanesa Grinman",
+      "reseñas": "10",
+      "rating": "5.0",
+      "telefono": "1161201845",
+      "whatsapp": "https://wa.me/5491161201845",
+      "link_maps": "https://www.google.com/maps/place/Abogada+Vanesa+Grinman/data=!4m7!3m6!1s0x95bcc9eeb837b915:0xf6d9e0a6e52797cc!8m2!3d-34.6519774!4d-58.5025244!16s%2Fg%2F11z4yqpjz0!19sChIJFbk3uO7JvJURzJcn5abg2fY?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Juan Bautista Alberdi 5862, C1440 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Servicios legales"
+    },
+    {
+      "nombre": "Estudio Jurídico LEGADO | Sucesiones & Testamentos",
+      "reseñas": "9",
+      "rating": "5.0",
+      "telefono": "1157461962",
+      "whatsapp": "https://wa.me/5491157461962",
+      "link_maps": "https://www.google.com/maps/place/Estudio+Jur%C3%ADdico+LEGADO+%7C+Sucesiones+%26+Testamentos/data=!4m7!3m6!1s0x95bcc90701aadbed:0xe354042c8488521f!8m2!3d-34.6488758!4d-58.4998307!16s%2Fg%2F11jznv00kv!19sChIJ7duqAQfJvJURH1KIhCwEVOM?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Juan Bautista Alberdi 5497, C1440 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado de sucesiones"
+    },
+    {
+      "nombre": "ABOGADOS SÁNCHEZ BLANCO & ASOC.",
+      "reseñas": "3",
+      "rating": "5.0",
+      "telefono": "1146414157",
+      "whatsapp": "https://wa.me/5491146414157",
+      "link_maps": "https://www.google.com/maps/place/ABOGADOS+S%C3%81NCHEZ+BLANCO+%26+ASOC./data=!4m7!3m6!1s0x95bcc9b3e858a545:0xe1cf6118d46a052e!8m2!3d-34.6386998!4d-58.5279656!16s%2Fg%2F11ghfmt4lp!19sChIJRaVY6LPJvJURLgVq1Bhhz-E?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Dr. Ángel Honorio Roffo 7005 oficina 63, C1408 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado especializado en derecho laboral"
+    },
+    {
+      "nombre": "Esteban Laurenza - Abogado",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "1137556651",
+      "whatsapp": "https://wa.me/5491137556651",
+      "link_maps": "https://www.google.com/maps/place/Esteban+Laurenza+-+Abogado/data=!4m7!3m6!1s0x95bcc9bcc7b93957:0xd702485796bb0cf1!8m2!3d-34.6179651!4d-58.4672519!16s%2Fg%2F11yxd8_h76!19sChIJVzm5x7zJvJUR8Qy7lldIAtc?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Franklin 2386, C1406 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "Estudio Juridico Dra. Zapata & Asoc.",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "1133292353",
+      "whatsapp": "https://wa.me/5491133292353",
+      "link_maps": "https://www.google.com/maps/place/Estudio+Juridico+Dra.+Zapata+%26+Asoc./data=!4m7!3m6!1s0x95bcc9e4f5d0a4d1:0x305f6666f85509ed!8m2!3d-34.6533364!4d-58.5215454!16s%2Fg%2F11qbh2n_s2!19sChIJ0aTQ9eTJvJUR7QlV-GZmXzA?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Guaminí 1295, C1408 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "Estudio Jurídico Dr. Bareiro",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "1146439444",
+      "whatsapp": "https://wa.me/5491146439444",
+      "link_maps": "https://www.google.com/maps/place/Estudio+Jur%C3%ADdico+Dr.+Bareiro/data=!4m7!3m6!1s0x95bcc83f74e90e09:0x6c2c44e9ba2dd14a!8m2!3d-34.6386582!4d-58.5280264!16s%2Fg%2F11b73z3_3d!19sChIJCQ7pdD_IvJURStEtuulELGw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Galería Cosmo, Cuzco 40 Loc 32, C1408BLB Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Proveedor de servicios de asistencia jurídica"
+    },
+    {
+      "nombre": "Estudio Jurídico Integral",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Estudio+Jur%C3%ADdico+Integral/data=!4m7!3m6!1s0x95bcc8f8f0d05bd5:0x3759208cebea8f61!8m2!3d-34.6579602!4d-58.5168095!16s%2Fg%2F11f31qc__q!19sChIJ1VvQ8PjIvJURYY_q64wgWTc?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Montiel 1808, C1440EVH Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "Gestoria de Automotor y motovehiculo y estudo juridico",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "1158590470",
+      "whatsapp": "https://wa.me/5491158590470",
+      "link_maps": "https://www.google.com/maps/place/Gestoria+de+Automotor+y+motovehiculo+y+estudo+juridico/data=!4m7!3m6!1s0x95bcd300287a5665:0x735611f52cd12010!8m2!3d-34.649629!4d-58.4955977!16s%2Fg%2F11w9fpz5js!19sChIJZVZ6KADTvJURECDRLPURVnM?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "C. Corvalán 1208, C1440 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "ESTUDIO JURIDICO O&E",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1156341707",
+      "whatsapp": "https://wa.me/5491156341707",
+      "link_maps": "https://www.google.com/maps/place/ESTUDIO+JURIDICO+O%26E/data=!4m7!3m6!1s0x95bcc9cf28e1610d:0x9b27561291f4df70!8m2!3d-34.6312075!4d-58.4681258!16s%2Fg%2F11zxp2xchg!19sChIJDWHhKM_JvJURcN_0kRJWJ5s?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Calle Lafuente 37, C1406ETA Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "Dra. Aída Romero",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1148479885",
+      "whatsapp": "https://wa.me/5491148479885",
+      "link_maps": "https://www.google.com/maps/place/Dra.+A%C3%ADda+Romero/data=!4m7!3m6!1s0x95bcca271053b279:0x42b27a18cf18bcfb!8m2!3d-34.6271052!4d-58.4611507!16s%2Fg%2F1tfmdf48!19sChIJebJTECfKvJUR-7wYzxh6skI?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Yerbal 2250, C1406GJZ Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Bufete"
+    },
+    {
+      "nombre": "Estudio Juridico BR PEREZ E HIJOS",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1146878224",
+      "whatsapp": "https://wa.me/5491146878224",
+      "link_maps": "https://www.google.com/maps/place/Estudio+Juridico+BR+PEREZ+E+HIJOS/data=!4m7!3m6!1s0x95bcc9ae50a114d1:0x8562f44a3a2be9a9!8m2!3d-34.6703979!4d-58.5000472!16s%2Fg%2F11j007ztvp!19sChIJ0RShUK7JvJURqekrOkr0YoU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Avenida Coronel Cárdenas 2995, Guaminí 3094, 1440 Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "Estudio jurídico Sevilla y Krawczyk",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1166089223",
+      "whatsapp": "https://wa.me/5491166089223",
+      "link_maps": "https://www.google.com/maps/place/Estudio+jur%C3%ADdico+Sevilla+y+Krawczyk/data=!4m7!3m6!1s0x95bcc9351ecb902d:0x5a6c08ad115e4cb7!8m2!3d-34.6441869!4d-58.4976919!16s%2Fg%2F11tc77pxvh!19sChIJLZDLHjXJvJURt0xeEa0IbFo?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Guardia Nacional 764 6A, C1440 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "Estudio Jurídico Dra. Viviana C. Esquivel",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1155281934",
+      "whatsapp": "https://wa.me/5491155281934",
+      "link_maps": "https://www.google.com/maps/place/Estudio+Jur%C3%ADdico+Dra.+Viviana+C.+Esquivel/data=!4m7!3m6!1s0x95bcc8f94d84483d:0x40f89bc51425a380!8m2!3d-34.6616696!4d-58.5146404!16s%2Fg%2F11b6xhwky8!19sChIJPUiETfnIvJURgKMlFMWb-EA?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "José León Suárez 2145, C1440 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Proveedor de servicios de asistencia jurídica"
+    },
+    {
+      "nombre": "Estudio Juridico Dres Pesce",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1159660132",
+      "whatsapp": "https://wa.me/5491159660132",
+      "link_maps": "https://www.google.com/maps/place/Estudio+Juridico+Dres+Pesce/data=!4m7!3m6!1s0x95bcc8fbd8c868bf:0x1795ffc5e5e64f85!8m2!3d-34.6610934!4d-58.5162418!16s%2Fg%2F11cs396_js!19sChIJv2jI2PvIvJURhU_m5cX_lRc?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Juan Bautista Alberdi 7343, C1440ABL Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "\"Estudio Jurídico\" Dra. Fernanda Molina",
+      "reseñas": "30",
+      "rating": "4.9",
+      "telefono": "1162941939",
+      "whatsapp": "https://wa.me/5491162941939",
+      "link_maps": "https://www.google.com/maps/place/%22Estudio+Jur%C3%ADdico%22+Dra.+Fernanda+Molina/data=!4m7!3m6!1s0x95bcc9007fba65eb:0x5d3b18e2c53ac9e!8m2!3d-34.6325453!4d-58.4757527!16s%2Fg%2F11zx581kqx!19sChIJ62W6fwDJvJURnqxTLI6x0wU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Rivadavia 7904, C1407DYO Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "Estudio Agüero",
+      "reseñas": "22",
+      "rating": "4.8",
+      "telefono": "1146430262",
+      "whatsapp": "https://wa.me/5491146430262",
+      "link_maps": "https://www.google.com/maps/place/Estudio+Ag%C3%BCero/data=!4m7!3m6!1s0x95bcc90917b0f2cd:0xccff9a9567b69bdc!8m2!3d-34.6499398!4d-58.5217435!16s%2Fg%2F11kg_rf021!19sChIJzfKwFwnJvJUR3Ju2Z5Wa_8w?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Caaguazú 7042, C1408 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "Estudio Juridico",
+      "reseñas": "5",
+      "rating": "4.8",
+      "telefono": "5446373486",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Estudio+Juridico/data=!4m7!3m6!1s0x95bccb757b92b7ff:0x993af98aadeb59d5!8m2!3d-34.6419346!4d-58.4582922!16s%2Fg%2F11jzd9twvy!19sChIJ_7eSe3XLvJUR1VnrrYr5Opk?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Eva Perón 2840, C1406 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "Abogado Penalista - Dr. Ragusa jhon",
+      "reseñas": "38",
+      "rating": "4.7",
+      "telefono": "1151146119",
+      "whatsapp": "https://wa.me/5491151146119",
+      "link_maps": "https://www.google.com/maps/place/Abogado+Penalista+-+Dr.+Ragusa+jhon/data=!4m7!3m6!1s0x95bcc903c96c6b71:0xf63fa5b3f6817f76!8m2!3d-34.6394322!4d-58.5144493!16s%2Fg%2F11q35ytwly!19sChIJcWtsyQPJvJURdn-B9rOlP_Y?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Pieres 593, C1408 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado penalista"
+    },
+    {
+      "nombre": "Estudio Jurídico Dra. Valeria Barvosa & Asociados",
+      "reseñas": "17",
+      "rating": "4.7",
+      "telefono": "1120653344",
+      "whatsapp": "https://wa.me/5491120653344",
+      "link_maps": "https://www.google.com/maps/place/Estudio+Jur%C3%ADdico+Dra.+Valeria+Barvosa+%26+Asociados/data=!4m7!3m6!1s0x95bcc8514ca5da51:0x93cd891e124ec20!8m2!3d-34.6508514!4d-58.5154482!16s%2Fg%2F11b6p1z16s!19sChIJUdqlTFHIvJURIOwk4ZHYPAk?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Lisandro de la Torre 1149, C1408GTW Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "Eduardo S Alasia - Escribanía",
+      "reseñas": "226",
+      "rating": "4.6",
+      "telefono": "1146876038",
+      "whatsapp": "https://wa.me/5491146876038",
+      "link_maps": "https://www.google.com/maps/place/Eduardo+S+Alasia+-+Escriban%C3%ADa/data=!4m7!3m6!1s0x95bcc91e0f4fdfa3:0x1a38509a20598457!8m2!3d-34.6686196!4d-58.5077142!16s%2Fg%2F1tdhg5s8!19sChIJo99PDx7JvJURV4RZIJpQOBo?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. de los Corrales 7439, C1440 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "S&M Estudio Jurídico",
+      "reseñas": "8",
+      "rating": "4.5",
+      "telefono": "1154094411",
+      "whatsapp": "https://wa.me/5491154094411",
+      "link_maps": "https://www.google.com/maps/place/S%26M+Estudio+Jur%C3%ADdico/data=!4m7!3m6!1s0x655f4fb390783019:0x2596c72a4eaa4d89!8m2!3d-34.6443513!4d-58.4956106!16s%2Fg%2F11nw24kx1w!19sChIJGTB4kLNPX2URiU2qTirHliU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Escalada 758, C1407LDP Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "ESTUDIO JURIDICO",
+      "reseñas": "2",
+      "rating": "4.5",
+      "telefono": "91165638452",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/ESTUDIO+JURIDICO/data=!4m7!3m6!1s0x95bcc9556a7349bb:0x19daee0133eed1ae!8m2!3d-34.6507007!4d-58.4913153!16s%2Fg%2F11h3v8rrht!19sChIJu0lzalXJvJURrtHuMwHu2hk?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Basualdo 1369, C1440 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado especializado en seguridad social"
+    },
+    {
+      "nombre": "ESTUDIO JURIDICO Dr. Osvaldo Marasco",
+      "reseñas": "3",
+      "rating": "4.3",
+      "telefono": "1155953281",
+      "whatsapp": "https://wa.me/5491155953281",
+      "link_maps": "https://www.google.com/maps/place/ESTUDIO+JURIDICO+Dr.+Osvaldo+Marasco/data=!4m7!3m6!1s0x95bcc9a88c95c9b3:0x9b2075c71b5aaa8f!8m2!3d-34.6480808!4d-58.4984515!16s%2Fg%2F11b70f6ft0!19sChIJs8mVjKjJvJURj6paG8d1IJs?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Juan Bautista Alberdi 5328, C1440 AAR, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Proveedor de servicios de asistencia jurídica"
+    },
+    {
+      "nombre": "Estudio Juridico Galvez & Asoc",
+      "reseñas": "253",
+      "rating": "1.2",
+      "telefono": "1145821266",
+      "whatsapp": "https://wa.me/5491145821266",
+      "link_maps": "https://www.google.com/maps/place/Estudio+Juridico+Galvez+%26+Asoc/data=!4m7!3m6!1s0x95bcc9f5e2477fc5:0x651ad37f6b9ae77e!8m2!3d-34.6161203!4d-58.4639653!16s%2Fg%2F1tdfd8mn!19sChIJxX9H4vXJvJURfueaa3_TGmU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Boyacá 1019, C1406BHS Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    }
+  ]
+}
