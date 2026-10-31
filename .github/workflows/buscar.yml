@@ -410,8 +410,16 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Traer estado in_progress / otros commits ANTES de marcar idle
-          git pull --rebase origin "${{ github.ref_name }}" || true
+          # Guardar lo generado por resumen (el checkout es el SHA del dispatch,
+          # no el tip con estado in_progress de Preparar)
+          mkdir -p /tmp/docs-out
+          if [ -d docs/data ]; then
+            cp -a docs/data/. /tmp/docs-out/
+          fi
+          git fetch origin "${{ github.ref_name }}"
+          git reset --hard "origin/${{ github.ref_name }}"
+          mkdir -p docs/data
+          cp -a /tmp/docs-out/. docs/data/
           python3 << 'PY'
           import json
           open("docs/data/estado.json", "w", encoding="utf-8").write(
@@ -428,8 +436,15 @@ jobs:
                 echo "Push OK"
                 break
               fi
-              echo "push falló (intento $attempt), pull --rebase…"
-              git pull --rebase origin "${{ github.ref_name }}" || true
+              echo "push falló (intento $attempt), reset a tip + reaplicar…"
+              mkdir -p /tmp/docs-out2
+              cp -a docs/data/. /tmp/docs-out2/
+              git fetch origin "${{ github.ref_name }}"
+              git reset --hard "origin/${{ github.ref_name }}"
+              cp -a /tmp/docs-out2/. docs/data/
+              python3 -c 'import json; open("docs/data/estado.json","w",encoding="utf-8").write(json.dumps({"status":"idle"},ensure_ascii=False,indent=2)+"\n")'
+              git add docs/data/
+              git commit -m "prospectos: $(date -u +%Y-%m-%dT%H:%MZ) — ${BUSQUEDA}" || true
               if [ "$attempt" = "3" ]; then
                 git push
               fi
