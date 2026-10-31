@@ -14,7 +14,6 @@ VARIANTES: dict[str, list[str]] = {
         "abogados",
         "abogado",
         "estudio jurídico",
-        "estudio juridico",
         "abogado laboral",
         "abogado civil",
     ],

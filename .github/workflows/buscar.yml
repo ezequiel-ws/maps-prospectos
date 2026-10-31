@@ -313,8 +313,9 @@ jobs:
             TO=7m
             IDLE=90s
           else
-            TO=4m
-            IDLE=45s
+            # modo rápido: acotar wall time (~1–2 min meta)
+            TO=2m
+            IDLE=25s
           fi
           echo "Batch [$IDX]: $NQ queries | depth=$DEPTH_N | -c $C | timeout $TO"
           cat -n query.txt
