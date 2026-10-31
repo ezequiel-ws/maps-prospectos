@@ -1,7 +1,7 @@
 /**
  * Cloudflare Worker — Fábrica de Prospectos
  *
- * POST /buscar              { query } → dispara workflow_dispatch
+ * POST /buscar              { query?, queries? } → dispara workflow_dispatch
  * GET  /estado              ?run_id= | latest → estado del run
  * GET  /estado-prospecto    ?key= → { key, status }
  * POST /estado-prospecto    { key, status } → guarda en KV ESTADOS
@@ -145,28 +145,50 @@ function repoBase(env) {
   return { owner, repo, api: `https://api.github.com/repos/${owner}/${repo}` };
 }
 
-/** POST /buscar { query, expandir?, min_rating?, min_resenas?, profundidad? } */
+/** POST /buscar { query?, queries?: string[], expandir?, min_rating?, min_resenas?, profundidad? } */
 async function handleBuscar(request, env) {
   const token = requireToken(env);
   const body = await readJson(request);
+
+  let queries = [];
+  if (Array.isArray(body.queries)) {
+    queries = body.queries
+      .map((q) => String(q || "").trim())
+      .filter(Boolean)
+      .slice(0, 80); // safety cap
+  }
+
   const query = String(body.query || body.busqueda || "").trim();
-  if (!query) return json({ error: "query_required" }, 400);
-  if (query.length > 300) return json({ error: "query_too_long" }, 400);
+  if (!queries.length && !query) return json({ error: "query_required" }, 400);
+  if (query.length > 500) return json({ error: "query_too_long" }, 400);
+  for (const q of queries) {
+    if (q.length > 300) return json({ error: "query_too_long" }, 400);
+  }
+
+  const label =
+    query ||
+    (queries.length === 1
+      ? queries[0]
+      : `${queries[0]} (+${queries.length - 1})`);
+
+  // If explicit queries list → skip expandir in the workflow
+  const hasExplicit = queries.length > 0;
+  const expandir = hasExplicit ? false : body.expandir !== false;
 
   const { api } = repoBase(env);
   const workflow = env.WORKFLOW_FILE || "buscar.yml";
   const ref = env.GITHUB_REF || "main";
 
-  const payload = {
-    ref,
-    inputs: {
-      busqueda: query,
-      expandir: String(body.expandir !== false),
-      min_rating: String(body.min_rating || "4.0"),
-      min_resenas: String(body.min_resenas || "10"),
-      profundidad: String(body.profundidad || "1"),
-    },
+  const inputs = {
+    busqueda: label.slice(0, 200),
+    expandir: String(expandir),
+    min_rating: String(body.min_rating || "4.0"),
+    min_resenas: String(body.min_resenas || "10"),
+    profundidad: String(body.profundidad || "1"),
+    queries: hasExplicit ? JSON.stringify(queries) : "",
   };
+
+  const payload = { ref, inputs };
 
   const res = await fetch(`${api}/actions/workflows/${workflow}/dispatches`, {
     method: "POST",
@@ -188,7 +210,8 @@ async function handleBuscar(request, env) {
 
   return json({
     ok: true,
-    query,
+    query: label,
+    n_queries: hasExplicit ? queries.length : null,
     message: "Búsqueda lanzada",
     run_id: run?.id || null,
     run_url: run?.html_url || null,

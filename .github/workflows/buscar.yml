@@ -27,6 +27,11 @@ name: Buscar prospectos
         required: false
         default: "1"
         type: string
+      queries:
+        description: "JSON array de queries explícitas. Si está presente, se usa tal cual (sin expandir)."
+        required: false
+        default: ""
+        type: string
   issues:
     types: [opened]
 
@@ -52,6 +57,7 @@ jobs:
       min_rating: ${{ steps.query.outputs.min_rating }}
       min_resenas: ${{ steps.query.outputs.min_resenas }}
       issue_number: ${{ steps.query.outputs.issue_number }}
+      queries_json: ${{ steps.query.outputs.queries_json }}
     permissions:
       contents: write
       issues: write
@@ -68,6 +74,7 @@ jobs:
           INPUT_DEPTH: ${{ inputs.profundidad }}
           INPUT_RATING: ${{ inputs.min_rating }}
           INPUT_RESENAS: ${{ inputs.min_resenas }}
+          INPUT_QUERIES: ${{ inputs.queries }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
@@ -82,6 +89,7 @@ jobs:
             RESENAS="10"
             EXPANDIR="true"
             ISSUE_NUM="$ISSUE_NUMBER"
+            QUERIES_JSON=""
           else
             Q="$INPUT_BUSQUEDA"
             DEPTH="${INPUT_DEPTH:-1}"
@@ -89,10 +97,20 @@ jobs:
             RESENAS="${INPUT_RESENAS:-10}"
             EXPANDIR="${INPUT_EXPANDIR:-true}"
             ISSUE_NUM=""
+            QUERIES_JSON="${INPUT_QUERIES:-}"
           fi
-          if [ -z "$Q" ]; then
+          if [ -z "${QUERIES_JSON+x}" ]; then QUERIES_JSON=""; fi
+          if [ "$EVENT_NAME" = "issues" ]; then QUERIES_JSON=""; fi
+          if [ -z "$Q" ] && [ -z "$QUERIES_JSON" ]; then
             echo "ERROR: query vacía" >&2
             exit 1
+          fi
+          # Si hay lista explícita, forzar no-expandir
+          if [ -n "$QUERIES_JSON" ]; then
+            EXPANDIR="false"
+            if [ -z "$Q" ]; then
+              Q="queries explícitas"
+            fi
           fi
           {
             echo "busqueda<<EOF"
@@ -103,9 +121,15 @@ jobs:
             echo "min_resenas=$RESENAS"
             echo "expandir=$EXPANDIR"
             echo "issue_number=$ISSUE_NUM"
+            echo "queries_json<<EOFQ"
+            echo "$QUERIES_JSON"
+            echo "EOFQ"
           } >> "$GITHUB_OUTPUT"
           echo "Query: $Q"
           echo "Depth: $DEPTH | Expandir: $EXPANDIR | Issue: ${ISSUE_NUM:-ninguno}"
+          if [ -n "$QUERIES_JSON" ]; then
+            echo "Queries JSON presentes (explícitas)"
+          fi
 
       - name: Comentar en el issue (inicio)
         if: steps.query.outputs.issue_number != ''
@@ -121,25 +145,52 @@ jobs:
         env:
           BUSQUEDA: ${{ steps.query.outputs.busqueda }}
           EXPANDIR: ${{ steps.query.outputs.expandir }}
+          QUERIES_JSON: ${{ steps.query.outputs.queries_json }}
         run: |
           set -euo pipefail
           mkdir -p output final docs/data
-          printf '%s\n' "$BUSQUEDA" | tr ';' '\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | sed '/^$/d' > queries_raw.txt
-          echo "Queries originales:"
-          cat -n queries_raw.txt
-          if [ "$EXPANDIR" = "true" ]; then
-            python3 expandir.py queries_raw.txt queries.txt --json-out matrix.json
+          if [ -n "${QUERIES_JSON:-}" ]; then
+            echo "Usando lista explícita de queries (sin expandir)"
+            python3 << 'PY'
+          import json, os, sys
+          raw = os.environ.get("QUERIES_JSON", "").strip()
+          try:
+              data = json.loads(raw) if raw else []
+          except Exception as e:
+              print("ERROR: queries JSON inválido:", e, file=sys.stderr)
+              sys.exit(1)
+          if not isinstance(data, list):
+              print("ERROR: queries debe ser un array", file=sys.stderr)
+              sys.exit(1)
+          queries = []
+          seen = set()
+          for item in data:
+              q = str(item or "").strip()
+              if not q or q in seen:
+                  continue
+              seen.add(q)
+              queries.append(q)
+          open("queries.txt", "w", encoding="utf-8").write("\n".join(queries) + ("\n" if queries else ""))
+          matrix = [{"i": i, "q": q} for i, q in enumerate(queries)]
+          open("matrix.json", "w", encoding="utf-8").write(json.dumps(matrix, ensure_ascii=False) + "\n")
+          print(f"Explícitas: {len(queries)}")
+          PY
           else
-            python3 expandir.py queries_raw.txt queries.txt --no-expand --json-out matrix.json
+            printf '%s\n' "$BUSQUEDA" | tr ';' '\n' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | sed '/^$/d' > queries_raw.txt
+            echo "Queries originales:"
+            cat -n queries_raw.txt
+            if [ "$EXPANDIR" = "true" ]; then
+              python3 expandir.py queries_raw.txt queries.txt --json-out matrix.json
+            else
+              python3 expandir.py queries_raw.txt queries.txt --no-expand --json-out matrix.json
+            fi
           fi
           echo "Queries finales:"
           cat -n queries.txt
           COUNT=$(wc -l < queries.txt | tr -d ' ')
-          # Si no hay queries, matrix vacía (scrape se saltea)
           if [ "$COUNT" = "0" ]; then
             echo '[]' > matrix.json
           fi
-          # Heredoc evita romper GITHUB_OUTPUT con comillas del JSON
           {
             echo "count=$COUNT"
             echo "matrix<<EOFMATRIX"

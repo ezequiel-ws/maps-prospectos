@@ -398,6 +398,134 @@
       padding: 28px 8px 8px;
     }
     .count-line { color: var(--muted); font-size: .85rem; margin: 4px 0 8px; }
+
+    .mode-tabs {
+      display: flex;
+      gap: 6px;
+      padding: 4px;
+      background: var(--surface-2);
+      border-radius: 12px;
+      margin: 0 0 16px;
+    }
+    .mode-tab {
+      flex: 1;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: .88rem;
+      font-weight: 600;
+      padding: 10px 8px;
+      border-radius: 10px;
+      cursor: pointer;
+      min-height: 40px;
+    }
+    .mode-tab.active {
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
+    .label-sm {
+      display: block;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 8px;
+    }
+    .zona-block {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface-2);
+      padding: 12px;
+      margin: 0 0 10px;
+    }
+    .zona-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .zona-title {
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .zona-title small {
+      font-weight: 500;
+      color: var(--muted);
+      font-size: .78rem;
+      margin-left: 6px;
+    }
+    .chip-barrio {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font: inherit;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 34px;
+      line-height: 1.2;
+    }
+    .chip-barrio.active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent-text);
+    }
+    .chips-barrios {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 12px 0 14px;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-soft);
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+      color: var(--accent-text);
+      font-size: .9rem;
+      font-weight: 600;
+    }
+    .meta-row .eta { font-weight: 500; opacity: .9; }
+    .switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--muted);
+      user-select: none;
+      white-space: nowrap;
+    }
+    .switch input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+    }
+    .quick-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 12px;
+    }
+    .btn-tiny {
+      padding: 6px 12px;
+      font-size: .78rem;
+      min-height: 32px;
+      border-radius: 999px;
+    }
   </style>
 </head>
 <body>
@@ -413,16 +541,39 @@
       <div class="panel" id="buscar">
         <p class="eyebrow">Nueva búsqueda</p>
         <h2 class="hero">¿A quién querés encontrar?</h2>
-        <p class="lead">Negocios sin web, con buenas reseñas. Un toque y listo para WhatsApp.</p>
+        <p class="lead">Elegí el rubro y los barrios. Corre en paralelo y llega en minutos.</p>
 
-        <label class="hidden" for="queryBox">Búsqueda</label>
-        <input type="text" id="queryBox" class="field" placeholder="Ej: peluquerías en CABA" autocomplete="off" />
+        <div class="mode-tabs" role="tablist" aria-label="Modo de búsqueda">
+          <button type="button" class="mode-tab active" data-mode="caba" id="modeCaba">CABA por barrios</button>
+          <button type="button" class="mode-tab" data-mode="libre" id="modeLibre">Otro lugar</button>
+        </div>
 
-        <div class="chips" id="chips">
-          <button type="button" class="chip" data-zona="CABA">CABA</button>
-          <button type="button" class="chip" data-zona="Zona Norte">Zona Norte</button>
-          <button type="button" class="chip" data-zona="Zona Oeste">Zona Oeste</button>
-          <button type="button" class="chip" data-zona="Zona Sur">Zona Sur</button>
+        <div id="modeCabaPanel">
+          <label class="label-sm" for="rubroBox">Rubro</label>
+          <input type="text" id="rubroBox" class="field" placeholder="Ej: peluquerías, odontólogos, gimnasios" autocomplete="off" />
+
+          <div class="quick-row" style="margin-top:12px">
+            <button type="button" class="btn btn-ghost btn-tiny" id="btnAllBarrios">Todos los barrios</button>
+            <button type="button" class="btn btn-ghost btn-tiny" id="btnClearBarrios">Limpiar</button>
+          </div>
+
+          <div id="zonasWrap"></div>
+
+          <div class="meta-row" id="barrioMeta">
+            <span id="barrioCount">0 barrios</span>
+            <span class="eta" id="barrioEta">Elegí al menos uno</span>
+          </div>
+        </div>
+
+        <div id="modeLibrePanel" class="hidden">
+          <label class="label-sm" for="queryBox">Búsqueda libre (GBA u otra zona)</label>
+          <input type="text" id="queryBox" class="field" placeholder="Ej: peluquerías en Morón" autocomplete="off" />
+          <div class="chips" id="chips">
+            <button type="button" class="chip" data-zona="Zona Norte">Zona Norte</button>
+            <button type="button" class="chip" data-zona="Zona Oeste">Zona Oeste</button>
+            <button type="button" class="chip" data-zona="Zona Sur">Zona Sur</button>
+            <button type="button" class="chip" data-zona="GBA">GBA</button>
+          </div>
         </div>
 
         <button type="button" class="btn btn-primary btn-block" id="btnBuscar">Buscar</button>
@@ -496,6 +647,23 @@
     // Ej: "https://maps-prospectos.tu-usuario.workers.dev"
     // Vacío = fallback a crear issue en GitHub.
     const WORKER_URL = "https://maps-prospectos.mapsprospectos.workers.dev";
+
+
+    const ZONAS_CABA = {
+      Norte: ["Palermo","Belgrano","Núñez","Saavedra","Colegiales","Coghlan","Villa Urquiza","Recoleta"],
+      Centro: ["Retiro","San Nicolás","Monserrat","San Telmo","Balvanera","Almagro","Caballito","Villa Crespo","Chacarita","Puerto Madero","Constitución","San Cristóbal"],
+      Oeste: ["Flores","Floresta","Villa Luro","Liniers","Mataderos","Villa Devoto","Villa del Parque","Villa Santa Rita","Monte Castro","Vélez Sársfield","Versalles","Villa Real","Agronomía","Parque Chas","La Paternal","Villa Ortúzar","Villa Pueyrredón","Villa General Mitre","Parque Avellaneda"],
+      Sur: ["Boedo","Parque Patricios","Barracas","La Boca","Nueva Pompeya","Parque Chacabuco","Villa Soldati","Villa Lugano","Villa Riachuelo"]
+    };
+    const ALL_BARRIOS = Object.values(ZONAS_CABA).flat();
+    // sanity: 48 unique
+    if (ALL_BARRIOS.length !== 48 || new Set(ALL_BARRIOS).size !== 48) {
+      console.error("Barrios CABA incompletos", ALL_BARRIOS.length, new Set(ALL_BARRIOS).size);
+    }
+
+    let searchMode = "caba"; // caba | libre
+    const selectedBarrios = new Set();
+
 
     const DATA_BASE = "./data/";
     const REPO_NEW_ISSUE = "https://github.com/paginadeprueba-collab/maps-prospectos/issues/new";
@@ -595,9 +763,94 @@
       else q = "peluquerías en " + zona;
       box.value = q;
       box.focus();
-      document.querySelectorAll(".chip").forEach((c) => {
+      document.querySelectorAll("#chips .chip").forEach((c) => {
         c.classList.toggle("active", c.getAttribute("data-zona") === zona);
       });
+    }
+
+    function estimateMinutes(n) {
+      if (n <= 0) return 0;
+      // depth 1, max-parallel 20 → ~1 min por tanda
+      return Math.max(1, Math.ceil(n / 20));
+    }
+
+    function updateBarrioMeta() {
+      const n = selectedBarrios.size;
+      el("barrioCount").textContent = n === 1 ? "1 barrio" : n + " barrios";
+      if (n === 0) {
+        el("barrioEta").textContent = "Elegí al menos uno";
+      } else {
+        const m = estimateMinutes(n);
+        el("barrioEta").textContent = m <= 1 ? "~1 min (paralelo)" : "~" + m + " min (paralelo)";
+      }
+      // sync zone toggles
+      document.querySelectorAll("[data-zona-toggle]").forEach((inp) => {
+        const zona = inp.getAttribute("data-zona-toggle");
+        const list = ZONAS_CABA[zona] || [];
+        const allOn = list.length > 0 && list.every((b) => selectedBarrios.has(b));
+        inp.checked = allOn;
+      });
+    }
+
+    function setBarrio(b, on) {
+      if (on) selectedBarrios.add(b);
+      else selectedBarrios.delete(b);
+      document.querySelectorAll(".chip-barrio").forEach((chip) => {
+        if (chip.getAttribute("data-barrio") === b) chip.classList.toggle("active", on);
+      });
+      updateBarrioMeta();
+    }
+
+    function toggleBarrio(b) {
+      setBarrio(b, !selectedBarrios.has(b));
+    }
+
+    function setZonaAll(zona, on) {
+      (ZONAS_CABA[zona] || []).forEach((b) => setBarrio(b, on));
+    }
+
+    function renderZonas() {
+      const wrap = el("zonasWrap");
+      wrap.innerHTML = "";
+      Object.keys(ZONAS_CABA).forEach((zona) => {
+        const list = ZONAS_CABA[zona];
+        const block = document.createElement("div");
+        block.className = "zona-block";
+        block.innerHTML =
+          '<div class="zona-head">' +
+          '<p class="zona-title">' + esc(zona) + '<small>' + list.length + '</small></p>' +
+          '<label class="switch"><input type="checkbox" data-zona-toggle="' + esc(zona) + '" /> Toda la zona</label>' +
+          "</div>" +
+          '<div class="chips-barrios" data-zona-chips="' + esc(zona) + '"></div>';
+        const chips = block.querySelector("[data-zona-chips]");
+        list.forEach((b) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "chip-barrio" + (selectedBarrios.has(b) ? " active" : "");
+          btn.setAttribute("data-barrio", b);
+          btn.textContent = b;
+          btn.addEventListener("click", () => toggleBarrio(b));
+          chips.appendChild(btn);
+        });
+        block.querySelector("[data-zona-toggle]").addEventListener("change", (e) => {
+          setZonaAll(zona, e.target.checked);
+        });
+        wrap.appendChild(block);
+      });
+      updateBarrioMeta();
+    }
+
+    function setSearchMode(mode) {
+      searchMode = mode;
+      el("modeCaba").classList.toggle("active", mode === "caba");
+      el("modeLibre").classList.toggle("active", mode === "libre");
+      el("modeCabaPanel").classList.toggle("hidden", mode !== "caba");
+      el("modeLibrePanel").classList.toggle("hidden", mode !== "libre");
+    }
+
+    function buildCabaQueries(rubro) {
+      const r = rubro.trim();
+      return [...selectedBarrios].map((b) => r + " en " + b + ", CABA");
     }
 
     function setProgress(show, pct, title, meta, hint) {
@@ -652,19 +905,55 @@
     }
 
     async function launchSearch() {
-      const q = (el("queryBox").value || "").trim();
-      if (!q) {
-        el("queryBox").focus();
-        return;
+      let payload = {};
+      let label = "";
+      let fallbackQ = "";
+
+      if (searchMode === "caba") {
+        const rubro = (el("rubroBox").value || "").trim();
+        if (!rubro) {
+          el("rubroBox").focus();
+          return;
+        }
+        if (selectedBarrios.size === 0) {
+          alert("Elegí al menos un barrio.");
+          return;
+        }
+        const queries = buildCabaQueries(rubro);
+        label = rubro + " · " + queries.length + " barrio" + (queries.length === 1 ? "" : "s") + " CABA";
+        fallbackQ = queries.join("; ");
+        payload = {
+          query: label,
+          queries,
+          expandir: false,
+          profundidad: "1",
+        };
+      } else {
+        const q = (el("queryBox").value || "").trim();
+        if (!q) {
+          el("queryBox").focus();
+          return;
+        }
+        label = q;
+        fallbackQ = q;
+        payload = { query: q, expandir: true, profundidad: "1" };
       }
+
       if (WORKER_URL) {
         el("btnBuscar").disabled = true;
-        setProgress(true, 8, "Lanzando búsqueda…", "8%", "Puede tardar unos minutos si expandió a muchos barrios.");
+        const eta = searchMode === "caba" ? estimateMinutes(selectedBarrios.size) : 2;
+        setProgress(
+          true,
+          8,
+          "Lanzando «" + label + "»…",
+          "8%",
+          "Estimado ~" + eta + " min. Podés dejar la página abierta."
+        );
         try {
           const res = await fetch(WORKER_URL.replace(/\/$/, "") + "/buscar", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ query: q }),
+            body: JSON.stringify(payload),
           });
           const data = await res.json().catch(() => ({}));
           if (!res.ok) throw new Error(data.message || data.error || "Error " + res.status);
@@ -672,19 +961,18 @@
           setProgress(true, 15, "En cola en GitHub Actions…", "15%");
           stopPoll();
           pollTimer = setInterval(pollEstado, 8000);
-          // también mirar estado.json de Pages
           setTimeout(checkPagesEstado, 15000);
         } catch (e) {
           console.warn(e);
           setProgress(false);
           alert("No pude hablar con el Worker (" + e.message + "). Abro el fallback por GitHub.");
-          window.open(buildIssueUrl(q), "_blank", "noopener");
+          window.open(buildIssueUrl(fallbackQ.slice(0, 180)), "_blank", "noopener");
         } finally {
           el("btnBuscar").disabled = false;
         }
       } else {
-        window.open(buildIssueUrl(q), "_blank", "noopener");
-        setProgress(true, 20, "Issue abierto — esperá a que corra…", "—", "Cuando termine, recargá esta página. Tip: configurá WORKER_URL para progreso en vivo.");
+        window.open(buildIssueUrl(fallbackQ.slice(0, 180)), "_blank", "noopener");
+        setProgress(true, 20, "Issue abierto — esperá a que corra…", "—", "Cuando termine, recargá esta página.");
       }
     }
 
@@ -945,7 +1233,14 @@
     el("btnBuscar").addEventListener("click", launchSearch);
     el("btnTopBuscar").addEventListener("click", () => {
       location.hash = "#buscar";
-      el("queryBox").focus();
+      if (searchMode === "caba") el("rubroBox").focus();
+      else el("queryBox").focus();
+    });
+    el("rubroBox").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        launchSearch();
+      }
     });
     el("queryBox").addEventListener("keydown", (e) => {
       if (e.key === "Enter") {
@@ -953,9 +1248,19 @@
         launchSearch();
       }
     });
-    document.querySelectorAll(".chip").forEach((c) => {
+    el("modeCaba").addEventListener("click", () => setSearchMode("caba"));
+    el("modeLibre").addEventListener("click", () => setSearchMode("libre"));
+    el("btnAllBarrios").addEventListener("click", () => {
+      ALL_BARRIOS.forEach((b) => setBarrio(b, true));
+    });
+    el("btnClearBarrios").addEventListener("click", () => {
+      ALL_BARRIOS.forEach((b) => setBarrio(b, false));
+    });
+    document.querySelectorAll("#chips .chip").forEach((c) => {
       c.addEventListener("click", () => applyZona(c.getAttribute("data-zona")));
     });
+    renderZonas();
+    setSearchMode("caba");
     document.querySelectorAll(".tab").forEach((t) => {
       t.addEventListener("click", () => {
         document.querySelectorAll(".tab").forEach((x) => x.classList.remove("active"));

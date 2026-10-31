@@ -1,0 +1,9 @@
+worker/node_modules/
+worker/.wrangler/
+__pycache__/
+*.pyc
+output/
+final/
+.env
+ready-to-upload/
+worker/package-lock.json
