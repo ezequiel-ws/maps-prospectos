@@ -1,3 +1,7 @@
 {
-  "status": "idle"
+  "status": "in_progress",
+  "query": "abogados · 2 barrios CABA",
+  "started_at": "2026-10-30T22:52:35-03:00",
+  "started_at_label": "2026-10-30 22:52 (America/Buenos_Aires)",
+  "started_at_epoch": 1793411555
 }
