@@ -1,6 +1,15 @@
 {
   "searches": [
     {
+      "id": "20261030-221800_peluquerias-caballito",
+      "query": "peluquerías · Caballito",
+      "date": "20261030-221800",
+      "date_label": "2026-10-30 22:18 (America/Buenos_Aires)",
+      "n_raw": 16,
+      "n_limpio": 5,
+      "file": "20261030-221800_peluquerias-caballito.json"
+    },
+    {
       "id": "20261030-221541_peluquerias-test-2-barrios",
       "query": "peluquerías · test 2 barrios",
       "date": "20261030-221541",

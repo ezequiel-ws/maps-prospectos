@@ -1,0 +1,60 @@
+{
+  "id": "20261030-221800_peluquerias-caballito",
+  "query": "peluquerías · Caballito",
+  "date": "20261030-221800",
+  "date_label": "2026-10-30 22:18 (America/Buenos_Aires)",
+  "n_raw": 16,
+  "n_limpio": 5,
+  "prospects": [
+    {
+      "nombre": "Marche un Corte Peluqueria",
+      "reseñas": "162",
+      "rating": "4.9",
+      "telefono": "1151070971",
+      "whatsapp": "https://wa.me/5491151070971",
+      "link_maps": "https://www.google.com/maps/place/Marche+un+Corte+Peluqueria/data=!4m7!3m6!1s0x95bcca1a40029e8f:0xfce0bc6e749faab0!8m2!3d-34.6116858!4d-58.4531806!16s%2Fg%2F11b76txdqy!19sChIJj54CQBrKvJURsKqfdG684Pw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Paysandú 1063, C1405ANM Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Peluquería"
+    },
+    {
+      "nombre": "Peluquería Marcelo Nicolini",
+      "reseñas": "126",
+      "rating": "4.9",
+      "telefono": "1126399493",
+      "whatsapp": "https://wa.me/5491126399493",
+      "link_maps": "https://www.google.com/maps/place/Peluquer%C3%ADa+Marcelo+Nicolini/data=!4m7!3m6!1s0x95bcca4136074221:0x50296790b5389942!8m2!3d-34.6177469!4d-58.4358951!16s%2Fg%2F11c55vjqzw!19sChIJIUIHNkHKvJURQpk4tZBnKVA?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Rivadavia 4975 Loc 76, C1424 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Peluquería"
+    },
+    {
+      "nombre": "Peluquería Masculina Quiquito's",
+      "reseñas": "488",
+      "rating": "4.8",
+      "telefono": "1140550219",
+      "whatsapp": "https://wa.me/5491140550219",
+      "link_maps": "https://www.google.com/maps/place/Peluquer%C3%ADa+Masculina+Quiquito%27s/data=!4m7!3m6!1s0x95bcca4066039c99:0xa6734254a0f15684!8m2!3d-34.6157728!4d-58.4390132!16s%2Fg%2F1tczrjyt!19sChIJmZwDZkDKvJURhFbxoFRCc6Y?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Hidalgo 307, C1405 BCC, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Peluquería"
+    },
+    {
+      "nombre": "Tendencias Urbanas",
+      "reseñas": "103",
+      "rating": "4.8",
+      "telefono": "1155965815",
+      "whatsapp": "https://wa.me/5491155965815",
+      "link_maps": "https://www.google.com/maps/place/Tendencias+Urbanas/data=!4m7!3m6!1s0x95bccbf5f31de6cb:0x3934a00f411e361d!8m2!3d-34.6236311!4d-58.4444061!16s%2Fg%2F11kmnnr5gc!19sChIJy-Yd8_XLvJURHTYeQQ-gNDk?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Juan Bautista Alberdi 1172, C1424 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Peluquería"
+    },
+    {
+      "nombre": "Estilo Buenos Aires",
+      "reseñas": "333",
+      "rating": "3.8",
+      "telefono": "1147461793",
+      "whatsapp": "https://wa.me/5491147461793",
+      "link_maps": "https://www.google.com/maps/place/Estilo+Buenos+Aires/data=!4m7!3m6!1s0x95bcca24e1d6aa7d:0xc0e22fe09badd332!8m2!3d-34.6254945!4d-58.4533339!16s%2Fg%2F11b6mj81gk!19sChIJfarW4STKvJURMtOtm-Av4sA?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Rivadavia 6166, C1406GLR Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Peluquería"
+    }
+  ]
+}
