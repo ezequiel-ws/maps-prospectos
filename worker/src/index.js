@@ -155,7 +155,7 @@ async function handleBuscar(request, env) {
     queries = body.queries
       .map((q) => String(q || "").trim())
       .filter(Boolean)
-      .slice(0, 80); // safety cap
+      .slice(0, 200); // safety cap
   }
 
   const query = String(body.query || body.busqueda || "").trim();
@@ -204,9 +204,14 @@ async function handleBuscar(request, env) {
     );
   }
 
-  // GitHub no devuelve run_id en el dispatch; buscamos el run más reciente del workflow
-  await sleep(1200);
-  const run = await fetchLatestRun(env, token);
+  // GitHub no devuelve run_id en el dispatch; buscamos el run recién encolado
+  await sleep(1500);
+  let run = await fetchLatestRun(env, token);
+  // Si el "latest" ya terminó (race con run anterior), reintentar
+  if (run && run.status === "completed") {
+    await sleep(1500);
+    run = await fetchLatestRun(env, token);
+  }
 
   return json({
     ok: true,
@@ -254,16 +259,46 @@ async function handleEstado(url, env) {
 
   const status = run.status; // queued | in_progress | completed
   const conclusion = run.conclusion; // success | failure | cancelled | null
+
   let progress = 5;
-  if (status === "queued") progress = 10;
-  else if (status === "in_progress") progress = 55;
-  else if (status === "completed") progress = conclusion === "success" ? 100 : 100;
+  let jobs_total = 0;
+  let jobs_done = 0;
+  let jobs_failed = 0;
+
+  if (status === "queued") {
+    progress = 12;
+  } else if (status === "completed") {
+    progress = 100;
+  } else if (status === "in_progress") {
+    progress = 35;
+    try {
+      const jr = await fetch(run.jobs_url + "?per_page=100", { headers: ghHeaders(token) });
+      if (jr.ok) {
+        const jd = await jr.json();
+        const jobs = jd.jobs || [];
+        jobs_total = jobs.length;
+        jobs_done = jobs.filter((j) => j.status === "completed").length;
+        jobs_failed = jobs.filter(
+          (j) => j.status === "completed" && j.conclusion && j.conclusion !== "success"
+        ).length;
+        if (jobs_total > 0) {
+          // 15% base + hasta 80% por jobs; deja 5% para publish
+          progress = Math.min(95, Math.round(15 + (jobs_done / jobs_total) * 80));
+        }
+      }
+    } catch (e) {
+      console.warn("jobs progress", e);
+    }
+  }
 
   return json({
     run_id: run.id,
     status,
     conclusion,
     progress,
+    jobs_total,
+    jobs_done,
+    jobs_failed,
     html_url: run.html_url,
     display_title: run.display_title || run.name,
     created_at: run.created_at,

@@ -212,9 +212,17 @@ jobs:
               python3 expandir.py queries_raw.txt queries.txt --no-expand --json-out matrix.json
             fi
           fi
-          echo "Queries finales:"
+          echo "Queries (pre-variantes):"
+          cat -n queries.txt || true
+          # Expandir sinónimos de rubro (abogados→estudio jurídico, etc.)
+          python3 variantes.py queries.txt queries_var.txt
+          mv queries_var.txt queries.txt
+          echo "Queries (con variantes):"
           cat -n queries.txt
-          COUNT=$(wc -l < queries.txt | tr -d ' ')
+          # Agrupar en batches (amortiza Docker/Chrome; máx 20 jobs)
+          python3 batch_matrix.py queries.txt matrix.json --max-jobs 20 --batch 4
+          COUNT=$(python3 -c 'import json; print(len(json.load(open("matrix.json"))))')
+          NQ=$(wc -l < queries.txt | tr -d ' ')
           if [ "$COUNT" = "0" ]; then
             echo '[]' > matrix.json
           fi
@@ -224,7 +232,7 @@ jobs:
             python3 -c 'import json; print(json.dumps(json.load(open("matrix.json")), ensure_ascii=False))'
             echo "EOFMATRIX"
           } >> "$GITHUB_OUTPUT"
-          echo "Total queries en matrix: $COUNT"
+          echo "Total: $NQ queries en $COUNT jobs (batch)"
 
       - name: Marcar estado in-progress (Pages)
         env:
@@ -273,7 +281,7 @@ jobs:
     needs: preparar
     if: needs.preparar.outputs.count != '0' && needs.preparar.outputs.count != ''
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     continue-on-error: true
     permissions:
       contents: read
@@ -295,22 +303,34 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p output
-          printf '%s\n' "$QUERY" > query.txt
-          echo "Query [$IDX]: $QUERY (depth=${DEPTH:-1})"
+          # matrix.q puede traer varias queries separadas por |||
+          python3 -c 'import os; q=os.environ.get("QUERY",""); open("query.txt","w",encoding="utf-8").write(q.replace("|||","\n").strip()+"\n")'
+          NQ=$(wc -l < query.txt | tr -d " ")
+          DEPTH_N="${DEPTH:-1}"
+          # concurrencia del scraper ≈ min(4, NQ) ; timeout según profundidad
+          if [ "$NQ" -lt 2 ]; then C=2; elif [ "$NQ" -gt 4 ]; then C=4; else C="$NQ"; fi
+          if [ "$DEPTH_N" -ge 3 ] 2>/dev/null; then
+            TO=7m
+            IDLE=90s
+          else
+            TO=4m
+            IDLE=45s
+          fi
+          echo "Batch [$IDX]: $NQ queries | depth=$DEPTH_N | -c $C | timeout $TO"
+          cat -n query.txt
           docker pull gosom/google-maps-scraper
-          # --init evita zombies de Chromium; timeout corta si docker no sale tras scrapemate
           set +e
-          timeout --signal=TERM --kill-after=20s 3m docker run --rm --init \
+          timeout --signal=TERM --kill-after=25s "$TO" docker run --rm --init \
             -e DISABLE_TELEMETRY=1 \
             -v "$PWD:/work" \
             -w /work \
             gosom/google-maps-scraper \
             -input /work/query.txt \
             -results /work/output/raw.csv \
-            -c 2 \
-            -depth "${DEPTH:-1}" \
+            -c "$C" \
+            -depth "$DEPTH_N" \
             -lang es \
-            -exit-on-inactivity 45s
+            -exit-on-inactivity "$IDLE"
           rc=$?
           set -e
           echo "docker/timeout exit=$rc"

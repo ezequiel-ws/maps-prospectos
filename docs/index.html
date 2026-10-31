@@ -526,6 +526,51 @@
       min-height: 32px;
       border-radius: 999px;
     }
+
+    .rubro-groups { margin: 10px 0 14px; }
+    .rubro-group { margin: 0 0 12px; }
+    .rubro-group-title {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 8px;
+    }
+    .chips-rubro {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .chip-rubro {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font: inherit;
+      font-size: .8rem;
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 34px;
+    }
+    .chip-rubro.active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent-text);
+    }
+    .opt-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 14px;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+    .opt-row .switch { color: var(--text); font-size: .88rem; }
   </style>
 </head>
 <body>
@@ -551,8 +596,17 @@
         <div id="modeCabaPanel">
           <label class="label-sm" for="rubroBox">Rubro</label>
           <input type="text" id="rubroBox" class="field" placeholder="Ej: peluquerías, odontólogos, gimnasios" autocomplete="off" />
+          <div id="rubroGroups" class="rubro-groups" aria-label="Rubros sugeridos"></div>
 
-          <div class="quick-row" style="margin-top:12px">
+          <div class="opt-row">
+            <label class="switch" title="Depth 3: más resultados, más lento">
+              <input type="checkbox" id="chkProfunda" />
+              Búsqueda profunda
+            </label>
+            <span class="hint" style="margin:0;font-size:.8rem" id="profundaHint">Rápida ≈ depth 1 · Profunda ≈ depth 3</span>
+          </div>
+
+          <div class="quick-row" style="margin-top:4px">
             <button type="button" class="btn btn-ghost btn-tiny" id="btnAllBarrios">Todos los barrios</button>
             <button type="button" class="btn btn-ghost btn-tiny" id="btnClearBarrios">Limpiar</button>
           </div>
@@ -664,6 +718,97 @@
     let searchMode = "caba"; // caba | libre
     const selectedBarrios = new Set();
 
+    const RUBRO_MENUS = [
+      {
+        title: "Pagan mucho por cliente",
+        items: [
+          "abogados", "odontólogos", "cirugía estética", "clínicas estéticas",
+          "inmobiliarias", "contadores", "arquitectos", "veterinarias", "psicólogos"
+        ],
+      },
+      {
+        title: "Más demandados",
+        items: [
+          "plomeros", "electricistas", "cerrajeros", "gasistas", "mudanzas",
+          "fumigadores", "aire acondicionado", "mecánicos"
+        ],
+      },
+      {
+        title: "Básicos",
+        items: [
+          "peluquerías", "barberías", "uñas", "gimnasios", "panaderías",
+          "kioscos", "ferreterías", "restaurantes"
+        ],
+      },
+    ];
+
+    // Misma lógica que variantes.py (aprox) para ETA en la UI
+    const RUBRO_VARIANTES = {
+      abogados: ["abogados", "abogado", "estudio jurídico", "abogado laboral", "abogado civil"],
+      odontólogos: ["odontólogos", "odontólogo", "dentista", "clínica dental"],
+      "cirugía estética": ["cirujano plástico", "cirugía estética", "clínica de estética", "medicina estética"],
+      "clínicas estéticas": ["clínica estética", "medicina estética", "cirugía estética"],
+      inmobiliarias: ["inmobiliaria", "inmobiliarias", "agente inmobiliario"],
+      contadores: ["contador", "contadores", "estudio contable"],
+      arquitectos: ["arquitecto", "arquitectos", "estudio de arquitectura"],
+      veterinarias: ["veterinaria", "veterinario", "clínica veterinaria"],
+      psicólogos: ["psicólogo", "psicólogos", "consultorio psicológico"],
+      plomeros: ["plomero", "plomería", "gasista plomero"],
+      electricistas: ["electricista", "electricistas"],
+      cerrajeros: ["cerrajero", "cerrajería"],
+      gasistas: ["gasista", "gasista matriculado"],
+      mudanzas: ["mudanzas", "empresa de mudanzas"],
+      fumigadores: ["fumigación", "control de plagas"],
+      "aire acondicionado": ["aire acondicionado", "técnico aire acondicionado"],
+      mecánicos: ["mecánico", "taller mecánico"],
+      peluquerías: ["peluquería", "peluquerías", "salon de belleza"],
+      barberías: ["barbería", "barberías"],
+      uñas: ["uñas", "manicura", "nail salon"],
+      gimnasios: ["gimnasio", "gimnasios"],
+      panaderías: ["panadería", "panaderías"],
+      kioscos: ["kiosco", "kioscos"],
+      ferreterías: ["ferretería", "ferreterías"],
+      restaurantes: ["restaurante", "restaurantes", "parrilla"],
+    };
+
+    function normKey(s) {
+      return String(s || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    function variantsForRubro(rubro) {
+      const r = (rubro || "").trim();
+      if (!r) return [];
+      const nk = normKey(r);
+      let found = null;
+      for (const [k, vals] of Object.entries(RUBRO_VARIANTES)) {
+        if (normKey(k) === nk || normKey(k).startsWith(nk) || nk.startsWith(normKey(k))) {
+          found = vals;
+          break;
+        }
+      }
+      const out = [];
+      const seen = new Set();
+      for (const v of [r].concat(found || [])) {
+        const t = String(v || "").trim();
+        if (!t) continue;
+        const key = normKey(t);
+        if (seen.has(key)) continue;
+        seen.add(key);
+        out.push(t);
+      }
+      return out;
+    }
+
+    let searchStartedAt = 0;
+    let searchEtaMs = 120000;
+    let searchLabelExpect = "";
+    let prevSearchIds = new Set();
+
 
     const DATA_BASE = "./data/";
     const REPO_NEW_ISSUE = "https://github.com/paginadeprueba-collab/maps-prospectos/issues/new";
@@ -768,20 +913,31 @@
       });
     }
 
-    function estimateMinutes(n) {
-      if (n <= 0) return 0;
-      // depth 1, max-parallel 20 → ~1 min por tanda
-      return Math.max(1, Math.ceil(n / 20));
+    function estimateMinutes(nQueries, profunda) {
+      if (nQueries <= 0) return 0;
+      const batch = 4;
+      const jobs = Math.min(20, Math.ceil(nQueries / batch));
+      // ~45–70s por job en paralelo (docker+scrape); profunda ~2x
+      const per = profunda ? 2.2 : 1.0;
+      return Math.max(1, Math.ceil(jobs / 8 * per) + (profunda ? 1 : 0));
     }
 
     function updateBarrioMeta() {
       const n = selectedBarrios.size;
-      el("barrioCount").textContent = n === 1 ? "1 barrio" : n + " barrios";
+      const rubro = (el("rubroBox").value || "").trim();
+      const nVar = rubro ? variantsForRubro(rubro).length : 1;
+      const nQ = n * Math.max(1, nVar);
+      const profunda = el("chkProfunda") && el("chkProfunda").checked;
+      el("barrioCount").textContent =
+        (n === 1 ? "1 barrio" : n + " barrios") +
+        (rubro ? " · ~" + nQ + " búsquedas" : "");
       if (n === 0) {
         el("barrioEta").textContent = "Elegí al menos uno";
       } else {
-        const m = estimateMinutes(n);
-        el("barrioEta").textContent = m <= 1 ? "~1 min (paralelo)" : "~" + m + " min (paralelo)";
+        const m = estimateMinutes(nQ, profunda);
+        el("barrioEta").textContent =
+          (profunda ? "Profunda · " : "Rápida · ") +
+          (m <= 1 ? "~1–2 min" : "~" + m + " min");
       }
       // sync zone toggles
       document.querySelectorAll("[data-zona-toggle]").forEach((inp) => {
@@ -849,6 +1005,7 @@
     }
 
     function buildCabaQueries(rubro) {
+      // Solo rubro×barrio; las variantes las expande el workflow (variantes.py)
       const r = rubro.trim();
       return [...selectedBarrios].map((b) => r + " en " + b + ", CABA");
     }
@@ -860,9 +1017,11 @@
         return;
       }
       wrap.classList.remove("hidden");
-      el("progressBar").style.width = Math.max(0, Math.min(100, pct || 0)) + "%";
-      el("progressTitle").textContent = title || "Buscando…";
-      el("progressMeta").textContent = meta || "";
+      if (pct != null && !Number.isNaN(pct)) {
+        el("progressBar").style.width = Math.max(0, Math.min(100, pct)) + "%";
+      }
+      if (title) el("progressTitle").textContent = title;
+      if (meta != null) el("progressMeta").textContent = meta;
       if (hint) el("progressHint").textContent = hint;
     }
 
@@ -873,31 +1032,84 @@
       }
     }
 
+    function sleep(ms) {
+      return new Promise((r) => setTimeout(r, ms));
+    }
+
+    async function waitForNewSearch(label, maxAttempts) {
+      const attempts = maxAttempts || 30;
+      for (let i = 0; i < attempts; i++) {
+        await loadIndex(false);
+        const newest = (indexData.searches || [])[0];
+        if (newest && !prevSearchIds.has(newest.id)) {
+          await rebuildSeenLinks();
+          setProgress(
+            true,
+            100,
+            "Listo — " + (newest.n_limpio ?? 0) + " prospectos",
+            "100%",
+            newest.query || label
+          );
+          location.hash = "#/s/" + encodeURIComponent(newest.id);
+          setTimeout(() => setProgress(false), 2800);
+          return newest;
+        }
+        // Pages a veces tarda en publicar
+        const soft = Math.min(99, 90 + (i % 8));
+        setProgress(true, soft, "Publicando en la página…", soft + "%", "Sin recargar — esperando index.json");
+        await sleep(4000);
+      }
+      setProgress(true, 100, "Terminó — tocá recargar si no ves el resultado", "100%");
+      await loadIndex(false);
+      await rebuildSeenLinks();
+      setTimeout(() => setProgress(false), 4000);
+      return null;
+    }
+
     async function pollEstado() {
       if (!WORKER_URL || !activeRunId) return;
       try {
         const res = await fetch(
-          WORKER_URL.replace(/\/$/, "") + "/estado?run_id=" + encodeURIComponent(activeRunId) + "&t=" + Date.now()
+          WORKER_URL.replace(/\/$/, "") + "/estado?run_id=" + encodeURIComponent(activeRunId) + "&t=" + Date.now(),
+          { cache: "no-store" }
         );
         if (!res.ok) throw new Error("estado " + res.status);
         const data = await res.json();
-        const pct = data.progress ?? (data.in_progress ? 50 : 100);
-        const label =
+
+        // Soft progress por tiempo (evita quedarse clavado en 55/60%)
+        const elapsed = Date.now() - (searchStartedAt || Date.now());
+        const soft = Math.min(88, 18 + (elapsed / Math.max(searchEtaMs, 60000)) * 70);
+        let pct = data.progress ?? (data.in_progress ? 40 : 100);
+        if (data.in_progress) pct = Math.max(pct, soft);
+        if (data.jobs_total) {
+          pct = Math.max(pct, Math.min(95, Math.round(15 + (data.jobs_done / data.jobs_total) * 80)));
+        }
+
+        let label =
           data.status === "queued"
             ? "En cola…"
             : data.status === "in_progress"
-              ? "Scrapeando en la nube…"
+              ? data.jobs_total
+                ? "Scrapeando… " + data.jobs_done + "/" + data.jobs_total + " jobs"
+                : "Scrapeando en la nube…"
               : data.conclusion === "success"
                 ? "Listo"
                 : data.conclusion || data.status;
+
         setProgress(true, pct, label, Math.round(pct) + "%");
+
         if (!data.in_progress) {
           stopPoll();
+          const runId = activeRunId;
           activeRunId = null;
-          setProgress(true, 100, "Listo — recargando resultados…", "100%");
-          await loadIndex(false);
-          await rebuildSeenLinks();
-          setTimeout(() => setProgress(false), 2500);
+          const ok = data.conclusion === "success" || data.conclusion === "failure" || !data.conclusion;
+          setProgress(
+            true,
+            92,
+            ok ? "Listo — buscando resultados nuevos…" : ("Terminó: " + (data.conclusion || "")),
+            "92%"
+          );
+          await waitForNewSearch(searchLabelExpect, 36);
         }
       } catch (e) {
         console.warn(e);
@@ -908,6 +1120,8 @@
       let payload = {};
       let label = "";
       let fallbackQ = "";
+      const profunda = !!(el("chkProfunda") && el("chkProfunda").checked);
+      const depth = profunda ? "3" : "1";
 
       if (searchMode === "caba") {
         const rubro = (el("rubroBox").value || "").trim();
@@ -920,34 +1134,48 @@
           return;
         }
         const queries = buildCabaQueries(rubro);
-        label = rubro + " · " + queries.length + " barrio" + (queries.length === 1 ? "" : "s") + " CABA";
+        const nVar = variantsForRubro(rubro).length;
+        label =
+          rubro +
+          " · " +
+          selectedBarrios.size +
+          " barrio" +
+          (selectedBarrios.size === 1 ? "" : "s") +
+          " CABA" +
+          (profunda ? " · profunda" : "");
         fallbackQ = queries.join("; ");
         payload = {
           query: label,
           queries,
           expandir: false,
-          profundidad: "1",
+          profundidad: depth,
         };
+        searchEtaMs = estimateMinutes(queries.length * nVar, profunda) * 60 * 1000;
       } else {
         const q = (el("queryBox").value || "").trim();
         if (!q) {
           el("queryBox").focus();
           return;
         }
-        label = q;
+        label = q + (profunda ? " · profunda" : "");
         fallbackQ = q;
-        payload = { query: q, expandir: true, profundidad: "1" };
+        payload = { query: q, expandir: true, profundidad: depth };
+        searchEtaMs = (profunda ? 4 : 2) * 60 * 1000;
       }
+
+      searchLabelExpect = label;
+      prevSearchIds = new Set((indexData.searches || []).map((s) => s.id));
 
       if (WORKER_URL) {
         el("btnBuscar").disabled = true;
-        const eta = searchMode === "caba" ? estimateMinutes(selectedBarrios.size) : 2;
+        const etaMin = Math.max(1, Math.round(searchEtaMs / 60000));
+        searchStartedAt = Date.now();
         setProgress(
           true,
           8,
           "Lanzando «" + label + "»…",
           "8%",
-          "Estimado ~" + eta + " min. Podés dejar la página abierta."
+          "Estimado ~" + etaMin + " min. Dejá la página abierta — se actualiza sola."
         );
         try {
           const res = await fetch(WORKER_URL.replace(/\/$/, "") + "/buscar", {
@@ -958,10 +1186,22 @@
           const data = await res.json().catch(() => ({}));
           if (!res.ok) throw new Error(data.message || data.error || "Error " + res.status);
           activeRunId = data.run_id || null;
+          // Si el worker devolvió un run viejo completed, re-consultar latest
+          if (!activeRunId || data.status === "completed") {
+            await sleep(2000);
+            try {
+              const er = await fetch(WORKER_URL.replace(/\/$/, "") + "/estado?t=" + Date.now(), {
+                cache: "no-store",
+              });
+              const ed = await er.json();
+              if (ed.run_id && ed.in_progress) activeRunId = ed.run_id;
+              else if (ed.run_id) activeRunId = ed.run_id;
+            } catch (_) {}
+          }
           setProgress(true, 15, "En cola en GitHub Actions…", "15%");
           stopPoll();
-          pollTimer = setInterval(pollEstado, 8000);
-          setTimeout(checkPagesEstado, 15000);
+          pollTimer = setInterval(pollEstado, 4000);
+          setTimeout(pollEstado, 1500);
         } catch (e) {
           console.warn(e);
           setProgress(false);
@@ -977,17 +1217,53 @@
     }
 
     async function checkPagesEstado() {
+      // Solo informativo; el progreso real viene del Worker /estado
       try {
-        const res = await fetch(DATA_BASE + "estado.json?t=" + Date.now());
+        const res = await fetch(DATA_BASE + "estado.json?t=" + Date.now(), { cache: "no-store" });
         if (!res.ok) return;
         const est = await res.json();
-        if (est.status === "in_progress") {
-          setProgress(true, 60, "Buscando «" + (est.query || "") + "»…", "60%");
-        } else if (activeRunId == null) {
-          // idle and no worker poll — hide eventually
+        if (est.status === "in_progress" && activeRunId) {
+          // no pisar % con 60 fijo
+          const title = el("progressTitle").textContent || "";
+          if (!title || title.indexOf("Lanzando") === 0 || title.indexOf("En cola") === 0) {
+            setProgress(true, null, "Buscando «" + (est.query || "") + "»…", el("progressMeta").textContent);
+          }
         }
       } catch (_) {}
     }
+
+    function renderRubroGroups() {
+      const wrap = el("rubroGroups");
+      if (!wrap) return;
+      wrap.innerHTML = "";
+      RUBRO_MENUS.forEach((g) => {
+        const block = document.createElement("div");
+        block.className = "rubro-group";
+        const title = document.createElement("p");
+        title.className = "rubro-group-title";
+        title.textContent = g.title;
+        block.appendChild(title);
+        const chips = document.createElement("div");
+        chips.className = "chips-rubro";
+        g.items.forEach((name) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "chip-rubro";
+          btn.textContent = name;
+          btn.addEventListener("click", () => {
+            el("rubroBox").value = name;
+            document.querySelectorAll(".chip-rubro").forEach((c) => c.classList.remove("active"));
+            btn.classList.add("active");
+            updateBarrioMeta();
+            el("rubroBox").focus();
+          });
+          chips.appendChild(btn);
+        });
+        block.appendChild(chips);
+        wrap.appendChild(block);
+      });
+    }
+
 
     async function loadIndex(doRoute) {
       try {
@@ -1260,7 +1536,19 @@
       c.addEventListener("click", () => applyZona(c.getAttribute("data-zona")));
     });
     renderZonas();
+    renderRubroGroups();
     setSearchMode("caba");
+    if (el("rubroBox")) {
+      el("rubroBox").addEventListener("input", () => {
+        document.querySelectorAll(".chip-rubro").forEach((c) => {
+          c.classList.toggle("active", normKey(c.textContent) === normKey(el("rubroBox").value));
+        });
+        updateBarrioMeta();
+      });
+    }
+    if (el("chkProfunda")) {
+      el("chkProfunda").addEventListener("change", updateBarrioMeta);
+    }
     document.querySelectorAll(".tab").forEach((t) => {
       t.addEventListener("click", () => {
         document.querySelectorAll(".tab").forEach((x) => x.classList.remove("active"));
