@@ -1,0 +1,60 @@
+{
+  "id": "20261030-222606_abogados-2-barrios-caba",
+  "query": "Abogados · 2 barrios CABA",
+  "date": "20261030-222606",
+  "date_label": "2026-10-30 22:26 (America/Buenos_Aires)",
+  "n_raw": 40,
+  "n_limpio": 5,
+  "prospects": [
+    {
+      "nombre": "Estudio Jurídico Zalazar y Asociados",
+      "reseñas": "30",
+      "rating": "5.0",
+      "telefono": "1167380151",
+      "whatsapp": "https://wa.me/5491167380151",
+      "link_maps": "https://www.google.com/maps/place/Estudio+Jur%C3%ADdico+Zalazar+y+Asociados/data=!4m7!3m6!1s0x95bcb7a77dba4619:0x6190ecff8a190d82!8m2!3d-34.5632459!4d-58.4663226!16s%2Fg%2F11w8m2299p!19sChIJGUa6fae3vJURgg0Ziv_skGE?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Blanco Encalada 3153 Piso 1° oficina 3, C1428 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "Lorente & López Abogados",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1139873150",
+      "whatsapp": "https://wa.me/5491139873150",
+      "link_maps": "https://www.google.com/maps/place/Lorente+%26+L%C3%B3pez+Abogados/data=!4m7!3m6!1s0x95bcb4349d000001:0x1672ec79847fddd8!8m2!3d-34.5547015!4d-58.4458681!16s%2Fg%2F11rcgw_qw5!19sChIJAQAAnTS0vJUR2N1_hHnschY?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Miñones 2177, C1428 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Servicios legales"
+    },
+    {
+      "nombre": "Torregiani y asociados",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1173609087",
+      "whatsapp": "https://wa.me/5491173609087",
+      "link_maps": "https://www.google.com/maps/place/Torregiani+y+asociados/data=!4m7!3m6!1s0x95bccb05d0360359:0xcb8bfbe7733feb0f!8m2!3d-34.5650787!4d-58.4593502!16s%2Fg%2F11rqk31qzj!19sChIJWQM20AXLvJURD-s_c-f7i8s?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Echeverría 2782, C1428 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Bufete"
+    },
+    {
+      "nombre": "Abogada Dra. Flores",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1169514991",
+      "whatsapp": "https://wa.me/5491169514991",
+      "link_maps": "https://www.google.com/maps/place/Abogada+Dra.+Flores/data=!4m7!3m6!1s0x95bcb5f77ae5b597:0xd542edf4397fdf0b!8m2!3d-34.5709625!4d-58.442487!16s%2Fg%2F11zyjbdfl8!19sChIJl7Xleve1vJURC99_OfTtQtU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Cabildo 559, C1426AAS Palermo, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Abogado"
+    },
+    {
+      "nombre": "Lambrechts Abogados & Contadores",
+      "reseñas": "7",
+      "rating": "4.7",
+      "telefono": "1147874423",
+      "whatsapp": "https://wa.me/5491147874423",
+      "link_maps": "https://www.google.com/maps/place/Lambrechts+Abogados+%26+Contadores/data=!4m7!3m6!1s0x95bcb5d046d53c4d:0x53198ecaf6845529!8m2!3d-34.5667894!4d-58.4530616!16s%2Fg%2F1q62bd4kt!19sChIJTTzVRtC1vJURKVWE9sqOGVM?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Virrey del Pino 2458, C1426 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Bufete"
+    }
+  ]
+}
