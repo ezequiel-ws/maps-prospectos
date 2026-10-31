@@ -1,0 +1,80 @@
+{
+  "id": "20261030-221541_peluquerias-test-2-barrios",
+  "query": "peluquerías · test 2 barrios",
+  "date": "20261030-221541",
+  "date_label": "2026-10-30 22:15 (America/Buenos_Aires)",
+  "n_raw": 32,
+  "n_limpio": 7,
+  "prospects": [
+    {
+      "nombre": "Michelangelo Peluquería Barbería",
+      "reseñas": "262",
+      "rating": "4.9",
+      "telefono": "1164658701",
+      "whatsapp": "https://wa.me/5491164658701",
+      "link_maps": "https://www.google.com/maps/place/Michelangelo+Peluquer%C3%ADa+Barber%C3%ADa/data=!4m7!3m6!1s0x95bcb55935098af7:0x7ed59dbecf55c521!8m2!3d-34.5646953!4d-58.4562099!16s%2Fg%2F11qm3v9smf!19sChIJ94oJNVm1vJURIcVVz76d1X4?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Mcal. Antonio José de Sucre 2518, C1428 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Peluquería"
+    },
+    {
+      "nombre": "Salon de Belleza Andrea Vannucci (En Palermo Beauty Salon - Peluqueria)",
+      "reseñas": "121",
+      "rating": "4.9",
+      "telefono": "1163704170",
+      "whatsapp": "https://wa.me/5491163704170",
+      "link_maps": "https://www.google.com/maps/place/Salon+de+Belleza+Andrea+Vannucci+%28En+Palermo+Beauty+Salon+-+Peluqueria%29/data=!4m7!3m6!1s0x95bcca8071b88ab1:0x1cf6bb6867bd7400!8m2!3d-34.5891494!4d-58.4168526!16s%2Fg%2F11b6z3yxyv!19sChIJsYq4cYDKvJURAHS9Z2i79hw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Medrano 1920, C1425GDH Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Peluquería"
+    },
+    {
+      "nombre": "Millån peluqueria",
+      "reseñas": "65",
+      "rating": "4.9",
+      "telefono": "1163357478",
+      "whatsapp": "https://wa.me/5491163357478",
+      "link_maps": "https://www.google.com/maps/place/Mill%C3%A5n+peluqueria/data=!4m7!3m6!1s0x95bcb5a6a7f53a21:0xa2934dd3d006a86f!8m2!3d-34.5564576!4d-58.457367!16s%2Fg%2F11h0zfh4m3!19sChIJITr1p6a1vJURb6gG0NNNk6I?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Arcos 2514, C1428 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Peluquería"
+    },
+    {
+      "nombre": "DREXI",
+      "reseñas": "91",
+      "rating": "4.8",
+      "telefono": "91162641755",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/DREXI/data=!4m7!3m6!1s0x95bcb5ba4773483f:0x4f5488b86421ee99!8m2!3d-34.5542655!4d-58.4463768!16s%2Fg%2F11g19q341n!19sChIJP0hzR7q1vJURme4hZLiIVE8?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Miñones 2209, C1428 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Peluquería"
+    },
+    {
+      "nombre": "LOOK&ARTE Espacio Creativo Peluqueria Hair & Nails",
+      "reseñas": "384",
+      "rating": "4.5",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/LOOK%26ARTE+Espacio+Creativo+Peluqueria+Hair+%26+Nails/data=!4m7!3m6!1s0x95bcb5d2e1b162fb:0x8028a7cf54ece6e9!8m2!3d-34.5600913!4d-58.4543694!16s%2Fg%2F11b6s31f_b!19sChIJ-2Kx4dK1vJUR6ebsVM-nKIA?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Arcos 2140, C1428AFH Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Peluquería"
+    },
+    {
+      "nombre": "V H Peluquería",
+      "reseñas": "202",
+      "rating": "4.5",
+      "telefono": "1147818194",
+      "whatsapp": "https://wa.me/5491147818194",
+      "link_maps": "https://www.google.com/maps/place/V+H+Peluquer%C3%ADa/data=!4m7!3m6!1s0x95bcb43300f2f967:0x3195addb6d1d2f08!8m2!3d-34.5631698!4d-58.4631472!16s%2Fg%2F11f0wlqmc_!19sChIJZ_nyADO0vJURCC8dbdutlTE?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Olazábal 2912, C1428 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Peluquería"
+    },
+    {
+      "nombre": "LA PELU BUENOS AIRES",
+      "reseñas": "194",
+      "rating": "4.5",
+      "telefono": "1133032283",
+      "whatsapp": "https://wa.me/5491133032283",
+      "link_maps": "https://www.google.com/maps/place/LA+PELU+BUENOS+AIRES/data=!4m7!3m6!1s0x95bcb590dd9c17ad:0x20455b9d64ab48bc!8m2!3d-34.5780448!4d-58.4310034!16s%2Fg%2F11gzm15g4!19sChIJrRec3ZC1vJURvEirZJ1bRSA?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Bonpland 2391, C1425 FWE, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Peluquería"
+    }
+  ]
+}

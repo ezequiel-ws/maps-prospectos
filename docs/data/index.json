@@ -1,6 +1,15 @@
 {
   "searches": [
     {
+      "id": "20261030-221541_peluquerias-test-2-barrios",
+      "query": "peluquerías · test 2 barrios",
+      "date": "20261030-221541",
+      "date_label": "2026-10-30 22:15 (America/Buenos_Aires)",
+      "n_raw": 32,
+      "n_limpio": 7,
+      "file": "20261030-221541_peluquerias-test-2-barrios.json"
+    },
+    {
       "id": "20261030-220946_peluquerias-2-barrios-caba",
       "query": "peluquerías · 2 barrios CABA",
       "date": "20261030-220946",
