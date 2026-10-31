@@ -4,13 +4,14 @@
 name = "maps-prospectos"
 main = "src/index.js"
 compatibility_date = "2026-10-01"
+account_id = "fc4e53494811064497a1ed835611349e"
 
 # KV para estados de prospectos (contactado / no_interesa / pendiente)
 # Creá el namespace con: wrangler kv namespace create ESTADOS
 # y pegá el id acá (también en preview_id si querés).
 [[kv_namespaces]]
 binding = "ESTADOS"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "9466400cfb4140aab9ec926a7757139d"
 # preview_id = "REPLACE_WITH_PREVIEW_KV_ID"
 
 [vars]
