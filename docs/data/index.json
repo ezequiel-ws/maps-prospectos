@@ -1,6 +1,15 @@
 {
   "searches": [
     {
+      "id": "20261031-163018_inmobiliarias-2-barrios-caba",
+      "query": "inmobiliarias · 2 barrios CABA",
+      "date": "20261031-163018",
+      "date_label": "2026-10-31 16:30 (America/Buenos_Aires)",
+      "n_raw": 63,
+      "n_limpio": 12,
+      "file": "20261031-163018_inmobiliarias-2-barrios-caba.json"
+    },
+    {
       "id": "20261031-160603_abogados-3-barrios-caba",
       "query": "abogados · 3 barrios CABA",
       "date": "20261031-160603",
