@@ -1,0 +1,200 @@
+{
+  "id": "20261031-234055_arquitectos-6-barrios-caba",
+  "query": "arquitectos · 6 barrios CABA",
+  "date": "20261031-234055",
+  "date_label": "2026-10-31 23:40 (America/Buenos_Aires)",
+  "n_raw": 200,
+  "n_limpio": 19,
+  "prospects": [
+    {
+      "nombre": "Aura glass",
+      "reseñas": "25",
+      "rating": "5.0",
+      "telefono": "1136924564",
+      "whatsapp": "https://wa.me/5491136924564",
+      "link_maps": "https://www.google.com/maps/place/Aura+glass/data=!4m7!3m6!1s0x95bcb7c479d44207:0xf76c543876347981!8m2!3d-34.6062552!4d-58.485484!16s%2Fg%2F11zbml4835!19sChIJB0LUecS3vJURgXk0djhUbPc?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Nazca 2543, C1417FXA Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Tienda de cristales"
+    },
+    {
+      "nombre": "Rancho Asociados - Estudio de arquitectura",
+      "reseñas": "11",
+      "rating": "5.0",
+      "telefono": "91163727929",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Rancho+Asociados+-+Estudio+de+arquitectura/data=!4m7!3m6!1s0x95bccb481f331531:0x3baba6d0e06e0dff!8m2!3d-34.6274286!4d-58.4306996!16s%2Fg%2F11y3j5ngpg!19sChIJMRUzH0jLvJUR_w1u4NCmqzs?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Directorio, C1424 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Estudio de arquitectura"
+    },
+    {
+      "nombre": "Fauda Home Deco",
+      "reseñas": "10",
+      "rating": "5.0",
+      "telefono": "1134341489",
+      "whatsapp": "https://wa.me/5491134341489",
+      "link_maps": "https://www.google.com/maps/place/Fauda+Home+Deco/data=!4m7!3m6!1s0x95bcb78ff4cd2517:0x4a80ef550b375cbe!8m2!3d-34.627509!4d-58.4291572!16s%2Fg%2F11fsjbg3yq!19sChIJFyXN9I-3vJURvlw3C1XvgEo?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Directorio 186, C1424 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Estudio de arquitectura"
+    },
+    {
+      "nombre": "Estudio Maleza. Arquitectura + Paisaje",
+      "reseñas": "8",
+      "rating": "5.0",
+      "telefono": "91144387342",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Estudio+Maleza.+Arquitectura+%2B+Paisaje/data=!4m7!3m6!1s0x95bcb7d07fda6209:0x6231156ebfba0178!8m2!3d-34.5830653!4d-58.4874289!16s%2Fg%2F11f7knsvqm!19sChIJCWLaf9C3vJUReAG6v24VMWI?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Burela 1867 d.4, C1431 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Arquitecto paisajista"
+    },
+    {
+      "nombre": "Fusión",
+      "reseñas": "4",
+      "rating": "5.0",
+      "telefono": "91135712738",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Fusi%C3%B3n/data=!4m7!3m6!1s0x95bcb77f66906d89:0xe630214de6d943e4!8m2!3d-34.5851358!4d-58.5027433!16s%2Fg%2F11j5klmj60!19sChIJiW2QZn-3vJUR5EPZ5k0hMOY?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Carlos Antonio López 2865, C1419 ETO, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Arquitecto"
+    },
+    {
+      "nombre": "LEVY&RESELS arquitectas",
+      "reseñas": "3",
+      "rating": "5.0",
+      "telefono": "1145529633",
+      "whatsapp": "https://wa.me/5491145529633",
+      "link_maps": "https://www.google.com/maps/place/LEVY%26RESELS+arquitectas/data=!4m7!3m6!1s0x95bcb5e05a88df85:0x45d79a34f788c68!8m2!3d-34.5821825!4d-58.46069!16s%2Fg%2F11ggsbs9g9!19sChIJhd-IWuC1vJURaIx4T6N5XQQ?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Elcano 3917 PB, C1427 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Estudio de arquitectura"
+    },
+    {
+      "nombre": "RSO ARQUITECTOS",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1161458770",
+      "whatsapp": "https://wa.me/5491161458770",
+      "link_maps": "https://www.google.com/maps/place/RSO+ARQUITECTOS/data=!4m7!3m6!1s0x95bcb535c5f81859:0xbd7870f42eaf9306!8m2!3d-34.5993518!4d-58.4810146!16s%2Fg%2F11f6v6l2rb!19sChIJWRj4xTW1vJURBpOvLvRweL0?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Empedrado 2342, C1417 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Asociación de arquitectos"
+    },
+    {
+      "nombre": "VM Arquitectos",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1125590250",
+      "whatsapp": "https://wa.me/5491125590250",
+      "link_maps": "https://www.google.com/maps/place/VM+Arquitectos/data=!4m7!3m6!1s0x95bcb7c70b18dc59:0xf30219d6724a3612!8m2!3d-34.596835!4d-58.5061546!16s%2Fg%2F11fqpvd1wv!19sChIJWdwYC8e3vJUREjZKctYZAvM?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Nueva York 3550, C1419 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Estudio de arquitectura"
+    },
+    {
+      "nombre": "C - Estudio",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1140951008",
+      "whatsapp": "https://wa.me/5491140951008",
+      "link_maps": "https://www.google.com/maps/place/C+-+Estudio/data=!4m7!3m6!1s0x95bcb50b85af32d5:0x4ea986982516a651!8m2!3d-34.5774077!4d-58.4708434!16s%2Fg%2F11sr6ngbc3!19sChIJ1TKvhQu1vJURUaYWJZiGqU4?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Donado 1601, C1430 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Estudio de arquitectura"
+    },
+    {
+      "nombre": "MARQ STUDIO - Maquetas de Arquitectura",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1123209336",
+      "whatsapp": "https://wa.me/5491123209336",
+      "link_maps": "https://www.google.com/maps/place/MARQ+STUDIO+-+Maquetas+de+Arquitectura/data=!4m7!3m6!1s0x95bcca7a975843d7:0x8f42ec8c80f58eca!8m2!3d-34.6043406!4d-58.4546846!16s%2Fg%2F11f3nb74lv!19sChIJ10NYl3rKvJURyo71gIzsQo8?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Dr. Luis Beláustegui 901, C1416CXI Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Constructor de modelos de arquitectura e ingeniería"
+    },
+    {
+      "nombre": "Casa Nueva • Reformas a medida • Diseño bioclimático • Asesoría • Buenos Aires | Costa Atlántica | Córdoba",
+      "reseñas": "27",
+      "rating": "4.9",
+      "telefono": "1167070301",
+      "whatsapp": "https://wa.me/5491167070301",
+      "link_maps": "https://www.google.com/maps/place/Casa+Nueva+%E2%80%A2+Reformas+a+medida+%E2%80%A2+Dise%C3%B1o+bioclim%C3%A1tico+%E2%80%A2+Asesor%C3%ADa+%E2%80%A2+Buenos+Aires+%7C+Costa+Atl%C3%A1ntica+%7C+C%C3%B3rdoba/data=!4m7!3m6!1s0x95bcb79aceeea341:0xd8505aa58c70b661!8m2!3d-38.45155!4d-63.5989752!16s%2Fg%2F11grvpxx3t!19sChIJQaPuzpq3vJURYbZwjKVaUNg?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "{\"borough\":\"\",\"street\":\"\",\"city\":\"\",\"postal_code\":\"\",\"state\":\"\",\"country\":\"\"}",
+      "categoria": "Arquitecto"
+    },
+    {
+      "nombre": "Arquitectura Borda",
+      "reseñas": "11",
+      "rating": "4.9",
+      "telefono": "1135798418",
+      "whatsapp": "https://wa.me/5491135798418",
+      "link_maps": "https://www.google.com/maps/place/Arquitectura+Borda/data=!4m7!3m6!1s0x95bcc9e09876dc47:0xbfefae2731e0e413!8m2!3d-34.6445724!4d-58.4852896!16s%2Fg%2F11wgrk0czy!19sChIJR9x2mODJvJURE-TgMSeu778?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Dr. Florentino Ameghino 815, C1407 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Arquitecto"
+    },
+    {
+      "nombre": "SOAE ISKANDARANI SOAE arquitectos",
+      "reseñas": "21",
+      "rating": "4.7",
+      "telefono": "1146377424",
+      "whatsapp": "https://wa.me/5491146377424",
+      "link_maps": "https://www.google.com/maps/place/SOAE+ISKANDARANI+SOAE+arquitectos/data=!4m7!3m6!1s0x95bcc98c5b5fbd5f:0xb0e39b77260de17f!8m2!3d-34.6261213!4d-58.4704672!16s%2Fg%2F1td6hn_2!19sChIJX71fW4zJvJURf-ENJneb47A?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Avellaneda 2820, C1406FZN Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Estudio de arquitectura"
+    },
+    {
+      "nombre": "Hura Arquitectura",
+      "reseñas": "15",
+      "rating": "4.7",
+      "telefono": "1143124740",
+      "whatsapp": "https://wa.me/5491143124740",
+      "link_maps": "https://www.google.com/maps/place/Hura+Arquitectura/data=!4m7!3m6!1s0x95bccb57634df857:0x6ac9775994a69987!8m2!3d-34.6000665!4d-58.4873664!16s%2Fg%2F11nmt79dzd!19sChIJV_hNY1fLvJURh5mmlFl3yWo?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Nogoyá 2681, C1417 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Estudio de arquitectura"
+    },
+    {
+      "nombre": "Montaggio Arquitectura",
+      "reseñas": "4",
+      "rating": "4.5",
+      "telefono": "1153855303",
+      "whatsapp": "https://wa.me/5491153855303",
+      "link_maps": "https://www.google.com/maps/place/Montaggio+Arquitectura/data=!4m7!3m6!1s0x95bcb5e010fd0e43:0x86c63f3b7eb3a1e3!8m2!3d-34.581532!4d-58.462115!16s%2Fg%2F11d_z7rxz1!19sChIJQw79EOC1vJUR46Gzfjs_xoY?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "14 de Julio 1024 3B, C1024 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Estudio de arquitectura"
+    },
+    {
+      "nombre": "GRIS Arquitectura - Sor Juana Ines de la Cruz 1457",
+      "reseñas": "13",
+      "rating": "4.3",
+      "telefono": "1148553411",
+      "whatsapp": "https://wa.me/5491148553411",
+      "link_maps": "https://www.google.com/maps/place/GRIS+Arquitectura+-+Sor+Juana+Ines+de+la+Cruz+1457/data=!4m7!3m6!1s0x95bccb7b1cacb1b3:0x8bde02b70d56f02f!8m2!3d-34.6094664!4d-58.4603309!16s%2Fg%2F11g232lw2s!19sChIJs7GsHHvLvJURL_BWDbcC3os?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Sor Juana Inés de la Cruz 1457, C1416 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Arquitecto"
+    },
+    {
+      "nombre": "ArquiProp Estudio",
+      "reseñas": "20",
+      "rating": "4.2",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/ArquiProp+Estudio/data=!4m7!3m6!1s0x95bcb630586ea7d5:0x68b89f16923ff93a!8m2!3d-34.5990668!4d-58.4990944!16s%2Fg%2F11b78pyqlj!19sChIJ1aduWDC2vJUROvk_khafuGg?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Campana 3426, C1417ADF Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Arquitecto"
+    },
+    {
+      "nombre": "Leder Denegri Arquitectos",
+      "reseñas": "7",
+      "rating": "4.0",
+      "telefono": "1156386942",
+      "whatsapp": "https://wa.me/5491156386942",
+      "link_maps": "https://www.google.com/maps/place/Leder+Denegri+Arquitectos/data=!4m7!3m6!1s0x95bcb5c1490dc96f:0xcca9a82d826ad1ad!8m2!3d-34.5742309!4d-58.4737749!16s%2Fg%2F1tctyr3m!19sChIJb8kNScG1vJURrdFqgi2oqcw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Donado 1945 of. 305, C1430DRK DoHo, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Estudio de arquitectura"
+    },
+    {
+      "nombre": "GR I Estudio",
+      "reseñas": "33",
+      "rating": "3.9",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/GR+I+Estudio/data=!4m7!3m6!1s0x95bccb9bc78370a5:0x708d27c1e50fa55!8m2!3d-34.6175041!4d-58.4570901!16s%2Fg%2F11fl8lt95d!19sChIJpXCDx5vLvJURVfpQHnzSCAc?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Felipe Vallese 1644, C1406FSF Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Estudio de arquitectura"
+    }
+  ]
+}

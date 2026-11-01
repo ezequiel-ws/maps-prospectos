@@ -1,6 +1,15 @@
 {
   "searches": [
     {
+      "id": "20261031-234055_arquitectos-6-barrios-caba",
+      "query": "arquitectos · 6 barrios CABA",
+      "date": "20261031-234055",
+      "date_label": "2026-10-31 23:40 (America/Buenos_Aires)",
+      "n_raw": 200,
+      "n_limpio": 19,
+      "file": "20261031-234055_arquitectos-6-barrios-caba.json"
+    },
+    {
       "id": "20261031-202941_plomeros-4-barrios-caba",
       "query": "plomeros · 4 barrios CABA",
       "date": "20261031-202941",

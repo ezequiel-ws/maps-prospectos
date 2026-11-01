@@ -1,7 +1,3 @@
 {
-  "status": "in_progress",
-  "query": "arquitectos · 6 barrios CABA",
-  "started_at": "2026-10-31T23:38:02-03:00",
-  "started_at_label": "2026-10-31 23:38 (America/Buenos_Aires)",
-  "started_at_epoch": 1793500682
+  "status": "idle"
 }
