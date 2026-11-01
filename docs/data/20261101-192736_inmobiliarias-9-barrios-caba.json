@@ -1,0 +1,390 @@
+{
+  "id": "20261101-192736_inmobiliarias-9-barrios-caba",
+  "query": "inmobiliarias · 9 barrios CABA",
+  "date": "20261101-192736",
+  "date_label": "2026-11-01 19:27 (America/Buenos_Aires)",
+  "n_raw": 269,
+  "n_limpio": 38,
+  "prospects": [
+    {
+      "nombre": "Sofia Gonzalez Agente Inmobiliario",
+      "reseñas": "59",
+      "rating": "5.0",
+      "telefono": "1123191553",
+      "whatsapp": "https://wa.me/5491123191553",
+      "link_maps": "https://www.google.com/maps/place/Sofia+Gonzalez+Agente+Inmobiliario/data=!4m7!3m6!1s0x95bccb1fccc0ac8f:0x3b3740731563b50e!8m2!3d-34.635!4d-58.3754379!16s%2Fg%2F11nyv_20q_!19sChIJj6zAzB_LvJURDrVjFXNANzs?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Montes de Oca 581, C1140 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agentes inmobiliarios"
+    },
+    {
+      "nombre": "Karina Mazzitelli - Agente Inmobiliario Remax Tango",
+      "reseñas": "14",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Karina+Mazzitelli+-+Agente+Inmobiliario+Remax+Tango/data=!4m7!3m6!1s0x95bccb003ebe2f13:0xe704f8899f8f1f94!8m2!3d-34.6342255!4d-58.3756086!16s%2Fg%2F11z4cv61fr!19sChIJEy--PgDLvJURlB-Pn4n4BOc?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Montes de Oca 499, C1270 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agentes inmobiliarios"
+    },
+    {
+      "nombre": "Normal Inmobiliaria",
+      "reseñas": "9",
+      "rating": "5.0",
+      "telefono": "1135863467",
+      "whatsapp": "https://wa.me/5491135863467",
+      "link_maps": "https://www.google.com/maps/place/Normal+Inmobiliaria/data=!4m7!3m6!1s0x95bccb6ff0eb9e4d:0x85356660ce064aab!8m2!3d-34.6536438!4d-58.4050841!16s%2Fg%2F11fmz1v7m7!19sChIJTZ7r8G_LvJURq0oGzmBmNYU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Oscar Natalio Bonavena 1400, C1437EOH Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agencia inmobiliaria"
+    },
+    {
+      "nombre": "TORRISI BOEDO",
+      "reseñas": "4",
+      "rating": "5.0",
+      "telefono": "1143991234",
+      "whatsapp": "https://wa.me/5491143991234",
+      "link_maps": "https://www.google.com/maps/place/TORRISI+BOEDO/data=!4m7!3m6!1s0x95bccb5c84f2c12d:0xd6d5eb7863ae3718!8m2!3d-34.6255727!4d-58.4196025!16s%2Fg%2F11md1470s8!19sChIJLcHyhFzLvJURGDeuY3jr1dY?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. San Juan 3851, C1233 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agencia inmobiliaria"
+    },
+    {
+      "nombre": "Parada",
+      "reseñas": "4",
+      "rating": "5.0",
+      "telefono": "1149113865",
+      "whatsapp": "https://wa.me/5491149113865",
+      "link_maps": "https://www.google.com/maps/place/Parada/data=!4m7!3m6!1s0x95bccb0a19bb24cb:0x14183ef8caccfadc!8m2!3d-34.6429468!4d-58.4163072!16s%2Fg%2F1tks7hkt!19sChIJyyS7GQrLvJUR3PrMyvg-GBQ?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Sáenz 303, C1437 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agencia inmobiliaria"
+    },
+    {
+      "nombre": "Oreiro",
+      "reseñas": "3",
+      "rating": "5.0",
+      "telefono": "1149253080",
+      "whatsapp": "https://wa.me/5491149253080",
+      "link_maps": "https://www.google.com/maps/place/Oreiro/data=!4m7!3m6!1s0x95bccb0836984035:0xb0399a0063ffff44!8m2!3d-34.6395196!4d-58.4162815!16s%2Fg%2F1hc0vg30q!19sChIJNUCYNgjLvJURRP__YwCaObA?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Sáenz 33, C1437 DNA, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agentes inmobiliarios"
+    },
+    {
+      "nombre": "Entregar",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Entregar/data=!4m7!3m6!1s0x95bccb006f5e6d55:0x4545c4764388010e!8m2!3d-34.6460455!4d-58.4031946!16s%2Fg%2F11vzfmr89f!19sChIJVW1ebwDLvJURDgGIQ3bERUU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Masantonio, Herminio 2957, C1437HVA C1437HVA, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agencia inmobiliaria"
+    },
+    {
+      "nombre": "Pasaje i 387",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Pasaje+i+387/data=!4m7!3m6!1s0x95bccbcd56a452a7:0x9286577a3fd73788!8m2!3d-34.6574369!4d-58.4565219!16s%2Fg%2F11tj_cqm37!19sChIJp1KkVs3LvJURiDfXP3pXhpI?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Pje. I 387, C1407 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Sociedad de viviendas"
+    },
+    {
+      "nombre": "RB Propiedades",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1143077441",
+      "whatsapp": "https://wa.me/5491143077441",
+      "link_maps": "https://www.google.com/maps/place/RB+Propiedades/data=!4m7!3m6!1s0x95a334caeab84ad3:0x68038d5988943d57!8m2!3d-34.6327622!4d-58.3701703!16s%2Fg%2F11b6xdm7yj!19sChIJ00q46so0o5URVz2UiFmNA2g?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Regimiento de Patricios 1195, C1265AEE Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agentes inmobiliarios"
+    },
+    {
+      "nombre": "Casay",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Casay/data=!4m7!3m6!1s0x95bccb0010ab6751:0x55fa78d0f00876f2!8m2!3d-34.6601621!4d-58.4557027!16s%2Fg%2F11z2wjfzlp!19sChIJUWerEADLvJUR8nYI8NB4-lU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Lacarra 2800, C1407 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Complejo de viviendas"
+    },
+    {
+      "nombre": "Constructora Inmobiliaria Rh Sa",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Constructora+Inmobiliaria+Rh+Sa/data=!4m7!3m6!1s0x95bccb9259a67261:0x1d8cbf3807f9ddf7!8m2!3d-34.661514!4d-58.4370955!16s%2Fg%2F11j8lnh4tq!19sChIJYXKmWZLLvJUR9935Bzi_jB0?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Tabaré 2866, C1437 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": ""
+    },
+    {
+      "nombre": "Lacasa de mati",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Lacasa+de+mati/data=!4m7!3m6!1s0x95bccb2cfbe44fe3:0x6097b2f3c76bd53f!8m2!3d-34.6559526!4d-58.4581327!16s%2Fg%2F11rw7fr2ry!19sChIJ40_k-yzLvJURP9Vrx_Oyl2A?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Pje. B, C1407 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Sociedad de viviendas"
+    },
+    {
+      "nombre": "Altos de Achala - Emprendimiento Inmobiliario en Distrito Tecnológico",
+      "reseñas": "11",
+      "rating": "4.9",
+      "telefono": "1170005050",
+      "whatsapp": "https://wa.me/5491170005050",
+      "link_maps": "https://www.google.com/maps/place/Altos+de+Achala+-+Emprendimiento+Inmobiliario+en+Distrito+Tecnol%C3%B3gico/data=!4m7!3m6!1s0x95bccbbf3934fa77:0xcafd60d459f1e4b!8m2!3d-34.6424938!4d-58.414103!16s%2Fg%2F11n0dv0shk!19sChIJd_o0Ob_LvJURSx6fRQ3Wrww?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Achala 3547, C1437 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Edificio de apartamentos"
+    },
+    {
+      "nombre": "NUEVO SIGLO PROPIEDADES Inmobiliarias en Barracas Tasaciones Departamentos en Venta y Alquiler",
+      "reseñas": "167",
+      "rating": "4.8",
+      "telefono": "1169240551",
+      "whatsapp": "https://wa.me/5491169240551",
+      "link_maps": "https://www.google.com/maps/place/NUEVO+SIGLO+PROPIEDADES+Inmobiliarias+en+Barracas+Tasaciones+Departamentos+en+Venta+y+Alquiler/data=!4m7!3m6!1s0x95bccb34cea334c1:0xc05297053ad0b14!8m2!3d-34.6312091!4d-58.3720705!16s%2Fg%2F11b6dwznhl!19sChIJwTSjzjTLvJURFAutU3ApBQw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Martín García 560, C1268ABO Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agencia inmobiliaria"
+    },
+    {
+      "nombre": "Novoa",
+      "reseñas": "3",
+      "rating": "4.7",
+      "telefono": "91156377248",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Novoa/data=!4m7!3m6!1s0x95bcc951f6216c87:0xb12452745135c031!8m2!3d-34.6786777!4d-58.4733006!16s%2Fg%2F11fx7vhh16!19sChIJh2wh9lHJvJURMcA1UXRSJLE?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Murguiondo 4402, C1439 FTH, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agentes inmobiliarios"
+    },
+    {
+      "nombre": "F M Grupo Inmobiliario",
+      "reseñas": "17",
+      "rating": "4.6",
+      "telefono": "1144707737",
+      "whatsapp": "https://wa.me/5491144707737",
+      "link_maps": "https://www.google.com/maps/place/F+M+Grupo+Inmobiliario/data=!4m7!3m6!1s0x95bcc9410cfb4e45:0xedfb1b1c1fed426b!8m2!3d-34.6689348!4d-58.4816759!16s%2Fg%2F1v_0kyf9!19sChIJRU77DEHJvJURa0LtHxwb--0?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Larrazábal 3184, C1439ECS Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agencia inmobiliaria"
+    },
+    {
+      "nombre": "Diaz Propiedades",
+      "reseñas": "15",
+      "rating": "4.6",
+      "telefono": "1146875284",
+      "whatsapp": "https://wa.me/5491146875284",
+      "link_maps": "https://www.google.com/maps/place/Diaz+Propiedades/data=!4m7!3m6!1s0x95bcc9143ada9d89:0x283af926896348d4!8m2!3d-34.6654531!4d-58.4906429!16s%2Fg%2F11bbrn9g6g!19sChIJiZ3aOhTJvJUR1EhjiSb5Oig?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Murguiondo 2920, C1439FQB Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agencia inmobiliaria"
+    },
+    {
+      "nombre": "LA LLAVE INMOBILIARIA",
+      "reseñas": "56",
+      "rating": "4.5",
+      "telefono": "1146422991",
+      "whatsapp": "https://wa.me/5491146422991",
+      "link_maps": "https://www.google.com/maps/place/LA+LLAVE+INMOBILIARIA/data=!4m7!3m6!1s0x95a334b4be7dd8f5:0xcfac6be52c731d66!8m2!3d-34.6299021!4d-58.3705124!16s%2Fg%2F1w97wkcx!19sChIJ9dh9vrQ0o5URZh1zLOVrrM8?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Regimiento de Patricios 34, C1265ADN Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agentes inmobiliarios"
+    },
+    {
+      "nombre": "Francisco Maquieira",
+      "reseñas": "35",
+      "rating": "4.5",
+      "telefono": "1146026178",
+      "whatsapp": "https://wa.me/5491146026178",
+      "link_maps": "https://www.google.com/maps/place/Francisco+Maquieira/data=!4m7!3m6!1s0x95bcc94534b9ad4b:0x7a281f3a893e03b0!8m2!3d-34.6723959!4d-58.4741494!16s%2Fg%2F1v5k46d_!19sChIJS625NEXJvJURsAM-iTofKHo?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Aquino 5388, C1439ADR Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agencia inmobiliaria"
+    },
+    {
+      "nombre": "Sáenz Inmobiliaria",
+      "reseñas": "14",
+      "rating": "4.4",
+      "telefono": "1149118400",
+      "whatsapp": "https://wa.me/5491149118400",
+      "link_maps": "https://www.google.com/maps/place/S%C3%A1enz+Inmobiliaria/data=!4m7!3m6!1s0x95bccbe71f733d61:0xf20f33f3a027fb8d!8m2!3d-34.6475891!4d-58.4160451!16s%2Fg%2F11j0h98f5b!19sChIJYT1zH-fLvJURjfsnoPMzD_I?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Sáenz 688, C1437 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agencia inmobiliaria"
+    },
+    {
+      "nombre": "Luci",
+      "reseñas": "11",
+      "rating": "4.4",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Luci/data=!4m7!3m6!1s0x95bcc94db0392dcf:0xef61bea4cf2110ce!8m2!3d-34.6812993!4d-58.4766705!16s%2Fg%2F11dxl9jqx8!19sChIJzy05sE3JvJURzhAhz6S-Ye8?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "C. Jose Pablo Torcuato Batlle y Ordoñez 6051-6099, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agentes inmobiliarios"
+    },
+    {
+      "nombre": "Casa de Dana",
+      "reseñas": "3",
+      "rating": "4.3",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Casa+de+Dana/data=!4m7!3m6!1s0x95bcc9d06ede7003:0xb58d559ba54c4e18!8m2!3d-34.6649394!4d-58.4697087!16s%2Fg%2F11ncc7512z!19sChIJA3DebtDJvJURGE5MpZtVjbU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Escalada y, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Sociedad de viviendas"
+    },
+    {
+      "nombre": "General Savio",
+      "reseñas": "1957",
+      "rating": "4.2",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/General+Savio/data=!4m7!3m6!1s0x95bcceaa06a2bd3d:0x50a32e7991673456!8m2!3d-34.6876192!4d-58.4646859!16s%2Fg%2F1234zqjb!19sChIJPb2iBqrOvJURVjRnkXkuo1A?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Cafayate 5290, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Complejo de apartamentos"
+    },
+    {
+      "nombre": "Re/Max Nativo",
+      "reseñas": "81",
+      "rating": "4.2",
+      "telefono": "1121421071",
+      "whatsapp": "https://wa.me/5491121421071",
+      "link_maps": "https://www.google.com/maps/place/Re%2FMax+Nativo/data=!4m7!3m6!1s0x95bcca546395fba3:0x7a640044f3661781!8m2!3d-34.6262159!4d-58.4225598!16s%2Fg%2F11flt321xt!19sChIJo_uVY1TKvJURgRdm80QAZHo?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. San Juan 4081, C1233ABX Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agencia inmobiliaria"
+    },
+    {
+      "nombre": "Ritmo Inmobiliario",
+      "reseñas": "20",
+      "rating": "4.2",
+      "telefono": "1143076212",
+      "whatsapp": "https://wa.me/5491143076212",
+      "link_maps": "https://www.google.com/maps/place/Ritmo+Inmobiliario/data=!4m7!3m6!1s0x95bccb344aea45b1:0x777e9002f2545e37!8m2!3d-34.6330145!4d-58.3760387!16s%2Fg%2F1tks7hkz!19sChIJsUXqSjTLvJURN15U8gKQfnc?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Montes de Oca 383, C1270 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agencia inmobiliaria"
+    },
+    {
+      "nombre": "Complejo Villa Soldati",
+      "reseñas": "104",
+      "rating": "4.1",
+      "telefono": "91140255203",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Complejo+Villa+Soldati/@-34.6670348,-58.4443796,17z/data=!3m1!4b1!4m6!3m5!1s0x95bccbee00c94313:0xe39d9ddb142f1c1d!8m2!3d-34.6670348!4d-58.4443796!16s%2Fg%2F11hckh_wp0?hl=es&entry=ttu&g_ep=EgoyMDI2MTAyOC4wIKXMDSoASAFQAw%3D%3D",
+      "direccion": "Corrales 3400, C1437 Cdad. Autónoma de Buenos Aires, Provincia de Buenos Aires, Argentina",
+      "categoria": "Condominio"
+    },
+    {
+      "nombre": "ESTILO PROPIEDADES",
+      "reseñas": "34",
+      "rating": "4.1",
+      "telefono": "1144336339",
+      "whatsapp": "https://wa.me/5491144336339",
+      "link_maps": "https://www.google.com/maps/place/ESTILO+PROPIEDADES/data=!4m7!3m6!1s0x95bcca34387e1af5:0xc572f48cb36d644d!8m2!3d-34.6320683!4d-58.4448712!16s%2Fg%2F11b6qy46bm!19sChIJ9Rp-ODTKvJURTWRts4z0csU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Baldomero Fernández Moreno 1292, C1406 C1406HHC, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agencia inmobiliaria"
+    },
+    {
+      "nombre": "INMOBILIARIA SALVADOR DENGRA",
+      "reseñas": "15",
+      "rating": "4.1",
+      "telefono": "1146042563",
+      "whatsapp": "https://wa.me/5491146042563",
+      "link_maps": "https://www.google.com/maps/place/INMOBILIARIA+SALVADOR+DENGRA/data=!4m7!3m6!1s0x95bcceafa080655f:0x35b45d93fd36658a!8m2!3d-34.6916396!4d-58.4714532!16s%2Fg%2F1tqtz1sx!19sChIJX2WAoK_OvJURimU2_ZNdtDU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Guaminí 5380, C1439CWP Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agencia inmobiliaria"
+    },
+    {
+      "nombre": "Lorenzo Propiedades",
+      "reseñas": "7",
+      "rating": "4.1",
+      "telefono": "1146001186",
+      "whatsapp": "https://wa.me/5491146001186",
+      "link_maps": "https://www.google.com/maps/place/Lorenzo+Propiedades/data=!4m7!3m6!1s0x95bccb07e922691d:0xec7f97446e3c836!8m2!3d-34.6364182!4d-58.4160448!16s%2Fg%2F1q62gd27t!19sChIJHWki6QfLvJURNsjjRnT5xw4?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Boedo 1924, C1239 AAW, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agentes inmobiliarios"
+    },
+    {
+      "nombre": "Mariano Acosta y Ana María Janer",
+      "reseñas": "53",
+      "rating": "4.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Mariano+Acosta+y+Ana+Mar%C3%ADa+Janer/data=!4m7!3m6!1s0x95bccb44dbb85edd:0x6aa1e0fdf3c396df!8m2!3d-34.6597295!4d-58.4498134!16s%2Fg%2F11jt8f53ft!19sChIJ3V6420TLvJUR35bD8_3goWo?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Avenida Mariano Acosta, C. Ana Maria Janer &, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Villa"
+    },
+    {
+      "nombre": "PROVILAR Inmobiliaria",
+      "reseñas": "7",
+      "rating": "4.0",
+      "telefono": "1149240392",
+      "whatsapp": "https://wa.me/5491149240392",
+      "link_maps": "https://www.google.com/maps/place/PROVILAR+Inmobiliaria/data=!4m7!3m6!1s0x95bccbb5403d430f:0x6fcb33e1bba21876!8m2!3d-34.6350763!4d-58.4388168!16s%2Fg%2F11b6ywqphz!19sChIJD0M9QLXLvJURdhiiu-Ezy28?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Asamblea 999, C1424COK Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agencia inmobiliaria"
+    },
+    {
+      "nombre": "Complejo Habitacional Soldati",
+      "reseñas": "1",
+      "rating": "4.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Complejo+Habitacional+Soldati/data=!4m7!3m6!1s0x95bccb004fefea4d:0xbde3caddeb3fbf5a!8m2!3d-34.6632101!4d-58.4428908!16s%2Fg%2F11yp47hgw3!19sChIJTervTwDLvJURWr8_693K470?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Rodrigo de Triana 3700, C1437GBF Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Complejo de apartamentos"
+    },
+    {
+      "nombre": "Noya",
+      "reseñas": "13",
+      "rating": "3.9",
+      "telefono": "1146010508",
+      "whatsapp": "https://wa.me/5491146010508",
+      "link_maps": "https://www.google.com/maps/place/Noya/data=!4m7!3m6!1s0x95bcceb296a559a7:0xf934688a5f0fefe0!8m2!3d-34.6857483!4d-58.4755946!16s%2Fg%2F11b6sy002r!19sChIJp1mllrLOvJUR4O8PX4poNPk?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Coronel Martiniano Chilavert 6379, C1439CLW Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Consultor inmobiliario"
+    },
+    {
+      "nombre": "HIMALAYA Propiedades",
+      "reseñas": "53",
+      "rating": "3.8",
+      "telefono": "1133384211",
+      "whatsapp": "https://wa.me/5491133384211",
+      "link_maps": "https://www.google.com/maps/place/HIMALAYA+Propiedades/data=!4m7!3m6!1s0x95bccbb54c075eb1:0x8a5cdc008d5b689e!8m2!3d-34.6342923!4d-58.4391358!16s%2Fg%2F1tdbgmlc!19sChIJsV4HTLXLvJURnmhbjQDcXIo?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Salas 876, C1424 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agencia inmobiliaria"
+    },
+    {
+      "nombre": "Conjunto Soldati",
+      "reseñas": "988",
+      "rating": "3.6",
+      "telefono": "1141658998",
+      "whatsapp": "https://wa.me/5491141658998",
+      "link_maps": "https://www.google.com/maps/place/Conjunto+Soldati/data=!4m7!3m6!1s0x95bccbf21631f66d:0x7f39e7bfc2e88b0a!8m2!3d-34.6661888!4d-58.44516!16s%2Fg%2F1q5bn9y7w!19sChIJbfYxFvLLvJURCovowr_nOX8?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Corrales 3420, C1437 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Urbanización"
+    },
+    {
+      "nombre": "PINTOS Hnos.",
+      "reseñas": "11",
+      "rating": "3.4",
+      "telefono": "1149113740",
+      "whatsapp": "https://wa.me/5491149113740",
+      "link_maps": "https://www.google.com/maps/place/PINTOS+Hnos./data=!4m7!3m6!1s0x95bccb0b1d51a599:0x5b5853f6d6fa4c5d!8m2!3d-34.6450353!4d-58.414342!16s%2Fg%2F11b75hzt7z!19sChIJmaVRHQvLvJURXUz61vZTWFs?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Almafuerte 637, C1437JLG Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agentes inmobiliarios"
+    },
+    {
+      "nombre": "CL",
+      "reseñas": "11",
+      "rating": "2.9",
+      "telefono": "1146389000",
+      "whatsapp": "https://wa.me/5491146389000",
+      "link_maps": "https://www.google.com/maps/place/CL/data=!4m7!3m6!1s0x95bcc94e319a5dc1:0xa3aa7b98f9b16f98!8m2!3d-34.6770285!4d-58.4752943!16s%2Fg%2F11b6xch3hy!19sChIJwV2aMU7JvJURmG-x-Zh7qqM?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Riestra 5699, C1439 BYH, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agentes inmobiliarios"
+    },
+    {
+      "nombre": "Acción",
+      "reseñas": "11",
+      "rating": "2.1",
+      "telefono": "1130087881",
+      "whatsapp": "https://wa.me/5491130087881",
+      "link_maps": "https://www.google.com/maps/place/Acci%C3%B3n/data=!4m7!3m6!1s0x95bcceafae31c929:0x4d1dbb57d6ffec81!8m2!3d-34.6912851!4d-58.4722856!16s%2Fg%2F1hc388n66!19sChIJKckxrq_OvJURgez_1le7HU0?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Guaminí 5325, C1439HAQ Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Agentes inmobiliarios"
+    }
+  ]
+}

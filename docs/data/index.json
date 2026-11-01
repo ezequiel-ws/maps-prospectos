@@ -1,6 +1,15 @@
 {
   "searches": [
     {
+      "id": "20261101-192736_inmobiliarias-9-barrios-caba",
+      "query": "inmobiliarias · 9 barrios CABA",
+      "date": "20261101-192736",
+      "date_label": "2026-11-01 19:27 (America/Buenos_Aires)",
+      "n_raw": 269,
+      "n_limpio": 38,
+      "file": "20261101-192736_inmobiliarias-9-barrios-caba.json"
+    },
+    {
       "id": "20261101-124802_odontologos-9-barrios-caba",
       "query": "odontólogos · 9 barrios CABA",
       "date": "20261101-124802",
