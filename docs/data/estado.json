@@ -1,7 +1,3 @@
 {
-  "status": "in_progress",
-  "query": "odontólogos · 9 barrios CABA",
-  "started_at": "2026-11-01T12:45:07-03:00",
-  "started_at_label": "2026-11-01 12:45 (America/Buenos_Aires)",
-  "started_at_epoch": 1793547907
+  "status": "idle"
 }

@@ -1,0 +1,1010 @@
+{
+  "id": "20261101-124802_odontologos-9-barrios-caba",
+  "query": "odontólogos · 9 barrios CABA",
+  "date": "20261101-124802",
+  "date_label": "2026-11-01 12:48 (America/Buenos_Aires)",
+  "n_raw": 409,
+  "n_limpio": 100,
+  "prospects": [
+    {
+      "nombre": "El Placer De Sonreir",
+      "reseñas": "364",
+      "rating": "5.0",
+      "telefono": "1126367902",
+      "whatsapp": "https://wa.me/5491126367902",
+      "link_maps": "https://www.google.com/maps/place/El+Placer+De+Sonreir/data=!4m7!3m6!1s0x95bccba655427a59:0xff9a06084c11da49!8m2!3d-34.6409585!4d-58.4202569!16s%2Fg%2F1hc6bvmvw!19sChIJWXpCVabLvJURSdoRTAgGmv8?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Chiclana 4048, C1437JMO Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Mecánico Dental Víctor",
+      "reseñas": "58",
+      "rating": "5.0",
+      "telefono": "1165101677",
+      "whatsapp": "https://wa.me/5491165101677",
+      "link_maps": "https://www.google.com/maps/place/Mec%C3%A1nico+Dental+V%C3%ADctor/data=!4m7!3m6!1s0x95bcc95cd9881985:0x14394181b0e6b097!8m2!3d-34.6704507!4d-58.4706461!16s%2Fg%2F1hcbh3qwp!19sChIJhRmI2VzJvJURl7DmsIFBORQ?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Albariño 3580, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Plenitud Dent. Odontología",
+      "reseñas": "18",
+      "rating": "5.0",
+      "telefono": "1127140408",
+      "whatsapp": "https://wa.me/5491127140408",
+      "link_maps": "https://www.google.com/maps/place/Plenitud+Dent.+Odontolog%C3%ADa/data=!4m7!3m6!1s0x95bccf0c690ab62d:0xc9de0150cdef9046!8m2!3d-34.6840803!4d-58.4737738!16s%2Fg%2F11yt789ffl!19sChIJLbYKaQzPvJURRpDvzVAB3sk?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Coronel Martiniano Chilavert 6129, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Dr Daniel Marchitteli",
+      "reseñas": "18",
+      "rating": "5.0",
+      "telefono": "1136954500",
+      "whatsapp": "https://wa.me/5491136954500",
+      "link_maps": "https://www.google.com/maps/place/Dr+Daniel+Marchitteli/data=!4m7!3m6!1s0x95bccbed659323f5:0xfa76406e1396f9b9!8m2!3d-34.6640005!4d-58.4420698!16s%2Fg%2F1tgljhty!19sChIJ9SOTZe3LvJURufmWE25Advo?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "GNG, Corrales 3269, C1437GNG Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "CONSULTORIO ODONTOLOGICO Imagen",
+      "reseñas": "15",
+      "rating": "5.0",
+      "telefono": "1168003538",
+      "whatsapp": "https://wa.me/5491168003538",
+      "link_maps": "https://www.google.com/maps/place/CONSULTORIO+ODONTOLOGICO+Imagen/data=!4m7!3m6!1s0x95bccb02a2ef046f:0x635b9a189003f22c!8m2!3d-34.6252981!4d-58.4073159!16s%2Fg%2F11b76mgxzk!19sChIJbwTvogLLvJURLPIDkBiaW2M?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Barcala 3003, C1243AAA Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Mecánico protésico dental"
+    },
+    {
+      "nombre": "Odontología Dream Smile",
+      "reseñas": "13",
+      "rating": "5.0",
+      "telefono": "1167674684",
+      "whatsapp": "https://wa.me/5491167674684",
+      "link_maps": "https://www.google.com/maps/place/Odontolog%C3%ADa+Dream+Smile/data=!4m7!3m6!1s0x95bccb201bf4d9b9:0xf50dbc17f97a2171!8m2!3d-34.6299728!4d-58.4077265!16s%2Fg%2F11nr2k284f!19sChIJudn0GyDLvJURcSF6-Re8DfU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Gral. Urquiza 1624, C1243 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Implantes Dentales |C.A.O.| Dr.Cespedes Antonio | U.B.A",
+      "reseñas": "13",
+      "rating": "5.0",
+      "telefono": "1131647470",
+      "whatsapp": "https://wa.me/5491131647470",
+      "link_maps": "https://www.google.com/maps/place/Implantes+Dentales+%7CC.A.O.%7C+Dr.Cespedes+Antonio+%7C+U.B.A/data=!4m7!3m6!1s0x95bccb0967300a91:0x1ed475e14ecabaff!8m2!3d-34.6450256!4d-58.4258845!16s%2Fg%2F11xyghxqqf!19sChIJkQowZwnLvJUR_7rKTuF11B4?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Riestra 1122, C1437HIN Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "CÍRCULO DENTAL",
+      "reseñas": "12",
+      "rating": "5.0",
+      "telefono": "1158560194",
+      "whatsapp": "https://wa.me/5491158560194",
+      "link_maps": "https://www.google.com/maps/place/C%C3%8DRCULO+DENTAL/data=!4m7!3m6!1s0x95bccbb4d2c6f9e7:0xe6f4b9bbd55b71f1!8m2!3d-34.6334556!4d-58.4366182!16s%2Fg%2F11b70dcv6c!19sChIJ5_nG0rTLvJUR8XFb1bu59OY?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Del Barco Centenera 1225, C1424 AMY, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Laboratorio dental"
+    },
+    {
+      "nombre": "Verónica G. Varela",
+      "reseñas": "9",
+      "rating": "5.0",
+      "telefono": "1149199744",
+      "whatsapp": "https://wa.me/5491149199744",
+      "link_maps": "https://www.google.com/maps/place/Ver%C3%B3nica+G.+Varela/data=!4m7!3m6!1s0x95bccba378837387:0x6e352c643447a521!8m2!3d-34.6455444!4d-58.4257311!16s%2Fg%2F1w6_p_x4!19sChIJh3ODeKPLvJURIaVHNGQsNW4?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Gral. Francisco Fernández de la Cruz 1180, C1437 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Consultorio Odontológico",
+      "reseñas": "8",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+Odontol%C3%B3gico/data=!4m7!3m6!1s0x95bcc900159bbb43:0x2d7bf87cb148192b!8m2!3d-34.6663475!4d-58.4719326!16s%2Fg%2F11zbj1tmd8!19sChIJQ7ubFQDJvJURKxlIsXz4ey0?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Castañares 4750, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": ""
+    },
+    {
+      "nombre": "Dental y estética Dra Solis",
+      "reseñas": "7",
+      "rating": "5.0",
+      "telefono": "1150153274",
+      "whatsapp": "https://wa.me/5491150153274",
+      "link_maps": "https://www.google.com/maps/place/Dental+y+est%C3%A9tica+Dra+Solis/data=!4m7!3m6!1s0x95bccb06fedda745:0xfe4dca45e784b39b!8m2!3d-34.6244!4d-58.418896!16s%2Fg%2F11zd76h_20!19sChIJRafd_gbLvJURm7OE50XKTf4?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Carlos Calvo 3785, C1230ABM Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Clinica dental Dr. German Montouto Dra. Elena BFP",
+      "reseñas": "7",
+      "rating": "5.0",
+      "telefono": "1123053275",
+      "whatsapp": "https://wa.me/5491123053275",
+      "link_maps": "https://www.google.com/maps/place/Clinica+dental+Dr.+German+Montouto+Dra.+Elena+BFP/data=!4m7!3m6!1s0x95bccb167f736bfb:0xa46e4a2b50642a42!8m2!3d-34.6366794!4d-58.3973633!16s%2Fg%2F1tp28g9m!19sChIJ-2tzfxbLvJURQipkUCtKbqQ?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Patagones 2509, C1282 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Odontologia Pardo",
+      "reseñas": "7",
+      "rating": "5.0",
+      "telefono": "1149199536",
+      "whatsapp": "https://wa.me/5491149199536",
+      "link_maps": "https://www.google.com/maps/place/Odontologia+Pardo/data=!4m7!3m6!1s0x95bccb9dc7d63dc7:0x4c9ad88e7e2c9e67!8m2!3d-34.6543959!4d-58.419633!16s%2Fg%2F11fxzq7ntn!19sChIJxz3Wx53LvJURZ54sfo7Ymkw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Del Barco Centenera 3415, C1437 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Mecánico protésico dental"
+    },
+    {
+      "nombre": "Consultorio odontológico dra.Mariana Carrera",
+      "reseñas": "6",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+odontol%C3%B3gico+dra.Mariana+Carrera/data=!4m7!3m6!1s0x95bccb00223f4f7f:0xe9262477c7e2c5f6!8m2!3d-34.6241308!4d-58.4078396!16s%2Fg%2F11yn91tzjy!19sChIJf08_IgDLvJUR9sXix3ckJuk?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. San Juan 3035, C1221 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Kleiman Jose E",
+      "reseñas": "6",
+      "rating": "5.0",
+      "telefono": "1146012481",
+      "whatsapp": "https://wa.me/5491146012481",
+      "link_maps": "https://www.google.com/maps/place/Kleiman+Jose+E/data=!4m7!3m6!1s0x95bcc94e393f4047:0x914a2da23b70dc0d!8m2!3d-34.6777908!4d-58.4754668!16s%2Fg%2F1tzvxrr2!19sChIJR0A_OU7JvJURDdxwO6ItSpE?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Riestra 5750, C1439BYV Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Amira Consultorio Odontologico",
+      "reseñas": "5",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Amira+Consultorio+Odontologico/data=!4m7!3m6!1s0x95bcc95c4947fa2f:0x65245055f1b2c7c!8m2!3d-34.6657322!4d-58.470447!16s%2Fg%2F11f8ctklvd!19sChIJL_pHSVzJvJURfCwbXwVFUgY?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Guardia Nacional 3151, C1439FGQ C1439FGQ C1439FGQ, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Consultorio Odontologico DUODENT",
+      "reseñas": "5",
+      "rating": "5.0",
+      "telefono": "1170399190",
+      "whatsapp": "https://wa.me/5491170399190",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+Odontologico+DUODENT/data=!4m7!3m6!1s0x95bcc93fde7ce851:0x4fcd02fb9aa2402c!8m2!3d-34.6679355!4d-58.4874425!16s%2Fg%2F11c0xr9ysv!19sChIJUeh83j_JvJURLECimvsCzU8?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Murguiondo 3198, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Latonas, Daniel",
+      "reseñas": "4",
+      "rating": "5.0",
+      "telefono": "1143007878",
+      "whatsapp": "https://wa.me/5491143007878",
+      "link_maps": "https://www.google.com/maps/place/Latonas,+Daniel/data=!4m7!3m6!1s0x95a334b7e4fced55:0x2cd9a345d8ddd789!8m2!3d-34.6319963!4d-58.3612866!16s%2Fg%2F1tmxs5v1!19sChIJVe385Lc0o5URidfd2EWj2Sw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Almte. Brown 789, C1155AEE Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Dra. Ana Marmorato",
+      "reseñas": "4",
+      "rating": "5.0",
+      "telefono": "1144329107",
+      "whatsapp": "https://wa.me/5491144329107",
+      "link_maps": "https://www.google.com/maps/place/Dra.+Ana+Marmorato/data=!4m7!3m6!1s0x95bcca346d5478b9:0x5ff2c5d13be9440f!8m2!3d-34.6317735!4d-58.4450861!16s%2Fg%2F1tx4qjyh!19sChIJuXhUbTTKvJURD0TpO9HF8l8?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Puán 792, C1406CQP Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Anapolsky Leonardo",
+      "reseñas": "3",
+      "rating": "5.0",
+      "telefono": "1149572569",
+      "whatsapp": "https://wa.me/5491149572569",
+      "link_maps": "https://www.google.com/maps/place/Anapolsky+Leonardo/data=!4m7!3m6!1s0x95bccaff64c5bc5b:0x7877a3236720cab3!8m2!3d-34.6245295!4d-58.4169002!16s%2Fg%2F1wk7s17r!19sChIJW7zFZP_KvJURs8ogZyOjd3g?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Carlos Calvo 3646, C1230ABL Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Consultorio Dra. Andrea Diana",
+      "reseñas": "3",
+      "rating": "5.0",
+      "telefono": "1146386796",
+      "whatsapp": "https://wa.me/5491146386796",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+Dra.+Andrea+Diana/data=!4m7!3m6!1s0x95bcc96dc565d5e5:0x3cefb015f3983bb9!8m2!3d-34.6787363!4d-58.4759319!16s%2Fg%2F11jrczb6ky!19sChIJ5dVlxW3JvJURuTuY8xWw7zw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Sayos 5877, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "CONSULTORIO DENTAL Saenz",
+      "reseñas": "3",
+      "rating": "5.0",
+      "telefono": "1165157247",
+      "whatsapp": "https://wa.me/5491165157247",
+      "link_maps": "https://www.google.com/maps/place/CONSULTORIO+DENTAL+Saenz/data=!4m7!3m6!1s0x95bccb0a6843f0fd:0x26b2b48ae38668f3!8m2!3d-34.6440537!4d-58.4159966!16s%2Fg%2F11b75g3307!19sChIJ_fBDaArLvJUR82iG44q0siY?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Sáenz 394, C1437DNQ Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Dentista Virginia",
+      "reseñas": "3",
+      "rating": "5.0",
+      "telefono": "1159678280",
+      "whatsapp": "https://wa.me/5491159678280",
+      "link_maps": "https://www.google.com/maps/place/Dentista+Virginia/data=!4m7!3m6!1s0x95bccb696c0164bd:0x7caa8177a5979a0f!8m2!3d-34.6357564!4d-58.4407656!16s%2Fg%2F11fn1dj4zx!19sChIJvWQBbGnLvJURD5qXpXeBqnw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Asamblea, C1424 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "MH consultorio odontologico",
+      "reseñas": "3",
+      "rating": "5.0",
+      "telefono": "1162110694",
+      "whatsapp": "https://wa.me/5491162110694",
+      "link_maps": "https://www.google.com/maps/place/MH+consultorio+odontologico/data=!4m7!3m6!1s0x95bccb232de2e239:0x4aee94f79b3337cf!8m2!3d-34.6609234!4d-58.4407444!16s%2Fg%2F11nv03_rdr!19sChIJOeLiLSPLvJURzzczm_eU7ko?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Lafuente 2988, C1437BUG Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Mecánico Dental",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "1149319589",
+      "whatsapp": "https://wa.me/5491149319589",
+      "link_maps": "https://www.google.com/maps/place/Mec%C3%A1nico+Dental/data=!4m7!3m6!1s0x95bcca55a0643a27:0xfffb29b6234a2ae6!8m2!3d-34.6253987!4d-58.419116!16s%2Fg%2F1v3_3wkt!19sChIJJzpkoFXKvJUR5ipKI7Yp-_8?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Castro Barros 1079, C1217ABK Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "DR.Odontologico",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "91138178438",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/DR.Odontologico/data=!4m7!3m6!1s0x95bcc9005ea9f319:0xb6c319fb0a16e1f8!8m2!3d-34.67712!4d-58.467605!16s%2Fg%2F11y5r_hz3q!19sChIJGfOpXgDJvJUR-OEWCvsZw7Y?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "José Barros Pazos 5312, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Consultorio Odontología San Matías",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+Odontolog%C3%ADa+San+Mat%C3%ADas/data=!4m7!3m6!1s0x95bcc9f97a3d5ac5:0xf20cc2e868feb276!8m2!3d-34.6667962!4d-58.472514!16s%2Fg%2F11q8xdczqq!19sChIJxVo9evnJvJURdrL-aOjCDPI?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Castañares 4812, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "steticadental consultorio",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "1143033173",
+      "whatsapp": "https://wa.me/5491143033173",
+      "link_maps": "https://www.google.com/maps/place/steticadental+consultorio/data=!4m7!3m6!1s0x95bccb576bff8c2f:0x968571b69d6b1958!8m2!3d-34.6537964!4d-58.3820261!16s%2Fg%2F1tf3748k!19sChIJL4z_a1fLvJURWBlrnbZxhZY?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Osvaldo Cruz 2579, C1290 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Denise Fiorentino",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "1132753388",
+      "whatsapp": "https://wa.me/5491132753388",
+      "link_maps": "https://www.google.com/maps/place/Denise+Fiorentino/data=!4m7!3m6!1s0x95a335b821dd5911:0xcccc62234be0be6d!8m2!3d-34.6337405!4d-58.3629837!16s%2Fg%2F11xfmg5v4w!19sChIJEVndIbg1o5URbb7gSyNizMw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Aristóbulo del Valle 573, C1161 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Trica Hector",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "1149240060",
+      "whatsapp": "https://wa.me/5491149240060",
+      "link_maps": "https://www.google.com/maps/place/Trica+Hector/data=!4m7!3m6!1s0x95bccbba826b27ef:0x8a331e99a87af9c4!8m2!3d-34.6416801!4d-58.431314!16s%2Fg%2F1td4wghm!19sChIJ7ydrgrrLvJURxPl6qJkeM4o?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Daract 2015, C1437 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Dentista",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "1149197641",
+      "whatsapp": "https://wa.me/5491149197641",
+      "link_maps": "https://www.google.com/maps/place/Dentista/data=!4m7!3m6!1s0x95bccbdf52a38827:0xf75a3bfc210f569c!8m2!3d-34.6596321!4d-58.4323357!16s%2Fg%2F11nclk0fc1!19sChIJJ4ijUt_LvJURnFYPIfw7Wvc?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Pedernera 3314, C1437BIF Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Dr Roberto Carlos Abraham Contador",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1149424616",
+      "whatsapp": "https://wa.me/5491149424616",
+      "link_maps": "https://www.google.com/maps/place/Dr+Roberto+Carlos+Abraham+Contador/data=!4m7!3m6!1s0x95bccb1669962f69:0x3a08f8a7c13c0719!8m2!3d-34.6353344!4d-58.3964115!16s%2Fg%2F1td9rqb9!19sChIJaS-WaRbLvJURGQc8waf4CDo?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Caseros 2429, C1264AAE Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Consultorios Odontologicos Protesis - Rep. No es 24hs",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1146040239",
+      "whatsapp": "https://wa.me/5491146040239",
+      "link_maps": "https://www.google.com/maps/place/Consultorios+Odontologicos+Protesis+-+Rep.+No+es+24hs/data=!4m7!3m6!1s0x95bccc0260065715:0x2ae0c110f84971e3!8m2!3d-34.6871368!4d-58.4596489!16s%2Fg%2F1th1dxvr!19sChIJFVcGYALMvJUR43FJ-BDB4Co?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Sold, de la Frontera 5374, C1439FPJ Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Consultorio odontologico Dr. Sergio Vela",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "91130572118",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+odontologico+Dr.+Sergio+Vela/data=!4m7!3m6!1s0x95bcc9006bd85281:0x9cac4243dd1d03d9!8m2!3d-34.6749797!4d-58.4821993!16s%2Fg%2F11z4q3_0dl!19sChIJgVLYawDJvJUR2QMd3UNCrJw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Castañares 5900, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Consultorios Odontologicos Integralea",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Consultorios+Odontologicos+Integralea/data=!4m7!3m6!1s0x95bcceb69fafffbf:0x8792df2199276384!8m2!3d-34.6911572!4d-58.4817976!16s%2Fg%2F11dyzfr1r5!19sChIJv_-vn7bOvJURhGMnmSHfkoc?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "B1768DQT, Martiniano Chilavert 2000-2098, B1768DQT Villa Celina, Provincia de Buenos Aires, Argentina",
+      "categoria": "Médico"
+    },
+    {
+      "nombre": "Bassani Maria I",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1143013445",
+      "whatsapp": "https://wa.me/5491143013445",
+      "link_maps": "https://www.google.com/maps/place/Bassani+Maria+I/data=!4m7!3m6!1s0x95bccb53231d24ef:0x391e0cff9d3d2eed!8m2!3d-34.6478114!4d-58.3731984!16s%2Fg%2F1tkjmc_7!19sChIJ7yQdI1PLvJUR7S49nf8MHjk?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Montes de Oca 1779, C1270 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Odontología Dres. Grass",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Odontolog%C3%ADa+Dres.+Grass/data=!4m7!3m6!1s0x95bccb35819eff19:0x55d8f8c0a0b04760!8m2!3d-34.635096!4d-58.374709!16s%2Fg%2F11b6dv96yy!19sChIJGf-egTXLvJURYEewoMD42FU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Wenceslao Villafañe 1681, C1295 AEI, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "CONSULTORIO ODONTOLÓGICO INTEGRAL[J.C. MARIÁTEGUI]",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1169143005",
+      "whatsapp": "https://wa.me/5491169143005",
+      "link_maps": "https://www.google.com/maps/place/CONSULTORIO+ODONTOL%C3%93GICO+INTEGRAL%5BJ.C.+MARI%C3%81TEGUI%5D/data=!4m7!3m6!1s0x95a335ddb1f41e73:0x3bc5820647cf2b21!8m2!3d-34.6181607!4d-58.3563424!16s%2Fg%2F11t85xk91y!19sChIJcx70sd01o5URISvPRwaCxTs?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "BARRIO RODRIGO Bueno:, Av. España 1700 Mz.4, C95 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Dentista de Emma",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Dentista+de+Emma/data=!4m7!3m6!1s0x95a3350011a76429:0xc62d602ce51d1a47!8m2!3d-34.6388339!4d-58.360207!16s%2Fg%2F11wy00rfz2!19sChIJKWSnEQA1o5URRxod5SxgLcY?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Don Pedro de Mendoza 1795, C1169 C1169AAB, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Centro comunitario"
+    },
+    {
+      "nombre": "ESPACIO DENTAL",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/ESPACIO+DENTAL/data=!4m7!3m6!1s0x95bccb75dbfa0515:0x38ccab5d75de98f9!8m2!3d-34.6516968!4d-58.4155681!16s%2Fg%2F11xfdr7_r6!19sChIJFQX623XLvJUR-ZjedV2rzDg?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Traful 3877, C1437 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Nicolas Hugo Subira",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1149199545",
+      "whatsapp": "https://wa.me/5491149199545",
+      "link_maps": "https://www.google.com/maps/place/Nicolas+Hugo+Subira/data=!4m7!3m6!1s0x95bccb759219cfdf:0x56fa8ff8cc95ce54!8m2!3d-34.650904!4d-58.4166493!16s%2Fg%2F1hc8xsq4w!19sChIJ388ZknXLvJURVM6VzPiP-lY?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Abraham J. Luppi 914, C1437FRB Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "OD. SONIA FERNÁNDEZ",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "2216992793",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/OD.+SONIA+FERN%C3%81NDEZ/data=!4m7!3m6!1s0x95bccbbdb99ec593:0x3bbf00db84fb6b1a!8m2!3d-34.6278156!4d-58.4319619!16s%2Fg%2F11p252tnx9!19sChIJk8Weub3LvJURGmv7hNsAvzs?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Directorio 386 PISO 7E, C1424 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Dentista",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Dentista/data=!4m7!3m6!1s0x95bccbc81195c119:0x5bd2f1d2a23fd86f!8m2!3d-34.643753!4d-58.4411231!16s%2Fg%2F11wpnr5tnq!19sChIJGcGVEcjLvJURb9g_otLx0ls?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Parque Chacabuco, C. Pres. Torres y Tenorio 2016, C1406 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Odontología - Dr. Nelson",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1161711027",
+      "whatsapp": "https://wa.me/5491161711027",
+      "link_maps": "https://www.google.com/maps/place/Odontolog%C3%ADa+-+Dr.+Nelson/data=!4m7!3m6!1s0x95bccb3672dbd13b:0x6b0d3c5ee38fe028!8m2!3d-34.643753!4d-58.4411231!16s%2Fg%2F11yb01n90g!19sChIJO9HbcjbLvJURKOCP4148DWs?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "C. Pres. Torres y Tenorio 2016, C1406 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Consultorio odontologico sagrada familia",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1169072539",
+      "whatsapp": "https://wa.me/5491169072539",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+odontologico+sagrada+familia/data=!4m7!3m6!1s0x95bccb0003cefc29:0x6094082fbda028c1!8m2!3d-34.6645248!4d-58.4423796!16s%2Fg%2F11x1q2vk4f!19sChIJKfzOAwDLvJURwSigvS8IlGA?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Corrales 3306, C1437GNJ C1437GNJ, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Odontologos",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1146017929",
+      "whatsapp": "https://wa.me/5491146017929",
+      "link_maps": "https://www.google.com/maps/place/Odontologos/data=!4m7!3m6!1s0x95bccbebbc82270d:0x962d55a15a507864!8m2!3d-34.6594541!4d-58.4431434!16s%2Fg%2F11bbrpjb2d!19sChIJDSeCvOvLvJURZHhQWqFVLZY?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Lafuente 2791, C1437BUR Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Centro Odontológico Smile",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "91158023331",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Centro+Odontol%C3%B3gico+Smile/data=!4m7!3m6!1s0x95bcc94f9f7fd747:0xf85f631b43ca7880!8m2!3d-34.676006!4d-58.4773849!16s%2Fg%2F11vz16gj1p!19sChIJR9d_n0_JvJURgHjKQxtjX_g?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "local 7, Murguiondo 4057, C1439 C1439FQW, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Mecánico protésico dental"
+    },
+    {
+      "nombre": "Consultorio Odontologico Dra. Pintado, Luciana",
+      "reseñas": "253",
+      "rating": "4.9",
+      "telefono": "1167179747",
+      "whatsapp": "https://wa.me/5491167179747",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+Odontologico+Dra.+Pintado,+Luciana/data=!4m7!3m6!1s0x95bccbc3a730fc35:0x17f7685f91b2aaed!8m2!3d-34.6373989!4d-58.4456883!16s%2Fg%2F11nqx_64r4!19sChIJNfwwp8PLvJUR7aqykV9o9xc?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Santander 1817 p.b. 1, C1406HXK Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "PODOLOGIA UBA PQUE PATRICIOS",
+      "reseñas": "127",
+      "rating": "4.9",
+      "telefono": "1159585858",
+      "whatsapp": "https://wa.me/5491159585858",
+      "link_maps": "https://www.google.com/maps/place/PODOLOGIA+UBA+PQUE+PATRICIOS/data=!4m7!3m6!1s0x95bccb01f6730baf:0x6b4f39448e764390!8m2!3d-34.6416449!4d-58.4077805!16s%2Fg%2F11jn88j1qn!19sChIJrwtz9gHLvJURkEN2jkQ5T2s?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Los Patos 3222, C1437 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Podólogo"
+    },
+    {
+      "nombre": "Clinica Odontológico Santa Clara II",
+      "reseñas": "102",
+      "rating": "4.9",
+      "telefono": "1122960029",
+      "whatsapp": "https://wa.me/5491122960029",
+      "link_maps": "https://www.google.com/maps/place/Clinica+Odontol%C3%B3gico+Santa+Clara+II/data=!4m7!3m6!1s0x95bccfa3772a5979:0x80c5678eae3625b5!8m2!3d-34.6885919!4d-58.4784631!16s%2Fg%2F11sh5v2zw2!19sChIJeVkqd6PPvJURtSU2ro5nxYA?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Coronel Martiniano Chilavert 6774, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Consultorio Odontológico Dra. Segovia Elizabeth",
+      "reseñas": "12",
+      "rating": "4.9",
+      "telefono": "1121010456",
+      "whatsapp": "https://wa.me/5491121010456",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+Odontol%C3%B3gico+Dra.+Segovia+Elizabeth/data=!4m7!3m6!1s0x95bccbf89037b573:0xaf94013fae23c5c1!8m2!3d-34.636333!4d-58.4040688!16s%2Fg%2F11qg0cq117!19sChIJc7U3kPjLvJURwcUjrj8BlK8?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Deán Funes 2161, C1244AAS Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Mecánico protésico dental"
+    },
+    {
+      "nombre": "Asistencia Odontológica",
+      "reseñas": "112",
+      "rating": "4.8",
+      "telefono": "1149573211",
+      "whatsapp": "https://wa.me/5491149573211",
+      "link_maps": "https://www.google.com/maps/place/Asistencia+Odontol%C3%B3gica/data=!4m7!3m6!1s0x95bcca572709790f:0xbbfe17dcd316cc3e!8m2!3d-34.6215114!4d-58.4220361!16s%2Fg%2F11b6vgqzfj!19sChIJD3kJJ1fKvJURPswW09wX_rs?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Independencia 3994, C1226 AAR, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Consultorio Odontólogico Luis Rodriguez",
+      "reseñas": "110",
+      "rating": "4.8",
+      "telefono": "1132539277",
+      "whatsapp": "https://wa.me/5491132539277",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+Odont%C3%B3logico+Luis+Rodriguez/data=!4m7!3m6!1s0x95bcc9ca4131bc6b:0x46799d5f4e309372!8m2!3d-34.6451648!4d-58.4651263!16s%2Fg%2F11gjty5dgp!19sChIJa7wxQcrJvJURcpMwTl-deUY?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Eva Perón 3544, C1407 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Consultorio Odontologico Mateo 6.33",
+      "reseñas": "22",
+      "rating": "4.8",
+      "telefono": "1149110229",
+      "whatsapp": "https://wa.me/5491149110229",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+Odontologico+Mateo+6.33/data=!4m7!3m6!1s0x95bccb16ad49509d:0x7f74fb2e396ead34!8m2!3d-34.6371307!4d-58.4003056!16s%2Fg%2F11bbrm4xxn!19sChIJnVBJrRbLvJURNK1uOS77dH8?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Luna 85, C1437 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Moran Julia N",
+      "reseñas": "11",
+      "rating": "4.8",
+      "telefono": "1146027998",
+      "whatsapp": "https://wa.me/5491146027998",
+      "link_maps": "https://www.google.com/maps/place/Moran+Julia+N/data=!4m7!3m6!1s0x95bcc96842bb7441:0x63a020dffce58d19!8m2!3d-34.6625894!4d-58.4760679!16s%2Fg%2F1tfxz6nl!19sChIJQXS7QmjJvJURGY3l_N8goGM?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Basualdo 2695, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Campas Angel N",
+      "reseñas": "4",
+      "rating": "4.8",
+      "telefono": "1149250545",
+      "whatsapp": "https://wa.me/5491149250545",
+      "link_maps": "https://www.google.com/maps/place/Campas+Angel+N/data=!4m7!3m6!1s0x95bccb07486af203:0x650116c6cbd924de!8m2!3d-34.6328667!4d-58.4157983!16s%2Fg%2F1td3h6f_!19sChIJA_JqSAfLvJUR3iTZy8YWAWU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Boedo 1606, C1239AAT Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "AS ODONTOLOGÍA LUGANO",
+      "reseñas": "207",
+      "rating": "4.7",
+      "telefono": "1133395422",
+      "whatsapp": "https://wa.me/5491133395422",
+      "link_maps": "https://www.google.com/maps/place/AS+ODONTOLOG%C3%8DA+LUGANO/data=!4m7!3m6!1s0x95bccffcc6601273:0xd6a2c45c6fb367ad!8m2!3d-34.6847048!4d-58.4756365!16s%2Fg%2F11m1l3dh80!19sChIJcxJgxvzPvJURrWezb1zEotY?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Cañada de Gómez 4740, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Consultorio Dental Squarzon",
+      "reseñas": "26",
+      "rating": "4.7",
+      "telefono": "1164680588",
+      "whatsapp": "https://wa.me/5491164680588",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+Dental+Squarzon/data=!4m7!3m6!1s0x95a2e70f3c7f99e3:0xba70f2d42fb929ca!8m2!3d-34.621805!4d-58.4276185!16s%2Fg%2F11swth5wv2!19sChIJ45l_PA_nopURyim5L9TycLo?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. La Plata 588 Piso 4, depto 16, C1235 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Cristaldent",
+      "reseñas": "22",
+      "rating": "4.7",
+      "telefono": "1146016569",
+      "whatsapp": "https://wa.me/5491146016569",
+      "link_maps": "https://www.google.com/maps/place/Cristaldent/data=!4m7!3m6!1s0x95bcc95b1fdc2b2b:0xcbaf7bddc26662dc!8m2!3d-34.670947!4d-58.4729611!16s%2Fg%2F1tj58z1d!19sChIJKyvcH1vJvJUR3GJmwt17r8s?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Aquino 5175, C1439ADM Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Odontologia",
+      "reseñas": "12",
+      "rating": "4.7",
+      "telefono": "1156010050",
+      "whatsapp": "https://wa.me/5491156010050",
+      "link_maps": "https://www.google.com/maps/place/Odontologia/data=!4m7!3m6!1s0x95bccead3e445763:0x4345fde192a497ed!8m2!3d-34.6845923!4d-58.4727538!16s%2Fg%2F11r_vnzjzj!19sChIJY1dEPq3OvJUR7ZekkuH9RUM?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Lisandro de la Torre 4761, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "OPRIN - ODONTOLOGÍA PRIVADA INTEGRAL",
+      "reseñas": "62",
+      "rating": "4.6",
+      "telefono": "5449240060",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/OPRIN+-+ODONTOLOG%C3%8DA+PRIVADA+INTEGRAL/data=!4m7!3m6!1s0x95bccbba826b27ef:0x1d9a4538ca246e64!8m2!3d-34.6417144!4d-58.4312985!16s%2Fg%2F1tg_h7h6!19sChIJ7ydrgrrLvJURZG4kyjhFmh0?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Daract 2015, C1437 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Consultorio Odontologico Dra Haydee Amde",
+      "reseñas": "14",
+      "rating": "4.6",
+      "telefono": "1149111481",
+      "whatsapp": "https://wa.me/5491149111481",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+Odontologico+Dra+Haydee+Amde/data=!4m7!3m6!1s0x95bccb09c9a24505:0xc6909a36527144c!8m2!3d-34.6400025!4d-58.415937!16s%2Fg%2F1tk9rz91!19sChIJBUWiyQnLvJURTBQnZaMJaQw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Sáenz 86, C1437DNN Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "De Silvio Ana C",
+      "reseñas": "11",
+      "rating": "4.6",
+      "telefono": "1143610359",
+      "whatsapp": "https://wa.me/5491143610359",
+      "link_maps": "https://www.google.com/maps/place/De+Silvio+Ana+C/data=!4m7!3m6!1s0x95bccb34d89b4613:0xb6c71ce22b0b9f3f!8m2!3d-34.6323248!4d-58.3727664!16s%2Fg%2F11bbrnvyvn!19sChIJE0ab2DTLvJURP58LK-Icx7Y?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Azara 45, C1267ABA Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Consultorio Odontológico Gident",
+      "reseñas": "8",
+      "rating": "4.6",
+      "telefono": "1131317070",
+      "whatsapp": "https://wa.me/5491131317070",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+Odontol%C3%B3gico+Gident/data=!4m7!3m6!1s0x95bccf3541b5ed3d:0xac13a4dfe0b6f792!8m2!3d-34.7002506!4d-58.4836401!16s%2Fg%2F11jgcc9sf5!19sChIJPe21QTXPvJURkve24N-kE6w?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Francisco Ramírez 982, B1417 Villa Celina, Provincia de Buenos Aires, Argentina",
+      "categoria": "Comercio"
+    },
+    {
+      "nombre": "Consultorio odontológico RM",
+      "reseñas": "7",
+      "rating": "4.6",
+      "telefono": "1132022861",
+      "whatsapp": "https://wa.me/5491132022861",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+odontol%C3%B3gico+RM/data=!4m7!3m6!1s0x95bccbc808ad36b5:0x1cdcc705716ec989!8m2!3d-34.6438146!4d-58.4410647!16s%2Fg%2F11f148l93t!19sChIJtTatCMjLvJURiclucQXH3Bw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "C. Pres. Torres y Tenorio 2024, C1406 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Mecanico Dental",
+      "reseñas": "5",
+      "rating": "4.6",
+      "telefono": "1166921523",
+      "whatsapp": "https://wa.me/5491166921523",
+      "link_maps": "https://www.google.com/maps/place/Mecanico+Dental/data=!4m7!3m6!1s0x95bccb053366be91:0x921efea2cf5c9a4b!8m2!3d-34.6328114!4d-58.4060297!16s%2Fg%2F11j2yqwzcc!19sChIJkb5mMwXLvJURS5pcz6L-HpI?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "La Rioja 1858, C1244 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": ""
+    },
+    {
+      "nombre": "Dental Salud",
+      "reseñas": "120",
+      "rating": "4.5",
+      "telefono": "1144330101",
+      "whatsapp": "https://wa.me/5491144330101",
+      "link_maps": "https://www.google.com/maps/place/Dental+Salud/data=!4m7!3m6!1s0x95bcca36b0d48bab:0x92516804e1e728df!8m2!3d-34.6298543!4d-58.4454694!16s%2Fg%2F11b72fx79_!19sChIJq4vUsDbKvJUR3yjn4QRoUZI?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Directorio 1260, C1406 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Consultorio Odontológico Gerez Sergio Gustavo",
+      "reseñas": "26",
+      "rating": "4.5",
+      "telefono": "1149531203",
+      "whatsapp": "https://wa.me/5491149531203",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+Odontol%C3%B3gico+Gerez+Sergio+Gustavo/data=!4m7!3m6!1s0x95bccae836154d1b:0x7558ce3ca2d3345b!8m2!3d-34.6213642!4d-58.4201799!16s%2Fg%2F1tjz942d!19sChIJG00VNujKvJURWzTTojzOWHU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Independencia 3886 Piso 11 Dpto 3, C1226AAQ Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Odontologos",
+      "reseñas": "4",
+      "rating": "4.5",
+      "telefono": "",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Odontologos/data=!4m7!3m6!1s0x95bccb67fbd6718b:0x88ab88ed0c3dd9e9!8m2!3d-34.651647!4d-58.394772!16s%2Fg%2F11j4sw8bbv!19sChIJi3HW-2fLvJUR6dk9DO2Iq4g?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Gral. Tomás de Iriarte 3376, C1290 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Farro Marta R",
+      "reseñas": "4",
+      "rating": "4.5",
+      "telefono": "1143628812",
+      "whatsapp": "https://wa.me/5491143628812",
+      "link_maps": "https://www.google.com/maps/place/Farro+Marta+R/data=!4m7!3m6!1s0x95a334b7e51c301f:0x921a3e24e932ae9b!8m2!3d-34.6319954!4d-58.3613061!16s%2Fg%2F1tf6htrn!19sChIJHzAc5bc0o5URm64y6SQ-GpI?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Almte. Brown 791, C1155AEE Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Consultorio odontológicos",
+      "reseñas": "23",
+      "rating": "4.4",
+      "telefono": "1147373652",
+      "whatsapp": "https://wa.me/5491147373652",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+odontol%C3%B3gicos/data=!4m7!3m6!1s0x95bccb1139e7c777:0x4bb41fe7bdf0baef!8m2!3d-34.6364254!4d-58.4010243!16s%2Fg%2F11b6hpgpr0!19sChIJd8fnORHLvJUR77rwvecftEs?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Caseros 2738, C1264AAU Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Dra. Carina Olmedo",
+      "reseñas": "17",
+      "rating": "4.4",
+      "telefono": "1151580524",
+      "whatsapp": "https://wa.me/5491151580524",
+      "link_maps": "https://www.google.com/maps/place/Dra.+Carina+Olmedo/data=!4m7!3m6!1s0x95bccbec4883190f:0xa5e6edd0cece3efc!8m2!3d-34.6622945!4d-58.4442892!16s%2Fg%2F1q62czf0m!19sChIJDxmDSOzLvJUR_D7OztDt5qU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Itaqui 3273, C1437 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Furfaro",
+      "reseñas": "11",
+      "rating": "4.4",
+      "telefono": "1146389988",
+      "whatsapp": "https://wa.me/5491146389988",
+      "link_maps": "https://www.google.com/maps/place/Furfaro/data=!4m7!3m6!1s0x95bcc951f7ad8bdd:0xdd2ae1184069d0ab!8m2!3d-34.6785325!4d-58.4735191!16s%2Fg%2F11hz_ssc1n!19sChIJ3Yut91HJvJURq9BpQBjhKt0?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Murguiondo 4400, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Odontología Integral",
+      "reseñas": "7",
+      "rating": "4.4",
+      "telefono": "1120064225",
+      "whatsapp": "https://wa.me/5491120064225",
+      "link_maps": "https://www.google.com/maps/place/Odontolog%C3%ADa+Integral/data=!4m7!3m6!1s0x95bccba55a3aec57:0x142c7dfee80677b0!8m2!3d-34.6410619!4d-58.4278851!16s%2Fg%2F11b7q8wjzp!19sChIJV-w6WqXLvJURsHcG6P59LBQ?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Cobo 850, C1424DEQ Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Niño Jesus - Clinica Dental",
+      "reseñas": "7",
+      "rating": "4.4",
+      "telefono": "5453463228",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Ni%C3%B1o+Jesus+-+Clinica+Dental/data=!4m7!3m6!1s0x95bccbb0afb0331d:0xbb700e7bf9fa7708!8m2!3d-34.6418814!4d-58.4338673!16s%2Fg%2F11b7r1t28l!19sChIJHTOwr7DLvJURCHf6-XsOcLs?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Cobo 1345, C1424DEI Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Odontología Integral Dra. Mariel Piñeiro",
+      "reseñas": "5",
+      "rating": "4.4",
+      "telefono": "1146018335",
+      "whatsapp": "https://wa.me/5491146018335",
+      "link_maps": "https://www.google.com/maps/place/Odontolog%C3%ADa+Integral+Dra.+Mariel+Pi%C3%B1eiro/data=!4m7!3m6!1s0x95bcceb3ed299bf5:0xd60b6d8ac18e28da!8m2!3d-34.6890453!4d-58.4793054!16s%2Fg%2F11byl42jn9!19sChIJ9Zsp7bPOvJUR2iiOwYptC9Y?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Coronel Martiniano Chilavert 6861, C1439CMG, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Clara Limonta",
+      "reseñas": "47",
+      "rating": "4.3",
+      "telefono": "1143027170",
+      "whatsapp": "https://wa.me/5491143027170",
+      "link_maps": "https://www.google.com/maps/place/Clara+Limonta/data=!4m7!3m6!1s0x95bccb5170840283:0x6750b90bfed0a316!8m2!3d-34.6458337!4d-58.3721769!16s%2Fg%2F1tfs27zm!19sChIJgwKEcFHLvJURFqPQ_gu5UGc?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Isabel la Católica 1445, C1269 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Daniel I Zablotzky",
+      "reseñas": "12",
+      "rating": "4.3",
+      "telefono": "1143013025",
+      "whatsapp": "https://wa.me/5491143013025",
+      "link_maps": "https://www.google.com/maps/place/Daniel+I+Zablotzky/data=!4m7!3m6!1s0x95bccb4c9a395cd9:0x8c4fc521798a4db8!8m2!3d-34.640608!4d-58.3733944!16s%2Fg%2F1v3kp7z2!19sChIJ2Vw5mkzLvJURuE2KeSHFT4w?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Gral. Gregorio Aráoz de Lamadrid 1546, C1267AAF Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Balderrama Maria",
+      "reseñas": "6",
+      "rating": "4.3",
+      "telefono": "1149216150",
+      "whatsapp": "https://wa.me/5491149216150",
+      "link_maps": "https://www.google.com/maps/place/Balderrama+Maria/data=!4m7!3m6!1s0x95bccba93207a1f9:0x307ea3ee5004775d!8m2!3d-34.6361573!4d-58.422753!16s%2Fg%2F1tfg48pg!19sChIJ-aEHMqnLvJURXXcEUO6jfjA?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Las Casas 4060, C1238ACN Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "ODONTOLOGIA ESPECIALIZADA DR.TADEO",
+      "reseñas": "6",
+      "rating": "4.3",
+      "telefono": "1136004086",
+      "whatsapp": "https://wa.me/5491136004086",
+      "link_maps": "https://www.google.com/maps/place/ODONTOLOGIA+ESPECIALIZADA+DR.TADEO/data=!4m7!3m6!1s0x95bccb75be147a57:0x7ced4b85b9c33800!8m2!3d-34.6506589!4d-58.4158333!16s%2Fg%2F11fyzfw7dp!19sChIJV3oUvnXLvJURADjDuYVL7Xw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Ventana 3877, C1437 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "ODONTOLOGIA INTEGRAL BOEDO",
+      "reseñas": "40",
+      "rating": "4.2",
+      "telefono": "1158767158",
+      "whatsapp": "https://wa.me/5491158767158",
+      "link_maps": "https://www.google.com/maps/place/ODONTOLOGIA+INTEGRAL+BOEDO/data=!4m7!3m6!1s0x95bcd38e8cc0415d:0x1cd26bea9c4d4099!8m2!3d-34.7591784!4d-58.4010244!16s%2Fg%2F11jvr36vgy!19sChIJXUHAjI7TvJURmUBNnOpr0hw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Mariano Boedo 309, B1832 Lomas de Zamora, Provincia de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Odontologia Integral",
+      "reseñas": "40",
+      "rating": "4.2",
+      "telefono": "1146388057",
+      "whatsapp": "https://wa.me/5491146388057",
+      "link_maps": "https://www.google.com/maps/place/Odontologia+Integral/data=!4m7!3m6!1s0x95bcc94e4fc91a69:0xac268bd4876ecc36!8m2!3d-34.6775372!4d-58.4763773!16s%2Fg%2F11g6rl72fm!19sChIJaRrJT07JvJURNsxuh9SLJqw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Delfin Gallo 5796, C1439 IBB, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Dr Alejandro Chiappe y Equipo",
+      "reseñas": "9",
+      "rating": "4.2",
+      "telefono": "1149314417",
+      "whatsapp": "https://wa.me/5491149314417",
+      "link_maps": "https://www.google.com/maps/place/Dr+Alejandro+Chiappe+y+Equipo/data=!4m7!3m6!1s0x95bccaff136eebab:0xcc914a642ce84a25!8m2!3d-34.6238928!4d-58.4157684!16s%2Fg%2F1v3kjpyv!19sChIJq-tuE__KvJURJUroLGRKkcw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Carlos Calvo 3572, C1230ABJ Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "DENTAL ESTETICA GLAM",
+      "reseñas": "5",
+      "rating": "4.2",
+      "telefono": "1141462846",
+      "whatsapp": "https://wa.me/5491141462846",
+      "link_maps": "https://www.google.com/maps/place/DENTAL+ESTETICA+GLAM/data=!4m7!3m6!1s0x95bccb0f9fd478f1:0xdb19cb8883bd2a86!8m2!3d-34.6244401!4d-58.418899!16s%2Fg%2F11gtyn04ch!19sChIJ8XjUnw_LvJURhiq9g4jLGds?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Carlos Calvo 3785 1 A, C1230 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Consultorios Odontológicos",
+      "reseñas": "5",
+      "rating": "4.2",
+      "telefono": "1132591650",
+      "whatsapp": "https://wa.me/5491132591650",
+      "link_maps": "https://www.google.com/maps/place/Consultorios+Odontol%C3%B3gicos/data=!4m7!3m6!1s0x95bccbaa6a394f5b:0x350fc3ca289d09ab!8m2!3d-34.6315458!4d-58.4186483!16s%2Fg%2F11gbf7n170!19sChIJW085aqrLvJURqwmdKMrDDzU?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Juan de Garay, C1256 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Volve a sonreír Odontologia Especializada",
+      "reseñas": "5",
+      "rating": "4.2",
+      "telefono": "5420762680",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Volve+a+sonre%C3%ADr+Odontologia+Especializada/data=!4m7!3m6!1s0x95bcc90063ef337d:0xf64b023087db0343!8m2!3d-34.66031!4d-58.4762127!16s%2Fg%2F11x8z8c28n!19sChIJfTPvYwDJvJURQwPbhzACS_Y?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "C1439BDE, Zuviría 4529, C1439BDE Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Comp Cobertura Odontológica Privada",
+      "reseñas": "28",
+      "rating": "4.1",
+      "telefono": "1149227619",
+      "whatsapp": "https://wa.me/5491149227619",
+      "link_maps": "https://www.google.com/maps/place/Comp+Cobertura+Odontol%C3%B3gica+Privada/data=!4m7!3m6!1s0x95bcca4c48205bc7:0x260dd56d7b8225c2!8m2!3d-34.628225!4d-58.4322186!16s%2Fg%2F11bbrh0mrh!19sChIJx1sgSEzKvJURwiWCe23VDSY?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Beauchef 934, C1424 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Finella Nicolas",
+      "reseñas": "5",
+      "rating": "4.0",
+      "telefono": "1146043939",
+      "whatsapp": "https://wa.me/5491146043939",
+      "link_maps": "https://www.google.com/maps/place/Finella+Nicolas/data=!4m7!3m6!1s0x95bccead3eee2073:0xfdab82f872d22cb4!8m2!3d-34.6846248!4d-58.472828!16s%2Fg%2F1tfkxhpz!19sChIJcyDuPq3OvJURtCzScviCq_0?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Lisandro de la Torre 4761, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "TOP CONSULTORIOS",
+      "reseñas": "4",
+      "rating": "4.0",
+      "telefono": "1143037100",
+      "whatsapp": "https://wa.me/5491143037100",
+      "link_maps": "https://www.google.com/maps/place/TOP+CONSULTORIOS/data=!4m7!3m6!1s0x95bccb4b190acc61:0xeca2b40e3f3a3712!8m2!3d-34.637909!4d-58.373383!16s%2Fg%2F1hc4kml7g!19sChIJYcwKGUvLvJUREjc6Pw60ouw?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Isabel la Católica 622, C1268 ACN, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Mecánico protésico dental"
+    },
+    {
+      "nombre": "Consultorio Odontologico Integral Dr David Ghers",
+      "reseñas": "4",
+      "rating": "4.0",
+      "telefono": "1139363111",
+      "whatsapp": "https://wa.me/5491139363111",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+Odontologico+Integral+Dr+David+Ghers/data=!4m7!3m6!1s0x95bccbd9c68c21d3:0xa273bb03f4b6c3e1!8m2!3d-34.6337056!4d-58.4479994!16s%2Fg%2F11h1dps26p!19sChIJ0yGMxtnLvJUR4cO29AO7c6I?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Malvinas Argentinas 865 3piso dpto c, C1406 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Consultorio odontológico",
+      "reseñas": "4",
+      "rating": "4.0",
+      "telefono": "1176069030",
+      "whatsapp": "https://wa.me/5491176069030",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+odontol%C3%B3gico/data=!4m7!3m6!1s0x95bcc9522a7765e9:0xe747651098d8559b!8m2!3d-34.6680856!4d-58.4740633!16s%2Fg%2F11q8xd59v2!19sChIJ6WV3KlLJvJURm1XYmBBlR-c?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Castañares 5006, C1439 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Asesor médico"
+    },
+    {
+      "nombre": "Dra. Carla Maria Schiro Odontología En Gral.",
+      "reseñas": "3",
+      "rating": "4.0",
+      "telefono": "1149420863",
+      "whatsapp": "https://wa.me/5491149420863",
+      "link_maps": "https://www.google.com/maps/place/Dra.+Carla+Maria+Schiro+Odontolog%C3%ADa+En+Gral./data=!4m7!3m6!1s0x95bccb1669962f69:0xd42d882aa4b7a61f!8m2!3d-34.6353344!4d-58.3964115!16s%2Fg%2F1v6pb0v9!19sChIJaS-WaRbLvJURH6a3pCqILdQ?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Caseros 2429, C1264AAE Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Clínica odontologica dra chiara",
+      "reseñas": "22",
+      "rating": "3.9",
+      "telefono": "1173716830",
+      "whatsapp": "https://wa.me/5491173716830",
+      "link_maps": "https://www.google.com/maps/place/Cl%C3%ADnica+odontologica+dra+chiara/data=!4m7!3m6!1s0x95bccb6cd1b64fa7:0x936243520e485fbb!8m2!3d-34.6329546!4d-58.4227926!16s%2Fg%2F11qp455_5g!19sChIJp0-20WzLvJURu19IDlJDYpM?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "José Mármol 1563, C1255 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Consultorio san francisco 1",
+      "reseñas": "15",
+      "rating": "3.9",
+      "telefono": "1169714559",
+      "whatsapp": "https://wa.me/5491169714559",
+      "link_maps": "https://www.google.com/maps/place/Consultorio+san+francisco+1/data=!4m7!3m6!1s0x95bccbba705f1699:0xab6091a473c84919!8m2!3d-34.6424648!4d-58.4324556!16s%2Fg%2F11b7qxpcp3!19sChIJmRZfcLrLvJURGUnIc6SRYKs?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Del Barco Centenera 2069, C1437AAA Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Centro médico y odontológico Virgen de Urkupiña",
+      "reseñas": "361",
+      "rating": "3.8",
+      "telefono": "5449194258",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Centro+m%C3%A9dico+y+odontol%C3%B3gico+Virgen+de+Urkupi%C3%B1a/data=!4m7!3m6!1s0x95bccb759c12d471:0x2a77939898edbbc2!8m2!3d-34.6499943!4d-58.4166498!16s%2Fg%2F1thhlq8b!19sChIJcdQSnHXLvJURwrvtmJiTdyo?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Sáenz 831, C1437DOA Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Centro médico"
+    },
+    {
+      "nombre": "ODONTO BOEDO",
+      "reseñas": "29",
+      "rating": "3.6",
+      "telefono": "1128605047",
+      "whatsapp": "https://wa.me/5491128605047",
+      "link_maps": "https://www.google.com/maps/place/ODONTO+BOEDO/data=!4m7!3m6!1s0x95bccb97bf91efcd:0x6a5df84ee3a5d75c!8m2!3d-34.6335739!4d-58.4229877!16s%2Fg%2F11yvmrr6nx!19sChIJze-Rv5fLvJURXNel4074XWo?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Inclán 4228, C1424 ABN, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Centro Odontológico Flores",
+      "reseñas": "15",
+      "rating": "3.6",
+      "telefono": "1135950209",
+      "whatsapp": "https://wa.me/5491135950209",
+      "link_maps": "https://www.google.com/maps/place/Centro+Odontol%C3%B3gico+Flores/data=!4m7!3m6!1s0x95bcca27ae20cfdb:0x2ee12d85f0cad2f8!8m2!3d-34.6637877!4d-58.4892334!16s%2Fg%2F1tfbjxy6!19sChIJ288grifKvJUR-NLK8IUt4S4?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Eva Perón 5940, C1439BSX Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Centro de Diagnóstico y Tratamiento Odontológico",
+      "reseñas": "67",
+      "rating": "3.4",
+      "telefono": "1149230860",
+      "whatsapp": "https://wa.me/5491149230860",
+      "link_maps": "https://www.google.com/maps/place/Centro+de+Diagn%C3%B3stico+y+Tratamiento+Odontol%C3%B3gico/data=!4m7!3m6!1s0x95bcca355e6d45c1:0x5cf30ba3840f4096!8m2!3d-34.6330929!4d-58.4403272!16s%2Fg%2F1tf82sy9!19sChIJwUVtXjXKvJURlkAPhKML81w?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Emilio Mitre 1060, C1424AYV Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    },
+    {
+      "nombre": "Kooldent",
+      "reseñas": "123",
+      "rating": "3.3",
+      "telefono": "1148755553",
+      "whatsapp": "https://wa.me/5491148755553",
+      "link_maps": "https://www.google.com/maps/place/Kooldent/data=!4m7!3m6!1s0x95bccbd459ba885d:0x844869efb2ea42ef!8m2!3d-34.6335739!4d-58.4229877!16s%2Fg%2F11tdc6kfcr!19sChIJXYi6WdTLvJUR70Lqsu9pSIQ?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Inclán 4228, C1424 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Clínica dental"
+    },
+    {
+      "nombre": "Imagen Dental Urkupiña",
+      "reseñas": "27",
+      "rating": "3.3",
+      "telefono": "91155736056",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Imagen+Dental+Urkupi%C3%B1a/data=!4m7!3m6!1s0x95bccb75380908e3:0x6a50c1d81d2492e4!8m2!3d-34.6479512!4d-58.4157898!16s%2Fg%2F1hc1cdqfb!19sChIJ4wgJOHXLvJUR5JIkHdjBUGo?authuser=0&hl=es&g_ep=EgoyMDI2MTAyOC4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Almafuerte 862, C1437 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Dentista"
+    }
+  ]
+}

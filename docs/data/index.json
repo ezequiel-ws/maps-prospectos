@@ -1,6 +1,15 @@
 {
   "searches": [
     {
+      "id": "20261101-124802_odontologos-9-barrios-caba",
+      "query": "odontólogos · 9 barrios CABA",
+      "date": "20261101-124802",
+      "date_label": "2026-11-01 12:48 (America/Buenos_Aires)",
+      "n_raw": 409,
+      "n_limpio": 100,
+      "file": "20261101-124802_odontologos-9-barrios-caba.json"
+    },
+    {
       "id": "20261101-101358_abogados-4-barrios-caba",
       "query": "abogados · 4 barrios CABA",
       "date": "20261101-101358",
