@@ -1,6 +1,15 @@
 {
   "searches": [
     {
+      "id": "20261101-101358_abogados-4-barrios-caba",
+      "query": "abogados · 4 barrios CABA",
+      "date": "20261101-101358",
+      "date_label": "2026-11-01 10:13 (America/Buenos_Aires)",
+      "n_raw": 218,
+      "n_limpio": 35,
+      "file": "20261101-101358_abogados-4-barrios-caba.json"
+    },
+    {
       "id": "20261031-234055_arquitectos-6-barrios-caba",
       "query": "arquitectos · 6 barrios CABA",
       "date": "20261031-234055",
