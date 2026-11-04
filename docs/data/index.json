@@ -1,6 +1,15 @@
 {
   "searches": [
     {
+      "id": "20261104-112732_inmobiliarias-15-barrios-caba",
+      "query": "inmobiliarias · 15 barrios CABA",
+      "date": "20261104-112732",
+      "date_label": "2026-11-04 11:27 (America/Buenos_Aires)",
+      "n_raw": 553,
+      "n_limpio": 78,
+      "file": "20261104-112732_inmobiliarias-15-barrios-caba.json"
+    },
+    {
       "id": "20261104-092554_odontologos-8-barrios-caba",
       "query": "odontólogos · 8 barrios CABA",
       "date": "20261104-092554",
