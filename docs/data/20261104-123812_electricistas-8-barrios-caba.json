@@ -1,0 +1,650 @@
+{
+  "id": "20261104-123812_electricistas-8-barrios-caba",
+  "query": "electricistas · 8 barrios CABA",
+  "date": "20261104-123812",
+  "date_label": "2026-11-04 12:38 (America/Buenos_Aires)",
+  "n_raw": 294,
+  "n_limpio": 64,
+  "prospects": [
+    {
+      "nombre": "Electricista Soler",
+      "reseñas": "310",
+      "rating": "5.0",
+      "telefono": "1161873700",
+      "whatsapp": "https://wa.me/5491161873700",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Soler/data=!4m7!3m6!1s0x95bcb554f7c932b1:0x2761c8cf1b03ac03!8m2!3d-34.57745!4d-58.4370668!16s%2Fg%2F11tn_2pp5j!19sChIJsTLJ91S1vJURA6wDG8_IYSc?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Soler 6034, C1414 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "EDUFE , CONTROLES REMOTOS. SERVICE TV LED, CAMARAS DE SEGURIDAD CCTV , PLAZA 4295 SAAVEDRA CABA LABORATORIO PROPIO!",
+      "reseñas": "122",
+      "rating": "5.0",
+      "telefono": "1165162586",
+      "whatsapp": "https://wa.me/5491165162586",
+      "link_maps": "https://www.google.com/maps/place/EDUFE+,+CONTROLES+REMOTOS.+SERVICE+TV+LED,+CAMARAS+DE+SEGURIDAD+CCTV+,+PLAZA+4295+SAAVEDRA+CABA+LABORATORIO+PROPIO!/data=!4m7!3m6!1s0x95bcb7c8f91b1a2d:0xdb04d8808fef6493!8m2!3d-34.552011!4d-58.4880915!16s%2Fg%2F11jl2v5j8r!19sChIJLRob-ci3vJURk2Tvj4DYBNs?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Plaza este 4295, C1430 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Empresa de electrónica"
+    },
+    {
+      "nombre": "AG ELECTRICISTA MATRICULADO",
+      "reseñas": "102",
+      "rating": "5.0",
+      "telefono": "1128713421",
+      "whatsapp": "https://wa.me/5491128713421",
+      "link_maps": "https://www.google.com/maps/place/AG+ELECTRICISTA+MATRICULADO/data=!4m7!3m6!1s0x95bcb5e804bbd51f:0x46ea9a05ee350798!8m2!3d-34.5611727!4d-58.4533229!16s%2Fg%2F11sf8462h6!19sChIJH9W7BOi1vJURmAc17gWa6kY?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Echeverría 2109, C1428DRK Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista Artigas",
+      "reseñas": "46",
+      "rating": "5.0",
+      "telefono": "91151547676",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Artigas/data=!4m7!3m6!1s0x95bcb7a76bb17ef5:0xaec7a4f4bf9604ac!8m2!3d-34.5465314!4d-58.4636087!16s%2Fg%2F11q2ct0x48!19sChIJ9X6xa6e3vJURrASWv_Skx64?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Crisólogo Larralde 1935, C1429 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista Franco",
+      "reseñas": "42",
+      "rating": "5.0",
+      "telefono": "1151547676",
+      "whatsapp": "https://wa.me/5491151547676",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Franco/data=!4m7!3m6!1s0x95bccbe8423b06ff:0xf5bd4d213cb84a31!8m2!3d-34.5926611!4d-58.4149059!16s%2Fg%2F11kjjspsdr!19sChIJ_wY7QujLvJURMUq4PCFNvfU?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Guise 1668, C1425 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista Juan, técnico matriculado",
+      "reseñas": "34",
+      "rating": "5.0",
+      "telefono": "1160163170",
+      "whatsapp": "https://wa.me/5491160163170",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Juan,+t%C3%A9cnico+matriculado/data=!4m7!3m6!1s0x95bcb78e17e7c8a9:0x946b23a838818758!8m2!3d-34.5727428!4d-58.4768192!16s%2Fg%2F11z7wl6trc!19sChIJqcjnF463vJURWIeBOKgja5Q?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Mendoza 4406, C1431 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista matriculado",
+      "reseñas": "30",
+      "rating": "5.0",
+      "telefono": "1140272414",
+      "whatsapp": "https://wa.me/5491140272414",
+      "link_maps": "https://www.google.com/maps/place/Electricista+matriculado/data=!4m7!3m6!1s0x95bcb5003f0cdd2b:0xc1ffbd3c0e45ef3b!8m2!3d-34.5820694!4d-58.4118666!16s%2Fg%2F11lzpzjrtz!19sChIJK90MPwC1vJURO-9FDjy9_8E?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Gral. Las Heras 3734, C1425ATO Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista Villa Urquiza",
+      "reseñas": "25",
+      "rating": "5.0",
+      "telefono": "1124950911",
+      "whatsapp": "https://wa.me/5491124950911",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Villa+Urquiza/data=!4m7!3m6!1s0x266f5aa68dbaf9ef:0x25628f29ae8f8ffb!8m2!3d-34.5689915!4d-58.4815133!16s%2Fg%2F11yrzb9s3l!19sChIJ7_m6jaZabyYR-4-PrimPYiU?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Lugones 2676, C1430 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Jorge Electricidad",
+      "reseñas": "20",
+      "rating": "5.0",
+      "telefono": "91162017417",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Jorge+Electricidad/data=!4m7!3m6!1s0x95bcb7756840d9ed:0xe345bbec301bd3b!8m2!3d-34.5688124!4d-58.5071429!16s%2Fg%2F11p10bh6bw!19sChIJ7dlAaHW3vJURO70Bw75bNA4?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Medeyros 3595, C1431 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Servicio 95 electricistas",
+      "reseñas": "13",
+      "rating": "5.0",
+      "telefono": "1135873310",
+      "whatsapp": "https://wa.me/5491135873310",
+      "link_maps": "https://www.google.com/maps/place/Servicio+95+electricistas/data=!4m7!3m6!1s0x95bccb014b59ca8f:0x4b41326090c4ee94!8m2!3d-34.5978049!4d-58.4030185!16s%2Fg%2F11zy31l8b9!19sChIJj8pZSwHLvJURlO7EkGAyQUs?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Paraguay 2474, C1121ABN Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista Adrian Rafael Gil",
+      "reseñas": "12",
+      "rating": "5.0",
+      "telefono": "1176235878",
+      "whatsapp": "https://wa.me/5491176235878",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Adrian+Rafael+Gil/data=!4m7!3m6!1s0x95bcb7d68ba9256d:0xe18fc70f50c5e1cd!8m2!3d-34.5632459!4d-58.4663226!16s%2Fg%2F11kq2m583z!19sChIJbSWpi9a3vJURzeHFUA_Hj-E?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Blanco Encalada 3153, C1428 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricidad Florida",
+      "reseñas": "11",
+      "rating": "5.0",
+      "telefono": "1178275227",
+      "whatsapp": "https://wa.me/5491178275227",
+      "link_maps": "https://www.google.com/maps/place/Electricidad+Florida/data=!4m7!3m6!1s0x95bcb78977372697:0x4a9790bb74c6a087!8m2!3d-34.571592!4d-58.5045607!16s%2Fg%2F11nvlz7s2j!19sChIJlyY3d4m3vJURh6DGdLuQl0o?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "C. Manuela Pedraza 6275, C1431AKG Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "ELECTRIC INSTALACIONES SRL",
+      "reseñas": "11",
+      "rating": "5.0",
+      "telefono": "1165446872",
+      "whatsapp": "https://wa.me/5491165446872",
+      "link_maps": "https://www.google.com/maps/place/ELECTRIC+INSTALACIONES+SRL/data=!4m7!3m6!1s0x95bcb5ea05b85d6d:0x8f879aad311d4a!8m2!3d-34.5946024!4d-58.4437734!16s%2Fg%2F11t89ys8tx!19sChIJbV24Beq1vJURSh0xrZqHjwA?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Juan Bautista Justo 2550, C1414 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Servicio de seguridad contra incendios"
+    },
+    {
+      "nombre": "SGH ELECTRICISTA CERTIFICADO",
+      "reseñas": "10",
+      "rating": "5.0",
+      "telefono": "1157725242",
+      "whatsapp": "https://wa.me/5491157725242",
+      "link_maps": "https://www.google.com/maps/place/SGH+ELECTRICISTA+CERTIFICADO/data=!4m7!3m6!1s0x95bcb50071df884d:0xb6d7f61291ef3ab3!8m2!3d-34.553783!4d-58.4620344!16s%2Fg%2F11y0zpk2lg!19sChIJTYjfcQC1vJURszrvkRL217Y?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Quesada 2286, B1429 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista Edgardo silvero",
+      "reseñas": "10",
+      "rating": "5.0",
+      "telefono": "1136647859",
+      "whatsapp": "https://wa.me/5491136647859",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Edgardo+silvero/data=!4m7!3m6!1s0x95bcb783cc8afdd5:0xcddce261168b9bd8!8m2!3d-34.566512!4d-58.4942158!16s%2Fg%2F11hdmvthbn!19sChIJ1f2KzIO3vJUR2JuLFmHi3M0?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Triunvirato 5673, C1431 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "ELECTRICISTA MATRICULADO La Luz de Casa",
+      "reseñas": "8",
+      "rating": "5.0",
+      "telefono": "1131829922",
+      "whatsapp": "https://wa.me/5491131829922",
+      "link_maps": "https://www.google.com/maps/place/ELECTRICISTA+MATRICULADO+La+Luz+de+Casa/data=!4m7!3m6!1s0x5d03d98753e0bed:0xaa6ac03b5e4a5491!8m2!3d-34.5684229!4d-58.4899651!16s%2Fg%2F11wj47vbrp!19sChIJ7Qs-dZg90AURkVRKXjvAaqo?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Díaz Colodrero 3100, C1431 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Águila Volt- Instalaciones Eléctricas",
+      "reseñas": "8",
+      "rating": "5.0",
+      "telefono": "1131591977",
+      "whatsapp": "https://wa.me/5491131591977",
+      "link_maps": "https://www.google.com/maps/place/%C3%81guila+Volt-+Instalaciones+El%C3%A9ctricas/data=!4m7!3m6!1s0x800ea9e4f767d2a1:0xf4f32a3cc1cd98fb!8m2!3d-34.5918206!4d-58.3964052!16s%2Fg%2F11n9c74cwh!19sChIJodJn9-SpDoAR-5jNwTwq8_Q?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Peña 2114, C1126ABD Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electrotecnia Belgrano",
+      "reseñas": "7",
+      "rating": "5.0",
+      "telefono": "1162050032",
+      "whatsapp": "https://wa.me/5491162050032",
+      "link_maps": "https://www.google.com/maps/place/Electrotecnia+Belgrano/data=!4m7!3m6!1s0x95bcb51ce06d8b7d:0xcdce474eb378ca94!8m2!3d-34.6159202!4d-58.4333055!16s%2Fg%2F11px8jk01y!19sChIJfYtt4By1vJURlMp4s05Hzs0?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "{\"borough\":\"\",\"street\":\"\",\"city\":\"\",\"postal_code\":\"\",\"state\":\"\",\"country\":\"\"}",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista Moreno (Palermo)",
+      "reseñas": "7",
+      "rating": "5.0",
+      "telefono": "91156013176",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Moreno+%28Palermo%29/data=!4m7!3m6!1s0x95bcb5f58d31c7a9:0x93891d6a02054cdc!8m2!3d-34.5807911!4d-58.4245469!16s%2Fg%2F11z_t_1p_6!19sChIJqccxjfW1vJUR3EwFAmodiZM?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Darregueyra 2408 PB B, C1425ABC Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista Agustín Escobar",
+      "reseñas": "7",
+      "rating": "5.0",
+      "telefono": "92974177444",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Agust%C3%ADn+Escobar/data=!4m7!3m6!1s0x95bcc9f74d2e358f:0x62a9387f4aced637!8m2!3d-34.543279!4d-58.4817609!16s%2Fg%2F11xh93jy_d!19sChIJjzUuTffJvJURN9bOSn84qWI?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Pico 3160, C1429EGD Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista Charra",
+      "reseñas": "7",
+      "rating": "5.0",
+      "telefono": "1150351994",
+      "whatsapp": "https://wa.me/5491150351994",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Charra/data=!4m7!3m6!1s0x95bcb70007da1a5f:0x7a59a7705a4b6d93!8m2!3d-34.5771879!4d-58.4986165!16s%2Fg%2F11zyprkm9f!19sChIJXxraBwC3vJURk21LWnCnWXo?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. de los Constituyentes 5250, C1431 Villa Pueyrredon, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista Cuba",
+      "reseñas": "6",
+      "rating": "5.0",
+      "telefono": "1155736541",
+      "whatsapp": "https://wa.me/5491155736541",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Cuba/data=!4m7!3m6!1s0x95bcb5001e1d1b9d:0xde14701472332e92!8m2!3d-34.5550748!4d-58.4601951!16s%2Fg%2F11z73knq18!19sChIJnRsdHgC1vJURki4zchRwFN4?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Cuba 2734, C1428 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Hernan vega Electricista",
+      "reseñas": "5",
+      "rating": "5.0",
+      "telefono": "1169726533",
+      "whatsapp": "https://wa.me/5491169726533",
+      "link_maps": "https://www.google.com/maps/place/Hernan+vega+Electricista/data=!4m7!3m6!1s0x95bcb500256707ab:0x7f9ffc5cc209102a!8m2!3d-34.5769771!4d-58.4053901!16s%2Fg%2F11z56tymw7!19sChIJqwdnJQC1vJURKhAJwlz8n38?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "C. Jeronimo Salguero 3084, C1425 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista Agustin Ferrari",
+      "reseñas": "5",
+      "rating": "5.0",
+      "telefono": "91166640389",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Agustin+Ferrari/data=!4m7!3m6!1s0x95bcb7f1ecc2b749:0x115af6deb41f5992!8m2!3d-34.5439914!4d-58.4705159!16s%2Fg%2F11j3lrhk__!19sChIJSbfC7PG3vJURklkftN72WhE?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Ruiz Huidobro 2307, C1429 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista - Nicolas ⚡️💡",
+      "reseñas": "5",
+      "rating": "5.0",
+      "telefono": "1133142551",
+      "whatsapp": "https://wa.me/5491133142551",
+      "link_maps": "https://www.google.com/maps/place/Electricista+-+Nicolas+%E2%9A%A1%EF%B8%8F%F0%9F%92%A1/data=!4m7!3m6!1s0x95bcb7513d61a7c3:0xebd538b123b0716a!8m2!3d-34.5756918!4d-58.4987579!16s%2Fg%2F11z2ydbp_t!19sChIJw6dhPVG3vJURanGwI7E41es?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Tomás A. Le Bretón 5868, C1431 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "S.l.S. electricistas",
+      "reseñas": "4",
+      "rating": "5.0",
+      "telefono": "1122615481",
+      "whatsapp": "https://wa.me/5491122615481",
+      "link_maps": "https://www.google.com/maps/place/S.l.S.+electricistas/data=!4m7!3m6!1s0x95bcb76ab40c4911:0x2ece850eee19149f!8m2!3d-34.5586082!4d-58.4693111!16s%2Fg%2F11y4b_vkp_!19sChIJEUkMtGq3vJURnxQZ7g6Fzi4?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Zapiola 2921, C1426 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista domiciliario",
+      "reseñas": "4",
+      "rating": "5.0",
+      "telefono": "1151087670",
+      "whatsapp": "https://wa.me/5491151087670",
+      "link_maps": "https://www.google.com/maps/place/Electricista+domiciliario/data=!4m7!3m6!1s0x95bcb575309cb53d:0xd666a9f3c4717d37!8m2!3d-34.5763233!4d-58.4552606!16s%2Fg%2F11fm7kldft!19sChIJPbWcMHW1vJURN31xxPOpZtY?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Gral. Enrique Martínez 985, C1426 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista domiciliario",
+      "reseñas": "4",
+      "rating": "5.0",
+      "telefono": "1159755298",
+      "whatsapp": "https://wa.me/5491159755298",
+      "link_maps": "https://www.google.com/maps/place/Electricista+domiciliario/data=!4m7!3m6!1s0x95bccb00025bb4bf:0x7de61c43a6f07a3b!8m2!3d-34.5959986!4d-58.4031322!16s%2Fg%2F11zznwdfc6!19sChIJv7RbAgDLvJURO3rwpkMc5n0?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Pueyrredón 1266, C1118AAP Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "D y F Instalaciones Electricas",
+      "reseñas": "3",
+      "rating": "5.0",
+      "telefono": "1172373608",
+      "whatsapp": "https://wa.me/5491172373608",
+      "link_maps": "https://www.google.com/maps/place/D+y+F+Instalaciones+Electricas/data=!4m7!3m6!1s0x95bccb4eeba4390b:0xdf6fce430134acf8!8m2!3d-34.5977006!4d-58.4225202!16s%2Fg%2F11ntdbk50y!19sChIJCzmk607LvJUR-Kw0AUPOb98?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Córdoba 3950, C1188AAS Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Gasista/Electricista 24hs",
+      "reseñas": "3",
+      "rating": "5.0",
+      "telefono": "1154851939",
+      "whatsapp": "https://wa.me/5491154851939",
+      "link_maps": "https://www.google.com/maps/place/Gasista%2FElectricista+24hs/data=!4m7!3m6!1s0x95bcb760d520f4e5:0x51da8c3869416c2a!8m2!3d-34.5778953!4d-58.4907101!16s%2Fg%2F11kj00q4fx!19sChIJ5fQg1WC3vJURKmxBaTiM2lE?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Blanco Encalada 5435, C1428 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "CABA SOLUCIONES ELECTRICAS",
+      "reseñas": "3",
+      "rating": "5.0",
+      "telefono": "1178285231",
+      "whatsapp": "https://wa.me/5491178285231",
+      "link_maps": "https://www.google.com/maps/place/CABA+SOLUCIONES+ELECTRICAS/data=!4m7!3m6!1s0x95bccb0001b98e6d:0xf56fff36cc0bbae8!8m2!3d-34.5916115!4d-58.39186!16s%2Fg%2F11nw3lcv88!19sChIJbY65AQDLvJUR6LoLzDb_b_U?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Callao, Av. Gral. Las Heras &, Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista Rodolfo",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "91165899248",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Rodolfo/data=!4m7!3m6!1s0x95bccb249d29d5ad:0x280d281f4ba81449!8m2!3d-34.5943599!4d-58.4215599!16s%2Fg%2F11y2mw362b!19sChIJrdUpnSTLvJURSRSoSx8oDSg?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "1180, Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Leonardo Cruz Electricista Matriculado",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "91151607881",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Leonardo+Cruz+Electricista+Matriculado/data=!4m7!3m6!1s0xa12b0d3fac387b49:0x722364ec36f06bf!8m2!3d-34.5519073!4d-58.4733503!16s%2Fg%2F11zz58mh71!19sChIJSXs4rD8NK6ERvwZvw042Igc?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Crisólogo Larralde 2976, C1429BTW Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "InstaLight",
+      "reseñas": "2",
+      "rating": "5.0",
+      "telefono": "1123264760",
+      "whatsapp": "https://wa.me/5491123264760",
+      "link_maps": "https://www.google.com/maps/place/InstaLight/data=!4m7!3m6!1s0x95bccb59178b88f1:0x4eb91b44c15212d9!8m2!3d-34.5897444!4d-58.4038727!16s%2Fg%2F11nqp142ng!19sChIJ8YiLF1nLvJUR2RJSwUQbuU4?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Juncal 2669, C1425AYE Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Pablo Instalaciones Eléctricas – Saavedra",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1136163708",
+      "whatsapp": "https://wa.me/5491136163708",
+      "link_maps": "https://www.google.com/maps/place/Pablo+Instalaciones+El%C3%A9ctricas+%E2%80%93+Saavedra/data=!4m7!3m6!1s0x86402ca8997dd555:0x4b13bab4703a35e!8m2!3d-34.5516939!4d-58.4760617!16s%2Fg%2F11z2vg_41j!19sChIJVdV9magsQIYRXqMDR6s7sQQ?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Pinto 3708, C1429 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "SELECTRIC ARGENTINA",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1155681177",
+      "whatsapp": "https://wa.me/5491155681177",
+      "link_maps": "https://www.google.com/maps/place/SELECTRIC+ARGENTINA/data=!4m7!3m6!1s0x95bcb7fada647d17:0xc5a00af3fd8ae8be!8m2!3d-34.548157!4d-58.4826557!16s%2Fg%2F11n0flfxd6!19sChIJF31k2vq3vJURvuiK_fMKoMU?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Superí 4374, C1430 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista de Villa Urquiza",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1137879904",
+      "whatsapp": "https://wa.me/5491137879904",
+      "link_maps": "https://www.google.com/maps/place/Electricista+de+Villa+Urquiza/data=!4m7!3m6!1s0x95bcb7d49be188e5:0x9b20a142cdcae8b!8m2!3d-34.5763854!4d-58.4931232!16s%2Fg%2F11j4rrmkd5!19sChIJ5Yjhm9S3vJURi67cLBQKsgk?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Burela 2530, C1431 C1431EHD, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electromecanica Ground Roberts",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "91150601590",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Electromecanica+Ground+Roberts/data=!4m7!3m6!1s0x95bcb7d4d02b4f7b:0x89cf736cbc51b445!8m2!3d-34.5576675!4d-58.4716583!16s%2Fg%2F11h7kvm82p!19sChIJe08r0NS3vJURRbRRvGxzz4k?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Iberá 3200, C1429 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "´Eléctrico Gus´ Electricista",
+      "reseñas": "1",
+      "rating": "5.0",
+      "telefono": "1121760001",
+      "whatsapp": "https://wa.me/5491121760001",
+      "link_maps": "https://www.google.com/maps/place/%C2%B4El%C3%A9ctrico+Gus%C2%B4+Electricista/data=!4m7!3m6!1s0x95bcb7c765a7fb5f:0x87e7149bb3295e58!8m2!3d-34.5670666!4d-58.4910804!16s%2Fg%2F11nvz141wb!19sChIJX_unZce3vJURWF4ps5sU54c?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Iberá 5105, C1431AEK AEK, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "GAMELECTRIC srl",
+      "reseñas": "509",
+      "rating": "4.9",
+      "telefono": "1145511820",
+      "whatsapp": "https://wa.me/5491145511820",
+      "link_maps": "https://www.google.com/maps/place/GAMELECTRIC+srl/data=!4m7!3m6!1s0x95bcb5c0443283d1:0x2992934bd6cf2c55!8m2!3d-34.5732767!4d-58.4422035!16s%2Fg%2F11c1xqg7cm!19sChIJ0YMyRMC1vJURVSzP1kuTkik?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Calle Jorge Newbery 2551 45511820, C1426 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Tienda de electricidad"
+    },
+    {
+      "nombre": "Electricidad Chispita",
+      "reseñas": "122",
+      "rating": "4.9",
+      "telefono": "1131191973",
+      "whatsapp": "https://wa.me/5491131191973",
+      "link_maps": "https://www.google.com/maps/place/Electricidad+Chispita/data=!4m7!3m6!1s0x95bcb5ffb01316b5:0x885c9dc2c32d4886!8m2!3d-34.5847266!4d-58.4154773!16s%2Fg%2F11kcsj89t7!19sChIJtRYTsP-1vJURhkgtw8KdXIg?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Raúl Scalabrini Ortiz 2560, C1425 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Feldman Electricista Matriculado",
+      "reseñas": "64",
+      "rating": "4.9",
+      "telefono": "1128780090",
+      "whatsapp": "https://wa.me/5491128780090",
+      "link_maps": "https://www.google.com/maps/place/Feldman+Electricista+Matriculado/data=!4m7!3m6!1s0x95bcb5c629a41ed7:0x52e804779a1b42c0!8m2!3d-34.5585386!4d-58.4511904!16s%2Fg%2F11vjjj9xww!19sChIJ1x6kKca1vJURwEIbmncE6FI?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Juramento 1800, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista Frank",
+      "reseñas": "27",
+      "rating": "4.9",
+      "telefono": "1151547676",
+      "whatsapp": "https://wa.me/5491151547676",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Frank/data=!4m7!3m6!1s0x95bcb56306e83617:0x71dde1ce78d07e32!8m2!3d-34.5750202!4d-58.4406974!16s%2Fg%2F11t1hcw6v6!19sChIJFzboBmO1vJURMn7QeM7h3XE?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Cdad. de la Paz 228, C1426AGD Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricidad San Jorge h.",
+      "reseñas": "52",
+      "rating": "4.8",
+      "telefono": "1149746653",
+      "whatsapp": "https://wa.me/5491149746653",
+      "link_maps": "https://www.google.com/maps/place/Electricidad+San+Jorge+h./data=!4m7!3m6!1s0x95bccbca96a64d45:0xdaa0051294eefc1a!8m2!3d-34.5923068!4d-58.4265025!16s%2Fg%2F11cjj4vgsx!19sChIJRU2mlsrLvJURGvzulBIFoNo?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Gorriti 4577, C1414 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Tienda de electricidad"
+    },
+    {
+      "nombre": "Electricidad Chispita",
+      "reseñas": "38",
+      "rating": "4.8",
+      "telefono": "1131191973",
+      "whatsapp": "https://wa.me/5491131191973",
+      "link_maps": "https://www.google.com/maps/place/Electricidad+Chispita/data=!4m7!3m6!1s0x95bcb5b13c37cb41:0x6964256de379f339!8m2!3d-34.5793479!4d-58.4481444!16s%2Fg%2F11rdypjnz6!19sChIJQcs3PLG1vJUROfN5420lZGk?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Maure 3262, C1426CVJ Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricidad Chispita",
+      "reseñas": "33",
+      "rating": "4.8",
+      "telefono": "1131191973",
+      "whatsapp": "https://wa.me/5491131191973",
+      "link_maps": "https://www.google.com/maps/place/Electricidad+Chispita/data=!4m7!3m6!1s0x95bcb574b7baad05:0xa3d2cac2a67712b!8m2!3d-34.5551561!4d-58.4591663!16s%2Fg%2F11szb_6b_d!19sChIJBa26t3S1vJURK3FnKqwsPQo?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Manuel Ugarte 2158, C1428 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista Facundo",
+      "reseñas": "24",
+      "rating": "4.8",
+      "telefono": "1144468453",
+      "whatsapp": "https://wa.me/5491144468453",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Facundo/data=!4m7!3m6!1s0x95bcb9b40e1145b9:0x416ce50c4282c85a!8m2!3d-34.5476989!4d-58.5032757!16s%2Fg%2F11csqfxwyt!19sChIJuUURDrS5vJURWsiCQgzlbEE?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Francisco Narciso de Laprida, Chile &, Villa Martelli, Provincia de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista Ariel Matriculado. Villa Urquiza",
+      "reseñas": "20",
+      "rating": "4.8",
+      "telefono": "91165419872",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Ariel+Matriculado.+Villa+Urquiza/data=!4m7!3m6!1s0x95bcb7b33f93e445:0xc68bb2c9a93e0d3!8m2!3d-34.5712829!4d-58.4930974!16s%2Fg%2F11q25pt31m!19sChIJReSTP7O3vJUR0-CTmiy7aAw?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Aguas Buenas 3000 1431, C1431DZB Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista Urgencias 24hs",
+      "reseñas": "17",
+      "rating": "4.8",
+      "telefono": "1128602913",
+      "whatsapp": "https://wa.me/5491128602913",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Urgencias+24hs/data=!4m7!3m6!1s0x95bcb76ea2f7388f:0x7c51d78f5895ada2!8m2!3d-34.5688103!4d-58.4631895!16s%2Fg%2F11pkc9kx6n!19sChIJjzj3om63vJURoq2VWI_XUXw?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Mcal. Antonio José de Sucre 3250, C1428 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Gerardo Britto Electricista",
+      "reseñas": "4",
+      "rating": "4.8",
+      "telefono": "1162152376",
+      "whatsapp": "https://wa.me/5491162152376",
+      "link_maps": "https://www.google.com/maps/place/Gerardo+Britto+Electricista/data=!4m7!3m6!1s0x95bcb5e855bc37c7:0xac8a2843560b2f33!8m2!3d-34.5766821!4d-58.4454667!16s%2Fg%2F11g21wfm4d!19sChIJxze8Vei1vJURMy8LVkMoiqw?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Calle Jorge Newbery 2967, C1426CYC Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Luminarte - Materiales Eléctricos - Electricidad",
+      "reseñas": "112",
+      "rating": "4.7",
+      "telefono": "91150465062",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Luminarte+-+Materiales+El%C3%A9ctricos+-+Electricidad/data=!4m7!3m6!1s0x95bcb762d6d2ac83:0xc619dfc8abce1cff!8m2!3d-34.55045!4d-58.470805!16s%2Fg%2F11f9dj7j8h!19sChIJg6zS1mK3vJUR_xzOq8jfGcY?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Crisólogo Larralde 2652, C1429BTT Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Tienda de electricidad"
+    },
+    {
+      "nombre": "L.E.M Electricidad del Automóvil",
+      "reseñas": "71",
+      "rating": "4.7",
+      "telefono": "1145424810",
+      "whatsapp": "https://wa.me/5491145424810",
+      "link_maps": "https://www.google.com/maps/place/L.E.M+Electricidad+del+Autom%C3%B3vil/data=!4m7!3m6!1s0x95bcb68f5c6c5f75:0xcd173505f939b2f7!8m2!3d-34.558438!4d-58.4748606!16s%2Fg%2F11b6pnhfdx!19sChIJdV9sXI-2vJUR97I5-QU1F80?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Dr. Ricardo Balbín 3133, C1430AAC Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Taller mecánico"
+    },
+    {
+      "nombre": "Electricidad Medrano",
+      "reseñas": "67",
+      "rating": "4.6",
+      "telefono": "1121383645",
+      "whatsapp": "https://wa.me/5491121383645",
+      "link_maps": "https://www.google.com/maps/place/Electricidad+Medrano/data=!4m7!3m6!1s0x95bcca7d137bffff:0x6cf647f0c85f869f!8m2!3d-34.5966334!4d-58.4190418!16s%2Fg%2F11f5btn9l1!19sChIJ__97E33KvJURn4ZfyPBH9mw?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "José A. Cabrera 3724, C1186AAT C1186AAT, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Tienda de electricidad"
+    },
+    {
+      "nombre": "Gasista - Electricista Matriculado",
+      "reseñas": "10",
+      "rating": "4.6",
+      "telefono": "91134721417",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Gasista+-+Electricista+Matriculado/data=!4m7!3m6!1s0x95bcb713c969a1a9:0xe69ade67490a4529!8m2!3d-34.5597549!4d-58.4810219!16s%2Fg%2F11hrcfz3hc!19sChIJqaFpyRO3vJURKUUKSWfemuY?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "C. Manuela Pedraza 4086 DTO 2, C1430 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricista matriculado urgencias",
+      "reseñas": "9",
+      "rating": "4.6",
+      "telefono": "91169039420",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Electricista+matriculado+urgencias/data=!4m7!3m6!1s0x95bcb51856fa8299:0x7920aeed2e7a9105!8m2!3d-34.5779612!4d-58.4497527!16s%2Fg%2F11l348_4gj!19sChIJmYL6Vhi1vJURBZF6Lu2uIHk?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Conde 718, C1426 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricidad Saavedra",
+      "reseñas": "277",
+      "rating": "4.5",
+      "telefono": "1146660701",
+      "whatsapp": "https://wa.me/5491146660701",
+      "link_maps": "https://www.google.com/maps/place/Electricidad+Saavedra/data=!4m7!3m6!1s0x95bcbc36398d5023:0xca34588d1435e03a!8m2!3d-34.5651607!4d-58.6839187!16s%2Fg%2F11bbrmyrb6!19sChIJI1CNOTa8vJUROuA1FI1YNMo?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "BND Bella Vista Buenos Aires AR, 20 de Junio 1010, B1661, Argentina",
+      "categoria": "Mayorista de productos electrónicos"
+    },
+    {
+      "nombre": "Elektron",
+      "reseñas": "93",
+      "rating": "4.5",
+      "telefono": "1145521878",
+      "whatsapp": "https://wa.me/5491145521878",
+      "link_maps": "https://www.google.com/maps/place/Elektron/data=!4m7!3m6!1s0x95bcce7687a60ec9:0x6643160f9bad2a29!8m2!3d-34.5743987!4d-58.4596976!16s%2Fg%2F1tcw4tm1!19sChIJyQ6mh3bOvJURKSqtmw8WQ2Y?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Elcano 3302, C1426EJR Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Tienda de electricidad"
+    },
+    {
+      "nombre": "Franade SRL",
+      "reseñas": "2",
+      "rating": "4.5",
+      "telefono": "1145426283",
+      "whatsapp": "https://wa.me/5491145426283",
+      "link_maps": "https://www.google.com/maps/place/Franade+SRL/data=!4m7!3m6!1s0x95bcb6e90a723051:0x177b80359cbfbbbf!8m2!3d-34.5523843!4d-58.4932648!16s%2Fg%2F1hc4jvw7m!19sChIJUTByCum2vJURv7u_nDWAexc?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Ramallo 4608, C1430 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Servicio de instalación eléctrica"
+    },
+    {
+      "nombre": "Electricidad Ramallo",
+      "reseñas": "180",
+      "rating": "4.4",
+      "telefono": "1136030603",
+      "whatsapp": "https://wa.me/5491136030603",
+      "link_maps": "https://www.google.com/maps/place/Electricidad+Ramallo/data=!4m7!3m6!1s0x95bcb6a28c0f0777:0x9f0b3bdf627ca307!8m2!3d-34.542492!4d-58.4719448!16s%2Fg%2F1tj1t8bq!19sChIJdwcPjKK2vJURB6N8Yt87C58?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Ramallo 2339, C1429DUM Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Tienda de electricidad"
+    },
+    {
+      "nombre": "Materiales Eléctricos Electro Congreso",
+      "reseñas": "60",
+      "rating": "4.2",
+      "telefono": "5445005762",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Materiales+El%C3%A9ctricos+Electro+Congreso/data=!4m7!3m6!1s0x95bcb6817ed58b8d:0x7aaae3a0aa92e31d!8m2!3d-34.5570342!4d-58.4661616!16s%2Fg%2F11b6ht4kh8!19sChIJjYvVfoG2vJURHeOSqqDjqno?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Congreso 2795, C1428BVQ Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Tienda de electricidad"
+    },
+    {
+      "nombre": "Electricista Gonzalo",
+      "reseñas": "5",
+      "rating": "4.2",
+      "telefono": "1151762990",
+      "whatsapp": "https://wa.me/5491151762990",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Gonzalo/data=!4m7!3m6!1s0x95bcb5943102da17:0xb68616187779c3bd!8m2!3d-34.564874!4d-58.4660154!16s%2Fg%2F1thkswrr!19sChIJF9oCMZS1vJURvcN5dxgWhrY?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Cap. Gral. Ramón Freire 2290, C1428 CZF, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electricidad en general. Electricista en C.A.B.A. a domicilio.",
+      "reseñas": "5",
+      "rating": "4.2",
+      "telefono": "1160495195",
+      "whatsapp": "https://wa.me/5491160495195",
+      "link_maps": "https://www.google.com/maps/place/Electricidad+en+general.+Electricista+en+C.A.B.A.+a+domicilio./data=!4m7!3m6!1s0x95bccbf4f25252c1:0x5c8f297c56fa5343!8m2!3d-34.5948766!4d-58.401951!16s%2Fg%2F11j0qy6lp6!19sChIJwVJS8vTLvJURQ1P6Vnwpj1w?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Av. Sta. Fe 2450 Loc 118, C1123 AAT, Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    },
+    {
+      "nombre": "Electro Encalada",
+      "reseñas": "67",
+      "rating": "4.0",
+      "telefono": "1147888988",
+      "whatsapp": "https://wa.me/5491147888988",
+      "link_maps": "https://www.google.com/maps/place/Electro+Encalada/data=!4m7!3m6!1s0x95bcb42b46c65e7b:0x5d6340b1dc783e46!8m2!3d-34.5588058!4d-58.4585664!16s%2Fg%2F1tf6ncz2!19sChIJe17GRiu0vJURRj543LFAY10?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Blanco Encalada 2335, C1428 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Tienda de herramientas"
+    },
+    {
+      "nombre": "Electricista Palermo PyA Soluciones",
+      "reseñas": "5",
+      "rating": "4.0",
+      "telefono": "91155887429",
+      "whatsapp": "",
+      "link_maps": "https://www.google.com/maps/place/Electricista+Palermo+PyA+Soluciones/data=!4m7!3m6!1s0x95bcb5f85f67171f:0x415aafeb55569209!8m2!3d-34.5842129!4d-58.4210664!16s%2Fg%2F11lkzt3gx4!19sChIJHxdnX_i1vJURCZJWVeuvWkE?authuser=0&hl=es&g_ep=EgoyMDI2MTEwMS4wIJJjKgBIAVAD&rclk=1",
+      "direccion": "Pje. Virasoro 2360, C1425 Cdad. Autónoma de Buenos Aires, Argentina",
+      "categoria": "Electricista"
+    }
+  ]
+}
