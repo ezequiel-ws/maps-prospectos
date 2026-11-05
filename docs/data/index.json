@@ -1,6 +1,15 @@
 {
   "searches": [
     {
+      "id": "20261104-211413_electricistas-12-barrios-caba",
+      "query": "electricistas · 12 barrios CABA",
+      "date": "20261104-211413",
+      "date_label": "2026-11-04 21:14 (America/Buenos_Aires)",
+      "n_raw": 468,
+      "n_limpio": 77,
+      "file": "20261104-211413_electricistas-12-barrios-caba.json"
+    },
+    {
       "id": "20261104-123812_electricistas-8-barrios-caba",
       "query": "electricistas · 8 barrios CABA",
       "date": "20261104-123812",
