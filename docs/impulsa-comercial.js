@@ -52,7 +52,7 @@
       entregables: ["Informe de cambios realizados", "Página actual mejorada (sin reemplazarla)"] },
     B: { nombre: "Sistema para solicitar turnos", plazo: "1 a 2 semanas",
       cliente: "Implementamos un sistema para que los clientes puedan solicitar turnos de forma sencilla, sin depender exclusivamente de conversaciones manuales.",
-      incluye: ["Pedido de turno online con disponibilidad real", "Confirmaciones y recordatorios", "Enlace de reserva para Google Maps, web, redes y WhatsApp"],
+      incluye: ["Formulario o enlace simple para solicitar un turno", "Enlace utilizable desde Google Maps, la página web y WhatsApp", "Configuración básica y capacitación al equipo para administrar las solicitudes"],
       entregables: ["Sistema configurado y probado", "Capacitación al equipo"] },
     C: { nombre: "Publicidad para atraer consultas", plazo: "2 semanas de puesta en marcha + gestión mensual",
       cliente: "Diseñamos campañas para mostrar los servicios a personas que podrían estar interesadas, midiendo consultas y resultados.",
@@ -72,7 +72,7 @@
       entregables: ["Cuenta configurada", "Guion de respuestas para el equipo"] },
     F: { nombre: "Organización y seguimiento de consultas", plazo: "2 a 3 semanas",
       cliente: "Organizamos las consultas recibidas para evitar que queden olvidadas y mejorar el seguimiento de las personas que todavía no confirmaron.",
-      incluye: ["Registro centralizado de consultas", "Etapas de seguimiento y recordatorios", "Formulario de consulta conectado"],
+      incluye: ["Registro centralizado de consultas", "Etapas de seguimiento claras para el equipo", "Formulario de consulta conectado al registro"],
       entregables: ["Sistema de seguimiento configurado", "Proceso documentado para el equipo"] },
     G: { nombre: "Plan de crecimiento y reputación", plazo: "2 semanas",
       cliente: "Armamos un plan priorizado y un proceso simple para pedir y responder reseñas, con indicadores claros de seguimiento.",
@@ -367,7 +367,7 @@
     const reput = an.rating != null && an.resenas != null && an.rating >= 4.5 && an.resenas >= 20;
     if (reput && ids.some((id) => id === "web" || id === "agenda")) {
       if (rub.usaAgenda)
-        return "Una reputación sólida que puede aprovecharse mejor si a quien los encuentra en Google le resulta más sencillo conocer el consultorio y solicitar un turno";
+        return "Una reputación sólida que puede aprovecharse mejor si a quien lo encuentra en Google le resulta más sencillo conocer el consultorio y solicitar un turno";
       return "Una reputación sólida que puede aprovecharse mejor con una forma más clara de presentarse y recibir consultas";
     }
     if (ids[0] === "wa_resp" && rub.urg)
@@ -426,7 +426,7 @@
     else
       pasos.push("Encuentra fácilmente cómo comunicarse (llamada o WhatsApp).");
     if (ids.indexOf("B") >= 0)
-      pasos.push("Recibe la confirmación por WhatsApp.");
+      pasos.push("El consultorio recibe la solicitud y la confirma con el paciente.");
     if (ids.indexOf("F") >= 0)
       pasos.push("El negocio organiza y da seguimiento a cada consulta.");
     else
@@ -480,15 +480,12 @@
     const flujoA = flujoActualDe(an);
     const flujoB = flujoPropuestoDe(an, act);
 
-    const escA = "Conserva lo que ya funciona" + (fortz[0] ? " — en particular, " + minus(fortz[0].replace(/\.$/, "")) : "") +
-      ". Las oportunidades identificadas seguirían pendientes" +
-      (topOps.length ? ": " + topOps.map((o) => minus(o.titulo)).join("; ") : "") +
-      ". No decidir también implica mantener estas limitaciones actuales. No estimamos pérdidas económicas: solo describimos lo observado.";
-    const escB = "Implementar las mejoras propuestas permitiría que quien encuentra el negocio tenga un camino más claro para conocerlo y contactarlo" +
-      (rub.usaAgenda && act.some((s) => s.id === "B") ? ", y para solicitar un " + rub.consulta + " con menos mensajes" : "") +
-      ". El equipo ganaría más orden para recibir y seguir consultas. La inversión" +
-      (act.some((s) => s.precio) ? " se detalla más adelante" : " se define en una reunión de cotización") +
-      ". No prometemos resultados numéricos: medimos y ajustamos juntos.";
+    const escA = "Conserva lo que ya funciona" + (fortz[0] ? " (" + minus(fortz[0].replace(/\.$/, "")) + ")" : "") +
+      ". El camino desde Google hasta concretar un " + rub.consulta + " seguiría dependiendo del contacto manual. No estimamos pérdidas económicas: solo describimos lo observado.";
+    const escB = "Quien encuentra el negocio tendría un recorrido más claro para conocerlo y solicitar un " + rub.consulta +
+      " con menos ida y vuelta. El equipo ordenaría mejor las solicitudes. La inversión" +
+      (act.some((s) => s.precio) ? " se detalla en la propuesta" : " se define en una reunión de cotización") +
+      ". No prometemos cifras: medimos y ajustamos juntos.";
 
     const plan = [
       "Planificación: confirmamos con ustedes los puntos pendientes y acordamos prioridades y alcance.",
@@ -591,8 +588,10 @@
     }
     if (INVENCION.test(clienteTxt))
       bloqueantes.push("Hay afirmaciones sin evidencia (pérdida de clientes/pacientes, carecer de agenda, promesas). Eliminarlas.");
-    if (/diagn[oó]stico preliminar|puntaje|scoring|confianza del algoritmo|banda (alta|media|baja)/i.test(clienteTxt))
-      bloqueantes.push("El PDF al cliente no debe incluir puntajes, scoring ni la etiqueta de diagnóstico preliminar.");
+    if (/diagn[oó]stico preliminar|puntaje|scoring|confianza del algoritmo|banda (alta|media|baja)|Meta Ads Library|aspectos pendientes de confirmar/i.test(clienteTxt))
+      bloqueantes.push("El PDF al cliente no debe incluir información interna (puntajes, Ads Library, aspectos pendientes).");
+    if (/disponibilidad real|confirmaciones? autom[aá]tic|recordatorios autom[aá]tic/i.test(clienteTxt))
+      bloqueantes.push("No prometas disponibilidad real ni confirmaciones/recordatorios automáticos si no están en el alcance.");
     if (!doc.tituloPortada || doc.tituloPortada.length < 20)
       bloqueantes.push("Falta un título personalizado de portada.");
     if (!doc.negocio || /el negocio/i.test(doc.negocio))
@@ -619,38 +618,72 @@
     return { avisos: avisos.concat(bloqueantes), bloqueantes, ok: !bloqueantes.length };
   }
 
-  /* ===================== HTML del documento comercial (3–5 páginas) ===================== */
-  const DOC_CSS = ".imx{font:14.5px/1.45 'Inter',system-ui,-apple-system,Roboto,sans-serif;color:#111827;background:#fff;max-width:820px;margin:0 auto}" +
-    ".imx .pg{padding:16px 18px}.imx .cov{page-break-after:always;break-after:page}" +
-    ".imx .cov{display:flex;flex-direction:column;gap:12px;background:linear-gradient(160deg,#0f172a 0%,#134e4a 100%);color:#fff;border-radius:14px;padding:24px 22px;-webkit-print-color-adjust:exact;print-color-adjust:exact}" +
-    ".imx .brand{font-weight:800;letter-spacing:.18em;font-size:17px;color:#5eead4}.imx .tagline{color:#99f6e4;font-size:12px;margin-top:3px}" +
-    ".imx .cov .doc-kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.9;margin-top:18px}" +
-    ".imx .cov h1{font-size:22px;line-height:1.28;margin:8px 0 12px;font-weight:700}.imx .cov .neg{font-size:20px;font-weight:700}" +
-    ".imx .cov .sub{opacity:.88;margin-top:3px;font-size:13px}.imx .cov .lead{margin-top:12px;font-size:14px;line-height:1.45;opacity:.95;max-width:38em}" +
-    ".imx h2{font-size:17px;color:#0f766e;border-bottom:2px solid #ccfbf1;padding-bottom:5px;margin:0 0 10px;break-after:avoid;page-break-after:avoid}" +
-    ".imx h3{font-size:14px;margin:12px 0 6px;color:#134e4a;break-after:avoid;page-break-after:avoid}.imx p{margin:0 0 8px}" +
-    ".imx .card{border:1px solid #e5e7eb;border-left:4px solid #0d9488;border-radius:10px;padding:10px 12px;margin:8px 0;break-inside:avoid;page-break-inside:avoid}" +
-    ".imx .card.soft{border-left-color:#94a3b8}.imx .k{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#6b7280;margin-top:6px}" +
-    ".imx ul,.imx ol{padding-left:20px;margin:4px 0 8px}.imx li{margin:3px 0}.imx .muted{color:#6b7280;font-size:12px}" +
-    ".imx .flow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0}.imx .flow>div{border:1px solid #e5e7eb;border-radius:10px;padding:10px;break-inside:avoid;page-break-inside:avoid}" +
-    ".imx .flow .prop{border-color:#0d9488;background:#f0fdfa}.imx .flow ol{margin:6px 0 0;padding-left:18px}" +
-    ".imx .esc{display:grid;grid-template-columns:1fr 1fr;gap:10px}.imx .esc>div{border:1px solid #e5e7eb;border-radius:10px;padding:10px;break-inside:avoid;page-break-inside:avoid}.imx .esc .b{border-color:#0d9488;background:#f0fdfa}" +
-    ".imx .svc{border:1px solid #e5e7eb;border-radius:10px;padding:12px;margin:8px 0;break-inside:avoid;page-break-inside:avoid}.imx .svc h3{margin-top:0}" +
-    ".imx .alt{border:1px solid #e5e7eb;border-radius:10px;padding:10px;margin:6px 0}.imx .alt.rec{border:2px solid #0d9488}" +
-    ".imx table{width:100%;border-collapse:collapse;margin:8px 0}.imx th,.imx td{border:1px solid #e5e7eb;padding:7px;text-align:left;vertical-align:top;font-size:13px}.imx th{background:#f0fdfa}" +
-    ".imx .pend{margin-top:12px;padding:8px 10px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;font-size:12px;color:#475569;break-inside:avoid}" +
-    ".imx .foot{margin-top:14px;padding-top:10px;border-top:1px solid #e5e7eb;font-size:12px;color:#374151}" +
-    ".imx .steps{counter-reset:st}.imx .steps li{margin:4px 0}" +
-    "@media (max-width:640px){.imx .pg,.imx .cov{padding:18px 14px}.imx .flow,.imx .esc{grid-template-columns:1fr}.imx .cov h1{font-size:19px}}" +
-    "@media print{.imx .cov{border-radius:0}.imx{max-width:none}" +
-    ".imx h2,.imx h3,.imx .card,.imx .svc,.imx .flow>div,.imx .esc>div{break-inside:avoid;page-break-inside:avoid}}";
-
+  /* ===================== HTML documento cliente (3 págs editoriales IMPULSA) ===================== */
+  /* Principios: tapa/encabezado petróleo, QBR numerado, propuesta tipo revista, plan en secuencia. */
+  const DOC_CSS = ""
+    + "@page{size:A4;margin:11mm 12mm 12mm 12mm}"
+    + ".imx{font:12.8px/1.4 'Inter',system-ui,-apple-system,Roboto,sans-serif;color:#1e293b;background:#fff;max-width:720px;margin:0 auto}"
+    + ".imx .pg{padding:0;page-break-after:always;break-after:page}"
+    + ".imx .pg:last-child{page-break-after:auto;break-after:auto}"
+    /* Encabezado institucional contenido (no héroe a media página) */
+    + ".imx .mast{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:0 0 10px;margin:0 0 14px;border-bottom:2px solid #0f3d3a}"
+    + ".imx .brand{font-weight:800;letter-spacing:.2em;font-size:14px;color:#0f3d3a}"
+    + ".imx .tagline{font-size:10.5px;color:#0d9488;margin-top:3px;letter-spacing:.02em}"
+    + ".imx .mast-r{text-align:right;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#64748b;line-height:1.4}"
+    + ".imx .neg{font-size:22px;font-weight:700;color:#0f172a;letter-spacing:-.03em;margin:0 0 2px;line-height:1.15}"
+    + ".imx .meta{font-size:12px;color:#64748b;margin:0 0 18px}"
+    + ".imx .hook{font-size:15.5px;line-height:1.35;font-weight:650;color:#0f3d3a;margin:0 0 12px;max-width:36em}"
+    + ".imx h2{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#0d9488;margin:14px 0 6px;padding:0;border:0}"
+    + ".imx h3{font-size:13px;font-weight:700;color:#0f3d3a;margin:10px 0 5px}"
+    + ".imx p{margin:0 0 10px}.imx .lead{font-size:13.5px;color:#334155;max-width:40em}"
+    + ".imx .muted{color:#64748b;font-size:12px}"
+    /* Timeline editorial 01—02—03 (referencia libro) */
+    + ".imx .tl{margin:8px 0 4px;padding:0;list-style:none;border-left:2px solid #99f6e4;margin-left:14px}"
+    + ".imx .tl li{position:relative;padding:0 0 12px 22px;break-inside:avoid;page-break-inside:avoid}"
+    + ".imx .tl li:last-child{padding-bottom:0}"
+    + ".imx .tl .n{position:absolute;left:-15px;top:0;width:28px;height:28px;border-radius:50%;background:#0f3d3a;color:#5eead4;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;-webkit-print-color-adjust:exact;print-color-adjust:exact}"
+    + ".imx .tl strong{display:block;font-size:14px;color:#0f172a;margin:2px 0 6px}"
+    + ".imx .tl .row{font-size:12.5px;color:#475569;margin:2px 0}.imx .tl .row b{color:#0f3d3a;font-weight:600}"
+    /* Indicadores grandes tipo QBR */
+    + ".imx .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:4px 0 12px}"
+    + ".imx .kpi>div{padding:10px 10px;background:#f0fdfa;border-top:3px solid #0d9488;break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}"
+    + ".imx .kpi .v{font-size:24px;font-weight:800;color:#0f3d3a;letter-spacing:-.03em;line-height:1}"
+    + ".imx .kpi .l{font-size:11px;color:#64748b;margin-top:6px;text-transform:uppercase;letter-spacing:.06em}"
+    /* Paths / escenarios limpios */
+    + ".imx .paths{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0 10px}"
+    + ".imx .paths>div{padding:14px 14px 12px;background:#f8fafc;break-inside:avoid}"
+    + ".imx .paths .go{background:#f0fdfa}"
+    + ".imx .paths .lab{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#0d9488;font-weight:700;margin:0 0 6px}"
+    + ".imx .paths p{font-size:12.5px;margin:0;color:#334155}"
+    /* Propuesta editorial (sin cajas de formulario) */
+    + ".imx .svc{padding:8px 0;border-bottom:1px solid #e2e8f0;break-inside:avoid;page-break-inside:avoid}"
+    + ".imx .svc:last-of-type{border-bottom:0}"
+    + ".imx .svc h3{margin:0 0 4px;font-size:14px;letter-spacing:-.02em}"
+    + ".imx .svc p{font-size:13px;color:#334155}"
+    + ".imx .svc ul{margin:6px 0 8px;padding-left:18px;font-size:12.5px;color:#475569}"
+    + ".imx .rec{margin:0 0 10px;padding:9px 12px;background:#0f3d3a;color:#ecfdf5;font-size:13px;-webkit-print-color-adjust:exact;print-color-adjust:exact}"
+    + ".imx .rec strong{color:#5eead4;font-weight:700}"
+    /* Etapas visuales */
+    + ".imx .stages{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:8px 0 14px;break-inside:avoid}"
+    + ".imx .stage{padding:8px 6px;background:linear-gradient(180deg,#f0fdfa 0%,#e6fffa 100%);text-align:center;font-size:11px;color:#134e4a;line-height:1.25;-webkit-print-color-adjust:exact;print-color-adjust:exact}"
+    + ".imx .stage b{display:block;font-size:15px;font-weight:800;color:#0f3d3a;margin-bottom:4px}"
+    + ".imx ul{margin:4px 0 10px;padding-left:18px}.imx li{margin:3px 0}.imx .journey{list-style:none;padding:0;margin:8px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:8px}.imx .journey li{padding:10px 12px;background:#f8fafc;font-size:12.5px;color:#334155;break-inside:avoid}.imx .journey b{color:#0d9488;margin-right:4px}"
+    + ".imx .close-block{}.imx .cierre{margin:10px 0 6px;padding:10px 0 0;border-top:2px solid #0f3d3a;font-size:13.5px;white-space:pre-line;color:#1e293b}"
+    + ".imx .foot{margin-top:12px;font-size:11.5px;color:#64748b}"
+    + "@media (max-width:640px){.imx .kpi,.imx .paths,.imx .stages{grid-template-columns:1fr}.imx .neg{font-size:22px}.imx .hook{font-size:15px}}"
+    + "@media print{"
+    + ".imx{max-width:none}"
+    + ".imx .pg{page-break-after:always;break-after:page}"
+    + ".imx .pg:last-child{page-break-after:auto;break-after:auto}"
+    + ".imx .tl li,.imx .svc,.imx .paths>div,.imx .stages,.imx .kpi,.imx .rec{break-inside:avoid;page-break-inside:avoid}"
+    + ".imx h2,.imx h3{break-after:avoid;page-break-after:avoid}"
+    + "}";
 
   const lis = (arr) => "<ul>" + arr.filter(Boolean).map((x) => "<li>" + e(x) + "</li>").join("") + "</ul>";
-    function contactoHtml(c) {
+  function contactoHtml(c) {
     c = c || {};
     const p = [c.responsable, c.telefono, c.email, c.web].filter(Boolean).map(e).join(" · ");
-    return "<div class=\"foot\"><strong>" + e(c.nombre || "IMPULSA") + "</strong>" + (p ? " · " + p : "") + "</div>";
+    return "<div class=\"foot\"><strong style=\"color:#0f3d3a\">" + e(c.nombre || "IMPULSA") + "</strong>" + (p ? " · " + p : "") + "</div>";
   }
   const esNum = (p) => /^[\d.,\s$]+$/.test(String(p || "")) && /\d/.test(String(p));
   const aNum = (p) => Number(String(p).replace(/[^\d,]/g, "").replace(",", "."));
@@ -662,83 +695,116 @@
     return t;
   }
 
+  function masthead() {
+    return "<div class=\"mast\"><div><div class=\"brand\">IMPULSA</div><div class=\"tagline\">Crecimiento comercial para empresas</div></div>" +
+      "<div class=\"mast-r\">Diagnóstico y<br>propuesta de crecimiento</div></div>";
+  }
+
   function htmlDocumento(doc) {
     const hall = (doc.hallazgos || doc.oportunidades || []).filter((o) => o.activo !== false).slice(0, 3);
     const act = (doc.servicios || []).filter((s) => s.activo);
     const tot = total(act);
     const hayPrecio = act.some((s) => s.precio);
+    const rec = (doc.alternativas || []).find((a) => a.recomendada) || (doc.alternativas || [])[0];
     const nomS = (id) => ((doc.servicios || []).find((s) => s.id === id) || { nombre: id }).nombre;
+    const c = doc.contacto || {};
+    const rating = (doc._rating != null ? doc._rating : null);
+    const resenas = (doc._resenas != null ? doc._resenas : null);
 
-    const p1 = "<section class=\"pg cov\"><div><div class=\"brand\">IMPULSA</div><div class=\"tagline\">Crecimiento comercial para empresas.</div>" +
-      "<div class=\"doc-kicker\">Diagnóstico y propuesta de crecimiento</div></div>" +
-      "<div><div class=\"neg\">" + e(doc.negocio) + "</div>" +
-      (doc.rubro || doc.direccion ? "<div class=\"sub\">" + e([doc.rubro, doc.direccion].filter(Boolean).join(" · ")) + "</div>" : "") +
-      "<div class=\"sub\">" + e(doc.fecha) + "</div>" +
-      "<h1>" + e(doc.tituloPortada || "Diagnóstico y propuesta de crecimiento") + "</h1>" +
-      "<p class=\"lead\">" + e(doc.resumen || "") + "</p></div>" +
-      "<div class=\"sub\">Preparado por " + e((doc.contacto && doc.contacto.nombre) || "IMPULSA") + "</div></section>";
+    /* KPI desde fortalezas/texto si no hay campos dedicados */
+    let kpiR = "—", kpiN = "—", kpiH = String(hall.length);
+    const mStar = (doc.fortalezas || []).join(" ").match(/(\d,[0-9])\s*estrellas/);
+    const mRev = (doc.fortalezas || []).join(" ").match(/sobre\s+([\d.]+)\s+reseñas/i) || (doc.fortalezas || []).join(" ").match(/([\d.]+)\s+reseñas/i);
+    if (mStar) kpiR = mStar[1];
+    if (mRev) kpiN = mRev[1];
 
-    const p2 = "<section class=\"pg break\"><h2>Conocimos su negocio y encontramos estas oportunidades</h2>" +
-      "<h3>Lo que ya está haciendo bien</h3>" + (doc.fortalezas && doc.fortalezas.length ? lis(doc.fortalezas) : "<p class=\"muted\">Con los datos públicos disponibles no destacamos fortalezas adicionales.</p>") +
-      "<h3>Lo que observamos</h3>" + hall.map((o) => "<div class=\"card\"><strong>" + e(o.titulo) + "</strong>" +
-        "<div class=\"k\">Qué observamos</div><div>" + e(o.observamos) + "</div>" +
-        "<div class=\"k\">Qué significa</div><div>" + e(o.significa || o.dificultad) + "</div>" +
-        "<div class=\"k\">Por qué merece atención</div><div>" + e(o.atencion || o.mejora) + "</div></div>").join("") +
-      "<h3>Qué oportunidad existe</h3><p>" + e(doc.oportunidad || "") + "</p></section>";
+    const tl = "<ol class=\"tl\">" + hall.map((o, i) => {
+      const num = String(i + 1).padStart(2, "0");
+      return "<li><span class=\"n\">" + num + "</span><strong>" + e(o.titulo) + "</strong>" +
+        "<div class=\"row\"><b>Observación.</b> " + e(o.observamos) + "</div>" +
+        "<div class=\"row\"><b>Implicación.</b> " + e(o.significa || o.dificultad) + "</div>" +
+        "<div class=\"row\"><b>Oportunidad.</b> " + e(o.atencion || o.mejora) + "</div></li>";
+    }).join("") + "</ol>";
 
-    const p3 = "<section class=\"pg break\"><h2>Cómo mejoraría su negocio</h2>" +
-      "<div class=\"flow\"><div><strong>Situación actual</strong><p>" + e(doc.flujoActual || "") + "</p></div>" +
-      "<div class=\"prop\"><strong>Propuesta</strong><ol>" + (doc.flujoPropuesto || []).map((x) => "<li>" + e(x) + "</li>").join("") + "</ol></div></div>" +
-      "<h3>Dos caminos posibles</h3><div class=\"esc\">" +
-      "<div><strong>Escenario A — Continuar con el funcionamiento actual</strong><p>" + e(doc.escenarioA) + "</p></div>" +
-      "<div class=\"b\"><strong>Escenario B — Implementar las mejoras</strong><p>" + e(doc.escenarioB) + "</p></div></div></section>";
+    const p1 = "<section class=\"pg\">" + masthead() +
+      "<div class=\"neg\">" + e(doc.negocio) + "</div>" +
+      "<div class=\"meta\">" + e([doc.rubro, doc.fecha].filter(Boolean).join(" · ")) + "</div>" +
+      "<p class=\"hook\">" + e(doc.tituloPortada || "") + "</p>" +
+      "<div class=\"kpi\">" +
+      "<div><div class=\"v\">" + e(kpiR) + "</div><div class=\"l\">Estrellas Google</div></div>" +
+      "<div><div class=\"v\">" + e(kpiN) + "</div><div class=\"l\">Reseñas</div></div>" +
+      "<div><div class=\"v\">0" + e(kpiH) + "</div><div class=\"l\">Hallazgos clave</div></div>" +
+      "</div>" +
+      "<h2>Resumen ejecutivo</h2>" +
+      "<p class=\"lead\">" + e(doc.resumen || "") + "</p>" +
+      "<h2>Oportunidad principal</h2>" +
+      "<p class=\"lead\">" + e(doc.oportunidad || "") + "</p>" +
+      "<h2>Hallazgos</h2>" + tl +
+      "<div class=\"foot\">Preparado por " + e(c.nombre || "IMPULSA") + "</div></section>";
 
-    const alts = (doc.alternativas || []).length > 1 ? "<h3>Alternativas</h3>" + doc.alternativas.map((a) => {
-      const t = total((doc.servicios || []).filter((s) => a.servicios.indexOf(s.id) >= 0));
-      return "<div class=\"alt" + (a.recomendada ? " rec" : "") + "\"><strong>" + e(a.nombre) + (a.recomendada ? " · recomendada" : "") + "</strong><div>" + e(a.descripcion) + "</div>" +
-        "<div class=\"muted\">" + e(a.servicios.map(nomS).join(" + ")) + (hayPrecio ? " · " + e(t != null ? "$ " + fmtNum(t) : "a definir") : "") + "</div></div>";
-    }).join("") + (doc.justificacionRecomendada ? "<p class=\"muted\">" + e(doc.justificacionRecomendada) + "</p>" : "") : "";
+    const p2 = "<section class=\"pg\">" + masthead() +
+      "<h2>Diagnóstico</h2>" +
+      "<h3>Fortalezas</h3>" +
+      (doc.fortalezas && doc.fortalezas.length ? lis(doc.fortalezas) : "<p class=\"muted\">Sin fortalezas adicionales con los datos públicos.</p>") +
+      "<h3>Cómo se traduce en el día a día</h3>" +
+      "<p class=\"lead\">" + e(doc.flujoActual || ("Quien encuentra a " + doc.negocio + " en Google necesita averiguar por su cuenta cómo conocer el negocio y cómo contactar.")) + "</p>" +
+      "<h3>Dos caminos posibles</h3>" +
+      "<div class=\"paths\"><div><div class=\"lab\">Escenario A · Seguir igual</div><p>" + e(doc.escenarioA) + "</p></div>" +
+      "<div class=\"go\"><div class=\"lab\">Escenario B · Implementar mejoras</div><p>" + e(doc.escenarioB) + "</p></div></div>" +
+      "<h3>Recorrido que proponemos</h3>" +
+      "<p class=\"lead\">El objetivo es que el contacto deje de depender solo de una conversación manual.</p>" +
+      "<ol class=\"journey\">" + (doc.flujoPropuesto || []).map((x, i) => "<li><b>0" + (i + 1) + "</b> " + e(x) + "</li>").join("") + "</ol>" +
+      "</section>";
 
-    const bloqueServ = act.length ? act.map((s) => "<div class=\"svc\"><h3>" + e(s.nombre) + "</h3>" +
-      "<p>" + e(s.descripcion || s.justificacion) + "</p>" +
-      "<div class=\"k\">Qué incluye</div>" + lis((s.incluye || []).slice(0, 5)) +
-      "<div class=\"k\">Plazo estimado</div><p>" + e(s.plazo) + (hayPrecio ? " · <strong>" + e(precioTxt(s.precio)) + "</strong>" : "") + "</p></div>").join("") : "<p class=\"muted\">Sin servicios seleccionados.</p>";
-
-    const inv = hayPrecio
-      ? ("<h3>Inversión</h3><table><tr><th>Servicio</th><th>Plazo</th><th>Inversión</th></tr>" +
-        act.map((s) => "<tr><td>" + e(s.nombre) + "</td><td>" + e(s.plazo) + "</td><td>" + e(precioTxt(s.precio)) + "</td></tr>").join("") +
-        "<tr><th colspan=\"2\">Total</th><th>" + e(tot != null ? "$ " + fmtNum(tot) : "A definir en reunión") + "</th></tr></table>" +
-        "<p class=\"muted\">" + e(doc.condiciones || "") + "</p>")
-      : ("<h3>Inversión</h3><p>Esta propuesta se presenta sin presupuesto cerrado. Nos gustaría reunirnos para cotizar un plan acorde a sus objetivos y al alcance que elijan.</p>");
-
-    const pend = (doc.verificar && doc.verificar.length)
-      ? "<div class=\"pend\"><strong>Aspectos pendientes de confirmar</strong>" + lis(doc.verificar.slice(0, 4)) + "</div>"
+    const recHtml = rec
+      ? ("<div class=\"rec\">Solución recomendada · <strong>" + e(rec.servicios.map(nomS).join(" + ")) + "</strong>" +
+        (rec.descripcion ? "<div style=\"margin-top:4px;opacity:.92;font-size:12px\">" + e(rec.descripcion) + "</div>" : "") + "</div>")
       : "";
 
-    /* Página 4: propuesta + plan + cierre (una sola página cuando hay pocos servicios) */
-    const p4 = "<section class=\"pg break\"><h2>Qué proponemos implementar y cómo lo haríamos</h2>" + bloqueServ + alts +
-      "<h2>Plan y próximo paso</h2>" +
-      "<h3>Cómo trabajaremos</h3><ol class=\"steps\">" + (doc.plan || []).map((x) => "<li>" + e(x) + "</li>").join("") + "</ol>" +
-      "<h3>Qué recibirá</h3>" + lis(doc.entregablesCliente || []) +
-      inv +
+    const bloqueServ = act.map((s) => "<div class=\"svc\"><h3>" + e(s.nombre) + " <span class=\"muted\" style=\"font-weight:500;font-size:12px\">· " + e(s.plazo) + (hayPrecio ? " · " + e(precioTxt(s.precio)) : "") + "</span></h3>" +
+      "<p>" + e(s.descripcion || s.justificacion) + " Incluye: " + e((s.incluye || []).slice(0, 3).join("; ")) + ".</p></div>").join("");
+
+    const stageLabels = ["Planificación", "Desarrollo", "Integración", "Puesta en marcha", "Seguimiento"];
+    const stages = "<div class=\"stages\">" + stageLabels.map((lab, i) => "<div class=\"stage\"><b>0" + (i + 1) + "</b>" + e(lab) + "</div>").join("") + "</div>";
+
+    const inv = hayPrecio
+      ? ("<h3>Inversión</h3><p>" + act.map((s) => e(s.nombre) + ": <strong>" + e(precioTxt(s.precio)) + "</strong>").join(" · ") +
+        (tot != null ? " · Total: <strong>$ " + e(fmtNum(tot)) + "</strong>" : "") + "</p>")
+      : "<h3>Inversión</h3><p>Propuesta sin presupuesto cerrado. Cotizamos en una reunión según el alcance que elijan.</p>";
+
+    const p3 = "<section class=\"pg\">" + masthead() +
+      "<h2>Propuesta</h2>" +
+      recHtml +
+      "<h3>Qué recomendamos implementar</h3>" + bloqueServ +
+      "<h3>Cómo trabajaremos</h3>" + stages +
+      "<h3>Qué recibirá</h3>" + lis((doc.entregablesCliente || []).slice(0, 4)) +
+      "<div class=\"close-block\">" + inv +
       (doc.observaciones ? "<p>" + e(doc.observaciones) + "</p>" : "") +
       "<h3>Próximo paso</h3><p>" + e(doc.proximoPaso || "") + "</p>" +
-      "<p style=\"white-space:pre-line;margin-top:10px\">" + e(doc.cierre || "") + "</p>" +
-      contactoHtml(doc.contacto) + pend + "</section>";
+      "<div class=\"cierre\">" + e(doc.cierre || "") + "</div>" +
+      contactoHtml(c) + "</div></section>";
 
-    /* Si hay muchos servicios, separar plan en 5.ª página */
-    if (act.length >= 4) {
-      const p4a = "<section class=\"pg break\"><h2>Qué proponemos implementar y cómo lo haríamos</h2>" + bloqueServ + alts + "</section>";
-      const p5 = "<section class=\"pg break\"><h2>Plan y próximo paso</h2>" +
-        "<h3>Cómo trabajaremos</h3><ol class=\"steps\">" + (doc.plan || []).map((x) => "<li>" + e(x) + "</li>").join("") + "</ol>" +
-        "<h3>Qué recibirá</h3>" + lis(doc.entregablesCliente || []) + inv +
-        (doc.observaciones ? "<p>" + e(doc.observaciones) + "</p>" : "") +
-        "<h3>Próximo paso</h3><p>" + e(doc.proximoPaso || "") + "</p>" +
-        "<p style=\"white-space:pre-line;margin-top:10px\">" + e(doc.cierre || "") + "</p>" +
-        contactoHtml(doc.contacto) + pend + "</section>";
-      return "<div class=\"imx\">" + p1 + p2 + p3 + p4a + p5 + "</div>";
-    }
-    return "<div class=\"imx\">" + p1 + p2 + p3 + p4 + "</div>";
+    return "<div class=\"imx\">" + p1 + p2 + p3 + "</div>";
+  }
+
+  function htmlInformeInterno(doc, an) {
+    /* Solo editor/vendedor. Nunca se imprime como PDF comercial. */
+    an = an || {};
+    const hall = (doc.hallazgos || doc.oportunidades || []);
+    const falt = doc.verificar || [];
+    return "<div class=\"imc-ed imc-box\" style=\"max-width:820px;margin:0 auto\">" +
+      "<h3 style=\"margin-top:0\">Informe interno · " + e(doc.negocio) + "</h3>" +
+      "<p class=\"hint\">Esta vista NO se incluye en el PDF del cliente. Usala para completar la verificación antes de enviar.</p>" +
+      "<p><strong>Nivel interno:</strong> " + e(doc.nivel || an.nivel || "—") + "</p>" +
+      "<p class=\"section-title\">Hallazgos (con tipo)</p><ul>" +
+      hall.map((o) => "<li><strong>" + e(o.titulo) + "</strong> · <span class=\"imc-t-" + e(o.tipo || "potencial") + "\">" + e(o.tipo || "potencial") + "</span><br>" + e(o.observamos) +
+        (o.evidencia ? "<br><em>" + e(o.evidencia) + "</em>" : "") + "</li>").join("") + "</ul>" +
+      "<p class=\"section-title\">Aspectos pendientes de confirmar</p>" +
+      (falt.length ? lis(falt) : "<p class=\"hint\">Ninguno cargado.</p>") +
+      "<p class=\"section-title\">Servicios justificados</p><ul>" +
+      (doc.servicios || []).map((s) => "<li>" + (s.activo ? "✔ " : "○ ") + e(s.nombre) + " — " + e(s.justificacion) + "</li>").join("") + "</ul>" +
+      (doc.observaciones ? "<p class=\"section-title\">Observaciones del vendedor</p><p>" + e(doc.observaciones) + "</p>" : "") +
+      "</div>";
   }
 
   /* Compat: diagnóstico y propuesta imprimen el mismo documento comercial unificado */
@@ -885,7 +951,7 @@
     const ov = document.createElement("div");
     ov.id = "impDocVista";
     ov.innerHTML = "<div class=\"imc-bar\"><button type=\"button\" data-b=\"cerrar\">Cerrar</button><button type=\"button\" data-b=\"editar\">Editar</button>" +
-      "<button type=\"button\" data-b=\"diag\">Vista documento</button><button type=\"button\" data-b=\"prop\">Vista presupuesto</button>" +
+      "<button type=\"button\" data-b=\"diag\">Vista cliente (PDF)</button><button type=\"button\" data-b=\"interno\">Informe interno</button><button type=\"button\" data-b=\"prop\">Vista presupuesto</button>" +
       "<button type=\"button\" class=\"p\" data-b=\"print\">Imprimir / PDF</button><button type=\"button\" data-b=\"share\">Compartir</button><button type=\"button\" data-b=\"regen\">Nueva versión</button></div>" +
       "<div class=\"imc-scroll\"></div>";
     document.body.appendChild(ov);
@@ -896,6 +962,7 @@
       const d = com(getR(k)).doc;
       ov.querySelectorAll("[data-b]").forEach((b) => b.classList.toggle("on", b.dataset.b === (vista === "editar" ? "editar" : tipoDoc)));
       if (vista === "editar") { scroll.innerHTML = editorHtml(d); bindEditor(k, scroll); }
+      else if (vista === "interno") scroll.innerHTML = htmlInformeInterno(d, analizar(getR(k)));
       else scroll.innerHTML = htmlDocumento(d);
       scroll.scrollTop = 0;
     };
@@ -905,6 +972,7 @@
       if (vista === "editar") leerEditor(k, scroll);
       if (a === "cerrar") { cerrarVista(); rerender(); return; }
       if (a === "editar") { vista = "editar"; return pintar(); }
+      if (a === "interno") { vista = "interno"; return pintar(); }
       if (a === "diag" || a === "prop") { tipoDoc = a; vista = "preview"; return pintar(); }
       if (a === "regen") {
         if (!confirm("¿Generar una nueva versión con la investigación y la verificación actuales? Se conservan precios, plazos, contacto y observaciones; los textos editados se reemplazan.")) return;
@@ -919,7 +987,7 @@
           vista = "editar"; return pintar();
         }
         if (qc.avisos.length && !confirm("Control de calidad:\n- " + qc.avisos.join("\n- ") + "\n\n¿Generar el PDF igual?")) return;
-        if (vista === "editar") { vista = "preview"; pintar(); }
+        if (vista === "editar" || vista === "interno") { vista = "preview"; tipoDoc = tipoDoc === "interno" ? "diag" : tipoDoc; pintar(); }
         registrarDoc(k, tipoDoc);
         document.body.classList.add("imc-print");
         setTimeout(() => { try { window.print(); } catch (x) { alert("No pude abrir la impresión."); } setTimeout(() => document.body.classList.remove("imc-print"), 1000); }, 200);
@@ -954,7 +1022,7 @@
     const c = d.contacto || {};
     const hall = d.hallazgos || d.oportunidades || [];
     return "<div class=\"imc-ed imc-box\"><h3 style=\"margin-top:0\">Revisión antes de enviar · " + e(d.negocio) + " · v" + e(d.version) + "</h3>" +
-      "<p class=\"hint\">Nada se envía automáticamente. Editá, revisá la vista previa y recién después usá Imprimir / PDF. El PDF unifica diagnóstico y propuesta (3 a 5 páginas).</p>" +
+      "<p class=\"hint\">Nada se envía automáticamente. Editá, revisá la vista previa y recién después usá Imprimir / PDF. El PDF del cliente tiene 3 páginas editoriales. La info pendiente queda en «Informe interno».</p>" +
       (qc.bloqueantes.length ? "<div class=\"imc-msg\" style=\"border-color:#dc2626\"><strong>Bloquea la exportación</strong><br>" + qc.bloqueantes.map(e).join("<br>") + "</div>" : "") +
       (qc.avisos.filter((a) => qc.bloqueantes.indexOf(a) < 0).length ? "<div class=\"imc-msg\" style=\"border-color:var(--warn)\"><strong>Control de calidad</strong><br>" + qc.avisos.filter((a) => qc.bloqueantes.indexOf(a) < 0).map(e).join("<br>") + "</div>" : "") +
       "<label>Título de portada (personalizado)</label>" + ta("tituloPortada", d.tituloPortada || "", 2) +
@@ -982,7 +1050,7 @@
       ((d.alternativas || []).length > 1 ? "<label>Justificación de la alternativa recomendada</label>" + ta("justificacionRecomendada", d.justificacionRecomendada || "", 3) : "") +
       "<label>Cómo trabajaremos (una etapa por línea)</label>" + ta("plan", (d.plan || []).join("\n"), 5) +
       "<label>Qué recibirá el cliente (uno por línea)</label>" + ta("entregablesCliente", (d.entregablesCliente || []).join("\n"), 4) +
-      "<label>Aspectos pendientes de confirmar (una sola vez en el PDF)</label>" + ta("verificar", (d.verificar || []).join("\n"), 3) +
+      "<label>Aspectos pendientes de confirmar (solo informe interno — no van al PDF del cliente)</label>" + ta("verificar", (d.verificar || []).join("\n"), 3) +
       "<label>Condiciones</label>" + ta("condiciones", d.condiciones || "", 3) +
       "<label>Próximo paso</label>" + ta("proximoPaso", d.proximoPaso || "", 2) +
       "<label>Observaciones (opcionales)</label>" + ta("observaciones", d.observaciones || "", 2) +
@@ -1150,7 +1218,7 @@
     });
   }
 
-  const pub = { analizar, armarDoc, mensajesWA, htmlDiagnostico, htmlPropuesta, htmlDocumento, controlCalidad, rubroDe, SERVICIOS, ESTADOS, estadoLabel, render, DOC_CSS, total };
+  const pub = { analizar, armarDoc, mensajesWA, htmlDiagnostico, htmlPropuesta, htmlDocumento, htmlInformeInterno, controlCalidad, rubroDe, SERVICIOS, ESTADOS, estadoLabel, render, DOC_CSS, total };
   if (typeof window !== "undefined") window.impulsaComercial = pub;
   if (typeof module !== "undefined" && module.exports) module.exports = pub;
 })();
