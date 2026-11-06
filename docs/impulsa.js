@@ -5,9 +5,10 @@
   const LS_RES = "impulsa_resultados_v1";
   const LOTE = 10;
   const DIAS_CACHE = 7;
-  const API = (typeof WORKER_URL !== "undefined" ? WORKER_URL : "").replace(/\/$/, "");
+  const IMPULSA_WORKER_URL = "https://impulsa-investigador.lagosscarlos44.workers.dev";
+  const API = (IMPULSA_WORKER_URL || (typeof WORKER_URL !== "undefined" ? WORKER_URL : "")).replace(/\/$/, "");
   const $ = (id) => document.getElementById(id);
-  const e = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const e = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&", "<": "<", ">": ">", '"': """, "'": "&#39;" }[c]));
 
   let resultados = cargar();
   let prospectos = []; // de la búsqueda elegida
