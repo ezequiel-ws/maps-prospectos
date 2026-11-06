@@ -1,8 +1,7 @@
-/* IMPULSA — Investigación comercial: diagnóstico, propuesta, WhatsApp, alternativas, edición y CRM.
- * Se carga DESPUÉS de impulsa.js. No toca el buscador. Usa window.impulsaDatos (expuesto por impulsa.js)
- * y guarda todo dentro del mismo objeto del prospecto en localStorage (impulsa_resultados_v1 → r.comercial).
- * Motor determinístico: solo usa datos de la investigación ({valor,tipo,fuente,fecha}) y la verificación
- * manual cargada por IMPULSA. Nunca inventa reseñas, seguidores, anuncios ni precios. */
+/* IMPULSA — Investigación comercial v2: documento comercial unificado (diagnóstico + propuesta).
+ * Se carga DESPUÉS de impulsa.js. No toca el buscador. Usa window.impulsaDatos y guarda en r.comercial.
+ * Motor determinístico: solo datos de investigación + verificación manual. Nunca inventa reseñas,
+ * seguidores, anuncios, precios ni pérdidas de clientes. Habla en español de formalidad "usted". */
 (function () {
   "use strict";
   const LS_TAR = "impulsa_tarifas_v1";
@@ -23,7 +22,6 @@
   const val = (d) => (d && d.tipo !== "no_disponible" && d.valor !== null && d.valor !== undefined && d.valor !== "" ? d.valor : null);
   const fmtNum = (n) => Number(n).toLocaleString("es-AR");
   const fmtRating = (n) => Number(n).toFixed(1).replace(".", ",");
-  /* Nombre comercial legible: los títulos de Maps suelen traer palabras clave ("X Inmobiliarias en Barracas…"). */
   function nombreCorto(n) {
     let s = String(n || "").split(/\s[|–—-]\s|[|(,]/)[0].replace(/[^\p{L}\p{N}&.'´ ]/gu, " ").replace(/\s+/g, " ").trim();
     if (s.length > 34) {
@@ -36,36 +34,50 @@
   const ahoraAR = (iso) => { try { return new Date(iso || Date.now()).toLocaleString("es-AR", { timeZone: "America/Argentina/Buenos_Aires" }) + " (hora Argentina)"; } catch (x) { return String(iso); } };
   const lsGet = (k, def) => { try { const v = JSON.parse(localStorage.getItem(k) || "null"); return v == null ? def : v; } catch (x) { return def; } };
   const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (x) { /* sin espacio */ } };
+  const minus = (s) => (s ? s.charAt(0).toLowerCase() + s.slice(1) : "");
 
-  /* ===================== Catálogo de servicios IMPULSA ===================== */
+  /* Lista negra: no debe aparecer en el texto al cliente */
+  const JERGA = /conversi[oó]n comercial|embudo|automatizaci[oó]n comercial|presencia digital|optimizaci[oó]n de canales|ecosistema digital|gesti[oó]n de leads|scoring|captaci[oó]n multicanal|algoritmo|scraper|lead(s)?\b|funnel/i;
+  const INVENCION = /(pierde|perd[ei]endo|est[aá] perdiendo).{0,40}(pacientes|clientes|dinero|ventas)|carece de agenda|no tiene agenda|sin agenda|garantizamos|duplicar[aá]n? (sus )?ventas|triplic/i;
+
+  /* ===================== Catálogo de servicios (idioma del empresario) ===================== */
   const SERVICIOS = {
-    A: { nombre: "Presencia digital y desarrollo web", plazo: "3 a 4 semanas",
-      incluye: ["Sitio web profesional adaptado a celulares", "Textos orientados a generar consultas", "Botones de llamada y WhatsApp visibles", "Vinculación con la ficha de Google Maps", "Configuración técnica básica (HTTPS, velocidad, buscadores)"],
-      entregables: ["Sitio publicado en su dominio", "Accesos y propiedad a nombre del negocio", "Guía breve de uso"] },
-    A2: { nombre: "Optimización del sitio web actual", plazo: "1 a 2 semanas",
-      incluye: ["Corrección de los puntos técnicos detectados", "Mejora de llamadas a la acción y vías de contacto", "Revisión de la versión para celulares"],
-      entregables: ["Informe de cambios realizados", "Sitio actual optimizado (sin reemplazarlo)"] },
-    B: { nombre: "Agenda digital y automatización de turnos", plazo: "1 a 2 semanas",
-      incluye: ["Agenda online con disponibilidad real", "Confirmaciones y recordatorios automáticos", "Enlace de reserva para Google Maps, web, redes y WhatsApp"],
-      entregables: ["Agenda configurada y probada", "Capacitación al equipo"] },
-    C: { nombre: "Publicidad y captación de clientes", plazo: "2 semanas de puesta en marcha + gestión mensual",
-      incluye: ["Definición de público y zona", "Creatividades y mensajes", "Configuración de campañas y medición de consultas", "Informe mensual"],
-      entregables: ["Campañas activas", "Tablero de resultados"] },
-    C2: { nombre: "Optimización de la publicidad actual", plazo: "2 a 3 semanas",
-      incluye: ["Revisión de anuncios, públicos y mensajes vigentes", "Ajustes de segmentación y creatividades", "Medición de consultas por anuncio"],
-      entregables: ["Informe de auditoría", "Plan de ajustes aplicado"] },
-    D: { nombre: "Optimización de redes sociales", plazo: "2 semanas + acompañamiento mensual",
-      incluye: ["Ordenamiento del perfil (bio, destacados, enlaces)", "Plan de publicaciones", "Lineamientos visuales"],
-      entregables: ["Perfil optimizado", "Calendario de contenidos"] },
-    E: { nombre: "WhatsApp comercial y automatización", plazo: "1 a 2 semanas",
+    A: { nombre: "Página web profesional", plazo: "3 a 4 semanas",
+      cliente: "Creamos una página profesional donde las personas puedan conocer el negocio, consultar sus servicios y encontrar fácilmente la forma de comunicarse.",
+      incluye: ["Página clara y cómoda de usar desde el celular", "Textos que presentan servicios y formas de contacto", "Botones visibles para llamar o escribir por WhatsApp", "Enlace desde la ficha de Google Maps", "Publicación en su dominio, con acceso a su nombre"],
+      entregables: ["Página publicada en su dominio", "Accesos a nombre del negocio", "Guía breve de uso"] },
+    A2: { nombre: "Mejoras en su página web actual", plazo: "1 a 2 semanas",
+      cliente: "Ajustamos su página actual para que sea más clara, más rápida y más fácil de contactar, sin reemplazarla.",
+      incluye: ["Corrección de los puntos técnicos detectados", "Mejora de los botones y vías de contacto", "Revisión de la versión para celulares"],
+      entregables: ["Informe de cambios realizados", "Página actual mejorada (sin reemplazarla)"] },
+    B: { nombre: "Sistema para solicitar turnos", plazo: "1 a 2 semanas",
+      cliente: "Implementamos un sistema para que los clientes puedan solicitar turnos de forma sencilla, sin depender exclusivamente de conversaciones manuales.",
+      incluye: ["Pedido de turno online con disponibilidad real", "Confirmaciones y recordatorios", "Enlace de reserva para Google Maps, web, redes y WhatsApp"],
+      entregables: ["Sistema configurado y probado", "Capacitación al equipo"] },
+    C: { nombre: "Publicidad para atraer consultas", plazo: "2 semanas de puesta en marcha + gestión mensual",
+      cliente: "Diseñamos campañas para mostrar los servicios a personas que podrían estar interesadas, midiendo consultas y resultados.",
+      incluye: ["Definición de público y zona", "Mensajes y creatividades", "Configuración de campañas y medición de consultas", "Informe mensual"],
+      entregables: ["Campañas activas", "Tablero simple de resultados"] },
+    C2: { nombre: "Mejora de la publicidad que ya tiene", plazo: "2 a 3 semanas",
+      cliente: "Revisamos los anuncios que ya publica para entender qué consultas generan y ajustar mensajes y públicos antes de invertir más.",
+      incluye: ["Revisión de anuncios, públicos y mensajes vigentes", "Ajustes de mensajes y segmentación", "Medición de consultas por anuncio"],
+      entregables: ["Informe de revisión", "Plan de ajustes aplicado"] },
+    D: { nombre: "Ordenar y potenciar redes sociales", plazo: "2 semanas + acompañamiento mensual",
+      cliente: "Ordenamos el perfil y armamos un plan simple de publicaciones para que quien los busque en redes vea un negocio activo y confiable.",
+      incluye: ["Ordenamiento del perfil (bio, destacados, enlaces)", "Plan de publicaciones", "Lineamientos visuales simples"],
+      entregables: ["Perfil ordenado", "Calendario de contenidos"] },
+    E: { nombre: "WhatsApp organizado para atender consultas", plazo: "1 a 2 semanas",
+      cliente: "Organizamos WhatsApp Business para responder más rápido, con mensajes de bienvenida, horarios y respuestas preparadas para el equipo.",
       incluye: ["WhatsApp Business con catálogo y horarios", "Mensaje de bienvenida y respuestas rápidas", "Botón de WhatsApp con mensaje predefinido"],
       entregables: ["Cuenta configurada", "Guion de respuestas para el equipo"] },
-    F: { nombre: "CRM y seguimiento de oportunidades", plazo: "2 a 3 semanas",
+    F: { nombre: "Organización y seguimiento de consultas", plazo: "2 a 3 semanas",
+      cliente: "Organizamos las consultas recibidas para evitar que queden olvidadas y mejorar el seguimiento de las personas que todavía no confirmaron.",
       incluye: ["Registro centralizado de consultas", "Etapas de seguimiento y recordatorios", "Formulario de consulta conectado"],
-      entregables: ["CRM configurado", "Proceso de seguimiento documentado"] },
-    G: { nombre: "Estrategia de crecimiento comercial", plazo: "2 semanas",
+      entregables: ["Sistema de seguimiento configurado", "Proceso documentado para el equipo"] },
+    G: { nombre: "Plan de crecimiento y reputación", plazo: "2 semanas",
+      cliente: "Armamos un plan priorizado y un proceso simple para pedir y responder reseñas, con indicadores claros de seguimiento.",
       incluye: ["Plan de acción priorizado", "Sistema para pedir y responder reseñas", "Indicadores simples de seguimiento"],
-      entregables: ["Plan comercial escrito", "Tablero de indicadores"] },
+      entregables: ["Plan escrito", "Tablero de indicadores"] },
   };
 
   /* ===================== Rubro ===================== */
@@ -87,7 +99,7 @@
     return { id: "general", cliente: "clientes", consulta: "consulta", consultas: "consultas", usaAgenda: false, cicloLargo: false, urg };
   }
 
-  /* ===================== Motor de análisis (consultor) ===================== */
+  /* ===================== Motor de análisis (consultor senior determinista) ===================== */
   function analizar(r) {
     const ver = (r.comercial && r.comercial.verificacion) || {};
     const rub = rubroDe(r);
@@ -139,7 +151,6 @@
     if (ver.resenas_negativas) H("comprobado", "Temas negativos recurrentes en reseñas: " + ver.resenas_negativas);
     if (!ver.resenas_positivas && !ver.resenas_negativas) H("no_disponible", "Contenido de las reseñas (temas positivos y negativos)");
 
-    /* --- Fortalezas --- */
     const fortalezas = [];
     if (rating != null && resenas != null && rating >= 4.5 && resenas >= 20) fortalezas.push(`Reputación sólida: ${fmtRating(rating)} estrellas en Google Maps sobre ${fmtNum(resenas)} reseñas.`);
     else if (rating != null && rating >= 4.0 && resenas != null && resenas >= 5) fortalezas.push(`Buena valoración en Google Maps (${fmtRating(rating)} estrellas, ${fmtNum(resenas)} reseñas).`);
@@ -147,130 +158,165 @@
     if (ver.resenas_positivas) fortalezas.push(`Lo que más valoran sus ${rub.cliente} según las reseñas: ${ver.resenas_positivas}.`);
     if (rub.urg) fortalezas.push("Comunica atención de urgencias desde su nombre comercial, un diferencial claro para quien necesita una solución rápida.");
     if (/matriculad|cucicba|crs/i.test(nombre + " " + (val(r.snippet) || ""))) fortalezas.push("Comunica matriculación profesional, un factor de confianza importante en su rubro.");
-    if (cw && cw.https && cw.viewport && cw.tiempo_ms != null && cw.tiempo_ms < 2500) fortalezas.push("Tiene un sitio web activo, seguro (HTTPS) y preparado para celulares.");
-    else if (webUrl) fortalezas.push("Cuenta con sitio web propio, una base sobre la que se puede construir.");
-    if (waWeb) fortalezas.push("Ofrece contacto directo por WhatsApp desde su sitio.");
-    if (agendaOk) fortalezas.push(`Ya permite reservar ${rub.consultas} online${agendaSis ? " (" + agendaSis + ")" : ""}.`);
-    if (form && form.contacto) fortalezas.push("El sitio incluye un formulario de consulta.");
-    if (ver.ads === "si") fortalezas.push("Ya invierte en publicidad digital, lo que muestra decisión de crecer.");
+    if (cw && cw.https && cw.viewport && cw.tiempo_ms != null && cw.tiempo_ms < 2500) fortalezas.push("Tiene una página web activa, segura y preparada para celulares.");
+    else if (webUrl) fortalezas.push("Cuenta con página web propia, una base sobre la que se puede construir.");
+    if (waWeb) fortalezas.push("Ofrece contacto directo por WhatsApp desde su página.");
+    if (agendaOk) fortalezas.push(`Ya permite solicitar ${rub.consultas} online${agendaSis ? " (" + agendaSis + ")" : ""}.`);
+    if (form && form.contacto) fortalezas.push("La página incluye un formulario de consulta.");
+    if (ver.ads === "si") fortalezas.push("Ya publica anuncios, lo que muestra decisión de crecer.");
     if (igSeg != null && igSeg >= 1000 && (igDias == null || igDias <= 30)) fortalezas.push(`Comunidad activa en Instagram (${fmtNum(igSeg)} seguidores).`);
     if (tel) fortalezas.push("Datos de contacto publicados y accesibles en Google Maps.");
 
-    /* --- Oportunidades (cada una con evidencia y tipo) --- */
     const ops = [];
     const OP = (o) => ops.push(o);
     if (sinWebConf) OP({ id: "web", servicio: "A", prioridad: rub.cicloLargo ? 1 : 2, tipo: "comprobado",
-      titulo: "No tiene un sitio web propio",
-      observamos: `${nombre} depende de Google Maps y del contacto directo para presentarse.`,
+      titulo: "No tiene una página web propia",
+      observamos: `${nombre} se presenta principalmente a través de Google Maps y del contacto directo.`,
       evidencia: "Verificado manualmente por IMPULSA.",
+      significa: `Quien compara opciones antes de pedir un ${rub.consulta} no encuentra un lugar propio donde conocer servicios, trayectoria y formas de contacto.`,
+      atencion: "Una página simple y clara puede reforzar la confianza que ya generan las reseñas.",
       dificultad: `Quien compara opciones antes de un ${rub.consulta} no encuentra un lugar donde conocer servicios, trayectoria y formas de contacto.`,
-      mejora: "Un sitio simple, rápido y orientado a la consulta puede reforzar la confianza que ya generan las reseñas." });
+      mejora: "Una página simple, rápida y clara para consultar puede reforzar la confianza que ya generan las reseñas." });
     else if (!tieneWeb && !webFalla) OP({ id: "web", servicio: "A", prioridad: rub.cicloLargo ? 1 : 2, tipo: "potencial",
-      titulo: "No encontramos un sitio web vinculado",
-      observamos: "La ficha de Google Maps no muestra un sitio web propio.",
-      evidencia: `Ficha relevada el ${fecha(r.website) || "día del análisis"}: campo de sitio web vacío. A confirmar con el negocio.`,
+      titulo: "No aparece una página web vinculada en la ficha analizada",
+      observamos: "En la ficha de Google Maps que relevamos no figuraba un enlace a una página propia.",
+      evidencia: `Ficha relevada el ${fecha(r.website) || "día del análisis"}: campo de sitio web vacío.`,
+      significa: `Quien encuentra el negocio en Google tiene menos información para conocer servicios y decidir cómo contactar.`,
+      atencion: "Si se confirma que no hay página, crear una enfocada en presentar el negocio y facilitar el contacto complementaría la reputación existente.",
       dificultad: `Quien compara opciones antes de un ${rub.consulta} tiene menos información para decidir y para confiar.`,
-      mejora: "Si se confirma que no hay sitio, una web enfocada en generar consultas complementaría la buena reputación existente." });
+      mejora: "Si se confirma que no hay página, una web clara para presentar el negocio y facilitar el contacto complementaría la reputación existente." });
     if (webFalla) OP({ id: "web_falla", servicio: "A2", prioridad: 1, tipo: "potencial",
-      titulo: "El sitio informado no respondió",
+      titulo: "La página informada no respondió al abrirla",
       observamos: "Al intentar abrir el sitio vinculado, no cargó.",
-      evidencia: (r.website.nota || "Error al abrir el sitio") + ". Puede ser una falla temporal: verificar.",
+      evidencia: (r.website.nota || "Error al abrir el sitio") + ". Puede ser una falla temporal.",
+      significa: "Un enlace que no abre puede hacer que la persona interesada abandone la consulta.",
+      atencion: "Conviene revisar dominio y hosting para asegurar que la página esté disponible.",
       dificultad: "Un enlace que no abre puede hacer que la persona interesada abandone la consulta.",
       mejora: "Revisar dominio y hosting para asegurar que el sitio esté siempre disponible." });
     if (cw) {
       const fallas = [];
-      if (!cw.https) fallas.push("no usa conexión segura (HTTPS)");
+      if (!cw.https) fallas.push("no usa conexión segura");
       if (!cw.viewport) fallas.push("no declara adaptación a celulares");
       if (cw.tiempo_ms != null && cw.tiempo_ms >= 2500) fallas.push(`respondió lento en nuestra medición (${fmtNum(cw.tiempo_ms)} ms)`);
       if (!cw.tiene_meta_description) fallas.push("no tiene descripción para buscadores");
       const graves = fallas.filter((f) => !/buscadores/.test(f));
       if (graves.length || ver.web_calidad === "pobre") OP({ id: "web_tecnica", servicio: ver.web_calidad === "pobre" ? "A" : "A2", prioridad: 2, tipo: "comprobado",
-        titulo: "Aspectos técnicos del sitio a mejorar",
-        observamos: "El sitio " + (fallas.join(", ") || "fue evaluado como de calidad baja en la revisión manual") + ".",
-        evidencia: `Medición automática del ${fecha(r.calidad_web)} (una sola carga; no mide la experiencia completa).`,
+        titulo: "Aspectos de la página web a mejorar",
+        observamos: "La página " + (fallas.join(", ") || "fue evaluada como de calidad baja en la revisión manual") + ".",
+        evidencia: `Medición del ${fecha(r.calidad_web)} (una sola carga).`,
+        significa: "Estos puntos pueden afectar la confianza y la comodidad de quien visita desde el celular.",
+        atencion: ver.web_calidad === "pobre" ? "Conviene rediseñar la página con foco en presentar el negocio y facilitar consultas." : "Se pueden corregir sobre la página actual, sin necesidad de reemplazarla.",
         dificultad: "Estos puntos pueden afectar la confianza y la comodidad de quien visita el sitio desde el celular.",
         mejora: ver.web_calidad === "pobre" ? "Rediseñar el sitio con foco en consultas." : "Corregir estos puntos sobre el sitio actual, sin necesidad de reemplazarlo." });
     }
     if (rub.usaAgenda && !agendaOk) {
       if (ver.agenda === "no") OP({ id: "agenda", servicio: "B", prioridad: 1, tipo: "comprobado",
         titulo: "Los turnos se gestionan de forma manual",
-        observamos: `No hay un sistema para que los ${rub.cliente} reserven por su cuenta.`,
+        observamos: `No hay un sistema para que los ${rub.cliente} soliciten turno por su cuenta.`,
         evidencia: "Verificado manualmente por IMPULSA.",
+        significa: `Cada ${rub.consulta} requiere una conversación; fuera del horario de atención, la solicitud queda pendiente.`,
+        atencion: "Un sistema de turnos con recordatorios permite solicitar a cualquier hora y ordena la disponibilidad.",
         dificultad: `Cada ${rub.consulta} requiere una conversación; fuera del horario de atención, la reserva queda pendiente.`,
-        mejora: "Una agenda online con recordatorios permite reservar a cualquier hora y ordena la disponibilidad." });
+        mejora: "Facilitar que las personas que consultan puedan solicitar un turno sin tener que intercambiar tantos mensajes." });
       else OP({ id: "agenda", servicio: "B", prioridad: 1, tipo: "potencial",
-        titulo: agendaNoDetectada ? "No detectamos reserva online de turnos" : "No pudimos verificar reserva online de turnos",
-        observamos: agendaNoDetectada ? "La página principal del sitio no muestra un sistema de reservas." : "No hay un enlace de reservas visible en la información pública relevada.",
-        evidencia: agendaNoDetectada ? "Revisión automática del código de la página principal; puede existir en otra sección." : (tel ? "La ficha de Google Maps solo ofrece teléfono." : "No encontramos un enlace de reservas en la información relevada."),
+        titulo: "No vimos un sistema de reserva online en lo analizado",
+        observamos: agendaNoDetectada ? "En la página principal no aparece un sistema de reservas visible." : "En la información pública relevada no encontramos un enlace de reservas online.",
+        evidencia: agendaNoDetectada ? "Revisión de la página principal; puede existir en otra sección." : (tel ? "La ficha de Google Maps ofrece teléfono como vía principal." : "No encontramos un enlace de reservas en lo relevado."),
+        significa: `Si los ${rub.consultas} dependen del teléfono o de mensajes, se concentran en el horario de atención y requieren más ida y vuelta.`,
+        atencion: "Ofrecer un camino simple para solicitar turno (desde Google, la página o WhatsApp) facilita el contacto en el momento en que la persona lo decide.",
         dificultad: `Si los ${rub.consultas} dependen del teléfono o de mensajes, se concentran en el horario de atención.`,
-        mejora: "Ofrecer un enlace de reserva en Google Maps, WhatsApp y redes facilita sacar turno en el momento en que la persona lo decide." });
+        mejora: "Facilitar que las personas que consultan puedan solicitar un turno sin tener que intercambiar tantos mensajes." });
     }
     if (webUrl && !waWeb) OP({ id: "wa_web", servicio: "E", prioridad: 2, tipo: "comprobado",
-      titulo: "El sitio no ofrece un acceso directo a WhatsApp",
+      titulo: "La página no ofrece un acceso directo a WhatsApp",
       observamos: "No encontramos un botón o enlace de WhatsApp en la página principal.",
       evidencia: `Revisión del sitio del ${fecha(r.website)}.`,
+      significa: "Para muchas personas, escribir por WhatsApp es la forma más cómoda de hacer una primera consulta.",
+      atencion: "Agregar un botón de WhatsApp con mensaje preparado facilita ese primer contacto.",
       dificultad: "Para muchas personas, escribir por WhatsApp es la forma más cómoda de hacer una primera consulta.",
       mejora: "Agregar un botón de WhatsApp con mensaje predefinido y respuestas rápidas." });
     if (!webUrl && rub.id === "oficios" && tel) OP({ id: "wa_resp", servicio: "E", prioridad: rub.urg ? 1 : 2, tipo: "potencial",
-      titulo: rub.urg ? "Respuesta rápida en urgencias" : "Ordenar los pedidos de presupuesto",
+      titulo: rub.urg ? "Responder más rápido cuando hay urgencias" : "Ordenar los pedidos de presupuesto",
       observamos: `El contacto público es el teléfono${val(r.whatsapp) ? " (con posible WhatsApp asociado, no verificado)" : ""}.`,
       evidencia: "Ficha de Google Maps relevada.",
+      significa: `Cuando llegan ${rub.consultas} mientras se está trabajando, responder a tiempo y pedir los datos necesarios se vuelve difícil.`,
+      atencion: "WhatsApp Business con mensaje de bienvenida, horarios y preguntas clave permite responder al instante y presupuestar mejor.",
       dificultad: `Cuando llegan ${rub.consultas} mientras se está trabajando, responder a tiempo y pedir los datos necesarios (zona, problema, fotos) se vuelve difícil.`,
       mejora: "WhatsApp Business con mensaje de bienvenida, horarios y preguntas clave permite responder al instante y presupuestar mejor." });
     if (form && !form.contacto && (rub.cicloLargo || rub.id === "general")) OP({ id: "form", servicio: rub.cicloLargo ? "F" : "A2", prioridad: 2, tipo: "potencial",
-      titulo: "Las consultas del sitio no quedan registradas de forma ordenada",
+      titulo: "Las consultas de la página no quedan registradas de forma ordenada",
       observamos: `Detectamos ${form.cantidad} formulario(s) en la página principal, pero ninguno con campos de contacto reconocibles.`,
-      evidencia: "Análisis automático del código de la página principal; puede haber formularios en otras secciones.",
+      evidencia: "Análisis de la página principal; puede haber formularios en otras secciones.",
+      significa: `Sin un registro de ${rub.consultas}, es difícil saber cuántas llegan, de dónde vienen y cuáles quedaron sin respuesta.`,
+      atencion: "Un formulario conectado a un registro simple permite seguir cada consulta.",
       dificultad: `Sin un registro de ${rub.consultas}, es difícil saber cuántas llegan, de dónde vienen y cuáles quedaron sin respuesta.`,
-      mejora: "Un formulario conectado a un CRM simple permite registrar cada consulta y hacerle seguimiento." });
-    if (rub.cicloLargo && !(form && !form.contacto)) OP({ id: "seguimiento", servicio: "F", prioridad: 3, tipo: "potencial",
-      titulo: "Seguimiento de oportunidades",
+      mejora: "Organizar las consultas recibidas y dar seguimiento a las personas que todavía no confirmaron." });
+    if (rub.cicloLargo && !(form && !form.contacto) && !serviciosTieneYa(ops, "form")) OP({ id: "seguimiento", servicio: "F", prioridad: 3, tipo: "potencial",
+      titulo: "Seguimiento de consultas pendientes",
       observamos: `En su rubro, la decisión del cliente suele llevar varias conversaciones (${rub.consultas}).`,
       evidencia: "No tenemos información sobre cómo registran hoy las consultas: a conversar.",
+      significa: "Sin un registro ordenado, algunas oportunidades pueden quedar sin seguimiento.",
+      atencion: "Un registro liviano con recordatorios ayuda a retomar cada consulta en el momento justo.",
       dificultad: "Sin un registro ordenado, algunas oportunidades pueden quedar sin seguimiento.",
-      mejora: "Un CRM liviano con recordatorios ayuda a retomar cada consulta en el momento justo." });
+      mejora: "Organizar las consultas recibidas y dar seguimiento a las personas que todavía no confirmaron." });
     const reputBuena = rating != null && rating >= 4.3 && resenas != null && resenas >= 20;
     if (ver.ads === "no" && reputBuena) OP({ id: "ads", servicio: "C", prioridad: 3, tipo: "potencial",
       titulo: "Buena reputación que hoy no se amplifica con publicidad",
       observamos: "No encontramos anuncios activos en Meta.",
       evidencia: "Consulta manual a Meta Ads Library.",
+      significa: `Hoy la llegada de nuevos ${rub.cliente} depende de recomendaciones y búsquedas espontáneas.`,
+      atencion: "Campañas acotadas por zona, con medición de consultas, pueden sumar un canal sobre una reputación ya construida.",
       dificultad: `Hoy la llegada de nuevos ${rub.cliente} depende de recomendaciones y búsquedas espontáneas.`,
-      mejora: "Campañas acotadas por zona, con medición de consultas, pueden sumar un canal de captación sobre una reputación ya construida." });
+      mejora: "Diseñar campañas para mostrar los servicios a personas que podrían estar interesadas, midiendo consultas." });
     if (ver.ads === "si") OP({ id: "ads_opt", servicio: "C2", prioridad: 3, tipo: "potencial",
       titulo: "Revisar el rendimiento de la publicidad actual",
       observamos: "El negocio ya publica anuncios en Meta" + (ver.ads_detalle ? " (" + ver.ads_detalle + ")" : "") + ".",
       evidencia: "Consulta manual a Meta Ads Library. No conocemos inversión ni resultados.",
+      significa: "Sin medir qué anuncios generan consultas, es difícil decidir dónde conviene invertir.",
+      atencion: "Antes de sumar campañas, revisar mensajes, públicos y medición de las existentes.",
       dificultad: "Sin medir qué anuncios generan consultas, es difícil decidir dónde conviene invertir.",
       mejora: "Antes de sumar campañas, revisar mensajes, públicos y medición de las existentes." });
     if (ver.ig_existe === "no" || (igDias != null && igDias > 60)) OP({ id: "redes", servicio: "D", prioridad: 3, tipo: "comprobado",
       titulo: ver.ig_existe === "no" ? "Sin perfil activo en Instagram" : "Instagram sin publicaciones recientes",
       observamos: ver.ig_existe === "no" ? "No encontramos un perfil de Instagram del negocio." : `La última publicación es de hace ${igDias} días.`,
       evidencia: "Revisión manual de redes.",
+      significa: "Muchas personas revisan las redes antes de contactar; un perfil inactivo transmite menos de lo que el negocio realmente es.",
+      atencion: "Un perfil ordenado y un plan simple de publicaciones que muestre trabajos, equipo y opiniones.",
       dificultad: "Muchas personas revisan las redes antes de contactar; un perfil inactivo transmite menos de lo que el negocio realmente es.",
       mejora: "Un perfil ordenado y un plan simple de publicaciones que muestre trabajos, equipo y opiniones." });
     if (rating != null && rating < 4.2 && resenas != null && resenas >= 10) OP({ id: "reputacion", servicio: "G", prioridad: 1, tipo: "comprobado",
       titulo: "Calificación mejorable en Google Maps",
       observamos: `La calificación visible es ${fmtRating(rating)} sobre ${fmtNum(resenas)} reseñas.`,
       evidencia: "Ficha de Google Maps.",
+      significa: "Es lo primero que ve quien busca el servicio y pesa en la decisión de contactar.",
+      atencion: "Responder reseñas y pedir opinión a clientes satisfechos de forma sistemática, antes de invertir en atraer más visitas.",
       dificultad: "Es lo primero que ve quien busca el servicio y pesa en la decisión de contactar.",
-      mejora: "Responder reseñas y pedir opinión a clientes satisfechos de forma sistemática, antes de invertir en atraer más tráfico." });
+      mejora: "Responder reseñas y pedir opinión a clientes satisfechos de forma sistemática." });
     if (ver.resenas_negativas) OP({ id: "resenas_neg", servicio: rub.usaAgenda ? "B" : "E", prioridad: 2, tipo: "comprobado",
       titulo: "Un tema que se repite en las opiniones",
       observamos: "Varias reseñas mencionan: " + ver.resenas_negativas + ".",
       evidencia: "Lectura manual de reseñas (tema recurrente, no una opinión aislada).",
+      significa: "Si no se aborda, puede seguir apareciendo en nuevas opiniones.",
+      atencion: "Ordenar la atención y las respuestas para que la experiencia sea consistente.",
       dificultad: "Si no se aborda, puede seguir apareciendo en nuevas opiniones.",
       mejora: "Ordenar la atención y las respuestas para que la experiencia sea consistente." });
     if (resenas != null && resenas < 10) OP({ id: "pocas_resenas", servicio: "G", prioridad: 3, tipo: "comprobado",
       titulo: "Pocas opiniones publicadas",
       observamos: `La ficha tiene ${fmtNum(resenas)} reseña(s).`,
       evidencia: "Ficha de Google Maps.",
+      significa: "Con pocas opiniones, a quien no los conoce le cuesta más confiar.",
+      atencion: "Un proceso simple para pedir reseñas después de cada trabajo.",
       dificultad: "Con pocas opiniones, a quien no los conoce le cuesta más confiar.",
       mejora: "Un proceso simple para pedir reseñas después de cada trabajo." });
-    if (!tel) OP({ id: "sin_tel", servicio: "G", prioridad: 2, tipo: "potencial", titulo: "No obtuvimos un teléfono en la ficha de Google",
-      observamos: "En el relevamiento de Google Maps no figuró un teléfono de contacto.", evidencia: "Ficha de Google Maps relevada; a confirmar (puede ser una omisión del relevamiento).",
-      dificultad: "Quien quiere llamar desde el buscador no tiene cómo hacerlo.", mejora: "Completar y optimizar la ficha de Google." });
+    if (!tel) OP({ id: "sin_tel", servicio: "G", prioridad: 2, tipo: "potencial",
+      titulo: "No obtuvimos un teléfono en la ficha de Google",
+      observamos: "En el relevamiento de Google Maps no figuró un teléfono de contacto.",
+      evidencia: "Ficha de Google Maps relevada; a confirmar.",
+      significa: "Quien quiere llamar desde el buscador no tiene cómo hacerlo.",
+      atencion: "Completar y mantener al día la ficha de Google.",
+      dificultad: "Quien quiere llamar desde el buscador no tiene cómo hacerlo.",
+      mejora: "Completar y optimizar la ficha de Google." });
 
-    /* --- Servicios justificados (sin duplicados, priorizados) --- */
     const servMap = {};
     ops.forEach((o) => {
       const s = servMap[o.servicio] || (servMap[o.servicio] = { id: o.servicio, nombre: SERVICIOS[o.servicio].nombre, prioridad: 9, justificacion: [], comprobado: false });
@@ -279,27 +325,28 @@
       if (o.tipo === "comprobado") s.comprobado = true;
     });
     if (servMap.A && servMap.A2) { servMap.A.justificacion = servMap.A.justificacion.concat(servMap.A2.justificacion); delete servMap.A2; }
+    /* No ofrecer ads si ads desconocidos (ya: solo si ver.ads === no/si). No agenda fuera de usaAgenda (ya). No web nueva si tiene buena (ya). */
     const servicios = Object.values(servMap).sort((a, b) => a.prioridad - b.prioridad || (b.comprobado - a.comprobado));
     const nucleo = servicios.filter((s) => s.id !== "G" || s.prioridad === 1);
-    if (servicios.length >= 3 && !servMap.G) servicios.push({ id: "G", nombre: SERVICIOS.G.nombre, prioridad: 5, justificacion: ["Coordinar varias mejoras en un plan único con indicadores"], comprobado: false, soloIntegral: true });
+    if (servicios.length >= 3 && !servMap.G) servicios.push({ id: "G", nombre: SERVICIOS.G.nombre, prioridad: 5, justificacion: ["Coordinar varias mejoras en un plan único"], comprobado: false, soloIntegral: true });
 
-    /* --- Alternativas (solo cuando corresponden) --- */
     const alternativas = [];
-    if (nucleo.length) {
-      alternativas.push({ id: "esencial", nombre: "Solución esencial", servicios: [nucleo[0].id], descripcion: "Resolver el punto prioritario: " + nucleo[0].justificacion[0].toLowerCase() + "." });
+    if (nucleo.length >= 2) {
+      alternativas.push({ id: "esencial", nombre: "Solución esencial", servicios: [nucleo[0].id], descripcion: "Resolver el punto prioritario: " + minus(nucleo[0].justificacion[0]) + "." });
       const rec = nucleo.slice(0, Math.min(3, nucleo.length)).map((s) => s.id);
-      if (rec.length > 1) alternativas.push({ id: "recomendada", nombre: "Solución recomendada", servicios: rec, descripcion: "Las mejoras de mayor impacto, en el orden en que conviene implementarlas." });
+      alternativas.push({ id: "recomendada", nombre: "Solución recomendada", servicios: rec, descripcion: "Las mejoras de mayor impacto, en el orden en que conviene implementarlas." });
       const integ = servicios.map((s) => s.id);
-      if (integ.length > rec.length) alternativas.push({ id: "integral", nombre: "Solución integral", servicios: integ, descripcion: "Todas las mejoras justificadas por el diagnóstico, coordinadas en un plan de crecimiento." });
+      if (integ.length > rec.length) alternativas.push({ id: "integral", nombre: "Solución integral", servicios: integ, descripcion: "Todas las mejoras justificadas, coordinadas en un plan de trabajo." });
+    } else if (nucleo.length === 1) {
+      alternativas.push({ id: "esencial", nombre: "Propuesta", servicios: [nucleo[0].id], descripcion: nucleo[0].justificacion[0] + "." });
     }
     const recomendada = alternativas.find((a) => a.id === "recomendada") || alternativas[0] || null;
 
-    /* --- Control de calidad de datos --- */
     const faltantes = [];
     if (!tel) faltantes.push({ critico: false, txt: "Confirmar si la ficha de Google Maps muestra teléfono." });
     if (rating == null || resenas == null) faltantes.push({ critico: true, txt: "Calificación y cantidad de reseñas en Google Maps." });
-    if (!webUrl && !ver.tiene_web) faltantes.push({ critico: true, txt: "Confirmar si el negocio tiene sitio web propio (la ficha no informa uno)." });
-    if (webFalla) faltantes.push({ critico: true, txt: "Volver a abrir el sitio informado para confirmar si funciona." });
+    if (!webUrl && !ver.tiene_web) faltantes.push({ critico: true, txt: "Confirmar si el negocio tiene página web propia (en la ficha analizada no aparecía vinculada)." });
+    if (webFalla) faltantes.push({ critico: true, txt: "Volver a abrir la página informada para confirmar si funciona." });
     if (!ver.ads) faltantes.push({ critico: true, txt: "Revisar Meta Ads Library para saber si hoy publica anuncios." });
     if (igSeg == null && !ver.ig_existe) faltantes.push({ critico: true, txt: "Revisar Instagram/Facebook: existencia del perfil, seguidores y última publicación." });
     if (!ver.resenas_positivas && !ver.resenas_negativas) faltantes.push({ critico: false, txt: "Leer reseñas recientes para identificar temas positivos y negativos recurrentes." });
@@ -308,191 +355,404 @@
     const nivel = criticos === 0 && faltantes.length <= 1 ? "concluyente" : "preliminar";
 
     ops.sort((a, b) => a.prioridad - b.prioridad || (a.tipo === "comprobado" ? -1 : 1) + (b.tipo === "comprobado" ? 1 : -1));
-    return { rub, nombre, nombreCompleto, rating, resenas, webUrl, tieneWeb, cw, hechos, fortalezas, oportunidades: ops, servicios, alternativas, recomendada, faltantes, nivel, ver };
+    return { rub, nombre, nombreCompleto, rating, resenas, tel, webUrl, tieneWeb, sinWebConf, cw, agendaOk, agendaSis, hechos, fortalezas, oportunidades: ops, servicios, alternativas, recomendada, faltantes, nivel, ver };
+  }
+  function serviciosTieneYa(ops, id) { return ops.some((o) => o.id === id); }
+
+  /* ===================== Pipeline de redacción (documento comercial) ===================== */
+  function tituloPortadaDe(an) {
+    const rub = an.rub, n = an.nombre;
+    const ops = an.oportunidades.slice(0, 3);
+    const ids = ops.map((o) => o.id);
+    const reput = an.rating != null && an.resenas != null && an.rating >= 4.5 && an.resenas >= 20;
+    if (reput && ids.some((id) => id === "web" || id === "agenda")) {
+      if (rub.usaAgenda)
+        return "Una reputación sólida que puede aprovecharse mejor si a quien los encuentra en Google le resulta más sencillo conocer el consultorio y solicitar un turno";
+      return "Una reputación sólida que puede aprovecharse mejor con una forma más clara de presentarse y recibir consultas";
+    }
+    if (ids[0] === "wa_resp" && rub.urg)
+      return "Una reputación excelente que puede acompañarse de una forma más ordenada de responder pedidos urgentes";
+    if (ids[0] === "web" || ids[0] === "web_falla" || ids[0] === "web_tecnica")
+      return "Oportunidad de presentar mejor el negocio a quienes lo encuentran en Google";
+    if (ids[0] === "agenda")
+      return "Facilitar que las personas que consultan puedan solicitar un turno con menos mensajes de ida y vuelta";
+    if (ids[0] === "ads_opt")
+      return "Mejorar el rendimiento de la publicidad que ya tiene, midiendo las consultas que genera";
+    if (ids[0] === "seguimiento" || ids[0] === "form")
+      return "Organizar las consultas para que ninguna quede sin respuesta a tiempo";
+    if (ids[0] === "reputacion" || ids[0] === "pocas_resenas")
+      return "Fortalecer la reputación visible en Google para generar más confianza al primer contacto";
+    if (ops[0]) return ops[0].titulo;
+    return "Diagnóstico y propuesta de crecimiento comercial";
   }
 
-  /* ===================== Documento (editable) ===================== */
-  function tarifas() { return lsGet(LS_TAR, {}); }
-  function contactoImpulsa() { return lsGet(LS_CON, { nombre: "IMPULSA", responsable: "", telefono: "", email: "", web: "" }); }
-  const minus = (s) => (s ? s.charAt(0).toLowerCase() + s.slice(1) : "");
+  function resumenDe(an) {
+    const partes = [];
+    partes.push("Revisamos la información pública de " + an.nombre + " para entender cómo se presenta hoy ante quien lo busca y cómo recibe nuevas consultas.");
+    if (an.rating != null && an.resenas != null)
+      partes.push("Partimos de lo comprobado en Google Maps (" + fmtRating(an.rating) + " estrellas, " + fmtNum(an.resenas) + " reseñas) y de lo que pudimos observar sobre su forma de contacto.");
+    else
+      partes.push("El objetivo es identificar oportunidades concretas y realistas, sin inventar datos que no pudimos comprobar.");
+    partes.push("Este documento resume lo que encontramos y una propuesta clara de trabajo.");
+    return partes.join(" ");
+  }
+
+  function flujoActualDe(an) {
+    const rub = an.rub;
+    const pasos = [];
+    pasos.push("Una persona encuentra " + an.nombre + " en Google Maps" + (an.rating != null ? " (calificación " + fmtRating(an.rating) + ")" : "") + ".");
+    if (an.webUrl) pasos.push("Puede entrar a su página web para conocer más.");
+    else pasos.push("En la ficha analizada no aparece una página web vinculada para conocer servicios con más detalle.");
+    if (an.agendaOk) pasos.push("Puede solicitar " + rub.consulta + " online" + (an.agendaSis ? " (" + an.agendaSis + ")" : "") + ".");
+    else if (rub.usaAgenda) pasos.push("Para conocer servicios y averiguar cómo conseguir un " + rub.consulta + ", suele necesitar llamar o escribir.");
+    else if (an.tel) pasos.push("El contacto público principal es el teléfono publicado en Google.");
+    else pasos.push("Debe buscar cómo contactar con la información disponible en la ficha.");
+    return { texto: pasos.join(" "), pasos };
+  }
+
+  function flujoPropuestoDe(an, servAct) {
+    const rub = an.rub;
+    const ids = servAct.map((s) => s.id);
+    const pasos = [];
+    pasos.push("Encuentra el negocio en Google.");
+    if (ids.indexOf("A") >= 0 || an.webUrl)
+      pasos.push(ids.indexOf("A") >= 0 ? "Entra en su página profesional." : "Entra en su página (la actual, mejorada si corresponde).");
+    if (ids.indexOf("A") >= 0 || ids.indexOf("A2") >= 0 || an.webUrl)
+      pasos.push("Conoce los servicios" + (rub.id === "salud" ? " y el equipo" : "") + " con claridad.");
+    if (ids.indexOf("B") >= 0)
+      pasos.push("Elige cómo solicitar un " + rub.consulta + " de forma sencilla.");
+    else if (ids.indexOf("E") >= 0)
+      pasos.push("Escribe por WhatsApp con un mensaje preparado y recibe orientación inmediata.");
+    else
+      pasos.push("Encuentra fácilmente cómo comunicarse (llamada o WhatsApp).");
+    if (ids.indexOf("B") >= 0)
+      pasos.push("Recibe la confirmación por WhatsApp.");
+    if (ids.indexOf("F") >= 0)
+      pasos.push("El negocio organiza y da seguimiento a cada consulta.");
+    else
+      pasos.push("El negocio administra las consultas con más orden.");
+    return pasos;
+  }
+
+  function oportunidadTexto(an) {
+    const top = an.oportunidades.slice(0, 3);
+    if (!top.length) return "Con la información disponible no identificamos una mejora prioritaria inmediata; conviene conversar para confirmar puntos pendientes.";
+    const rub = an.rub;
+    if (top.some((o) => o.id === "web" || o.id === "agenda") && an.rating != null && an.rating >= 4.5)
+      return "La oportunidad principal es aprovechar la reputación ya construida: que quien encuentra a " + an.nombre + " en Google pueda conocer el negocio con claridad y " +
+        (rub.usaAgenda ? "solicitar un " + rub.consulta + " con menos ida y vuelta." : "comunicarse con facilidad.");
+    return "La oportunidad principal es: " + minus(top[0].atencion || top[0].mejora) +
+      (top[1] ? " En paralelo, también conviene atender: " + minus(top[1].titulo) + "." : "");
+  }
 
   function armarDoc(r, an) {
+    /* 1-4 pipeline: analizar ya hizo 1-5; aquí redactamos 6-8 y autorevisión */
     const rub = an.rub, T = tarifas();
     const cat = val(r.categoria) || "";
     const dir = val(r.direccion) || "";
     const fortz = an.fortalezas.slice(0, 6);
     const recIds = an.recomendada ? an.recomendada.servicios : [];
-    const ops = an.oportunidades;
-    const pres = [];
-    if (an.rating != null && an.resenas != null) pres.push(`En Google Maps tiene ${fmtRating(an.rating)} estrellas sobre ${fmtNum(an.resenas)} reseñas`);
-    if (an.webUrl) pres.push("cuenta con sitio web propio");
-    else if (an.ver.tiene_web === "no") pres.push("no tiene un sitio web propio");
-    else pres.push("su ficha no muestra un sitio web vinculado");
-    if (an.ver.ads === "si") pres.push("hoy invierte en publicidad en Meta");
-    const presTxt = pres.length > 1 ? pres.slice(0, -1).join(", ") + " y " + pres[pres.length - 1] : pres.join("");
-    const situacion = `${an.nombre} es ${cat ? "un negocio del rubro " + cat.toLowerCase() : "un negocio"}${dir ? ", ubicado en " + dir : ""}. ` +
-      presTxt.charAt(0).toUpperCase() + presTxt.slice(1) + "." +
-      (fortz.length ? " " + fortz[0] : "") +
-      (an.nivel === "preliminar" ? " Este análisis se basa en información pública y tiene puntos a confirmar con ustedes antes de recomendar una inversión." : "");
+
+    /* Hallazgos principales para el cliente: máx. 3, sin hallazgos débiles de ficha incompleta */
+    const debiles = { sin_tel: 1, pocas_resenas: 1 };
+    const principales = an.oportunidades.filter((o) => !debiles[o.id]).slice(0, 3);
+    const hallazgos = principales.map((o) => ({
+      id: o.id, activo: true, tipo: o.tipo, titulo: o.titulo,
+      observamos: o.observamos, significa: o.significa || o.dificultad, atencion: o.atencion || o.mejora,
+      evidencia: o.evidencia, dificultad: o.dificultad || o.significa, mejora: o.mejora || o.atencion,
+    }));
+    const topOps = principales;
+
     const servDoc = an.servicios.map((s) => {
       const base = SERVICIOS[s.id];
       const t = T[s.id] || {};
-      return { id: s.id, nombre: base.nombre, activo: recIds.indexOf(s.id) >= 0, justificacion: s.justificacion.join("; "),
-        incluye: base.incluye.slice(), entregables: base.entregables.slice(), plazo: t.plazo || base.plazo,
-        precio: t.precio != null && t.precio !== "" ? String(t.precio) : "", soloIntegral: !!s.soloIntegral };
+      return {
+        id: s.id, nombre: base.nombre, activo: recIds.indexOf(s.id) >= 0,
+        justificacion: s.justificacion.join("; "),
+        descripcion: base.cliente,
+        incluye: base.incluye.slice(), entregables: base.entregables.slice(),
+        plazo: t.plazo || base.plazo,
+        precio: t.precio != null && t.precio !== "" ? String(t.precio) : "",
+        soloIntegral: !!s.soloIntegral,
+      };
     });
-    const orden = servDoc.filter((s) => s.activo).map((s) => minus(s.nombre));
-    const recomendacion = an.recomendada
-      ? `Para ${an.nombre} recomendamos ${orden.length > 1 ? "avanzar en este orden" : "concentrarnos en un solo frente"}: ${orden.join("; luego, ")}. ` +
-        `Empezamos por ${orden[0]} porque responde al punto más relevante del diagnóstico: ${minus(an.servicios[0].justificacion[0] || "")}. ` +
-        "No proponemos servicios que el negocio ya resuelve bien" + (an.webUrl && !an.servicios.some((s) => s.id === "A") ? " (por ejemplo, no planteamos una web nueva: el sitio actual se aprovecha)" : "") + "."
-      : `Con la información disponible, ${an.nombre} no muestra brechas que justifiquen una inversión inmediata. Sugerimos conversar para confirmar los puntos pendientes.`;
-    const comercial = [];
-    const has = (re) => ops.some((o) => re.test(o.id));
-    if (has(/^web/)) comercial.push(`Presencia digital: que quien encuentra a ${an.nombre} en Google tenga un lugar claro donde conocer sus servicios y contactar.`);
-    if (has(/^ads/)) comercial.push(`Captación: sumar un canal medible de nuevos ${rub.cliente} sobre la reputación existente.`);
-    if (has(/^wa_|^form/)) comercial.push(`Generación de consultas y conversión: facilitar el primer contacto y responder más rápido cada ${rub.consulta}.`);
-    if (has(/^agenda/)) comercial.push(`Reservas: permitir que los ${rub.cliente} saquen turno a cualquier hora, con recordatorios que ayudan a reducir ausencias.`);
-    if (has(/^seguimiento|^form/)) comercial.push(`Seguimiento y organización comercial: registrar cada ${rub.consulta} para retomarla en el momento oportuno.`);
-    if (has(/^redes/)) comercial.push("Presencia en redes: mostrar trabajos, equipo y opiniones donde muchas personas investigan antes de contactar.");
-    if (has(/reputacion|pocas_resenas|resenas_neg/)) comercial.push("Reputación: convertir la experiencia de los clientes satisfechos en más opiniones visibles.");
-    if (!comercial.length) comercial.push("Mantener lo que hoy funciona y revisar periódicamente los canales de contacto.");
-    const escA = `Continuar con el sistema actual conserva sus fortalezas (${fortz.length ? minus(fortz[0].replace(/\.$/, "")) : "su forma actual de trabajo"}) y no requiere inversión. ` +
-      `También mantiene las limitaciones detectadas: ${ops.slice(0, 3).map((o) => minus(o.titulo)).join("; ") || "ninguna relevante"}. ` +
-      "No tenemos datos para estimar cuántas consultas implica esto; sí sabemos que en esos puntos el contacto depende de que la persona insista.";
-    const escB = `Implementar las mejoras recomendadas requiere una inversión${servDoc.some((s) => s.activo && s.precio) ? " (detallada en la propuesta)" : " a definir"} y algo de tiempo del equipo durante la puesta en marcha. ` +
-      `A cambio, facilita la captación, la conversión de ${rub.consultas} y la organización comercial, con mediciones para decidir con datos los pasos siguientes. ` +
-      "No prometemos resultados específicos: medimos y ajustamos. Nuestra recomendación es este escenario, empezando por la etapa prioritaria.";
-    return {
+    const act = servDoc.filter((s) => s.activo);
+    const flujoA = flujoActualDe(an);
+    const flujoB = flujoPropuestoDe(an, act);
+
+    const escA = "Conserva lo que ya funciona" + (fortz[0] ? " — en particular, " + minus(fortz[0].replace(/\.$/, "")) : "") +
+      ". Las oportunidades identificadas seguirían pendientes" +
+      (topOps.length ? ": " + topOps.map((o) => minus(o.titulo)).join("; ") : "") +
+      ". No decidir también implica mantener estas limitaciones actuales. No estimamos pérdidas económicas: solo describimos lo observado.";
+    const escB = "Implementar las mejoras propuestas permitiría que quien encuentra el negocio tenga un camino más claro para conocerlo y contactarlo" +
+      (rub.usaAgenda && act.some((s) => s.id === "B") ? ", y para solicitar un " + rub.consulta + " con menos mensajes" : "") +
+      ". El equipo ganaría más orden para recibir y seguir consultas. La inversión" +
+      (act.some((s) => s.precio) ? " se detalla más adelante" : " se define en una reunión de cotización") +
+      ". No prometemos resultados numéricos: medimos y ajustamos juntos.";
+
+    const plan = [
+      "Planificación: confirmamos con ustedes los puntos pendientes y acordamos prioridades y alcance.",
+      "Desarrollo e implementación: construimos o configuramos " + (act.map((s) => minus(s.nombre)).join(", ") || "las herramientas acordadas") + ".",
+      "Integración y configuración: conectamos Google Maps" + (act.some((s) => s.id === "A" || s.id === "A2") || an.webUrl ? ", la página" : "") + ", WhatsApp y, si corresponde, el pedido de turnos, para que cada consulta llegue al mismo lugar.",
+      "Pruebas y puesta en funcionamiento: probamos el recorrido completo y capacitamos al equipo.",
+      "Seguimiento y optimización: revisamos juntos las consultas recibidas y ajustamos lo necesario.",
+    ];
+
+    const entregables = [];
+    act.forEach((s) => s.entregables.forEach((x) => { if (entregables.indexOf(x) < 0) entregables.push(x); }));
+    if (!entregables.length) entregables.push("Documento de plan de trabajo acordado en la reunión.");
+
+    const titulo = tituloPortadaDe(an);
+    const resumen = resumenDe(an);
+    const oportunidad = oportunidadTexto(an);
+
+    const cierre = "Identificamos oportunidades concretas para mejorar la forma en que su negocio atrae, recibe y organiza nuevas consultas.\n\n" +
+      "Nos gustaría conversar con ustedes para explicarles cómo implementar estas mejoras y definir un plan de trabajo acorde a sus objetivos.";
+
+    let doc = {
       version: 1, generado: new Date().toISOString(), nivel: an.nivel, fecha: hoyAR(),
       negocio: an.nombre, negocioCompleto: an.nombreCompleto, rubro: cat, direccion: dir,
-      situacion, fortalezas: fortz,
-      oportunidades: ops.map((o) => ({ id: o.id, activo: true, tipo: o.tipo, titulo: o.titulo, observamos: o.observamos, evidencia: o.evidencia, dificultad: o.dificultad, mejora: o.mejora })),
-      comercial, recomendacion,
-      plan: [
-        "Diagnóstico y planificación: confirmar con ustedes los puntos pendientes y definir prioridades.",
-        "Implementación de las herramientas necesarias: " + (orden.join(", ") || "a definir") + ".",
-        "Integración de canales comerciales: conectar Google Maps, " + (an.webUrl || servDoc.some((s) => s.activo && s.id === "A") ? "sitio web, " : "") + "WhatsApp y redes para que cada consulta llegue al mismo lugar.",
-        "Puesta en funcionamiento: pruebas, ajustes y capacitación del equipo.",
-        "Medición y optimización: seguimiento de consultas y ajustes periódicos.",
-      ],
+      tituloPortada: titulo, resumen, oportunidad,
+      fortalezas: fortz,
+      oportunidades: hallazgos, /* alias hallazgos */
+      hallazgos,
+      flujoActual: flujoA.texto, flujoActualPasos: flujoA.pasos, flujoPropuesto: flujoB,
       escenarioA: escA, escenarioB: escB,
-      verificar: an.faltantes.map((f) => f.txt),
-      cierre: "Nos encantaría conversar 20 minutos para repasar este diagnóstico con ustedes, confirmar los puntos pendientes y ver si tiene sentido avanzar. Sin ningún compromiso.",
       servicios: servDoc,
       alternativas: an.alternativas.map((a) => Object.assign({}, a, { recomendada: !!(an.recomendada && a.id === an.recomendada.id) })),
-      justificacionRecomendada: an.recomendada ? `Recomendamos la ${minus(an.recomendada.nombre)} porque concentra las mejoras con evidencia más directa en el diagnóstico${an.alternativas.length > 2 ? "; la integral suma herramientas útiles, pero no imprescindibles para el primer paso" : ""}.` : "",
-      condiciones: T._condiciones || "Condiciones de pago y validez de la propuesta: a definir.",
-      proximoPaso: "Coordinar una reunión breve para confirmar alcance y fechas. Con su aprobación, comenzamos por la etapa de diagnóstico y planificación.",
+      justificacionRecomendada: an.recomendada && an.alternativas.length > 1
+        ? "Recomendamos la " + minus(an.recomendada.nombre) + " porque concentra las mejoras con evidencia más directa."
+        : "",
+      plan, entregablesCliente: entregables,
+      verificar: an.faltantes.map((f) => f.txt),
+      cierre,
+      condiciones: T._condiciones || "Condiciones de pago y validez de la propuesta: a definir en la reunión de trabajo.",
+      proximoPaso: "Coordinar una conversación breve para explicar la propuesta, confirmar alcance y, si corresponde, cotizar.",
       observaciones: "",
       contacto: contactoImpulsa(),
       revisado: false,
+      /* compat vistas antiguas del editor */
+      situacion: resumen, comercial: [oportunidad], recomendacion: oportunidad,
     };
+
+    /* Autorevisión: si falla calidad crítica, segunda pasada más simple */
+    const qc = controlCalidad(doc);
+    if (qc.bloqueantes.length) {
+      doc = pasarSimple(doc, an);
+    }
+    return doc;
   }
 
-  const PROMESAS = /(garantiz|asegur[a-z]* (más|mas) (ventas|clientes)|vas a perder|perderá|perder clientes|duplic|triplic|100 ?%)/i;
+  function pasarSimple(doc, an) {
+    /* Segunda pasada: menos texto, sin jerga residual, títulos más cortos */
+    doc.tituloPortada = (an.rating != null && an.resenas != null)
+      ? ("Reputación de " + fmtRating(an.rating) + " estrellas: oportunidad de facilitar el contacto y las consultas")
+      : "Oportunidad de mejorar cómo reciben nuevas consultas";
+    doc.resumen = "Analizamos la información pública de " + doc.negocio + " para identificar oportunidades concretas de crecimiento. Este documento resume hallazgos y una propuesta de trabajo.";
+    doc.oportunidad = doc.hallazgos[0] ? ("La oportunidad principal es " + minus(doc.hallazgos[0].atencion)) : doc.oportunidad;
+    doc.comercial = [doc.oportunidad];
+    doc.recomendacion = doc.oportunidad;
+    doc.situacion = doc.resumen;
+    /* limpiar jerga si quedó */
+    const limpia = (s) => String(s || "")
+      .replace(/presencia digital/gi, "forma de presentarse")
+      .replace(/conversi[oó]n comercial/gi, "pasar de consulta a turno o compra")
+      .replace(/embudo/gi, "recorrido del cliente")
+      .replace(/automatizaci[oó]n comercial/gi, "organización de consultas")
+      .replace(/gesti[oó]n de leads/gi, "seguimiento de consultas")
+      .replace(/ecosistema digital/gi, "canales de contacto")
+      .replace(/optimizaci[oó]n de canales/gi, "mejora de los canales de contacto")
+      .replace(/captaci[oó]n multicanal/gi, "conectar Google, la página, WhatsApp y redes")
+      .replace(/\bleads?\b/gi, "consultas")
+      .replace(/\bfunnel\b/gi, "recorrido");
+    ["tituloPortada", "resumen", "oportunidad", "flujoActual", "escenarioA", "escenarioB", "cierre", "proximoPaso", "situacion", "recomendacion"].forEach((k) => { if (doc[k]) doc[k] = limpia(doc[k]); });
+    (doc.hallazgos || []).forEach((h) => { ["titulo", "observamos", "significa", "atencion", "dificultad", "mejora"].forEach((p) => { if (h[p]) h[p] = limpia(h[p]); }); });
+    (doc.servicios || []).forEach((s) => { s.nombre = limpia(s.nombre); s.descripcion = limpia(s.descripcion); s.justificacion = limpia(s.justificacion); });
+    doc.pasada = 2;
+    return doc;
+  }
+
+  function tarifas() { return lsGet(LS_TAR, {}); }
+  function contactoImpulsa() { return lsGet(LS_CON, { nombre: "IMPULSA", responsable: "", telefono: "", email: "", web: "" }); }
+
   function controlCalidad(doc) {
-    const avisos = [];
-    if (doc.nivel === "preliminar") avisos.push("Diagnóstico PRELIMINAR: el documento lo indicará y listará qué falta verificar.");
-    const txt = JSON.stringify([doc.situacion, doc.fortalezas, doc.oportunidades.filter((o) => o.activo), doc.comercial, doc.recomendacion, doc.escenarioA, doc.escenarioB, doc.cierre]);
-    const sinNo = txt.replace(/No (prometemos|vamos a prometer)[^.]*\./g, "");
-    if (PROMESAS.test(sinNo)) avisos.push("Hay frases que prometen resultados o generan urgencia (garantizar, duplicar, perder…). Revisalas.");
-    if (/ {2,}| [,.;:]/.test(txt)) avisos.push("Hay espacios dobles o antes de signos de puntuación.");
-    if (/\.\./.test(txt.replace(/\.\.\./g, ""))) avisos.push("Hay puntos duplicados.");
-    if (!doc.oportunidades.some((o) => o.activo)) avisos.push("No hay oportunidades activas.");
-    const act = doc.servicios.filter((s) => s.activo);
+    const avisos = [], bloqueantes = [];
+    const clienteTxt = [
+      doc.tituloPortada, doc.resumen, doc.oportunidad, doc.flujoActual, doc.escenarioA, doc.escenarioB, doc.cierre, doc.proximoPaso,
+      ...(doc.fortalezas || []),
+      ...(doc.hallazgos || doc.oportunidades || []).filter((o) => o.activo !== false).flatMap((o) => [o.titulo, o.observamos, o.significa, o.atencion, o.mejora, o.dificultad]),
+      ...(doc.servicios || []).filter((s) => s.activo).flatMap((s) => [s.nombre, s.descripcion, s.justificacion, ...(s.incluye || [])]),
+      ...(doc.flujoPropuesto || []),
+    ].join(" \n ");
+
+    if (JERGA.test(clienteTxt)) {
+      const m = clienteTxt.match(JERGA);
+      bloqueantes.push("Hay jerga técnica en el texto al cliente" + (m ? " («" + m[0] + "»)" : "") + ". Debe traducirse a lenguaje cotidiano.");
+    }
+    if (INVENCION.test(clienteTxt))
+      bloqueantes.push("Hay afirmaciones sin evidencia (pérdida de clientes/pacientes, carecer de agenda, promesas). Eliminarlas.");
+    if (/diagn[oó]stico preliminar|puntaje|scoring|confianza del algoritmo|banda (alta|media|baja)/i.test(clienteTxt))
+      bloqueantes.push("El PDF al cliente no debe incluir puntajes, scoring ni la etiqueta de diagnóstico preliminar.");
+    if (!doc.tituloPortada || doc.tituloPortada.length < 20)
+      bloqueantes.push("Falta un título personalizado de portada.");
+    if (!doc.negocio || /el negocio/i.test(doc.negocio))
+      bloqueantes.push("El documento no está personalizado con el nombre del negocio.");
+    if (!(doc.fortalezas || []).length)
+      avisos.push("No hay fortalezas listadas: revisar si hay datos de reputación u otros logros.");
+    const hall = (doc.hallazgos || doc.oportunidades || []).filter((o) => o.activo !== false);
+    if (!hall.length) avisos.push("No hay hallazgos/oportunidades activas.");
+    const act = (doc.servicios || []).filter((s) => s.activo);
     if (!act.length) avisos.push("La propuesta no tiene servicios seleccionados.");
-    if (act.some((s) => !s.precio)) avisos.push("Hay servicios sin precio: se mostrará «A definir».");
-    if (!doc.contacto || !(doc.contacto.telefono || doc.contacto.email)) avisos.push("Faltan datos de contacto de IMPULSA (teléfono o email).");
-    return avisos;
+    act.forEach((s) => {
+      if (!s.descripcion || s.descripcion.length < 40) avisos.push("El servicio «" + s.nombre + "» necesita una explicación más clara del beneficio.");
+    });
+    if (act.some((s) => !s.precio)) avisos.push("Hay servicios sin precio: se mostrará propuesta sin presupuesto y se pedirá reunión para cotizar.");
+    if (!doc.contacto || !(doc.contacto.telefono || doc.contacto.email))
+      avisos.push("Faltan datos de contacto de IMPULSA (teléfono o email).");
+    if (!doc.cierre || doc.cierre.length < 40) bloqueantes.push("Falta el cierre comercial.");
+    if (!/(conversar|reuni[oó]n|cotizar|pr[oó]ximo paso)/i.test(doc.cierre + " " + (doc.proximoPaso || "")))
+      avisos.push("El siguiente paso podría no quedar claro.");
+    /* frases genéricas típicas */
+    if (/soluci[oó]n integral de marketing|potenciar su marca en el mundo digital|transformaci[oó]n digital/i.test(clienteTxt))
+      bloqueantes.push("Hay frases genéricas de marketing: personalizar o eliminar.");
+    if (/ {2,}| [,.;:]/.test(clienteTxt)) avisos.push("Hay espacios dobles o antes de signos de puntuación.");
+    return { avisos: avisos.concat(bloqueantes), bloqueantes, ok: !bloqueantes.length };
   }
 
-  /* ===================== HTML para el cliente ===================== */
-  const DOC_CSS = ".imx{font:15px/1.55 'Inter',system-ui,-apple-system,Roboto,sans-serif;color:#111827;background:#fff;max-width:820px;margin:0 auto;border-radius:18px}" +
-    ".imx .pg{padding:36px 32px;break-after:page;page-break-after:always}.imx .pg:last-child{break-after:auto;page-break-after:auto}" +
-    ".imx .cov{min-height:80vh;display:flex;flex-direction:column;justify-content:space-between;gap:24px;background:linear-gradient(160deg,#0f172a 0%,#134e4a 100%);color:#fff;border-radius:18px;-webkit-print-color-adjust:exact;print-color-adjust:exact}" +
-    ".imx .brand{font-weight:800;letter-spacing:.18em;font-size:20px;color:#5eead4}.imx .cov h1{font-size:30px;line-height:1.2;margin:30px 0 18px;text-transform:uppercase}" +
-    ".imx .cov .neg{font-size:24px;font-weight:700}.imx .cov .sub{opacity:.88;margin-top:4px}.imx .tag{display:inline-block;background:#f59e0b;color:#111;border-radius:999px;padding:3px 12px;font-weight:700;font-size:12px;margin-top:12px}" +
-    ".imx h2{font-size:20px;color:#0f766e;border-bottom:2px solid #ccfbf1;padding-bottom:6px;margin:26px 0 12px}.imx h3{font-size:16px;margin:16px 0 6px}" +
-    ".imx .op{border:1px solid #e5e7eb;border-left:4px solid #0d9488;border-radius:12px;padding:12px 14px;margin:10px 0;break-inside:avoid}" +
-    ".imx .op.pot{border-left-color:#f59e0b}.imx .k{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#6b7280;margin-top:6px}" +
-    ".imx ul,.imx ol{padding-left:22px}.imx li{margin:4px 0}.imx .muted{color:#6b7280;font-size:13px}" +
-    ".imx table{width:100%;border-collapse:collapse;margin:10px 0}.imx th,.imx td{border:1px solid #e5e7eb;padding:8px;text-align:left;vertical-align:top;font-size:14px}.imx th{background:#f0fdfa}" +
-    ".imx .esc{display:grid;grid-template-columns:1fr 1fr;gap:12px}.imx .esc>div{border:1px solid #e5e7eb;border-radius:12px;padding:12px}.imx .esc .b{border-color:#0d9488;background:#f0fdfa}" +
-    ".imx .alt{border:1px solid #e5e7eb;border-radius:12px;padding:12px;margin:8px 0}.imx .alt.rec{border:2px solid #0d9488}" +
-    ".imx .foot{margin-top:24px;padding-top:12px;border-top:1px solid #e5e7eb;font-size:13px;color:#374151}" +
-    "@media (max-width:640px){.imx .pg{padding:22px 16px}.imx .esc{grid-template-columns:1fr}.imx .cov h1{font-size:23px}}" +
-    "@media print{.imx .cov{min-height:auto;height:250mm}.imx{max-width:none}}";
+  /* ===================== HTML del documento comercial (3–5 páginas) ===================== */
+  const DOC_CSS = ".imx{font:14.5px/1.45 'Inter',system-ui,-apple-system,Roboto,sans-serif;color:#111827;background:#fff;max-width:820px;margin:0 auto}" +
+    ".imx .pg{padding:16px 18px}.imx .cov{page-break-after:always;break-after:page}" +
+    ".imx .cov{display:flex;flex-direction:column;gap:12px;background:linear-gradient(160deg,#0f172a 0%,#134e4a 100%);color:#fff;border-radius:14px;padding:24px 22px;-webkit-print-color-adjust:exact;print-color-adjust:exact}" +
+    ".imx .brand{font-weight:800;letter-spacing:.18em;font-size:17px;color:#5eead4}.imx .tagline{color:#99f6e4;font-size:12px;margin-top:3px}" +
+    ".imx .cov .doc-kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.9;margin-top:18px}" +
+    ".imx .cov h1{font-size:22px;line-height:1.28;margin:8px 0 12px;font-weight:700}.imx .cov .neg{font-size:20px;font-weight:700}" +
+    ".imx .cov .sub{opacity:.88;margin-top:3px;font-size:13px}.imx .cov .lead{margin-top:12px;font-size:14px;line-height:1.45;opacity:.95;max-width:38em}" +
+    ".imx h2{font-size:17px;color:#0f766e;border-bottom:2px solid #ccfbf1;padding-bottom:5px;margin:0 0 10px;break-after:avoid;page-break-after:avoid}" +
+    ".imx h3{font-size:14px;margin:12px 0 6px;color:#134e4a;break-after:avoid;page-break-after:avoid}.imx p{margin:0 0 8px}" +
+    ".imx .card{border:1px solid #e5e7eb;border-left:4px solid #0d9488;border-radius:10px;padding:10px 12px;margin:8px 0;break-inside:avoid;page-break-inside:avoid}" +
+    ".imx .card.soft{border-left-color:#94a3b8}.imx .k{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#6b7280;margin-top:6px}" +
+    ".imx ul,.imx ol{padding-left:20px;margin:4px 0 8px}.imx li{margin:3px 0}.imx .muted{color:#6b7280;font-size:12px}" +
+    ".imx .flow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0}.imx .flow>div{border:1px solid #e5e7eb;border-radius:10px;padding:10px;break-inside:avoid;page-break-inside:avoid}" +
+    ".imx .flow .prop{border-color:#0d9488;background:#f0fdfa}.imx .flow ol{margin:6px 0 0;padding-left:18px}" +
+    ".imx .esc{display:grid;grid-template-columns:1fr 1fr;gap:10px}.imx .esc>div{border:1px solid #e5e7eb;border-radius:10px;padding:10px;break-inside:avoid;page-break-inside:avoid}.imx .esc .b{border-color:#0d9488;background:#f0fdfa}" +
+    ".imx .svc{border:1px solid #e5e7eb;border-radius:10px;padding:12px;margin:8px 0;break-inside:avoid;page-break-inside:avoid}.imx .svc h3{margin-top:0}" +
+    ".imx .alt{border:1px solid #e5e7eb;border-radius:10px;padding:10px;margin:6px 0}.imx .alt.rec{border:2px solid #0d9488}" +
+    ".imx table{width:100%;border-collapse:collapse;margin:8px 0}.imx th,.imx td{border:1px solid #e5e7eb;padding:7px;text-align:left;vertical-align:top;font-size:13px}.imx th{background:#f0fdfa}" +
+    ".imx .pend{margin-top:12px;padding:8px 10px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;font-size:12px;color:#475569;break-inside:avoid}" +
+    ".imx .foot{margin-top:14px;padding-top:10px;border-top:1px solid #e5e7eb;font-size:12px;color:#374151}" +
+    ".imx .steps{counter-reset:st}.imx .steps li{margin:4px 0}" +
+    "@media (max-width:640px){.imx .pg,.imx .cov{padding:18px 14px}.imx .flow,.imx .esc{grid-template-columns:1fr}.imx .cov h1{font-size:19px}}" +
+    "@media print{.imx .cov{border-radius:0}.imx{max-width:none}" +
+    ".imx h2,.imx h3,.imx .card,.imx .svc,.imx .flow>div,.imx .esc>div{break-inside:avoid;page-break-inside:avoid}}";
+
 
   const lis = (arr) => "<ul>" + arr.filter(Boolean).map((x) => "<li>" + e(x) + "</li>").join("") + "</ul>";
-  function contactoHtml(c) {
+    function contactoHtml(c) {
     c = c || {};
     const p = [c.responsable, c.telefono, c.email, c.web].filter(Boolean).map(e).join(" · ");
     return "<div class=\"foot\"><strong>" + e(c.nombre || "IMPULSA") + "</strong>" + (p ? " · " + p : "") + "</div>";
   }
-  function portada(doc, titulo) {
-    return "<section class=\"pg cov\"><div><div class=\"brand\">IMPULSA</div><div style=\"color:#99f6e4;font-size:13px\">Crecimiento comercial para negocios locales</div></div>" +
-      "<div><h1>" + e(titulo) + "</h1><div class=\"neg\">" + e(doc.negocio) + "</div><div class=\"sub\">" + e(doc.rubro) + (doc.direccion ? " · " + e(doc.direccion) : "") + "</div>" +
-      "<div class=\"sub\">Fecha del análisis: " + e(doc.fecha) + "</div>" + (doc.nivel === "preliminar" ? "<span class=\"tag\">Diagnóstico preliminar</span>" : "") + "</div>" +
-      "<div class=\"sub\">Preparado por " + e((doc.contacto && doc.contacto.nombre) || "IMPULSA") + " a partir de información pública del negocio, para identificar oportunidades concretas y ordenadas de crecimiento.</div></section>";
-  }
-  const escenarios = (doc) => "<h3>Dos caminos posibles</h3><div class=\"esc\"><div><strong>Escenario A — Seguir como hoy</strong><p>" + e(doc.escenarioA) + "</p></div><div class=\"b\"><strong>Escenario B — Implementar las mejoras</strong><p>" + e(doc.escenarioB) + "</p></div></div>";
-  function htmlDiagnostico(doc) {
-    const ops = doc.oportunidades.filter((o) => o.activo);
-    const servAct = doc.servicios.filter((s) => s.activo);
-    return "<div class=\"imx\">" + portada(doc, "Diagnóstico de oportunidades de crecimiento comercial") +
-      "<section class=\"pg\"><h2>1. Situación actual</h2><p>" + e(doc.situacion) + "</p>" +
-      "<h2>2. Fortalezas detectadas</h2>" + (doc.fortalezas.length ? lis(doc.fortalezas) : "<p class=\"muted\">Sin datos suficientes para destacar fortalezas.</p>") +
-      "<h2>3. Oportunidades de mejora</h2>" + ops.map((o) => "<div class=\"op" + (o.tipo === "comprobado" ? "" : " pot") + "\"><h3>" + e(o.titulo) + "</h3>" +
-        "<div class=\"k\">Qué observamos</div><div>" + e(o.observamos) + "</div><div class=\"k\">Evidencia</div><div>" + e(o.evidencia) + (o.tipo === "comprobado" || /confirm/i.test(o.evidencia) ? "" : " <em>(a confirmar)</em>") + "</div>" +
-        "<div class=\"k\">Qué dificultad puede generar</div><div>" + e(o.dificultad) + "</div><div class=\"k\">Oportunidad de mejora</div><div>" + e(o.mejora) + "</div></div>").join("") +
-      "<h2>4. Oportunidades comerciales</h2>" + lis(doc.comercial) +
-      "<h2>5. Nuestra recomendación</h2><p>" + e(doc.recomendacion) + "</p>" + (servAct.length ? "<ol>" + servAct.map((s) => "<li><strong>" + e(s.nombre) + "</strong>: " + e(s.justificacion) + ".</li>").join("") + "</ol>" : "") +
-      escenarios(doc) +
-      "<h2>6. Plan de acción</h2><ol>" + doc.plan.map((p) => "<li>" + e(p) + "</li>").join("") + "</ol>" +
-      (doc.nivel === "preliminar" && doc.verificar.length ? "<h3>Puntos a confirmar antes de recomendar una inversión</h3>" + lis(doc.verificar) : "") +
-      (doc.observaciones ? "<h3>Observaciones</h3><p>" + e(doc.observaciones) + "</p>" : "") +
-      "<h2>Conversemos</h2><p>" + e(doc.cierre) + "</p>" + contactoHtml(doc.contacto) + "</section></div>";
-  }
   const esNum = (p) => /^[\d.,\s$]+$/.test(String(p || "")) && /\d/.test(String(p));
   const aNum = (p) => Number(String(p).replace(/[^\d,]/g, "").replace(",", "."));
-  function precioTxt(p) { return !p ? "A definir" : esNum(p) ? "$ " + fmtNum(aNum(p)) : String(p); }
+  function precioTxt(p) { return !p ? "A definir en reunión" : esNum(p) ? "$ " + fmtNum(aNum(p)) : String(p); }
   function total(servs) {
     if (!servs.length) return null;
     let t = 0;
     for (const s of servs) { if (!esNum(s.precio)) return null; t += aNum(s.precio); }
     return t;
   }
-  function htmlPropuesta(doc) {
-    const act = doc.servicios.filter((s) => s.activo);
-    const ops = doc.oportunidades.filter((o) => o.activo);
+
+  function htmlDocumento(doc) {
+    const hall = (doc.hallazgos || doc.oportunidades || []).filter((o) => o.activo !== false).slice(0, 3);
+    const act = (doc.servicios || []).filter((s) => s.activo);
     const tot = total(act);
-    const nomS = (id) => (doc.servicios.find((s) => s.id === id) || { nombre: id }).nombre;
-    const altHtml = doc.alternativas.length > 1 ? "<h2>Alternativas de contratación</h2>" + doc.alternativas.map((a) => {
-      const t = total(doc.servicios.filter((s) => a.servicios.indexOf(s.id) >= 0));
-      return "<div class=\"alt" + (a.recomendada ? " rec" : "") + "\"><strong>" + e(a.nombre) + (a.recomendada ? " · recomendada" : "") + "</strong><div>" + e(a.descripcion) + "</div><div class=\"muted\">" +
-        e(a.servicios.map(nomS).join(" + ")) + " · Inversión: " + e(t != null ? "$ " + fmtNum(t) : "a definir") + "</div></div>";
-    }).join("") + (doc.justificacionRecomendada ? "<p>" + e(doc.justificacionRecomendada) + "</p>" : "") : "";
-    return "<div class=\"imx\">" + portada(doc, "Propuesta comercial personalizada") +
-      "<section class=\"pg\"><h2>Lo que vamos a resolver</h2>" + lis(ops.map((o) => o.titulo + ": " + minus(o.mejora))) +
-      "<h2>Servicios seleccionados</h2>" + act.map((s) => "<div class=\"op\"><h3>" + e(s.nombre) + "</h3><div class=\"muted\">Por qué: " + e(s.justificacion) + ".</div>" +
-        "<div class=\"k\">Qué incluye</div>" + lis(s.incluye) + "<div class=\"k\">Entregables</div>" + lis(s.entregables) +
-        "<div class=\"k\">Plazo estimado</div><div>" + e(s.plazo) + "</div><div class=\"k\">Inversión</div><div><strong>" + e(precioTxt(s.precio)) + "</strong></div></div>").join("") +
-      "<h2>Alcance y etapas</h2><ol>" + doc.plan.map((p) => "<li>" + e(p) + "</li>").join("") + "</ol>" +
-      "<h2>Presupuesto</h2><table><tr><th>Servicio</th><th>Plazo</th><th>Inversión</th></tr>" + act.map((s) => "<tr><td>" + e(s.nombre) + "</td><td>" + e(s.plazo) + "</td><td>" + e(precioTxt(s.precio)) + "</td></tr>").join("") +
-      "<tr><th colspan=\"2\">Total</th><th>" + e(tot != null ? "$ " + fmtNum(tot) : "A definir") + "</th></tr></table>" + altHtml + escenarios(doc) +
-      "<h2>Condiciones de contratación</h2><p>" + e(doc.condiciones) + "</p>" + (doc.observaciones ? "<p>" + e(doc.observaciones) + "</p>" : "") +
-      "<h2>Próximo paso</h2><p>" + e(doc.proximoPaso) + "</p>" + contactoHtml(doc.contacto) + "</section></div>";
+    const hayPrecio = act.some((s) => s.precio);
+    const nomS = (id) => ((doc.servicios || []).find((s) => s.id === id) || { nombre: id }).nombre;
+
+    const p1 = "<section class=\"pg cov\"><div><div class=\"brand\">IMPULSA</div><div class=\"tagline\">Crecimiento comercial para empresas.</div>" +
+      "<div class=\"doc-kicker\">Diagnóstico y propuesta de crecimiento</div></div>" +
+      "<div><div class=\"neg\">" + e(doc.negocio) + "</div>" +
+      (doc.rubro || doc.direccion ? "<div class=\"sub\">" + e([doc.rubro, doc.direccion].filter(Boolean).join(" · ")) + "</div>" : "") +
+      "<div class=\"sub\">" + e(doc.fecha) + "</div>" +
+      "<h1>" + e(doc.tituloPortada || "Diagnóstico y propuesta de crecimiento") + "</h1>" +
+      "<p class=\"lead\">" + e(doc.resumen || "") + "</p></div>" +
+      "<div class=\"sub\">Preparado por " + e((doc.contacto && doc.contacto.nombre) || "IMPULSA") + "</div></section>";
+
+    const p2 = "<section class=\"pg break\"><h2>Conocimos su negocio y encontramos estas oportunidades</h2>" +
+      "<h3>Lo que ya está haciendo bien</h3>" + (doc.fortalezas && doc.fortalezas.length ? lis(doc.fortalezas) : "<p class=\"muted\">Con los datos públicos disponibles no destacamos fortalezas adicionales.</p>") +
+      "<h3>Lo que observamos</h3>" + hall.map((o) => "<div class=\"card\"><strong>" + e(o.titulo) + "</strong>" +
+        "<div class=\"k\">Qué observamos</div><div>" + e(o.observamos) + "</div>" +
+        "<div class=\"k\">Qué significa</div><div>" + e(o.significa || o.dificultad) + "</div>" +
+        "<div class=\"k\">Por qué merece atención</div><div>" + e(o.atencion || o.mejora) + "</div></div>").join("") +
+      "<h3>Qué oportunidad existe</h3><p>" + e(doc.oportunidad || "") + "</p></section>";
+
+    const p3 = "<section class=\"pg break\"><h2>Cómo mejoraría su negocio</h2>" +
+      "<div class=\"flow\"><div><strong>Situación actual</strong><p>" + e(doc.flujoActual || "") + "</p></div>" +
+      "<div class=\"prop\"><strong>Propuesta</strong><ol>" + (doc.flujoPropuesto || []).map((x) => "<li>" + e(x) + "</li>").join("") + "</ol></div></div>" +
+      "<h3>Dos caminos posibles</h3><div class=\"esc\">" +
+      "<div><strong>Escenario A — Continuar con el funcionamiento actual</strong><p>" + e(doc.escenarioA) + "</p></div>" +
+      "<div class=\"b\"><strong>Escenario B — Implementar las mejoras</strong><p>" + e(doc.escenarioB) + "</p></div></div></section>";
+
+    const alts = (doc.alternativas || []).length > 1 ? "<h3>Alternativas</h3>" + doc.alternativas.map((a) => {
+      const t = total((doc.servicios || []).filter((s) => a.servicios.indexOf(s.id) >= 0));
+      return "<div class=\"alt" + (a.recomendada ? " rec" : "") + "\"><strong>" + e(a.nombre) + (a.recomendada ? " · recomendada" : "") + "</strong><div>" + e(a.descripcion) + "</div>" +
+        "<div class=\"muted\">" + e(a.servicios.map(nomS).join(" + ")) + (hayPrecio ? " · " + e(t != null ? "$ " + fmtNum(t) : "a definir") : "") + "</div></div>";
+    }).join("") + (doc.justificacionRecomendada ? "<p class=\"muted\">" + e(doc.justificacionRecomendada) + "</p>" : "") : "";
+
+    const bloqueServ = act.length ? act.map((s) => "<div class=\"svc\"><h3>" + e(s.nombre) + "</h3>" +
+      "<p>" + e(s.descripcion || s.justificacion) + "</p>" +
+      "<div class=\"k\">Qué incluye</div>" + lis((s.incluye || []).slice(0, 5)) +
+      "<div class=\"k\">Plazo estimado</div><p>" + e(s.plazo) + (hayPrecio ? " · <strong>" + e(precioTxt(s.precio)) + "</strong>" : "") + "</p></div>").join("") : "<p class=\"muted\">Sin servicios seleccionados.</p>";
+
+    const inv = hayPrecio
+      ? ("<h3>Inversión</h3><table><tr><th>Servicio</th><th>Plazo</th><th>Inversión</th></tr>" +
+        act.map((s) => "<tr><td>" + e(s.nombre) + "</td><td>" + e(s.plazo) + "</td><td>" + e(precioTxt(s.precio)) + "</td></tr>").join("") +
+        "<tr><th colspan=\"2\">Total</th><th>" + e(tot != null ? "$ " + fmtNum(tot) : "A definir en reunión") + "</th></tr></table>" +
+        "<p class=\"muted\">" + e(doc.condiciones || "") + "</p>")
+      : ("<h3>Inversión</h3><p>Esta propuesta se presenta sin presupuesto cerrado. Nos gustaría reunirnos para cotizar un plan acorde a sus objetivos y al alcance que elijan.</p>");
+
+    const pend = (doc.verificar && doc.verificar.length)
+      ? "<div class=\"pend\"><strong>Aspectos pendientes de confirmar</strong>" + lis(doc.verificar.slice(0, 4)) + "</div>"
+      : "";
+
+    /* Página 4: propuesta + plan + cierre (una sola página cuando hay pocos servicios) */
+    const p4 = "<section class=\"pg break\"><h2>Qué proponemos implementar y cómo lo haríamos</h2>" + bloqueServ + alts +
+      "<h2>Plan y próximo paso</h2>" +
+      "<h3>Cómo trabajaremos</h3><ol class=\"steps\">" + (doc.plan || []).map((x) => "<li>" + e(x) + "</li>").join("") + "</ol>" +
+      "<h3>Qué recibirá</h3>" + lis(doc.entregablesCliente || []) +
+      inv +
+      (doc.observaciones ? "<p>" + e(doc.observaciones) + "</p>" : "") +
+      "<h3>Próximo paso</h3><p>" + e(doc.proximoPaso || "") + "</p>" +
+      "<p style=\"white-space:pre-line;margin-top:10px\">" + e(doc.cierre || "") + "</p>" +
+      contactoHtml(doc.contacto) + pend + "</section>";
+
+    /* Si hay muchos servicios, separar plan en 5.ª página */
+    if (act.length >= 4) {
+      const p4a = "<section class=\"pg break\"><h2>Qué proponemos implementar y cómo lo haríamos</h2>" + bloqueServ + alts + "</section>";
+      const p5 = "<section class=\"pg break\"><h2>Plan y próximo paso</h2>" +
+        "<h3>Cómo trabajaremos</h3><ol class=\"steps\">" + (doc.plan || []).map((x) => "<li>" + e(x) + "</li>").join("") + "</ol>" +
+        "<h3>Qué recibirá</h3>" + lis(doc.entregablesCliente || []) + inv +
+        (doc.observaciones ? "<p>" + e(doc.observaciones) + "</p>" : "") +
+        "<h3>Próximo paso</h3><p>" + e(doc.proximoPaso || "") + "</p>" +
+        "<p style=\"white-space:pre-line;margin-top:10px\">" + e(doc.cierre || "") + "</p>" +
+        contactoHtml(doc.contacto) + pend + "</section>";
+      return "<div class=\"imx\">" + p1 + p2 + p3 + p4a + p5 + "</div>";
+    }
+    return "<div class=\"imx\">" + p1 + p2 + p3 + p4 + "</div>";
   }
+
+  /* Compat: diagnóstico y propuesta imprimen el mismo documento comercial unificado */
+  function htmlDiagnostico(doc) { return htmlDocumento(doc); }
+  function htmlPropuesta(doc) { return htmlDocumento(doc); }
 
   /* ===================== WhatsApp ===================== */
   function mensajesWA(r, an, doc) {
     const rub = an.rub, n = an.nombre;
     const presentacion = doc.contacto && doc.contacto.responsable ? "Soy " + doc.contacto.responsable + ", de IMPULSA." : "Les escribo desde IMPULSA.";
-    const activas = doc.oportunidades.filter((o) => o.activo);
+    const activas = (doc.hallazgos || doc.oportunidades || []).filter((o) => o.activo !== false);
     let obs;
     if (an.rating != null && an.resenas != null && an.rating >= 4.5 && an.resenas >= 20) obs = `vi que tienen ${fmtRating(an.rating)} estrellas con ${fmtNum(an.resenas)} reseñas en Google, una reputación que cuesta mucho construir`;
-    else if (an.webUrl) obs = "estuve mirando su sitio web y su ficha de Google";
+    else if (an.webUrl) obs = "estuve mirando su página web y su ficha de Google";
     else if (an.resenas != null) obs = `vi su ficha de Google con ${fmtNum(an.resenas)} reseñas`;
     else obs = "estuve mirando cómo se presentan en Google";
     const op = activas[0];
@@ -502,28 +762,28 @@
     const okWeb = an.cw && an.cw.https && an.cw.viewport;
     return {
       secuencia: [
-        { id: "m1", titulo: "1 · Primer contacto", texto: `Hola, ¿cómo están? ${presentacion} ${obs.charAt(0).toUpperCase() + obs.slice(1)}. Preparamos un breve diagnóstico de ${n} con algunas oportunidades para que más ${rub.cliente} los contacten con facilidad (por ejemplo: ${opTxt}). ¿Les parece bien si se lo comparto por acá? Se lee en 2 minutos.` },
-        { id: "m2", titulo: "2 · Envío del diagnóstico", texto: `¡Gracias! Les comparto el diagnóstico de ${n}. Resume lo que ya hacen muy bien, ${activas.length} oportunidad${activas.length === 1 ? "" : "es"} concreta${activas.length === 1 ? "" : "s"} con su evidencia y un orden sugerido para trabajarlas.${doc.nivel === "preliminar" ? " Hay algunos puntos que nos gustaría confirmar con ustedes, porque solo vimos información pública." : ""} Cualquier duda, me escriben.` },
-        { id: "m3", titulo: "3 · Presentación de la propuesta", texto: `Les paso la propuesta para ${n}. Proponemos empezar por ${act[0] || "el punto prioritario"}${act.length > 1 ? " y después " + act.slice(1).join(" y ") : ""}, porque es lo que responde a lo que vimos en el diagnóstico. Está armada por etapas y se puede ajustar. ¿Les queda bien una llamada de 20 minutos para repasarla?` },
-        { id: "m4", titulo: "4 · Seguimiento", texto: `Hola, ¿cómo va? Les escribo por el diagnóstico de ${n} que les compartí. Sé que el día a día no da respiro; si les sirve, les resumo en un audio los dos puntos que me parecen más útiles. Si no es el momento, no hay problema.` },
+        { id: "m1", titulo: "1 · Primer contacto", texto: `Hola, ¿cómo están? ${presentacion} ${obs.charAt(0).toUpperCase() + obs.slice(1)}. Preparamos un breve diagnóstico de ${n} con algunas oportunidades para que más ${rub.cliente} puedan conocerlos y contactarlos con facilidad (por ejemplo: ${opTxt}). ¿Les parece bien si se lo comparto por acá? Se lee en pocos minutos.` },
+        { id: "m2", titulo: "2 · Envío del diagnóstico", texto: `¡Gracias! Les comparto el diagnóstico y la propuesta de ${n}. Resume lo que ya hacen muy bien, las oportunidades que vimos y cómo podríamos implementar las mejoras.` + (activas.length ? ` Destacamos ${activas.length} punto${activas.length === 1 ? "" : "s"} concreto${activas.length === 1 ? "" : "s"}.` : "") + ` Cualquier duda, me escriben.` },
+        { id: "m3", titulo: "3 · Presentación de la propuesta", texto: `Les paso la propuesta para ${n}. Proponemos empezar por ${act[0] || "el punto prioritario"}${act.length > 1 ? " y después " + act.slice(1).join(" y ") : ""}, porque es lo que responde a lo que vimos. Está armada por etapas y se puede ajustar. ¿Les queda bien una llamada de 20 minutos para repasarla?` },
+        { id: "m4", titulo: "4 · Seguimiento", texto: `Hola, ¿cómo va? Les escribo por el documento de ${n} que les compartí. Sé que el día a día no da respiro; si les sirve, les resumo en un audio los dos puntos que me parecen más útiles. Si no es el momento, no hay problema.` },
         { id: "m5", titulo: "5 · Cierre", texto: `Para avanzar, el primer paso sería una reunión corta para confirmar el alcance y las fechas de ${act[0] || "la primera etapa"}. Tengo disponibilidad esta semana: ¿les queda mejor por la mañana o por la tarde?` },
       ],
       objeciones: [
-        { id: "o1", titulo: "«Ya tenemos página web»", texto: an.webUrl ? `¡Sí, la vimos! No buscamos reemplazarla. ${okWeb ? "Está bien resuelta técnicamente; la propuesta apunta a otros puntos del recorrido del cliente." : "Encontramos algunos ajustes puntuales que la pueden potenciar sin rehacerla."}` : "¡Perfecto, gracias por aclararlo! En su ficha de Google no aparecía vinculada. Si me pasan el enlace, actualizo el diagnóstico con esa información y la tomamos como base." },
+        { id: "o1", titulo: "«Ya tenemos página web»", texto: an.webUrl ? `¡Sí, la vimos! No buscamos reemplazarla. ${okWeb ? "Está bien resuelta; la propuesta apunta a otros puntos del recorrido de quien los contacta." : "Encontramos algunos ajustes puntuales que la pueden potenciar sin rehacerla."}` : "¡Perfecto, gracias por aclararlo! En su ficha de Google no aparecía vinculada. Si me pasan el enlace, actualizo el documento con esa información y la tomamos como base." },
         { id: "o2", titulo: "«Ya tenemos clientes»", texto: `Se nota${an.resenas ? ": " + fmtNum(an.resenas) + " reseñas no son casualidad" : ""}. La idea no es cambiar lo que funciona, sino hacer más fácil que lleguen y se ordenen los ${rub.consultas}, para que el crecimiento no dependa solo del boca a boca.` },
         { id: "o3", titulo: "«Ya trabajamos con publicidad»", texto: "Buenísimo, es una gran señal. No proponemos campañas nuevas por defecto: primero revisaríamos qué consultas generan las actuales y qué pasa cuando llegan, para que la inversión rinda más." },
-        { id: "o4", titulo: "«No tenemos presupuesto»", texto: `Entiendo perfectamente. Por eso la propuesta tiene una opción esencial que resuelve solo lo prioritario (${act[0] || "el primer punto"}). También pueden quedarse con el diagnóstico como hoja de ruta y lo retomamos cuando sea un buen momento.` },
-        { id: "o5", titulo: "«No nos interesa»", texto: `Gracias por responder, lo respeto. Les dejo el diagnóstico por si en algún momento les sirve. ¡Éxitos con ${n}!` },
+        { id: "o4", titulo: "«No tenemos presupuesto»", texto: `Entiendo perfectamente. Por eso la propuesta puede empezar solo por lo prioritario (${act[0] || "el primer punto"}). También pueden quedarse con el diagnóstico como hoja de ruta y lo retomamos cuando sea un buen momento.` },
+        { id: "o5", titulo: "«No nos interesa»", texto: `Gracias por responder, lo respeto. Les dejo el documento por si en algún momento les sirve. ¡Éxitos con ${n}!` },
         { id: "o6", titulo: "«Lo vamos a pensar»", texto: "Claro, es lo lógico. Si les sirve para decidir, aclaro cualquier punto en una llamada corta. ¿Les parece si les escribo la semana que viene?" },
         { id: "o7", titulo: "«Tenemos alguien que se encarga»", texto: "¡Qué bueno contar con alguien! El diagnóstico también le puede servir a esa persona. Si quieren, trabajamos en conjunto solo en los puntos que hoy no cubre." },
         { id: "o8", titulo: "«Envíame información»", texto: `Con gusto. Les mando el diagnóstico de ${n}: es específico de su negocio, no un folleto genérico. Después, si les parece, lo repasamos en 15 minutos.` },
-        { id: "o9", titulo: "«¿Cuánto cuesta?»", texto: tot != null ? `La opción que recomendamos para ${n} tiene una inversión de $ ${fmtNum(tot)}, y hay una alternativa esencial más acotada. Lo ideal es repasar el alcance juntos para que inviertan solo en lo que les sirve.` : `Depende del alcance: armamos el presupuesto según lo que realmente necesita ${n}, sin paquetes cerrados. Con una charla corta les paso un número concreto.` },
+        { id: "o9", titulo: "«¿Cuánto cuesta?»", texto: tot != null ? `La opción que recomendamos para ${n} tiene una inversión de $ ${fmtNum(tot)}, y hay una alternativa más acotada. Lo ideal es repasar el alcance juntos para que inviertan solo en lo que les sirve.` : `Depende del alcance: armamos el presupuesto según lo que realmente necesita ${n}, sin paquetes cerrados. Con una charla corta les paso un número concreto.` },
         { id: "o10", titulo: "«¿Qué resultados podemos esperar?»", texto: `No vamos a prometer cifras que no podemos asegurar. Lo que sí hacemos es medir desde el primer día cuántos ${rub.consultas} llegan y por qué canal, para que vean el impacto real y decidamos juntos los ajustes.` },
       ],
     };
   }
 
-  /* ===================== Persistencia en el prospecto ===================== */
+  /* ===================== Persistencia ===================== */
   function api() { return typeof window !== "undefined" ? window.impulsaDatos || null : null; }
   function getR(k) { const a = api(); return a ? a.get(k) : null; }
   function com(r) {
@@ -553,7 +813,7 @@
   function injectCss() { if (document.getElementById("imcCss")) return; const s = document.createElement("style"); s.id = "imcCss"; s.textContent = UI_CSS; document.head.appendChild(s); }
 
   let actual = null;
-  const BOTONES = [["analisis", "Ver análisis completo"], ["diag", "Generar diagnóstico PDF"], ["prop", "Generar propuesta comercial"], ["wa", "Generar mensajes de WhatsApp"],
+  const BOTONES = [["analisis", "Ver análisis completo"], ["diag", "Generar documento PDF"], ["prop", "Vista propuesta / presupuesto"], ["wa", "Generar mensajes de WhatsApp"],
     ["hist", "Ver historial"], ["contacto", "Registrar contacto"], ["estado", "Actualizar estado comercial"], ["verif", "Verificación manual"], ["tarifas", "Tarifas y datos IMPULSA"]];
   function render(k, host) {
     injectCss();
@@ -589,16 +849,16 @@
   function verAnalisis(r) {
     const an = analizar(r);
     const q = (t, arr) => "<p class=\"section-title\">" + e(t) + "</p>" + (arr.length ? "<ul>" + arr.map((x) => "<li>" + x + "</li>").join("") + "</ul>" : "<p class=\"hint\">Sin datos.</p>");
-    body().innerHTML = "<p><strong>Nivel: " + (an.nivel === "concluyente" ? "diagnóstico concluyente" : "diagnóstico PRELIMINAR (faltan datos clave)") + "</strong> · rubro detectado: " + e(an.rub.id) + "</p>" +
+    body().innerHTML = "<p><strong>Nivel interno: " + (an.nivel === "concluyente" ? "concluyente" : "preliminar (faltan datos clave)") + "</strong> · rubro: " + e(an.rub.id) + " · <em>el PDF al cliente no muestra este nivel</em></p>" +
       q("Datos comprobados", an.hechos.comprobado.map((x) => "<span class=\"imc-t-comprobado\">✔</span> " + e(x))) +
       q("Hipótesis (no confirmadas)", an.hechos.hipotesis.map((x) => "<span class=\"imc-t-hipotesis\">?</span> " + e(x))) +
       q("No disponible", an.hechos.no_disponible.map((x) => "<span class=\"imc-t-no_disponible\">–</span> " + e(x))) +
-      q("1-2. Qué hace bien / fortalezas", an.fortalezas.map(e)) +
-      q("3-5. Deficiencias y oportunidades (con consecuencias)", an.oportunidades.map((o) => "<strong>" + e(o.titulo) + "</strong> <span class=\"imc-t-" + o.tipo + "\">[" + (o.tipo === "comprobado" ? "comprobado" : "oportunidad potencial") + "]</span><br>" + e(o.observamos) + " <em>" + e(o.evidencia) + "</em><br>Consecuencia posible: " + e(o.dificultad))) +
-      q("6-8. Prioridad e impacto (servicios IMPULSA justificados)", an.servicios.map((s, i) => (i + 1) + ". <strong>" + e(s.nombre) + "</strong>" + (s.soloIntegral ? " (solo en opción integral)" : "") + " — " + e(s.justificacion.join("; ")))) +
-      q("9. Recomendación y argumentos", [an.recomendada ? e(an.recomendada.nombre + ": " + an.recomendada.servicios.map((x) => SERVICIOS[x].nombre).join(" → ")) : "Sin servicios justificados con los datos actuales."]) +
-      q("Antes de recomendar una inversión, verificar", an.faltantes.map((f) => e(f.txt) + (f.critico ? " <strong>(clave)</strong>" : ""))) +
-      "<p class=\"hint\">Cargá lo que revises en «Verificación manual» (Ads Library, Instagram, reseñas) para pasar de preliminar a concluyente. Después generá una nueva versión del documento.</p>";
+      q("Fortalezas", an.fortalezas.map(e)) +
+      q("Oportunidades (máx. impacto)", an.oportunidades.map((o) => "<strong>" + e(o.titulo) + "</strong> <span class=\"imc-t-" + o.tipo + "\">[" + (o.tipo === "comprobado" ? "comprobado" : "a confirmar") + "]</span><br>" + e(o.observamos) + "<br>" + e(o.atencion || o.mejora))) +
+      q("Servicios justificados", an.servicios.map((s, i) => (i + 1) + ". <strong>" + e(s.nombre) + "</strong>" + (s.soloIntegral ? " (solo integral)" : "") + " — " + e(s.justificacion.join("; ")))) +
+      q("Recomendación", [an.recomendada ? e(an.recomendada.nombre + ": " + an.recomendada.servicios.map((x) => SERVICIOS[x].nombre).join(" → ")) : "Sin servicios justificados con los datos actuales."]) +
+      q("Antes de cotizar, verificar", an.faltantes.map((f) => e(f.txt) + (f.critico ? " <strong>(clave)</strong>" : ""))) +
+      "<p class=\"hint\">Cargá lo que revises en «Verificación manual». Después generá una nueva versión del documento.</p>";
   }
 
   function docDe(k, r, forzar) {
@@ -608,17 +868,16 @@
       const d = armarDoc(r, analizar(r));
       if (prev) {
         d.version = (prev.version || 1) + 1; d.contacto = prev.contacto || d.contacto; d.observaciones = prev.observaciones || ""; d.condiciones = prev.condiciones || d.condiciones;
-        d.servicios.forEach((s) => { const p = (prev.servicios || []).find((x) => x.id === s.id); if (p) { s.precio = p.precio || s.precio; s.plazo = p.plazo || s.plazo; } });
+        d.servicios.forEach((s) => { const p = (prev.servicios || []).find((x) => x.id === s.id); if (p) { s.precio = p.precio || s.precio; s.plazo = p.plazo || s.plazo; if (typeof p.activo === "boolean" && forzar === false) s.activo = p.activo; } });
       }
       c.doc = d;
       if (c.estado === "pendiente") c.estado = "diagnostico_generado";
-      hist(r, { tipo: "diagnostico_generado", detalle: "Versión " + d.version + " (" + d.nivel + ") · servicios: " + (d.servicios.filter((s) => s.activo).map((s) => s.nombre).join(", ") || "ninguno") });
+      hist(r, { tipo: "diagnostico_generado", detalle: "Versión " + d.version + " · servicios: " + (d.servicios.filter((s) => s.activo).map((s) => s.nombre).join(", ") || "ninguno") });
       save(k, r);
     }
     return c.doc;
   }
 
-  /* --- Editor + vista previa: overlay a pantalla completa (apto Android) --- */
   function cerrarVista() { const v = document.getElementById("impDocVista"); if (v) v.remove(); document.body.style.overflow = ""; document.body.classList.remove("imc-print"); }
   function abrirEditor(k, modo) {
     docDe(k, getR(k), false);
@@ -626,7 +885,7 @@
     const ov = document.createElement("div");
     ov.id = "impDocVista";
     ov.innerHTML = "<div class=\"imc-bar\"><button type=\"button\" data-b=\"cerrar\">Cerrar</button><button type=\"button\" data-b=\"editar\">Editar</button>" +
-      "<button type=\"button\" data-b=\"diag\">Vista diagnóstico</button><button type=\"button\" data-b=\"prop\">Vista propuesta</button>" +
+      "<button type=\"button\" data-b=\"diag\">Vista documento</button><button type=\"button\" data-b=\"prop\">Vista presupuesto</button>" +
       "<button type=\"button\" class=\"p\" data-b=\"print\">Imprimir / PDF</button><button type=\"button\" data-b=\"share\">Compartir</button><button type=\"button\" data-b=\"regen\">Nueva versión</button></div>" +
       "<div class=\"imc-scroll\"></div>";
     document.body.appendChild(ov);
@@ -637,7 +896,7 @@
       const d = com(getR(k)).doc;
       ov.querySelectorAll("[data-b]").forEach((b) => b.classList.toggle("on", b.dataset.b === (vista === "editar" ? "editar" : tipoDoc)));
       if (vista === "editar") { scroll.innerHTML = editorHtml(d); bindEditor(k, scroll); }
-      else scroll.innerHTML = tipoDoc === "diag" ? htmlDiagnostico(d) : htmlPropuesta(d);
+      else scroll.innerHTML = htmlDocumento(d);
       scroll.scrollTop = 0;
     };
     ov.querySelector(".imc-bar").addEventListener("click", async (ev) => {
@@ -653,9 +912,13 @@
       }
       const d = com(getR(k)).doc;
       if (a === "print") {
-        const avisos = controlCalidad(d);
-        if (!d.revisado) { alert("Antes del PDF definitivo, marcá «Revisé el contenido» al final de Editar." + (avisos.length ? "\n\nControl de calidad:\n- " + avisos.join("\n- ") : "")); vista = "editar"; return pintar(); }
-        if (avisos.length && !confirm("Control de calidad:\n- " + avisos.join("\n- ") + "\n\n¿Generar el PDF igual?")) return;
+        const qc = controlCalidad(d);
+        if (!d.revisado) { alert("Antes del PDF definitivo, marcá «Revisé el contenido» al final de Editar." + (qc.avisos.length ? "\n\nControl de calidad:\n- " + qc.avisos.join("\n- ") : "")); vista = "editar"; return pintar(); }
+        if (qc.bloqueantes.length) {
+          alert("No se puede exportar el PDF definitivo hasta corregir:\n- " + qc.bloqueantes.join("\n- ") + "\n\nUsá «Nueva versión» o editá los textos marcados.");
+          vista = "editar"; return pintar();
+        }
+        if (qc.avisos.length && !confirm("Control de calidad:\n- " + qc.avisos.join("\n- ") + "\n\n¿Generar el PDF igual?")) return;
         if (vista === "editar") { vista = "preview"; pintar(); }
         registrarDoc(k, tipoDoc);
         document.body.classList.add("imc-print");
@@ -663,8 +926,8 @@
         return;
       }
       if (a === "share") {
-        const html = "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>" + e(d.negocio) + "</title><style>" + DOC_CSS + "</style></head><body style=\"margin:0;background:#fff\">" + (tipoDoc === "diag" ? htmlDiagnostico(d) : htmlPropuesta(d)) + "</body></html>";
-        const nombre = (tipoDoc === "diag" ? "diagnostico-" : "propuesta-") + d.negocio.toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) + ".html";
+        const html = "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>" + e(d.negocio) + "</title><style>" + DOC_CSS + "</style></head><body style=\"margin:0;background:#fff\">" + htmlDocumento(d) + "</body></html>";
+        const nombre = "impulsa-" + d.negocio.toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40) + ".html";
         try {
           const f = new File([html], nombre, { type: "text/html" });
           if (navigator.canShare && navigator.canShare({ files: [f] })) { await navigator.share({ files: [f], title: d.negocio }); return; }
@@ -680,35 +943,50 @@
     c.versiones.unshift({ fecha: new Date().toISOString(), tipo: tipoDoc === "diag" ? "diagnostico" : "propuesta", version: d.version, nivel: d.nivel,
       servicios: act.map((s) => ({ id: s.id, nombre: s.nombre, precio: s.precio, plazo: s.plazo })), total: t, snapshot: JSON.parse(JSON.stringify(d)) });
     c.versiones = c.versiones.slice(0, 20);
-    hist(r, { tipo: tipoDoc === "diag" ? "diagnostico_pdf" : "propuesta_pdf", detalle: (tipoDoc === "diag" ? "Diagnóstico" : "Propuesta y presupuesto") + " v" + d.version + " exportado" + (tipoDoc === "prop" ? " · total " + (t != null ? "$ " + fmtNum(t) : "a definir") : "") });
+    hist(r, { tipo: tipoDoc === "diag" ? "diagnostico_pdf" : "propuesta_pdf", detalle: "Documento comercial v" + d.version + " exportado" + (t != null ? " · total $ " + fmtNum(t) : " · sin presupuesto cerrado") });
     save(k, r);
   }
+
   const ta = (name, v, rows) => "<textarea data-f=\"" + name + "\" rows=\"" + (rows || 4) + "\">" + e(v) + "</textarea>";
   const inp = (name, v, ph) => "<input data-f=\"" + name + "\" value=\"" + e(v) + "\" placeholder=\"" + e(ph || "") + "\">";
   function editorHtml(d) {
-    const avisos = controlCalidad(d);
+    const qc = controlCalidad(d);
     const c = d.contacto || {};
+    const hall = d.hallazgos || d.oportunidades || [];
     return "<div class=\"imc-ed imc-box\"><h3 style=\"margin-top:0\">Revisión antes de enviar · " + e(d.negocio) + " · v" + e(d.version) + "</h3>" +
-      "<p class=\"hint\">Nada se envía automáticamente. Editá, revisá la vista previa y recién después usá Imprimir / PDF. Nivel: <strong>" + e(d.nivel) + "</strong>.</p>" +
-      (avisos.length ? "<div class=\"imc-msg\" style=\"border-color:var(--warn)\"><strong>Control de calidad</strong><br>" + avisos.map(e).join("<br>") + "</div>" : "") +
-      "<label>1. Situación actual</label>" + ta("situacion", d.situacion, 5) +
-      "<label>2. Fortalezas (una por línea)</label>" + ta("fortalezas", d.fortalezas.join("\n"), 5) +
-      "<p class=\"section-title\">3. Oportunidades de mejora</p>" + d.oportunidades.map((o, i) =>
-        "<div class=\"imc-msg\"><label><input type=\"checkbox\" data-op=\"" + i + "\"" + (o.activo ? " checked" : "") + ">Incluir · <span class=\"imc-t-" + e(o.tipo) + "\">" + (o.tipo === "comprobado" ? "comprobado" : "potencial") + "</span></label>" +
-        inp("op" + i + "_titulo", o.titulo) + "<label>Qué observamos</label>" + ta("op" + i + "_observamos", o.observamos, 2) + "<label>Evidencia</label>" + ta("op" + i + "_evidencia", o.evidencia, 2) +
-        "<label>Dificultad que puede generar</label>" + ta("op" + i + "_dificultad", o.dificultad, 2) + "<label>Oportunidad de mejora</label>" + ta("op" + i + "_mejora", o.mejora, 2) + "</div>").join("") +
-      "<label>4. Oportunidades comerciales (una por línea)</label>" + ta("comercial", d.comercial.join("\n"), 4) +
-      "<label>5. Recomendación</label>" + ta("recomendacion", d.recomendacion, 4) +
-      "<label>Escenario A (seguir igual)</label>" + ta("escenarioA", d.escenarioA, 4) + "<label>Escenario B (implementar)</label>" + ta("escenarioB", d.escenarioB, 4) +
-      "<label>6. Plan de acción (una etapa por línea)</label>" + ta("plan", d.plan.join("\n"), 5) +
-      "<label>Puntos a verificar (se muestran si es preliminar)</label>" + ta("verificar", d.verificar.join("\n"), 3) +
-      "<p class=\"section-title\">Servicios, precios y plazos</p>" + d.servicios.map((s, i) =>
+      "<p class=\"hint\">Nada se envía automáticamente. Editá, revisá la vista previa y recién después usá Imprimir / PDF. El PDF unifica diagnóstico y propuesta (3 a 5 páginas).</p>" +
+      (qc.bloqueantes.length ? "<div class=\"imc-msg\" style=\"border-color:#dc2626\"><strong>Bloquea la exportación</strong><br>" + qc.bloqueantes.map(e).join("<br>") + "</div>" : "") +
+      (qc.avisos.filter((a) => qc.bloqueantes.indexOf(a) < 0).length ? "<div class=\"imc-msg\" style=\"border-color:var(--warn)\"><strong>Control de calidad</strong><br>" + qc.avisos.filter((a) => qc.bloqueantes.indexOf(a) < 0).map(e).join("<br>") + "</div>" : "") +
+      "<label>Título de portada (personalizado)</label>" + ta("tituloPortada", d.tituloPortada || "", 2) +
+      "<label>Resumen (2 o 3 líneas)</label>" + ta("resumen", d.resumen || d.situacion || "", 3) +
+      "<label>Lo que ya está haciendo bien (una por línea)</label>" + ta("fortalezas", (d.fortalezas || []).join("\n"), 5) +
+      "<p class=\"section-title\">Hallazgos (lo que observamos)</p>" + hall.map((o, i) =>
+        "<div class=\"imc-msg\"><label><input type=\"checkbox\" data-op=\"" + i + "\"" + (o.activo !== false ? " checked" : "") + ">Incluir · <span class=\"imc-t-" + e(o.tipo || "potencial") + "\">" + (o.tipo === "comprobado" ? "comprobado" : "a confirmar") + "</span></label>" +
+        inp("op" + i + "_titulo", o.titulo) +
+        "<label>Qué observamos</label>" + ta("op" + i + "_observamos", o.observamos, 2) +
+        "<label>Qué significa</label>" + ta("op" + i + "_significa", o.significa || o.dificultad || "", 2) +
+        "<label>Por qué merece atención</label>" + ta("op" + i + "_atencion", o.atencion || o.mejora || "", 2) + "</div>").join("") +
+      "<label>Qué oportunidad existe</label>" + ta("oportunidad", d.oportunidad || d.recomendacion || "", 3) +
+      "<label>Situación actual (recorrido comprobado)</label>" + ta("flujoActual", d.flujoActual || "", 3) +
+      "<label>Propuesta (un paso por línea)</label>" + ta("flujoPropuesto", (d.flujoPropuesto || []).join("\n"), 6) +
+      "<label>Escenario A — Continuar igual</label>" + ta("escenarioA", d.escenarioA, 4) +
+      "<label>Escenario B — Implementar mejoras</label>" + ta("escenarioB", d.escenarioB, 4) +
+      "<p class=\"section-title\">Servicios, precios y plazos</p>" + (d.servicios || []).map((s, i) =>
         "<div class=\"imc-msg\"><label><input type=\"checkbox\" data-sv=\"" + i + "\"" + (s.activo ? " checked" : "") + "><strong>" + e(s.nombre) + "</strong>" + (s.soloIntegral ? " (sugerido solo para la integral)" : "") + "</label>" +
-        "<div class=\"hint\">Justificación: " + e(s.justificacion) + "</div><label>Precio en ARS (vacío = a definir)</label>" + inp("sv" + i + "_precio", s.precio, "a definir") +
-        "<label>Plazo</label>" + inp("sv" + i + "_plazo", s.plazo) + "<label>Qué incluye (uno por línea)</label>" + ta("sv" + i + "_incluye", s.incluye.join("\n"), 3) + "<label>Entregables (uno por línea)</label>" + ta("sv" + i + "_entregables", s.entregables.join("\n"), 2) + "</div>").join("") +
-      (d.alternativas.length > 1 ? "<label>Justificación de la alternativa recomendada</label>" + ta("justificacionRecomendada", d.justificacionRecomendada, 3) : "") +
-      "<label>Condiciones de contratación</label>" + ta("condiciones", d.condiciones, 3) + "<label>Próximo paso</label>" + ta("proximoPaso", d.proximoPaso, 2) +
-      "<label>Observaciones (se muestran en el documento)</label>" + ta("observaciones", d.observaciones, 2) + "<label>Cierre</label>" + ta("cierre", d.cierre, 3) +
+        "<label>Explicación para el cliente</label>" + ta("sv" + i + "_descripcion", s.descripcion || "", 3) +
+        "<div class=\"hint\">Justificación interna: " + e(s.justificacion) + "</div>" +
+        "<label>Precio en ARS (vacío = cotizar en reunión)</label>" + inp("sv" + i + "_precio", s.precio, "a definir") +
+        "<label>Plazo</label>" + inp("sv" + i + "_plazo", s.plazo) +
+        "<label>Qué incluye (uno por línea)</label>" + ta("sv" + i + "_incluye", (s.incluye || []).join("\n"), 3) +
+        "<label>Entregables (uno por línea)</label>" + ta("sv" + i + "_entregables", (s.entregables || []).join("\n"), 2) + "</div>").join("") +
+      ((d.alternativas || []).length > 1 ? "<label>Justificación de la alternativa recomendada</label>" + ta("justificacionRecomendada", d.justificacionRecomendada || "", 3) : "") +
+      "<label>Cómo trabajaremos (una etapa por línea)</label>" + ta("plan", (d.plan || []).join("\n"), 5) +
+      "<label>Qué recibirá el cliente (uno por línea)</label>" + ta("entregablesCliente", (d.entregablesCliente || []).join("\n"), 4) +
+      "<label>Aspectos pendientes de confirmar (una sola vez en el PDF)</label>" + ta("verificar", (d.verificar || []).join("\n"), 3) +
+      "<label>Condiciones</label>" + ta("condiciones", d.condiciones || "", 3) +
+      "<label>Próximo paso</label>" + ta("proximoPaso", d.proximoPaso || "", 2) +
+      "<label>Observaciones (opcionales)</label>" + ta("observaciones", d.observaciones || "", 2) +
+      "<label>Cierre comercial</label>" + ta("cierre", d.cierre || "", 4) +
       "<p class=\"section-title\">Datos de contacto de IMPULSA</p>" + inp("c_nombre", c.nombre, "IMPULSA") + inp("c_responsable", c.responsable, "Responsable") + inp("c_telefono", c.telefono, "Teléfono") + inp("c_email", c.email, "Email") + inp("c_web", c.web, "Web") +
       "<label style=\"font-size:15px;color:var(--text)\"><input type=\"checkbox\" data-f=\"revisado\"" + (d.revisado ? " checked" : "") + ">Revisé el contenido, la ortografía y los precios</label>" +
       "<div class=\"toolbar\"><button type=\"button\" class=\"btn btn-primary btn-sm\" data-save=\"1\">Guardar cambios</button></div></div>";
@@ -722,15 +1000,23 @@
     const r = getR(k), d = com(r).doc;
     const f = (n) => { const el = scroll.querySelector("[data-f=\"" + n + "\"]"); return el ? (el.type === "checkbox" ? el.checked : el.value) : undefined; };
     const lines = (n) => String(f(n) || "").split("\n").map((x) => x.trim()).filter(Boolean);
-    ["situacion", "recomendacion", "escenarioA", "escenarioB", "condiciones", "proximoPaso", "observaciones", "cierre", "justificacionRecomendada"].forEach((n) => { const v = f(n); if (v !== undefined) d[n] = String(v).trim(); });
-    d.fortalezas = lines("fortalezas"); d.comercial = lines("comercial"); d.plan = lines("plan"); d.verificar = lines("verificar");
-    d.oportunidades.forEach((o, i) => {
+    ["tituloPortada", "resumen", "oportunidad", "flujoActual", "escenarioA", "escenarioB", "condiciones", "proximoPaso", "observaciones", "cierre", "justificacionRecomendada"].forEach((n) => { const v = f(n); if (v !== undefined) d[n] = String(v).trim(); });
+    d.fortalezas = lines("fortalezas"); d.plan = lines("plan"); d.verificar = lines("verificar");
+    d.entregablesCliente = lines("entregablesCliente"); d.flujoPropuesto = lines("flujoPropuesto");
+    d.situacion = d.resumen; d.recomendacion = d.oportunidad; d.comercial = d.oportunidad ? [d.oportunidad] : [];
+    const hall = d.hallazgos || d.oportunidades || [];
+    hall.forEach((o, i) => {
       const cb = scroll.querySelector("[data-op=\"" + i + "\"]"); if (cb) o.activo = cb.checked;
-      ["titulo", "observamos", "evidencia", "dificultad", "mejora"].forEach((p) => { const v = f("op" + i + "_" + p); if (v !== undefined) o[p] = v.trim(); });
+      const tit = f("op" + i + "_titulo"); if (tit !== undefined) o.titulo = tit.trim();
+      const obs = f("op" + i + "_observamos"); if (obs !== undefined) o.observamos = obs.trim();
+      const sig = f("op" + i + "_significa"); if (sig !== undefined) { o.significa = sig.trim(); o.dificultad = o.significa; }
+      const ate = f("op" + i + "_atencion"); if (ate !== undefined) { o.atencion = ate.trim(); o.mejora = o.atencion; }
     });
+    d.hallazgos = hall; d.oportunidades = hall;
     d.servicios.forEach((s, i) => {
       const cb = scroll.querySelector("[data-sv=\"" + i + "\"]"); if (cb) s.activo = cb.checked;
       s.precio = String(f("sv" + i + "_precio") || "").trim(); s.plazo = String(f("sv" + i + "_plazo") || s.plazo).trim();
+      const desc = f("sv" + i + "_descripcion"); if (desc !== undefined) s.descripcion = desc.trim();
       const inc = lines("sv" + i + "_incluye"), ent = lines("sv" + i + "_entregables"); if (inc.length) s.incluye = inc; if (ent.length) s.entregables = ent;
     });
     d.contacto = { nombre: f("c_nombre") || "IMPULSA", responsable: f("c_responsable") || "", telefono: f("c_telefono") || "", email: f("c_email") || "", web: f("c_web") || "" };
@@ -740,7 +1026,6 @@
     save(k, r);
   }
 
-  /* --- WhatsApp --- */
   function verWA(k) {
     const r = getR(k), d = docDe(k, r, false), an = analizar(r), m = mensajesWA(r, an, d);
     const wa = val(r.whatsapp) || (r.redes && val(r.redes.whatsapp_web)) || null;
@@ -774,22 +1059,21 @@
     }));
   }
 
-  /* --- CRM --- */
   function verHist(k) {
     const c = com(getR(k));
-    const tipos = { diagnostico_generado: "Diagnóstico generado", diagnostico_pdf: "Diagnóstico exportado", propuesta_pdf: "Propuesta y presupuesto exportados", mensaje: "Mensaje", contacto: "Contacto", estado: "Cambio de estado", verificacion: "Verificación manual" };
+    const tipos = { diagnostico_generado: "Documento generado", diagnostico_pdf: "Documento exportado", propuesta_pdf: "Propuesta/presupuesto exportado", mensaje: "Mensaje", contacto: "Contacto", estado: "Cambio de estado", verificacion: "Verificación manual" };
     body().innerHTML = "<p class=\"section-title\">Historial comercial</p>" + (c.historial.length ? "<ul class=\"imc-h\">" + c.historial.map((h) =>
       "<li><strong>" + e(tipos[h.tipo] || h.tipo) + "</strong> · " + e(ahoraAR(h.fecha)) + (h.canal ? " · " + e(h.canal) : "") + "<br>" + e(h.detalle || "") +
       (h.mensaje ? "<details><summary>Mensaje</summary>" + e(h.mensaje) + "</details>" : "") + (h.observaciones ? "<br><em>" + e(h.observaciones) + "</em>" : "") +
       (h.proxima_accion ? "<br>Próxima acción: " + e(h.proxima_accion) + (h.proxima_fecha ? " (" + e(h.proxima_fecha) + ")" : "") : "") + "</li>").join("") + "</ul>" : "<p class=\"hint\">Todavía no hay movimientos.</p>") +
-      "<p class=\"section-title\">Diagnósticos, propuestas y presupuestos guardados</p>" + (c.versiones.length ? "<ul>" + c.versiones.map((v, i) => "<li>" + e(v.tipo) + " v" + e(v.version) + " · " + e(ahoraAR(v.fecha)) + " · " +
+      "<p class=\"section-title\">Documentos guardados</p>" + (c.versiones.length ? "<ul>" + c.versiones.map((v, i) => "<li>" + e(v.tipo) + " v" + e(v.version) + " · " + e(ahoraAR(v.fecha)) + " · " +
         e(v.servicios.map((s) => s.nombre + (s.precio ? " $" + s.precio : "")).join(", ")) + (v.total != null ? " · total $ " + e(fmtNum(v.total)) : "") +
         " <button type=\"button\" class=\"btn btn-ghost btn-sm\" data-ver=\"" + i + "\">Ver</button></li>").join("") + "</ul>" : "<p class=\"hint\">Aún no se exportaron documentos.</p>");
     body().querySelectorAll("[data-ver]").forEach((b) => b.addEventListener("click", () => {
       const v = c.versiones[+b.dataset.ver];
       cerrarVista();
       const ov = document.createElement("div"); ov.id = "impDocVista";
-      ov.innerHTML = "<div class=\"imc-bar\"><button type=\"button\" data-x=\"1\">Cerrar</button><button type=\"button\" class=\"p\" data-p=\"1\">Imprimir / PDF</button></div><div class=\"imc-scroll\">" + (v.tipo === "diagnostico" ? htmlDiagnostico(v.snapshot) : htmlPropuesta(v.snapshot)) + "</div>";
+      ov.innerHTML = "<div class=\"imc-bar\"><button type=\"button\" data-x=\"1\">Cerrar</button><button type=\"button\" class=\"p\" data-p=\"1\">Imprimir / PDF</button></div><div class=\"imc-scroll\">" + htmlDocumento(v.snapshot) + "</div>";
       document.body.appendChild(ov); document.body.style.overflow = "hidden";
       ov.querySelector("[data-x]").addEventListener("click", cerrarVista);
       ov.querySelector("[data-p]").addEventListener("click", () => { document.body.classList.add("imc-print"); setTimeout(() => { try { window.print(); } catch (x) { /* nada */ } setTimeout(() => document.body.classList.remove("imc-print"), 1000); }, 200); });
@@ -832,7 +1116,7 @@
     const sel = (id, opts) => "<select data-v=\"" + id + "\"><option value=\"\">Sin verificar</option>" + opts.map(([a, b]) => "<option value=\"" + a + "\"" + (v[id] === a ? " selected" : "") + ">" + e(b) + "</option>").join("") + "</select>";
     const txt = (id, ph) => "<input data-v=\"" + id + "\" value=\"" + e(v[id] ?? "") + "\" placeholder=\"" + e(ph || "") + "\">";
     const ads = r.meta_ads && r.meta_ads.fuente;
-    body().innerHTML = "<p class=\"section-title\">Verificación manual (lo que revisaste vos)</p><p class=\"hint\">Cargá solo lo que viste. Vacío = no disponible. Esto alimenta el diagnóstico y define si es preliminar o concluyente.</p>" +
+    body().innerHTML = "<p class=\"section-title\">Verificación manual (lo que revisaste vos)</p><p class=\"hint\">Cargá solo lo que viste. Vacío = no disponible. Alimenta el diagnóstico (nivel interno).</p>" +
       "<label>¿Tiene sitio web propio?</label>" + sel("tiene_web", [["si", "Sí"], ["no", "No"]]) +
       "<label>Calidad del sitio (si tiene)</label>" + sel("web_calidad", [["buena", "Buena"], ["regular", "Regular"], ["pobre", "Pobre"]]) +
       "<label>¿Reserva / turnos online funcionando?</label>" + sel("agenda", [["si", "Sí"], ["no", "No"]]) +
@@ -855,7 +1139,7 @@
   }
   function formTarifas() {
     const T = tarifas();
-    body().innerHTML = "<p class=\"section-title\">Tarifas IMPULSA (se guardan en este dispositivo)</p><p class=\"hint\">Vacío = «A definir». No se aplica ninguna tarifa que no cargues vos.</p>" +
+    body().innerHTML = "<p class=\"section-title\">Tarifas IMPULSA (se guardan en este dispositivo)</p><p class=\"hint\">Vacío = cotizar en reunión. No se aplica ninguna tarifa que no cargues vos.</p>" +
       Object.keys(SERVICIOS).map((id) => "<label>" + e(SERVICIOS[id].nombre) + "</label><div style=\"display:flex;gap:6px\"><input data-tp=\"" + id + "\" placeholder=\"Precio ARS\" inputmode=\"numeric\" value=\"" + e((T[id] || {}).precio || "") + "\"><input data-tz=\"" + id + "\" placeholder=\"" + e(SERVICIOS[id].plazo) + "\" value=\"" + e((T[id] || {}).plazo || "") + "\"></div>").join("") +
       "<label>Condiciones de contratación por defecto</label><textarea id=\"imcCond\">" + e(T._condiciones || "") + "</textarea><button type=\"button\" class=\"btn btn-primary btn-sm\" id=\"imcTarOk\">Guardar tarifas</button>";
     document.getElementById("imcTarOk").addEventListener("click", () => {
@@ -866,7 +1150,7 @@
     });
   }
 
-  const pub = { analizar, armarDoc, mensajesWA, htmlDiagnostico, htmlPropuesta, controlCalidad, rubroDe, SERVICIOS, ESTADOS, estadoLabel, render, DOC_CSS, total };
+  const pub = { analizar, armarDoc, mensajesWA, htmlDiagnostico, htmlPropuesta, htmlDocumento, controlCalidad, rubroDe, SERVICIOS, ESTADOS, estadoLabel, render, DOC_CSS, total };
   if (typeof window !== "undefined") window.impulsaComercial = pub;
   if (typeof module !== "undefined" && module.exports) module.exports = pub;
 })();
