@@ -665,7 +665,7 @@
           try {
             const res = await P.descargar(info, archivo);
             registrarDoc(k, tipoDoc);
-            if (!res.completo) alert("Ya existe web o agenda: la propuesta se adaptó y la inversión figura «A definir». Acordá alcance y precio antes de enviarla.");
+            if (!res.completo) alert("Ya existe web o agenda: la propuesta se adaptó para no reemplazar lo que funciona (inversión $400.000). Revisala antes de enviarla.");
             if (res.avisos.length) alert("Revisá el PDF:\n- " + res.avisos.join("\n- "));
           } catch (x) { alert("No pude generar el PDF con la plantilla: " + (x && x.message ? x.message : x)); }
           finally { b.disabled = false; b.textContent = txtB; }

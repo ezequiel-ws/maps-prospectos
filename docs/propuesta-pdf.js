@@ -5,7 +5,7 @@
  * enlaces y bloques fijos (Carlos Serrano, caso y testimonio Contreras, fuentes institucionales, cierre por
  * WhatsApp) quedan exactamente como en la plantilla. Texto seleccionable y enlaces clicables.
  * Reglas: no inventa reseñas, tratamientos, funciones ni resultados; no afirma que no hay web por no verla
- * vinculada; si ya existe web o agenda, adapta la oferta y deja la inversión "a definir" (no inventa precio parcial). */
+ * vinculada; si ya existe web o agenda, adapta la oferta sin reemplazar lo que funciona; la inversión es siempre $400.000 (2 x $200.000). */
 (function (root) {
   "use strict";
   const PRECIO_BASE = { total: "$400.000", etapas: "Dos etapas de $200.000" };
@@ -82,14 +82,15 @@
     } else {
       S.p11_intro = info.agendaOk
         ? `Su ${L} ya cuenta con herramientas en funcionamiento. Proponemos revisarlas con usted y mejorar solo lo que haga falta para que las personas conozcan sus ${t.oferta} y soliciten atención con facilidad.`
-        : `Proponemos aprovechar su web actual y sumar una agenda digital para que las personas soliciten atención desde un mismo lugar. Antes de definir la inversión, revisamos juntos qué conviene integrar o mejorar.`;
+        : `Proponemos aprovechar su web actual y sumar una agenda digital para que las personas soliciten atención desde un mismo lugar. Revisamos juntos qué conviene integrar o mejorar, sin reemplazar lo que ya funciona.`;
       S.p11_web = `Revisión de su web actual${info.webUrl ? " (" + dominio(info.webUrl) + ")" : ""}: ajustes acordados en ${t.oferta}, contacto y versión para celulares, sin reemplazar lo que ya funciona.`;
       S.p11_agenda = info.agendaOk
         ? `Agenda: se mantiene la que ya utiliza; revisamos cómo facilitar el acceso desde la web y Google Maps.`
         : `Agenda de solicitudes 24/7. Elección de día y horario disponible, con confirmación del ${L}. Configuración, pruebas y puesta en marcha.`;
-      S.p11_total = "A definir";
-      S.p11_etapas = "Según el alcance acordado";
-      S.p12_s4 = "La inversión y las etapas de pago se acuerdan por escrito según el alcance, antes de iniciar el desarrollo.";
+      /* Decisión de Carlos: web + agenda digital = $400.000 por 2 años en todos los casos. */
+      S.p11_total = PRECIO_BASE.total;
+      S.p11_etapas = PRECIO_BASE.etapas;
+      S.p12_s4 = "$200.000 para iniciar el desarrollo y $200.000 al finalizar, una vez revisados los entregables y dados de alta los servicios acordados.";
     }
     S.p11_acomp = "Acompañamiento semanal durante el primer mes. 24 meses de mantenimiento y actualización de datos.";
     S.waTexto = `Hola, recibí la propuesta de Crecimiento Comercial para mi ${L} y me interesa avanzar. Quisiera recibir el formulario y coordinar los próximos pasos`;

@@ -92,4 +92,4 @@ SOFTWARE.
 
 - Código: `docs/propuesta-pdf.js` (usa pdf-lib + fontkit desde unpkg). Posiciones y estilos de cada texto variable: `docs/propuesta/plantilla-slots.json`, generados con `docs/propuesta/construir_plantilla.py`.
 - Bloques fijos sin cambios: Carlos Serrano, caso y testimonio Contreras, fuentes institucionales, cierre por WhatsApp 5491168713479 (el mensaje preparado se adapta al rubro).
-- Sin web ni agenda verificadas: oferta base $400.000 (dos etapas de $200.000). Si hay web o agenda: la oferta se adapta y la inversión figura «A definir».
+- Sin web ni agenda verificadas: oferta base $400.000 (dos etapas de $200.000). Si hay web o agenda: la oferta se adapta sin reemplazar lo que funciona, con la misma inversión de $400.000.
