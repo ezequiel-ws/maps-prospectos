@@ -728,7 +728,7 @@
         </select>
         <div class="toolbar" style="margin-top:10px">
           <button type="button" class="btn btn-ghost btn-sm" id="impBtnSig">Elegir próximos 10</button>
-          <label class="toggle"><input type="checkbox" id="impForzar" /> Forzar (aunque tenga &lt;7 días)</label>
+          <label class="toggle"><input type="checkbox" id="impForzar" /> Forzar (aunque tenga <7 días)</label>
         </div>
         <button type="button" class="btn btn-primary btn-block" id="impBtnInvestigar" style="margin-top:8px">Investigar seleccionados</button>
         <p class="hint" id="impMsg">Solo se analiza el sitio web si existe. Instagram, Facebook y Meta Ads no se scrapean: figuran como «no disponible».</p>
@@ -742,7 +742,7 @@
             <option value="excelente">85-100 excelente</option>
             <option value="alta">70-84 alta</option>
             <option value="media">50-69 media</option>
-            <option value="baja">&lt;50 baja</option>
+            <option value="baja"><50 baja</option>
           </select>
         </div>
         <div class="toolbar">
@@ -896,10 +896,10 @@
 
     function esc(s) {
       return String(s ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
+        .replace(/&/g, "&")
+        .replace(/</g, "<")
+        .replace(/>/g, ">")
+        .replace(/"/g, """);
     }
 
     function loadLocalStatuses() {
@@ -1628,7 +1628,7 @@
     Promise.all([loadIndex(false), rebuildSeenLinks(), checkPagesEstado()]).then(route);
   </script>
   <script src="propuesta-pdf.js?v=20261107a"></script>
-  <script src="impulsa-comercial.js?v=20261106d"></script>
-  <script src="impulsa.js?v=20261106d"></script>
+  <script src="impulsa-comercial.js?v=20261107b"></script>
+  <script src="impulsa.js?v=20261107b"></script>
 </body>
 </html>
